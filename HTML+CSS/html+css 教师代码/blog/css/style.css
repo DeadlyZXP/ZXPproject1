@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+ul{list-style:none;}
+a{text-decoration:none;}
+img{border:0; display:block;}
+body{font-size:12px;}
+
+.box{width:715px; height:176px; background:url(../images/Header.jpg) ; margin:50px auto; position:relative;}
+.box li{float:left;}
+.box ul{position:absolute; left:23px; top:149px;}
+.box a{height:27px; display:block; background:url(../images/Navigation.gif) no-repeat; text-indent:-99999px;}
+.home a{width:66px;  }
+.home a:hover{background-position:0 -27px;
+}
+.about a{width:69px;background-position:-66px top;}
+.about a:hover{background-position:-66px -27px;}
+.archive a{width:79px;background-position:-135px top;}
+.archive a:hover{background-position:-135px -27px;}
+.contact a{width:85px;background-position:-214px top;}
+.contact a:hover{background-position:-214px -27px;}
+.links a{width:58px;background-position:-299px top;}
+.links a:hover{background-position:-299px -27px;}
+
+.visited a{background-position:0 -54px;}
+.visited2 a{background-position:-66px -54px;}
+.visited3 a{background-position:-135px -54px;}
+.visited4 a{background-position:-214px -54px;}
+.visited5 a{background-position:-299px -54px;}
+
+

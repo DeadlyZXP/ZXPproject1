@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.cnblogs.com/xing901022/p/4482057.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./过滤器导图详解 - xingoo - 博客园_files/encoder.js"></script>
+<meta charset="utf-8">
+<title>过滤器导图详解 - xingoo - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./过滤器导图详解 - xingoo - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./过滤器导图详解 - xingoo - 博客园_files/bundle-BlueSky.css">
+<link type="text/css" rel="stylesheet" href="./过滤器导图详解 - xingoo - 博客园_files/128528.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xing901022/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xing901022/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xing901022/wlwmanifest.xml">
+<script src="./过滤器导图详解 - xingoo - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xing901022', cb_enable_mathjax=true;</script>
+<script src="./过滤器导图详解 - xingoo - 博客园_files/blog-common.js" type="text/javascript"></script>
+<script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({
+  tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+  TeX: { equationNumbers: { autoNumber: ['AMS'], useLabelIds: true } },
+  'HTML-CSS': { linebreaks: { automatic: true } },
+  SVG: { linebreaks: { automatic: true } }});</script><script type="text/javascript" src="./过滤器导图详解 - xingoo - 博客园_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<a name="top"></a>
+<div id="page_begin_html"><span id="cnzz_stat_icon_1259029673"><a href="http://www.cnzz.com/stat/website.php?web_id=1259029673" target="_blank">站长统计</a><a href="http://www.cnzz.com/stat/website.php?web_id=1259029673" target="_blank"> |  今日IP[11] | 今日PV[14] | 昨日IP[1512] |  昨日PV[2080] | </a><a href="http://www.cnzz.com/stat/website.php?web_id=1259029673&method=online" target="_blank">当前在线[11]</a></span></div><script>load_page_begin_html();</script>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/xing901022/"><img id="blogLogo" src="./过滤器导图详解 - xingoo - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/xing901022/">xingoo</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/xing901022/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li></li>
+<li>
+<!----></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+<li><a class="menu" href="http://www.cnblogs.com/xing901022/p/3694709.html">书单</a></li><li><a class="menu" href="http://www.cnblogs.com/xing901022/p/4704319.html">ELK</a></li><li><a class="menu" href="http://www.cnblogs.com/xing901022/p/4422941.html">简历</a></li></ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 796&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 1073</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./过滤器导图详解 - xingoo - 博客园_files/过滤器导图详解 - xingoo - 博客园.htm">过滤器导图详解</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><blockquote>
+<p>过滤器是web开发中常用的开发方式，比如一些典型的应用场景：</p>
+<p><span style="color: #ff0000;">用户身份认证、对用户请求进行记录和审核、对用户发送的数据进行替换和过滤、转换图像格式、对响应内容压缩、加密请求或响应等等。</span></p>
+<p>本篇就了解下监听器的主要使用方法。</p>
+</blockquote>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061409367983890.jpg" alt=""></p>
+<p>&nbsp;</p>
+<h2>什么是过滤器？</h2>
+<p><span style="color: #ff0000;">　　过滤器的生命周期</span></p>
+<p>　　过滤器的生命周期与web容器相同，当web容器启动时，就会读取应用的web.xml配置文件，如果这里配置了过滤器，容器就会执行实例化，并调用过滤器的init方法。</p>
+<p>　　之后用户的每一次请求都会执行过滤器的doFilter方法。</p>
+<p>　　当web容器销毁时，就会执行destroy方法，释放资源。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061416277516141.jpg" alt="" width="375" height="437"></p>
+<p><span style="color: #ff0000;">　　过滤器的执行过程</span></p>
+<p>　　过滤器看名字就能知道大概的用法，它就像一个筛子，可以筛选特定的数据或请求。执行过程如下图所示：</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061412439707407.jpg" alt="" width="518" height="411"></p>
+<p>　　用户在发送请求后，如果该请求满足过滤器的过滤规则，web容器就会执行过滤器中的doFilter方法进行特定的操作；然后通过调用FilterChain.doFilter转交给web容器。web容器执行完成后把资源返回给过滤器，再展现给用户。</p>
+<p>　</p>
+<h2>简单的过滤器实例</h2>
+<p>　　下面通过一个简单的代码，看看过滤器的编写。</p>
+<p>　　<span style="color: #ff0000;">首先，需要创建一个过滤器</span>，过滤器集成javax.servlet.Filter接口，其中必须实现三个方法：init() doFilter() destroy()</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> MyFilter <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Filter{
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> destroy() {
+        System.out.println(</span>"MyFilter destroy"<span style="color: #000000;">);
+    }
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) </span><span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, ServletException {
+        System.out.println(</span>"MyFilter start...dofilter"<span style="color: #000000;">);
+        chain.doFilter(request, response);<span style="color: #ff0000;">//对请求放行</span>
+        System.out.println(</span>"MyFilter end...dofilter"<span style="color: #000000;">);
+    }
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> init(FilterConfig arg0) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> ServletException {
+        System.out.println(</span>"MyFilter init"<span style="color: #000000;">);
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p><span style="color: #000080;">　　init()方法是在web容器实例化过滤器时调用的。</span></p>
+<p><span style="color: #000080;">　　doFilter()方法是每次有请求，且满足过滤规则时调用。</span></p>
+<p><span style="color: #000080;">　　destroy()方法是web容器关闭时，调用。</span></p>
+<p>&nbsp;</p>
+<p>　　<span style="color: #ff0000;">然后，在web.xml中配置相应的选项</span>。如果是servlet3.0，那么支持注解的方式配置过滤器。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>com.test.filter.MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>/index.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>
+        <span style="color: #008000;">&lt;!--</span><span style="color: #008000;">&lt;dispatcher&gt;&lt;/dispatcher&gt;</span><span style="color: #008000;">--&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　其中几个必备的项：</p>
+<p><span style="color: #000080;">　　在&lt;filter&gt;中配置了过滤器，filter-name是过滤器的名字，filter-class是过滤器的类；</span></p>
+<p><span style="color: #000080;">　　在&lt;filter-mapping&gt;中配置了过滤器的映射规则，filter-name是过滤器的名字，url-pattern是过滤的规则，dispatcher是过滤器的分类（主要包括四种，稍后讲解）</span></p>
+<p>　　这里先说下过滤器的规则，如果想要全部的请求都过滤，那么可以写/*</p>
+<p>　　如果想要过滤index.jsp &nbsp;index.html 可以写/index*</p>
+<p>　　如果只想过滤index.jsp，可以写成/index.jsp</p>
+<p>&nbsp;</p>
+<p>　　其次，<span style="color: #ff0000;">配置好后，创建index.jsp</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;c12abbc4-2173-4292-981f-0e8fc2f21d9e&#39;)"><img id="code_img_closed_c12abbc4-2173-4292-981f-0e8fc2f21d9e" class="code_img_closed" src="./过滤器导图详解 - xingoo - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_c12abbc4-2173-4292-981f-0e8fc2f21d9e" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;c12abbc4-2173-4292-981f-0e8fc2f21d9e&#39;,event)" src="./过滤器导图详解 - xingoo - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_c12abbc4-2173-4292-981f-0e8fc2f21d9e" class="cnblogs_code_hide">
+<pre><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page language</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html; charset=ISO-8859-1</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">
+    pageEncoding</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">ISO-8859-1</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;</span>
+<span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">="Content-Type"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="text/html; charset=ISO-8859-1"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Insert title here<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+    This is Filter JSP!
+    </span><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">
+        System.out.println(</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">index jsp</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">);
+    </span><span style="background-color: #ffff00; color: #000000;">%&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>　　</p>
+<p>　　最后，当<span style="color: #ff0000;">启动web容器后</span>，可以在控制台中发现，初始化时，执行了init方法</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061426374702902.jpg" alt="" width="564" height="405"></p>
+<p>　　访问对应的web资源，可以看到控制台按照执行的顺序打印消息：</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061428304385988.jpg" alt=""></p>
+<h2>多个过滤器操作</h2>
+<p>　　多个过滤器执行与上面差不多。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061430342982383.jpg" alt="" width="523" height="358"></p>
+<p>　　在上面代码的基础上，再增加一个过滤器：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span> SecondFilter <span style="color: #0000ff;">implements</span><span style="color: #000000;"> Filter{
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> destroy() {
+        System.out.println(</span>"SecondFilter destroy()"<span style="color: #000000;">);
+    }
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> doFilter(ServletRequest arg0, ServletResponse arg1,
+            FilterChain chain) </span><span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, ServletException {
+        System.out.println(</span>"SecondFilter doFilter start"<span style="color: #000000;">);
+        chain.doFilter(arg0, arg1);
+        System.out.println(</span>"SecondFilter doFilter end"<span style="color: #000000;">);
+    }
+
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span> init(FilterConfig arg0) <span style="color: #0000ff;">throws</span><span style="color: #000000;"> ServletException {
+        System.out.println(</span>"SecondFilter init()"<span style="color: #000000;">);
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　在web.xml中增加过滤器配置</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>com.test.filter.SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>/index.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　启动web容器，控制台输出init信息</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061439048607002.jpg" alt="" width="489" height="442"></p>
+<p>　　访问页面，可以看到由于在web.xml中映射配置MyFilter在SecondFilter上面，</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061441228455715.jpg" alt=""></p>
+<p>　　因此输出如下消息：</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061440296889653.jpg" alt=""></p>
+<p>&nbsp;</p>
+<p>　　类似的，如果把SecondFilter配置放在上面，就会先执行SecondFilter的doFilter方法。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061442512357276.jpg" alt=""></p>
+<h2>过滤器的分类</h2>
+<p>　　最后看一下过滤器的分类，过滤器主要包括四种，REQUEST\FORWARD\INCLUDE\ERROR（3.0额外新增了一个异步请求ASYNC）。</p>
+<p>　　上面的过滤器都是采用REQUEST的方式，直接请求。<span style="color: #ff0000;">由于没有配置dispathcer，默认就会按照REQUEST的方式进行</span>。</p>
+<p>　　直接看一下FORWARD的使用方法，在doFilter中执行下面的方法：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) </span><span style="color: #0000ff;">throws</span><span style="color: #000000;"> IOException, ServletException {
+        System.out.println(</span>"MyFilter start...dofilter"<span style="color: #000000;">);
+        HttpServletRequest req </span>=<span style="color: #000000;"> (HttpServletRequest)request;
+        req.getRequestDispatcher(</span>"main.jsp"<span style="color: #000000;">).forward(request, response);
+        System.out.println(</span>"MyFilter end...dofilter"<span style="color: #000000;">);
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　此时页面请求就会直接跳转到main.jsp，触发FORWARD类型过滤器，过滤器配置选项如下：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>com.test.filter.MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>MyFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>/index.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>com.test.filter.SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008000;">&lt;!--</span><span style="color: #008000;">     &lt;filter-mapping&gt;
+      &lt;filter-name&gt;SecondFilter&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/index.jsp&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt; </span><span style="color: #008000;">--&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>SecondFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>/main.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dispatcher</span><span style="color: #0000ff;">&gt;</span>FORWARD<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dispatcher</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　启动后发现，原本请求Index.jsp跳转到了main.jsp。</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./过滤器导图详解 - xingoo - 博客园_files/061455398296934.jpg" alt=""></p>
+<p>　　此时，如果第二个过滤器采用的是REQUEST，就不会触发了。</p>
+<p>　　另外，还可以使用JSP页面标签，执行跳转，此时过滤器也可以触发。比如在JSP页面中添加&lt;jsp:forward&gt;标签</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="background-color: #ffff00; color: #000000;">&lt;%</span><span style="background-color: #f5f5f5; color: #000000;">@ page language</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">java</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;"> contentType</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">text/html; charset=ISO-8859-1</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #000000;">
+    pageEncoding</span><span style="background-color: #f5f5f5; color: #000000;">=</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #f5f5f5; color: #800000;">ISO-8859-1</span><span style="background-color: #f5f5f5; color: #800000;">"</span><span style="background-color: #ffff00; color: #000000;">%&gt;<br><br></span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">jsp:forward </span><span style="color: #ff0000;">page</span><span style="color: #0000ff;">="/main.jsp"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">jsp:forward</span><span style="color: #0000ff;">&gt;<br><br></span>
+<span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">="Content-Type"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="text/html; charset=ISO-8859-1"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Insert title here<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　INCLUDE与FORWARD类似，使用方法也相同，只是名字不同而已，就不做过多的介绍了。</p>
+<p>　　然后看一下ERROR过滤器，通常我们会在web.xml中配置错误页面，如下：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">error-page</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">error-code</span><span style="color: #0000ff;">&gt;</span>404<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">error-code</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">location</span><span style="color: #0000ff;">&gt;</span>/error.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">location</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">error-page</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<p>　　此时，如果访问不存在的页面，http://localhost:8080/xxx.jsp就会跳转到error.jsp</p>
+<p>　　此时如果过滤器通过REQUEST方式，想要触发，url填写的是/error.jsp并不会起作用，此时就需要把dispathcer改成 ERROR，并且放置在error-page标签下面：</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">error-page</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">error-code</span><span style="color: #0000ff;">&gt;</span>404<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">error-code</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">location</span><span style="color: #0000ff;">&gt;</span>/error.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">location</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">error-page</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #008000;">&lt;!--</span><span style="color: #008000;"> 需要放在errorpage下面 </span><span style="color: #008000;">--&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>ErrorFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>com.test.filter.ErrorFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-class</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>ErrorFilter<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-name</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>/error.jsp<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">url-pattern</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dispatcher</span><span style="color: #0000ff;">&gt;</span>ERROR<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dispatcher</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">filter-mapping</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./过滤器导图详解 - xingoo - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>　　这样就会触发ERROR过滤器了。</p>
+<h2>参考</h2>
+<p>【1】过滤器的应用：http://www.ylzx8.cn/web/web/979338.html</p>
+<p>【2】过滤器视频教程：http://www.imooc.com/learn/213</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xing901022/category/597987.html">Java</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(4482057,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/xingoo" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./过滤器导图详解 - xingoo - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./过滤器导图详解 - xingoo - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xing901022/" target="_blank"><img src="./过滤器导图详解 - xingoo - 博客园_files/20150318093530.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xing901022/">xingoo</a><br>
+<a href="http://home.cnblogs.com/u/xing901022/followees">关注 - 57</a><br>
+<a href="http://home.cnblogs.com/u/xing901022/followers">粉丝 - 1308</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(4482057,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+	<div class="buryit" onclick="votePost(4482057,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xing901022/p/4475767.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xing901022/p/4475767.html" title="发布于2015-05-04 11:36">《胡雪岩·红顶商人》—— 读后总结</a><br><a href="http://www.cnblogs.com/xing901022/p/4490653.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xing901022/p/4490653.html" title="发布于2015-05-09 16:46">《偷影子的人》—— 读后总结</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2015-05-06 15:01</span> <a href="http://www.cnblogs.com/xing901022/">xingoo</a> 阅读(<span id="post_view_count">1389</span>) 评论(<span id="post_comment_count">2</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=4482057" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xing901022/p/4482057.html#" onclick="AddToWz(4482057);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=128528,cb_entryId=4482057,cb_blogApp=currentBlogApp,cb_blogUserGuid='08d856da-3501-e211-aa3f-842b2b196315',cb_entryCreatedDate='2015/5/6 15:01:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><div class="clear"></div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xing901022/p/4482057.html#3256920" class="layer">#1楼</a><a name="3256920" id="comment_anchor_3256920"></a>  <span class="comment_date">2015-08-30 12:04</span> <a id="a_comment_author_3256920" href="http://www.cnblogs.com/lijihong/" target="_blank">lijihong0723</a> <a href="http://msg.cnblogs.com/send/lijihong0723" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3256920" class="blog_comment_body">写的挺全面，filter的使用，创建，调用时机，分类，都写到了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3256920,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3256920,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3256920_avatar" style="display:none;">http://pic.cnblogs.com/face/339551/20160425200247.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xing901022/p/4482057.html#3257238" class="layer">#2楼</a><a name="3257238" id="comment_anchor_3257238"></a>[<span class="louzhu">楼主</span>]<span id="comment-maxId" style="display:none;">3257238</span><span id="comment-maxDate" style="display:none;">2015/8/31 8:34:28</span>  <span class="comment_date">2015-08-31 08:34</span> <a id="a_comment_author_3257238" href="http://www.cnblogs.com/xing901022/" target="_blank">xingoo</a> <a href="http://msg.cnblogs.com/send/xingoo" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3257238" class="blog_comment_body"><a href="http://www.cnblogs.com/xing901022/p/4482057.html#3256920" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3256920);">@</a>
+lijihong0723<br>谢谢支持</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3257238,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3257238,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3257238_avatar" style="display:none;">http://pic.cnblogs.com/face/449064/20150318093530.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xing901022/p/4482057.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xing901022/p/4482057.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://group.cnblogs.com/topic/75069.html" target="_blank">【福利】你是我的好朋友，我要送你个天猫红包</a><br><a href="https://event.open.alipay.com/?t=201607211659" target="_blank">【活动】蚂蚁金服开放平台合作伙伴大会(北京8.10)</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://qy.grapecity.cn/activereports_server/?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=ARS&utm_campaign=community" target="_blank"><img width="300" height="250" src="./过滤器导图详解 - xingoo - 博客园_files/24442-20160630110643984-296965588.jpg" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/550040/" target="_blank">卖出阿里巴巴、买进ARM 软银孙正义为何要开始一场豪赌？</a><br> ·  <a href="http://news.cnblogs.com/n/550039/" target="_blank">松下展示全新无人机系统Ballooncam Drone</a><br> ·  <a href="http://news.cnblogs.com/n/550038/" target="_blank">男子在阿里旅行网购55张迪士尼票 33张已使用</a><br> ·  <a href="http://news.cnblogs.com/n/550037/" target="_blank">苹果有个为Apple Watch准备的秘密实验室，我们去参观了一下</a><br> ·  <a href="http://news.cnblogs.com/n/550034/" target="_blank">微软Office 2016年七月功能更新现在可供下载</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./过滤器导图详解 - xingoo - 博客园_files/24442-20160613130538213-1713265809.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><img src="./过滤器导图详解 - xingoo - 博客园_files/o_psb.jpg" alt="xingoo" height="300px" width="200px">
+<br>
+<br>
+<div style="align:center;">
+Java Web程序猿，喜欢阅读与分享。
+<br>
+<br>
+<div id="pvStat"></div>
+<span id="cnzz_stat_icon_1259029673"></span>
+</div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xing901022/">xingoo</a><br>园龄：<a href="http://home.cnblogs.com/u/xing901022/" title="入园时间：2012-09-18">3年10个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xing901022/followers/">1307</a><br>关注：<a href="http://home.cnblogs.com/u/xing901022/followees/">57</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;08d856da-3501-e211-aa3f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&lt;</a></td><td align="center">2016年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/08/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xing901022/archive/2016/07/10.html"><u>10</u></a></td><td align="center"><a href="http://www.cnblogs.com/xing901022/archive/2016/07/11.html"><u>11</u></a></td><td align="center"><a href="http://www.cnblogs.com/xing901022/archive/2016/07/12.html"><u>12</u></a></td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xing901022/archive/2016/07/17.html"><u>17</u></a></td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td class="CalTodayDay" align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block"></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xing901022/p/5679395.html">1. 《鬼谷子的局5》—— 读后总结</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5665271.html">2. Logstash为什么那么慢？—— json序列化</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5661910.html">3. 《一线架构师实践指南》—— 读后总结</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5661654.html">4. Oracle Redo 以及 Archived日志简述</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5658694.html">5. Oracle使用小记</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5631445.html">6. Flume日志采集系统——初体验（Logstash对比版）</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5628530.html">7. 计算机软件考试——信息汇总</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5628262.html">8. 前端那点事儿——Tocify自动生成文档目录</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5625059.html">9. 日志分析系统——Hangout源码学习</a></li><li><a href="http://www.cnblogs.com/xing901022/p/5612328.html">10. Apache Commons CLI官方文档翻译 —— 快速构建命令行启动模式</a></li>
+</ul>
+</div>
+</div><div id="sidebar_categories">
+<div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(623)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xing901022/category/658522.html">AngularJS(26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xing901022/category/642865.html">Elasticsearch(44)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xing901022/category/597987.html">Java(115)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xing901022/category/597991.html">JavaScript(71)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xing901022/category/415638.html">linux(26)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xing901022/category/677227.html">Logstash(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/xing901022/category/677224.html">MongoDB(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/xing901022/category/443421.html">Oracle(38)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/xing901022/category/597989.html">Ruby(8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/xing901022/category/642864.html">Spring(23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/xing901022/category/414818.html">程序人生(100)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/xing901022/category/743428.html">缓存系统(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/xing901022/category/771011.html">全栈折腾(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/xing901022/category/847088.html">软件考试(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/xing901022/category/597988.html">设计模式(23)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/xing901022/category/414816.html">算法(84)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/xing901022/category/520130.html">网络(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/xing901022/category/659431.html">杂谈(14)</a> </li>
+
+</ul>
+
+</div>
+
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(796)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xing901022/archive/2016/07.html">2016年7月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xing901022/archive/2016/06.html">2016年6月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xing901022/archive/2016/05.html">2016年5月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xing901022/archive/2016/04.html">2016年4月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xing901022/archive/2016/03.html">2016年3月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xing901022/archive/2016/02.html">2016年2月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xing901022/archive/2016/01.html">2016年1月 (20)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xing901022/archive/2015/12.html">2015年12月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xing901022/archive/2015/11.html">2015年11月 (35)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xing901022/archive/2015/10.html">2015年10月 (29)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xing901022/archive/2015/09.html">2015年9月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xing901022/archive/2015/08.html">2015年8月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xing901022/archive/2015/07.html">2015年7月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xing901022/archive/2015/06.html">2015年6月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xing901022/archive/2015/05.html">2015年5月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xing901022/archive/2015/04.html">2015年4月 (22)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xing901022/archive/2015/03.html">2015年3月 (23)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xing901022/archive/2015/02.html">2015年2月 (33)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xing901022/archive/2015/01.html">2015年1月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xing901022/archive/2014/12.html">2014年12月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xing901022/archive/2014/11.html">2014年11月 (34)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/xing901022/archive/2014/10.html">2014年10月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/xing901022/archive/2014/09.html">2014年9月 (25)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/xing901022/archive/2014/08.html">2014年8月 (19)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/xing901022/archive/2014/07.html">2014年7月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/xing901022/archive/2014/06.html">2014年6月 (21)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/xing901022/archive/2014/05.html">2014年5月 (20)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/xing901022/archive/2014/04.html">2014年4月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/xing901022/archive/2014/03.html">2014年3月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/xing901022/archive/2014/02.html">2014年2月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/xing901022/archive/2014/01.html">2014年1月 (25)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/xing901022/archive/2013/12.html">2013年12月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/xing901022/archive/2013/11.html">2013年11月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/xing901022/archive/2013/10.html">2013年10月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/xing901022/archive/2013/09.html">2013年9月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/xing901022/archive/2013/08.html">2013年8月 (15)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/xing901022/archive/2013/04.html">2013年4月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/xing901022/archive/2013/03.html">2013年3月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/xing901022/archive/2013/02.html">2013年2月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_39" href="http://www.cnblogs.com/xing901022/archive/2013/01.html">2013年1月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_40" href="http://www.cnblogs.com/xing901022/archive/2012/12.html">2012年12月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_41" href="http://www.cnblogs.com/xing901022/archive/2012/11.html">2012年11月 (17)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_42" href="http://www.cnblogs.com/xing901022/archive/2012/10.html">2012年10月 (83)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_43" href="http://www.cnblogs.com/xing901022/archive/2012/09.html">2012年9月 (37)</a> </li>
+
+</ul>
+
+</div>
+
+</div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 xingoo
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>第三天 HTML核心元素</title>
+<style type="text/css">
+.red{color:#f00;}
+</style>
+</head>
+<body>
+<h2>CSS核心属性</h2>
+<h2>一、CSS属性组成和作用 </h2>
+<h2>属性：属性是指定选择符所具有的属性，它是css的核心，css2共有150多个属性</h2>
+<h2>属性值：属性值包括法定属性值及常见的数值加单位，如25px，或颜色值等。</h2>
+<h2>二、CSS核心属性<BR>
+</h2>
+<h2><STRONG>1、文本大小：{font-size:12px/14px/16px;}</STRONG><BR>
+  说明：</h2>
+<h2>1）属性值为数值型时，必须给属性值加单位，属性值为0时除外。<BR>
+2）单位还可以是pt，9pt=12px;</h2>
+<h2>3）为了减小系统间的字体显示差异，IE Netscape   Mozilla的浏览器制作商于1999年召开会议，共同确定16px/ppi为标准字体大小默认值,即1em.默认情况下，1em=16px,0.75em=12px;</h2>
+<h2>4)使用绝对大小关键字<BR>
+  xx-small   =9px<BR>
+  x-small    =11px<BR>
+  small      =13px<BR>
+  medium     =16px<BR>
+  large      =19px<BR>
+  x-large    =23px<BR>
+xx-large   =27px</h2>
+<h2><BR>
+  <STRONG>2、文本颜色：{color:颜色值;}</STRONG><BR>
+</h2>
+<h2>说明：</h2>
+<h2>用十六进制表示颜色值：</h2>
+<h2>0  1  2  3  4   5  6  7  8  9</h2>
+<h2>0  1  2  3  4   5  6  7  8  9  A  B  C  D  E  F</h2>
+<h2>颜色模式：光色模式</h2>
+<h2>  R      G      B</h2>
+<h2>  FF      00     00</h2>
+<h2>颜色值的缩写：</h2>
+<h2>当表示三原色的三组数字同时相同时，可以缩写为三位;</h2>
+<h2>当用十六进制表示颜色值时，需要在颜色值前加“#”</h2>
+<h2><BR>
+  <STRONG>3、文本字体：{font-family:&quot;字体1&quot;,&quot;字体2&quot;;}</STRONG></h2>
+<h2>说明：<BR>
+  *当字体是中文字体时需加引号；<BR>
+  *当英文字体中有空格时需加引号如<STRONG>&ldquo;Times New   Roman</STRONG>&rdquo;；<BR>
+</h2>
+<h2>Windows中文版本操作系统下，中文默认字体为宋体或者新宋体，英文字体默认为Arial.</h2>
+<p>&nbsp;</p>
+<h2>*文字属性简写：font:12px/1.5em  &nbsp;&quot;宋体&quot;;</h2>
+<h2>font属性的简写：字号，行高，字体</h2>
+<h2>说明:font的属性值应按以下次序书写(各个属性之间用空格隔开)</h2>
+<h2>顺序: font-style &nbsp;&nbsp;&nbsp;&nbsp;font-weight &nbsp;&nbsp;&nbsp; font-size / line-height &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family</h2>
+<h2>(1)简写时 , font-size和line-height只能通过斜杠/组成一个值，不能分开写。</h2>
+<h2>(2) 顺序不能改变 ,这种简写法只有在同时指定font-size和font-family属性时才一起作用,如果你没有设定font-weight , font-style , 他们会使用缺省值。</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2> <STRONG>4、加粗：{font-weight:bolder/bold/normal/100-900;}</STRONG></h2>
+<h2>说明：</h2>
+<h2>1）在css规范中把字体的粗细分为9个等级，分别从100-900，其中100对应最轻的字体变形，而900对应最重的字体变形。</h2>
+<h2>100-500常规字体</h2>
+<h2>600-900加粗字体</h2>
+<h2><STRONG>5、倾斜：{font-style:normal常规字体/italic/oblique倾斜;}</STRONG><BR>
+  说明：</h2>
+<h2> 1）italic和oblique都表示倾斜，不过oblique的幅度要大一点。但一般浏览器对它们的区分不是很明显。</h2>
+<h2>6、检索或设置对象中的文本的大小写</h2>
+<h2>text-transform:none无转换/capitalize首字母大写/uppercase全都大写/lowercase全都小写</h2>
+<h2>&nbsp;</h2>
+<h2><BR>
+  <STRONG>7、水平对齐方式{text-align:left/right/center/justify（个别浏览器不兼容，例：IE ,谷歌）</STRONG><BR>
+</h2>
+<h2><STRONG>8、垂直对齐方式{vertical-align:top/bottom/middle;}</STRONG></h2>
+<h2>9、行高{line-height:normal/数值;}</h2>
+<h2>说明：</h2>
+<h2>1）当单行文本的行高等于容器高时，可实现单行文本在容器中垂直方向居中对齐；</h2>
+<h2>2)&nbsp;&nbsp;&nbsp;当单行文本的行高小于容器高时，可实现单行文本在容器中垂直中齐以上任意位置的定位；</h2>
+<h2>3)&nbsp;&nbsp;&nbsp;当单行文本的行高大于容器高时，可实现单行文本在容器中垂直中齐以下任意位置的定位。（IE6及以下版本存在浏览器兼容问题）</h2>
+<h2>&nbsp;</h2>
+<h2>10、文本修饰：text-decoration:none/underline/overline/line-through/blink.(高版本浏览器不支持blink属性)</h2>
+<h2>说明：</h2>
+<h2>none:没有修饰</h2>
+<h2>underline:添加下划线</h2>
+<h2>overline:添加上划线</h2>
+<h2>line-through:添加删除线</h2>
+<h2>blink：闪烁</h2>
+<p>&nbsp;</p>
+<h2>11、首行缩进：{text-indent:value;}<BR>
+  说明：</h2>
+<h2>1）text-indent可以取负值；<BR>
+</h2>
+<h2> 2）text-indent属性只对第一行起作用。</h2>
+<p>&nbsp;</p>
+<h2><STRONG>12、字间距{letter-spacing:value;}</STRONG>控制英文字母或汉字的字距。<BR>
+  <STRONG>13、词间距{word-spacing:value;}</STRONG>控制英文单词词距。</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2><STRONG style="color:red;">扩展</STRONG></h2>
+<h2><STRONG>14、文本</STRONG><STRONG>流控制{layout-flow:horizontal/vertical-ideographic;}</STRONG><BR>
+  说明：</h2>
+<h2>1）horizontal:自左向右<BR>
+  2）vertical-ideographic:自上而下</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>15、列表的样式</h2>
+<h2><STRONG>定义列表符号样式：</STRONG></h2>
+<h2><STRONG>1)list-style-type:disc(实心圆)/circle（空心圆）/square(实心方块</STRONG><STRONG> )none(去掉列表符号)</STRONG>；<BR>
+  <STRONG>2)使用图片作为列表符号：list-style-image:url(所使用图片的路径及全称)</STRONG>;<BR>
+  <STRONG>3)定义列表符号位置：list-style-position:outside/inside</STRONG>;</h2>
+<h2>list-style:none;简写</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>16、border:3px solid red;</h2>
+<h2>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;边框border:线型（solid/dashed/dotted/double/none）&nbsp;&nbsp; 粗细（数值+单位） 颜色;</h2>
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线型：solid:实线，dashed:虚线，dotted:点状线，double:双线，none:没有边框;	</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;border-width:边框的粗细; &nbsp;&nbsp;&nbsp;border-style:边框的线形;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-color:边框的颜色;</h2>
+<h2>		 &nbsp;&nbsp;&nbsp;&nbsp;border-top：上边框  </h2>
+<h2>  &nbsp;&nbsp;&nbsp;&nbsp;border-bottom:下边框</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;border-left:左边框</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;border-right:右边框</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;右边框border-right:线形（solid/dashed/dotted/double）&nbsp;&nbsp;&nbsp;&nbsp; 粗细（数值+单位）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 颜色;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;左边框 border-left:线形（solid/dashed/dotted/double）&nbsp;&nbsp;&nbsp;&nbsp; 粗细（数值+单位）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 颜色;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上边框&nbsp;border-top:线形（solid/dashed/dotted/double）&nbsp;&nbsp;&nbsp;&nbsp; 粗细（数值+单位）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 颜色;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下边框 border-bottom:线形（solid/dashed/dotted/double）&nbsp;&nbsp;&nbsp;&nbsp; 粗细（数值+单位）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 颜色;</h2>
+<h2>边框类型：（不常用属性值）groove定义3D凹槽边框  &nbsp;&nbsp;&nbsp;&nbsp;ridge定义3D垄断边框&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h2>
+<h2>inset outset定义3D边框（都取决于边框颜色）</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>17、关于背景的属性</h2>
+<h2><STRONG>1）背景颜色</STRONG><BR>
+  语法：选择符{background-color:颜色值;}</h2>
+<h2><STRONG>2）背景图片的设置</STRONG><BR>
+</h2>
+<h2> 语法：background-image:url(背景图片的路径及全称<STRONG>)</STRONG>;</h2>
+<h2>插入图片：属于网页内容，也就是结构。</h2>
+<h2>背景图：属于网页的表现，背景图上可以显示文字、插入图片、表格等。</h2>
+<h2>3）背景图片的显示原则</h2>
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）容器尺寸等于图片尺寸，背景图片正好显示在容器中;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）容器尺寸大于图片尺寸，背景图片将默认平铺，直至铺满元素；</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）容器尺寸小于图片尺寸，只显示容器/元素/范围以内的背景图。<br>
+</h2>
+<h2><STRONG>*背景图片平铺</STRONG>属性<BR>
+</h2>
+<h2>语法：选择符{background-repeat:no-repeat/repeat/repeat-x/repeat-y }</h2>
+<h2>no-repeat:不平铺</h2>
+<h2>repeat：平铺</h2>
+<h2>repeat-x：横向平铺</h2>
+<h2>repeat-y ：纵向平铺</h2>
+<h2><BR>
+  <STRONG>5）背景图片的位置</STRONG><BR>
+语法：选择符{background-position:left/center/right/数值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top/center/bottom/数值;}</h2>
+<h2>background-position:值1 &nbsp;&nbsp;&nbsp;值2;</h2>
+<h2>水平方向上的对齐方式（left/center/right）或值    垂直方向上的对齐方式(top/center/bottom)或值</h2>
+<h2>两个值 ：第一个值表示水平位置的值，第二个值：表示垂直的位置。</h2>
+<h2>当两个值都是center的时候写一个值就可以代表的是水平位置和垂直位置都在中间。</h2>
+<p>&nbsp;</p>
+<h2>注：当元素小图片大，写图片的某个位置时：</h2>
+<h2>说明：向右方向，向下方向是负值</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>6）背景图的固定<BR>
+  语法：选择符{background-attachment:scroll(滚动)/fixed(固定);}</h2>
+<h2><BR>
+  <STRONG>7）各属性的缩写</STRONG><BR>
+语法：选择符{background：属性值1   属性值2   属性值3;}</h2>
+<p>&nbsp;</p>
+<h2>18）网页上常用的图片格式 </h2>
+<h2>1)jpg:有损压缩格式，靠损失图片本身的质量来减小图片的体积，适用于颜色丰富的图像;(像素点组成的，像素点越多会越清晰 )</h2>
+<h2>2）gif：有损压缩格式，靠损失图片的色彩数量来减小图片的体积，支持透明，支持动画，适用于颜色数量较少的图像;   </h2>
+<h2>3)png:有损压缩格式，损失图片的色彩数量来减小图片的体积，支持透明，不支持动画，是fireworks的 源文件格式，适用于颜色数量较少的图像;</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>19、浮动属性：</h2>
+<h2>语法：float:none/left/right;</h2>
+<h2><STRONG>浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。</STRONG></h2>
+<h2><STRONG>浮动框是脱离了普通的文档流</STRONG></h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

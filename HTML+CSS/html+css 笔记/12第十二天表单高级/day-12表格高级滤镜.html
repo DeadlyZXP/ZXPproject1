@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>第12</title>
+</head>
+
+<body>
+<h1>一，表单高级</h1>
+<h1>表单的组成：表单域,表单控件,提示信息</h1>
+<h2>表单域&lt;form name=&quot;&quot; method=&quot;&quot; action=&quot;&quot;&gt;&lt;/form&gt;</h2>
+<h2>表单控件&lt;input type=&quot;text&quot; value=&quot;&quot;/&gt;</h2>
+<p>&nbsp;</p>
+<h2>提示信息</h2>
+<h2>1)表单字段集</h2>
+<h2>&lt;fieldset&gt;&lt;/fieldset&gt;</h2>
+<H2>功能：相当于一个方框，在字段集中可以包含文本和其他元素。该元素用于对表单中的元素进行分组并在文档中区别标出文本。fieldset元素可以嵌套，在其内部可以在设置多个fieldset对象。</H2>
+<p>&nbsp;</p>
+<h2>2)字段级标题</h2>
+<H2>&lt;legend&gt;&lt;/legend&gt;</H2>
+<H2>功能：legend元素可以在fieldset对象绘制的方框内插入一个标题。legend元素必须是fieldset内的第一个元素。</H2>
+<H2>&nbsp;</H2>
+<p> </p>
+<h2>3)提示信息标签</h2>
+<H2>&lt;label for="绑定控件id名"&gt;&lt;/label&gt;</H2>
+<H2>功能：label元素用来定义标签，为页面上的其他元素指定提示信息。要将label元素绑定到其他的控件上，可以将label元素的for属性设置为与该控件的id属性值相同。</H2>
+<h2>4)表单元素</h2>
+<H2>1）上传文件框 </H2>
+<H2>文件域：&lt;input type="file" /&gt;</H2>
+<p>&nbsp;</p>
+<H2>2）图像域</H2>
+<H2>&lt;input type="image" width="100" height="100"  alt="上传图片"   /&gt;</H2>
+<H2>说明：火狐不支持此表单元素</H2>
+<p>&nbsp;</p>
+<h1>二、表格高级</h1>
+<h1>1、表格的作用：显示数据;</h1>
+<p>&nbsp;</p>
+<h1>（一）关于表格的CSS属性</h1>
+<h1>1、单元格间距(该属性必须给table添加)</h1>
+<h1>border-spacing:value;</h1>
+<p>&nbsp;</p>
+<h1>2、合并相邻单元格边框</h1>
+<h1>border-collapse:separate(边框分开)/collapse(边框合并)；</h1>
+<p>&nbsp;</p>
+<h1>3、无内容单元格显示、隐藏</h1>
+<h1>empty-cells:show/hide;</h1>
+<h1>4、表格布局算法(加快运行的速度)</h1>
+<h1>table-layout:auto/fixed(固定宽度，不会随内容多少改变单元格宽度)</h1>
+<p>&nbsp;</p>
+<h1>5、表格标题</h1>
+<h1>&lt;caption&gt;标题内容&lt;/caption&gt;</h1>
+<h1>caption:表格标题</h1>
+<h1>表格标题位置：caption-side:top/right/bottom/left</h1>
+<h2>说明：left,right位置只有火狐识别，top,bottom IE6以上版本支持，ie6以下版本不支持其它属性值，只识别top;</h2>
+<p>&nbsp;</p>
+<h1>6、表格布局元素</h1>
+<h1>1、表格基本组成</h1>
+<h1>table（表格）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tr（行） &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;td（列）</h1>
+<h1>th:表格列标题（放在tr里）</h1>
+<p>&nbsp;</p>
+<h1>html重要属性：</h1>
+<h1>1）、colspan=&quot;value&quot;&nbsp;&nbsp;&nbsp;&nbsp;合并列</h1>
+<h1>2）、rowspan=&quot;value&quot;&nbsp;&nbsp;&nbsp;和并行</h1>
+<h1>3）、valign=&quot;top/bottom/middle/baseline&quot; 垂直对齐方式&nbsp;</h1>
+<h1>４）rules=&quot;groups/rows/cols/all/none&quot;&nbsp;&nbsp;&nbsp;&nbsp;添加组分隔线</h1>
+<h2>说明：</h2>
+<h2>rows:位于行之间的线条</h2>
+<h2>cols:位于列之间的线条</h2>
+<h2>all：位于行和列之间的线条</h2>
+<h2>none:没有线条</h2>
+<h2>groups:位于行组和列组之间的线条</h2>
+<p>&nbsp;</p>
+<h1>2、数据行分组</h1>
+<h1>&lt;thead&gt;&lt;/thead&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表头</h1>
+<h1>&lt;tbody&gt;&lt;/tbody&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表体</h1>
+<h1>&lt;tfoot&gt;&lt;/tfoot&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表尾</h1>
+<h1>说明：一个Table中，只能包含一个thead,一个tfoot,但可包含多个tbody。</h1>
+<p>&nbsp;</p>
+<h1>3、数据列分组</h1>
+<h1>&lt;colgroup span=&quot;value&quot;&gt;&lt;/colgroup&gt;</h1>
+<h1>&lt;col&nbsp;&nbsp;&nbsp;&nbsp; span=&quot;value&quot; /&gt;</h1>
+<p>&nbsp;</p>
+<h1>说明：</h1>
+<h1>1）col和colgroup元素会根据从左到右的顺序依次对数据表格进行分组。</h1>
+<h1>2）span属性显示指定相邻几列组成一组，span属性值默认为1，默认时仅定义一列为一组。</h1>
+<h1>3）可以通过给table添加rules=&quot;groups&quot;属性来给分组列添加组分割线。</h1>
+<h1>注意：虽然col和colgroup具有相同的功能，但是，我们只能使用colgroup元素来决定表格内容部分分割线（rules）应该处于的位置，而col没有这个功能。</h1>
+<p>&nbsp;</p>
+<h1></h1>
+<h1><STRONG>三、CSS 滤镜</STRONG></h1>
+<h2><BR>
+  <BR>
+  CSS样式表是一种为超文本标签语言提供增强补充服务的技术，可对每一个html的标签做精雕细刻的修饰。只用html制作的网页，对页面内各部分的修饰能力有限且语句烦锁，样式表正是弥补这一缺陷的有力技术，它语句文法简单，只要在源码中插入style语句就可轻易实现页面内任意文本颜色、背景、边框、行距、字距的添删和修饰等功能，使网页更加生动活泼，从而获得满意的效果。当然，样式表的强大还依靠的就是它的滤镜功能。因为有了滤镜，大家就可以轻易地创造出&ldquo;专业&rdquo;的艺术效果。<BR>
+  <BR>
+  一、什么是样式表滤镜 </h2>
+<h2><BR>
+  说到滤镜，其实它并不是对图像进行了什么处理，而是在浏览器中对使用了该属性的对象进行一定的修饰。样式表滤镜实际上是样式表一个新的扩展部分，使用这种技术简单的语法就可以把可视化的滤镜和转换效果添加到一个标准的html元素上，例如图片、文本、以及其他一些对象，为页面添加一些丰富的变化。如果大家有一些脚本语言的基础，能够把滤镜效果与类似javascript的脚本代码做一些结合，就可以拥有一个在样式表滤镜与脚本共同作用下建立的强大的动态交互文档工具。现在能使用的滤镜有13个之多，不过要欣赏到这些滤镜的特效，必须要求用户的浏览器必须在IE4.0/NC6.0之上，因为只有这些版本的浏览器才能支持样式表滤镜效果。 </h2>
+<h2> <BR>
+  <BR>
+  二、常用的样式表滤镜 <BR>
+  <BR>
+  随着样式表技术的不断成熟，其滤镜功能和种类也在不断增多。如果用户能够熟练地混合使用它们，将可以产生意想不到的效果。在操作上，用户只需要了解具体滤镜的实际效果后，就能根据实际进行微调了。为了使大家能有针对性地使用滤镜，下面就把一些常用滤镜的功能和参数详细介绍如下： <BR>
+  <BR>
+  1、滤镜 <BR>
+  作用：该滤镜可以实现各种溶入效果，如果大家将该滤镜与网页脚本语言结合起来，对滤镜的参数进行处理的话，就能很轻易地做出淡入淡出的效果来。 <BR>
+  语法：{FILTER：ALPHA(opacity=opacity，finishopacity=finishopacity，<BR>
+  style=style，startx=startx，starty=starty，finishx=finishx，finishy=finishy)} <BR>
+  参数：Opacity参数代表图象的起始透明度，其默认的数值是从0到100，0代表完全透明，100代表完全不透明；FinishOpacity是一个可选参数，如果想要设置渐变的透明效果，就可以使用他们来指定结束时的透明度，作用范围也是0到100；Style表示透明区域的形状特征，其中&ldquo;0&rdquo;代表统一形状，&ldquo;1&rdquo;代表线形。&ldquo;2&rdquo;代表放射状，&ldquo;3&rdquo;代表矩形；startx表示渐变透明效果开始处的X坐标，starty代表渐变透明效果开始处的Y坐标，finishx代表渐变透明效果结束处的X坐标，finishy代表渐变透明效果结束处的Y坐标。 </h2>
+<h2><BR>
+  2、模糊滤镜 <BR>
+  作用：该滤镜主要是让图象产生一种模糊效果。 <BR>
+  语法：{filter:blur(add=add，direction=direction，strength=strength)} <BR>
+  参数：该滤镜主要包括三个参数，其中add是用来指定图象是否被改变成印象派的模糊效果，模糊效果是按顺时针的方向进行的，它的数值应该是ture或false；direction参数是用来设置模糊的方向的，其中0度代表垂直向上，每45度为一个单位，默认值是向左的270度；strength   参数代表有多少像素的宽度将受到模糊影响，缺省的参数值是5个像素，而且该参数值只能使用整数来指定。 <BR>
+  <BR>
+  3、斜影滤镜 <BR>
+  作用：该滤镜主要是为对象建立轮廓的影子效果的，它可以在指定的方向建立物体的投影； <BR>
+  语法：{filter:shadow(color=color,direction=direction)}<BR>
+  参数：斜影滤镜只有两个参数，其中color代表投影的底色，该数值是用英文字母来代替的，例如投影底色是红色的话，就应该设置color=red;direction参数是用来设置投影方向的，如果该数值是0的话，就代表垂直投影，此外该数值每45度为一个单位，它的默认值是向左的270度。 <BR>
+  <BR>
+  4、发光滤镜 <BR>
+  作用：该滤镜可以给图象或者文字产生一种发光效果； <BR>
+  语法：{filter:glow(color=color,strength=strength)} <BR>
+  参数：该滤镜的color参数与阴影滤镜的color参数功能几乎是一样的，不过这里的color参数是用来设置发光颜色的;strength参数是用来指定发光强度的，其值为1到255之间的任何整数。 <BR>
+  <BR>
+  5、灯光滤镜<BR>
+  作用：灯光滤镜是模拟光源来投射文字或者图象，使图象和文字能产生一定的投射效果； <BR>
+  语法：{filter:light} <BR>
+  参数：一旦为对象定义了&ldquo;light"滤镜属性后，大家就可以调用它的&ldquo;方法(Method)"来设置或者改变属性，该滤镜可用的方法有：AddAmbient方法是用来加入包围光源的，AddCone方法是用来加入锥形光源的，MoveLight方法是用来移动光源的，Changstrength方法是用来改变光源强度的，Changcolor方法是用来改变光的颜色的，Clear方法是用来清除所有光源的。 <BR>
+  <BR>
+  6、遮罩滤镜<BR>
+  作用：该滤镜可以为对象建立一个覆盖于表面的膜，其效果就象戴着有色眼镜看物体一样。 <BR>
+  语法：   {filter:mask(color=color)}<BR>
+  参数：该滤镜的color参数表示覆盖对象表面的颜色，例如如果遮罩颜色为绿色，那么就应该设置color=blue。<BR>
+  <BR>
+  7、阴影滤镜 <BR>
+  作用：阴影滤镜就是给对象添加阴影效果，其工作原理是建立一个偏移量，加上色彩。 <BR>
+  语法：{filter:dropshadow(color=color,offx=offx,offy=offy,positive=positive)} <BR>
+  参数：该滤镜中的Color参数表示投射阴影的颜色，offx   表示水平方向阴影的偏移量，offy   表示竖直方向阴影的偏移量，Positive参数是一个布尔值，其数值如果为TRUE，就为任何的非透明像素建立可见的投影，如果为FASLE，就为透明的像素部分建立透明效果。 <BR>
+  <BR>
+  8、灰度滤镜 <BR>
+  作用：该滤镜主要是将图象对象转换成灰度形式显示。 <BR>
+  语法：{filter:gray} <BR>
+  参数：该滤镜没有参数。 <BR>
+  <BR>
+  9、翻转滤镜 <BR>
+  作用：翻转滤镜主要是实现图象对象的水平或者竖直翻转效果。 <BR>
+  语法：{filter:filph}   {filter:filpv} <BR>
+  参数：这种滤镜也不带参数，其中{filter:filph}是实现水平翻转的，{filter:filpv}   是实现竖直翻转的。 <BR>
+  <BR>
+  10、X光滤镜 <BR>
+  作用：X光滤镜可以让对象反映出它的轮廓并把这些轮廓加亮。 <BR>
+  语法：   {filter:xray} <BR>
+  参数：该滤镜本身不含有参数。 <BR>
+  <BR>
+  11、倒置滤镜 <BR>
+  作用：使用该滤镜可以把包括色彩、饱和度、和亮度值等对象的可视化属性全部翻转。 <BR>
+  语法：   {filter:invert} <BR>
+  参数：该滤镜没有参数。 <BR>
+  <BR>
+  12、波纹滤镜 <BR>
+  作用：波纹滤镜可以在水平和竖直方向利用正弦波打乱图象，使图象产生水波效果。 <BR>
+  语法：{filter:wave(add=add,freq=freq,lightstrength=strength,phase=phase,strength=strength)} <BR>
+  参数：该滤镜的add参数是一个布尔数值，它是用来表示是否要把对象按照波形样式打乱；freq参数是用来设置波纹频率的，也就是指定在对象上一共需要产生多少个完整的波纹；lightstrength参数可以设置波纹光影的增强效果的，其数值范围在0到100之间；phase参数是用来设置正弦波的偏移量的，strength是设置正弦波的振幅大小的。 </h2>
+<H3> </H3>
+<H3> </H3>
+<h1>在IE下使用的滤镜，可以实现很多不错的特效，但是在chrome和火狐opera等浏览器里这些就全都失效了，因为   滤镜只是属于IE浏览器开发下的功能，不支持IE内核的浏览器也就都不支持这些滤镜。 不过一般都支持透明滤镜，只是写法不一样，如下：</h1>
+<h1><BR>
+  要设置一下透明度为60%的DIV就应该这样写了：<BR>
+  <BR>
+  filter: alpha(opacity=60);  为IE下写法，</h1>
+<h1>opacity: 0.6;   为火狐等浏览器下写法，</h1>
+<h1>所以要都支持这个滤镜，就得两个都写上</h1>
+<h1>二、图片高级-透明图片</h1>
+<H1>（一）网页上常用的图片格式（jpg,png,gif）</H1>
+<H1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支持透明：gif，png(png8,png24,png32)</H1>
+<H1>（二）网页上的图片形式（插入图片和背景图）</H1>
+<H1>（三）插入图片透明</H1>
+<H1>&nbsp;&nbsp;&nbsp;A.图片背景透明：</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.gif：支持</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.png8：支持(建议使用)</H1>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.png24:IE6不支持，其它内核浏览器支持（PS制作)</h1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.png32：IE6不支持，其它内核浏览器支持</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</H1>
+<p> </p>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;B.图片本身透明</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.png24:IE6不支持（ps制作)，可用filter兼容。</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.png32：IE6不支持，可用filter兼容。</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;半透明插入图片兼容IE6做法:（使用png32或PS制作的png24半透明图片）：</H1>
+<H1>&nbsp;样式：</H1>
+<H2>&lt;style type="text/css"&gt;</H2>
+<H2>.alpha{display:none;_display:inline-block;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader</H2>
+<H2>(src="图片路径",sizingMethod="scale");width:value;height:value;}</H2>
+<H2>.ie6hidden{_display:none;}</H2>
+<H2>&lt;/style&gt;</H2>
+<H2>&nbsp;</H2>
+<H1>结构：</H1>
+<H1>&lt;span class="alpha"&gt;&lt;/span&gt;</H1>
+<H1>&lt;img class="ie6hidden" src="" /&gt;</H1>
+<H1>&nbsp;</H1>
+<p> </p>
+<h1>C、css3新增透明属性</h1>
+<h1>语法 ：background:rgba(value,value,value,value);</h1>
+<h1>说明：前三个值是RGB的颜色值，最后一个是透明的数值。</h1>
+<p>&nbsp;</p>
+</body>
+</html>

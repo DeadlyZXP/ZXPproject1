@@ -1,0 +1,274 @@
+<!document html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>第1天 HTML基础</title>
+<style type="text/css">
+.red{color:#f00;}
+</style>
+</head>
+<body>
+<h2>网页制作技术</h2>
+<h2>1、&nbsp;XHTML+CSS&nbsp;标记语言</h2>
+<h2>&nbsp;</h2>
+<h2>一、 WEB标准的概念及组成</h2>
+<p>1）WEB标准是网页制作的标准，它不是一个标准，它是根据网页的不同组成部分生成的一系列标准。这些标准大部分由W3C起草发布，也有部分标准由ECMA起草发布。</p>
+<h2><img src="web.jpg" /></h2>
+<h2>&nbsp;</h2>
+<h2>W3C制定的结构和表现的标准;</h2>
+<h2>结构：(xhtml ,xml)</h2>
+<h2>表现：(css)</h2>
+<h2>ECMA制定的行为的标准;</h2>
+<h2>行为 （DOM ,ECMASCRIPT）</h2>
+<h2>结构和表现标准： </h2>
+<h2> （1）W3C( World Wide Web Consortium )万维网联盟，创建于1994年是Web技术领域最具权威和影响力的国际中立性技术标准机构。(制定了结构和表现的标准，非赢利性的。)</h2>
+<h2>（2）行为标准：DOM，ECMASCRIPT（ECMA制定的）欧洲电脑场商联合会。</h2>
+<h2>&nbsp;</h2>
+<h2>二、Dreamweaver  基本功能</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）新建(ctrl+n)，打开(ctrl+o)， 保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ctrl+s)</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）预览页面&nbsp;（F12快捷键）</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）建立站点</h2>
+<p>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;作用：用来归纳一个网站上所有的网页、素材以及他们之间的联系</strong></p>
+<h2>&nbsp;</h2>
+<h2>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTRL+U(首先参数)里可以更改代码里的代码文字大小</h2>
+<h2>&nbsp;  &nbsp; F4隐藏显示所有面版</h2>
+<h2>&nbsp;</h2>
+<h2>三、 调试工具 -浏览器 </h2>
+<h2>1）PC端调试工具的使用 -浏览器 </h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;测试浏览器(chrome,ie,firefox)</h2>
+<h2>2）移动端调试工具<strong>chrome</strong>可以测试移动端页面（有很多模拟器）</h2>
+<h2>四、 HTML及相关概念的介绍</h2>
+<h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML 指的是超文本标记语言 (Hyper Text Markup Language)</strong></h2>
+<h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XHTML</strong>指可扩展超文本标记语言（标识语言）（EXtensible HyperText Markup Language）。</h2>
+<h2>&nbsp;</h2>
+<h2><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML5指的是HTML的第五次重大修改（第5个版本）</strong></h2>
+<h2><strong>&nbsp;&nbsp;(HTML5 是 W3C 与 WHATWG 合作的结</strong>果)</h2>
+<h2><strong> WHATWG</strong>网页超文本应用技术工作小组是一个以推动网络HTML 5 标准为目的而成立的组织。在2004年，由Opera、Mozilla基金会和苹果这些浏览器厂商组成。</h2>
+<h2>&nbsp;</h2>
+<h2>五、HTML5 基本结构
+  
+  （新建一个html文件时默认有那些代码）</h2>
+<h2>&lt;!doctype html&gt;命名文档类型<br>
+  &lt;html&gt;说明我们写的是标记语言<br>
+  &lt;head&gt;文件头部<br>
+  &lt;meta charset=&quot;utf-8&quot;/&gt;编码格式<br>
+  &lt;title&gt;html5&lt;/title&gt;文件标题（显示在状态栏上的内容）<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;</h2>
+<h2>文件主体(所有要写的内容)</h2>
+<h2>&lt;/body&gt;<br>
+  &lt;/html&gt;</h2>
+<h2>&nbsp;</h2>
+<h2>1、文件命名规则：用英文，不用中文</h2>
+<h2>名称全部用小写英文字母、数字、下划线的组合，其中不得包含汉字、空格和特殊字符；必须以英文字母开头。<br>
+</h2>
+<h2><strong>六、 HTML基本语法  </strong></h2>
+<h2>1、&lt;常规标记&gt;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;标记&nbsp;&nbsp;属性=“属性值” &nbsp;&nbsp;属性=“属性值”&gt;&lt;/标记&gt;</h2>
+<h2>2.空标记</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;标记 属性=“属性值” &nbsp;/&gt;</h2>
+<h2>说明：</h2>
+<h2>1.写在&lt;&gt;中的第一个单词叫做标记，标签，元素。</h2>
+<h2>2.标记和属性用空格隔开，属性和属性值用等号连接，属性值必须放在“”号内。</h2>
+<h2>3.一个标记可以没有属性也可以有多个属性，属性和属性之间不分先后顺序。</h2>
+<h2>4.空标记没有结束标签，用“/”代替。</h2>
+<h2>&nbsp;</h2>
+<h2>七、 XHTML常用标记
+  
+</h2>
+<h2>1）文本标题（h1-h6）  </h2>
+<h2>&lt;h1&gt;一级标题&lt;/h1&gt;(header1~header6	)</h2>
+<h2>&lt;h2&gt;二级标题&lt;/h2&gt;</h2>
+<h2>...</h2>
+<h2>&lt;h6&gt;六级标题&lt;/h6&gt;</h2>
+<p>&nbsp;</p>
+<h2>八、正文有两种形式（段落文本和文字列表）</h2>
+<h2>2） 段落(p)(paragraph)</h2>
+<h2>&lt;p&gt;段落文本内容&lt;/p&gt;</h2>
+<h2>标识一个段落(段落与段落之间有段间距)</h2>
+<h2>3）空格  (&nbsp;)
+  
+  	
+  </h2>
+<h2>&amp;nbsp;（所占位置没有一个确定的值,这与当前字体字号都有关系.</h2>
+<h2>&nbsp;</h2>
+<h2>4）加粗</h2>
+<h2>加粗有两个标记</h2>
+<h2>1.&lt;b&gt;加粗内容&lt;/b&gt;</h2>
+<h2>2.&lt;strong&gt;加粗内容&lt;/strong&gt;</h2>
+<p>&nbsp;</p>
+<h2>5）倾斜 </h2>
+<h2>倾斜标记</h2>
+<h2>1.&lt;em&gt;&lt;/em&gt;(emphasized	)</h2>
+<h2>2,&lt;i&gt;&lt;/i&gt;(	italic	)</h2>
+<p>&nbsp;</p>
+<h2>6） 换行(br) （break）</h2>
+<h2>&lt;br /&gt;</h2>
+<h2>换行是一个空标记(强制换行)</h2>
+<h2>7）水平线</h2>
+<h2>&lt;hr /&gt;空标记(horizontal   rule)</h2>
+<h2>&nbsp;</h2>
+<h2>8）列表(ul,ol,dl)
+  
+</h2>
+<h2>HTML中有三种列表，分别是：无序列表，有序列表，自定义列表</h2>
+<h2>*无序列表</h2>
+<h2>无序列表组成：</h2>
+<h2>&lt;ul&gt;(unordered   list)</h2>
+<h2>	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;/li&gt;</h2>
+<h2>．．．．．．</h2>
+<h2>&lt;/ul&gt;</h2>
+<h2>&nbsp;</h2>
+<h2>*有序列表</h2>
+<h2>有序列表组成：</h2>
+<h2>&lt;ol&gt;(ordered   list)</h2>
+<h2>&lt;li&gt;&lt;/li&gt;</h2>
+<h2>&lt;li&gt;&lt;/li&gt;</h2>
+<h2>&lt;li&gt;&lt;/li&gt;</h2>
+<h2>．．．．．．</h2>
+<h2>&lt;/ol&gt;</h2>
+<h2 style="color:red;">扩展内容</h2>
+<h2>有序列表的属性</h2>
+<h2>type:规定列表中的列表项目的项目符号的类型</h2>
+<h2>语法：&lt;ol type=&quot;a&quot;&gt;&lt;/ol&gt;</h2>
+<h2>1
+  数字顺序的有序列表（默认值）（1, 2, 3, 4）。  </h2>
+<h2>a 字母顺序的有序列表，小写（a, b, c, d）。  </h2>
+<h2>A 字母顺序的有序列表，大写（A,B,C,D)</h2>
+<h2>i
+  罗马数字，小写（i, ii, iii, iv）。  </h2>
+<h2>I 罗马数字，大写（i, ii, iii, iv）。</h2>
+<h2>start 属性规定有序列表的开始点。</h2>
+<h2>语法：&lt;ol start=&quot;5&quot;&gt;&lt;/ol&gt;</h2>
+<h2>*自定义列表 </h2>
+<h2>&lt;dl&gt; (definition   list) </h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dt&gt;名词&lt;/dt&gt;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;解释&lt;/dd&gt; (definition   description	定义描述)</h2>
+<h2>．．．．．．</h2>
+<h2>&lt;/dl&gt;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>9）插入图片</h2>
+<h2>&lt;img&nbsp;&nbsp; src="目标文件路径及全称"  &nbsp;&nbsp;&nbsp; alt="图片替换文本"&nbsp;&nbsp;&nbsp;&nbsp; title="图片标题" /&gt;</h2>
+<h2 class="red">注:所要插入的的图片必须放在站点下</h2>
+<h2>*相对路径的写法：</h2>
+<h2>1)当当前文件与目标文件在同一目录下，直接书写目标文件文件名+扩展名；</h2>
+<h2>2)当当前文件与目标文件所处的文件夹在同一目录下，写法如下：</h2>
+<h2>文件夹名/目标文件全称+扩展名；</h2>
+<h2>3)当当前文件所处的文件夹和目标文件所处的文件夹在同一目录下，写法如下：</h2>
+<h2>../目标文件所处文件夹名/目标文件文件名+扩展名</h2>
+<h2>&nbsp;</h2>
+<h2 class="red">title的作用:
+  在你鼠标悬停在该图片上时显示一个小提示，鼠标离开就没有了，HTML的绝大多数标签都支持title属性，title属性就是专门做提示信息的.</h2>
+<h2><span class="red">alt的作用:alt属性是在你的图片因为某种原因不能加载时在页面显示的提示信息，它会直接输出在原本加载图片的地方。</span></h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>10）超链接的应用</h2>
+<h2>语法：</h2>
+<h2>&lt;a&nbsp;&nbsp; href=&quot;目标文件路径及全称/连接地址&quot;&gt;链接文本/图片&lt;/a&gt;</h2>
+<h2>&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;空链接</h2>
+<h2>属性：target:页面打开方式，默认属性值_self。</h2>
+<h2>属性值：_blank 新窗口打开</h2>
+<h2>&lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;新窗口打开&lt;/a&gt;</h2>
+<h2>&nbsp;</h2>
+<h2>11） 数据表格的作用及组成</h2>
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用：显示数据</h2>
+<h2>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表格的组成：</h2>
+<h2>&lt;table &gt;</h2>
+<h2>&lt;tr&gt;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;/td&gt;</h2>
+<h2>&lt;/tr&gt;</h2>
+<h2>&lt;/table&gt;</h2>
+<h2 class="red">注：一个tr表示一行;一个td表示一列(一个单元格)</h2>
+<h2>*数据表格的相关属性 </h2>
+<h2>1）width=&quot;表格的宽度&quot;</h2>
+<h2> 2）height=&quot;表格的高度&quot;</h2>
+<h2> 3）border=&quot;表格的边框&quot;</h2>
+<h2> 4）bgcolor=&quot;表格的背景色&quot;</h2>
+<h2> 5）cellspacing=&quot;单元格与单元格之间的间距&quot;</h2>
+<h2> 6）cellpadding=&quot;单元格与内容之间的空隙&quot;</h2>
+<h2>7）水平对齐方式：align="left/center/right";</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>8)合并单元格属性：</h2>
+<h2>colspan=“所要合并的单元格的列数&quot;合并列;</h2>
+<table width="300" height="90" cellspacing="0" cellpadding="0" border="1">
+  <tr>
+    <td border="1" colspan="2">一行</td>
+  </tr>
+  <tr>
+    <td border="1">一行</td>
+    <td border="1">一行</td>
+  </tr>
+</table>
+<h2>rowspan=“所要合并单元格的行数”合并行;</h2>
+<table width="300" height="90" cellspacing="0" cellpadding="0" border="1">
+  <tr>
+    <td border="1" rowspan="2">一行</td>
+    <td border="1">一行</td>
+  </tr>
+  <tr>
+    <td border="1">一行</td>
+  </tr>
+</table>
+<h2>&nbsp;</h2>
+<h2>12） 表单的应用</h2>
+<h2>表单的作用：用来收集用户的信息的;</h2>
+<h2>1、表单框 </h2>
+<h2>&lt;form name=&quot;表单名称&quot; method=&quot;post/get&quot; &nbsp;action=&quot;&quot;&gt;</h2>
+<h2>&lt;/form&gt;</h2>
+<p>&nbsp;</p>
+<h2>1）文本框</h2>
+<h2>&lt;input type=&quot;text&quot; value=&quot;默认值&quot;/&gt;</h2>
+<h2>2)密码框<br>
+  &lt;input type=&quot;password&quot; /&gt;</h2>
+<h2>3)提交按钮</h2>
+<h2>&lt;input type=&quot;submit&quot; value=&quot;按钮内容&quot; /&gt;</h2>
+<h2>4)重置按钮</h2>
+<h2>&lt;input type=&quot;reset&quot; value=&quot;按钮内容&quot; /&gt;</h2>
+<h2>5）单选框/单选按钮</h2>
+<h2>&lt;input type=&quot;radio&quot; name=&quot;ral&quot;/&gt;</h2>
+<h2>&lt;input type=&quot;radio&quot; name=&quot;ral&quot;  /&gt;</h2>
+<h2>单选按钮里的name属性必须写，同一组单选按钮的name属性值必须一样。</h2>
+<h2>checked=&quot;checked&quot;(默认选中；)</h2>
+<h2>disabled=&quot;disabled&quot;禁用</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>6）复选框</h2>
+<h2>&lt;input type=&quot;checkbox&quot; name=&quot;like&quot;  /&gt;</h2>
+<h2>&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; disabled=&quot;disabled&quot; /&gt; </h2>
+<h2>(disabled=&quot;disabled&quot; :禁用)</h2>
+<h2>(checked=&quot;checked&quot; :默认选中)</h2>
+<h2>7)下拉菜单</h2>
+<h2>&lt;select &nbsp;&nbsp;name=&quot;&quot;&gt;</h2>
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option&gt;菜单内容&lt;/option&gt;</h2>
+<h2>&lt;/select&gt;</h2>
+<p>&nbsp;</p>
+<h2>8）多行文本框（文本域）</h2>
+<h2>&lt;textarea name=&quot;textareal&quot; cols=&quot;字符宽度&quot; rows=&quot;行数&quot;&gt;</h2>
+<h2>&lt;/textarea&gt;</h2>
+<h2>9)按钮</h2>
+<h2>&lt;input &nbsp;&nbsp;name=&quot;'&quot; &nbsp;&nbsp;type=&quot;button&quot; value=“按钮内容” /&gt;</h2>
+<h2>（他和submit的区别是 ，submit是提交按钮 起到提交信息的作用，button只起到跳转的作用，不进行提交。）</h2>
+<h2>&nbsp;</h2>
+<h2 accuse="qTitle">扩展知识点：post和get的区别</h2>
+<h2 id="best-content-289877369" accuse="aContent">1. get是从服务器上获取数据，post是向服务器传送数据。<br>
+  2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，在URL中可以看到。post是通过HTTP post机制，用户看不到这个过程  。<br>
+  3. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。<br>
+  4. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 </h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>13）div的用法 </h2>
+<h2>&lt;div id=&quot;id名&quot;/class=&quot;class名&quot;&gt;&lt;/div&gt;</h2>
+<h2>文档区域，文档布局对象</h2>
+<h2>14） span的用法 </h2>
+<h2>&lt;span&gt;&lt;/span&gt;文本结点（某一小段文本，或是某一个字）</h2>
+<h2>&nbsp;</h2>
+<h2 accuse="qTitle"><br>
+</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>	
+</body>
+</html>

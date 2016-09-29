@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,img,table,fieldset,legend{margin:0; padding:0;}
+ul,li,ol{list-style:none;}
+img,fieldset{border:0; }
+img{display:block;}
+a{text-decoration:none; color:#333;}
+h1,h2,h3,h4,h5,h6{font-weight:100;}
+body{font-size:12px; font-family:"微软雅黑";background:#f6f6f6;}
+input,a{outline:none;}
+
+
+/*----------------header----------------*/
+.header{height:25px; background:#eee; border-bottom:1px solid #e5e5e5;}
+.headcon{width:1190px; height:25px; margin:0 auto;}
+.header ul{float:right;  padding-top:4px;}
+.header li{float:left; height:16px; border-right:1px solid #d5d5d5; line-height:16px; padding:0 16px; }
+.phone a{ display:block; width:121px; height:15px; background:url(../images/header.png) no-repeat -317px -65px;}
+.header li .login{padding-right:12px;}
+.first a{color:#fe6500;}
+.our a{background:url(../images/img01.png) no-repeat right; padding-right:16px;}
+.tel a{background:url(../images/img01.png) no-repeat right; padding-right:16px;}
+.tel span{display:block; width:10px; height:14px; background:url(../images/header.png) no-repeat 0 -132px; float:left; margin:2px 5px 0 0;}
+.tel a{float:left;}
+.sever a{ display:block; background:url(../images/header.png) no-repeat -503px -43px; padding-left:19px;}
+.sever a{float:left;}
+/*----------------top----------------*/
+.top{background:#fff; }
+.topcon{width:1190px;height:77px; margin:0 auto;}
+.logo{ float:left; margin:16px 119px 0 0;}
+.logo a{width:421px; height:54px; overflow:hidden; display:block; background:url(../images/header.png) no-repeat left -1px;}
+.search{width:339px; float:left; height:61px; margin-top:16px; }
+.txt{width:272px; height:26px; border:1px solid #d5d5d5; line-height:26px; float:left; border-right:0;}
+.btn{width:64px; height:30px; background:#444; border:0; float:left; color:#fff; text-align:center; line-height:26px;}
+.search p{clear:both; line-height:30px; color:#ccc;}
+.search p a{color:#868686; padding-left:8px;}
+.shop{width:80px; height:34px; float:right; background:url(../images/header.png) no-repeat left -64px; margin-top:20px; line-height:34px; padding-left:46px;}
+.shop span{color:#C00; padding:0 5px;}
+
+/*----------------nav----------------*/
+.nav{height:34px; background:#a21f25; border-top:1px solid #f7f5f6;}
+.nav a{color:#fff;}
+.navcon{width:1190px; height:34px; margin:0 auto; }
+.list{width:190px; background:#06F; float:left; height:34px; position:relative;}
+.all{display:block; background:#b9363c; text-align:center; line-height:34px; color:#fff; font-weight:bold; font-size:14px;}
+.menu{width:190px; height:385px; background:#1f1909; position:absolute; left:0; top:34px;}
+.menu li{height:46px; line-height:46px; padding-left:42px; background:url(../images/shout.png) no-repeat 12px center;}
+.menu a{color:#fff;}
+
+.navcenter{float:left; width:799px; height:34px; }
+.navcenter li{float:left;  }
+.navcenter .line{background:url(../images/header.png) no-repeat -518px -78px; height:14px; width:2px; margin-top:11px; overflow:hidden;}
+.navcenter li a{padding:0 18px; height:34px;line-height:34px;  float:left; }
+.coloryellow a{color:#ffe00b;}
+.navcenter .first1 a{background:#444;}
+.fastnav{float:left; height:34px;  line-height:34px; position:relative;}
+.fastnav li{float:left;}
+.fastnav a{border-right:1px solid #ce9093; padding:0 11px;}
+.hot{position:relative;}
+.hot span{display: block;width:33px; height:17px; background:
+url(../images/hot.gif) -142px 0; position:absolute; right:-8px; top:-8px;}
+.fastnav .hotprod{width:150px; height:385px; clear:both; background:url(../images/prod.png); position:absolute; top:34px; right:0; }
+.fastnav .hotprod a{display:block; height:192px;border:none;}
+
+/*----------------banner----------------*/
+.banner{height:385px;}
+.banner img{width:100%; height:100%;}
+/*----------------mian----------------*/
+.bt{width:1190px; height:21px; margin:16px auto 6px;}
+.bt a{display:block; height:21px; float:left; font-size:12px;margin-right:20px; color:#000;}
+.bt a:hover{border-bottom:2px solid #000; font-weight:bold;}
+
+.main{width:1190px; height:auto; overflow:hidden; margin:0 auto; background:#fff;}
+.brand{width:985px; height:212px; overflow:hidden; border:1px solid #dfdfdf; float:left;}
+.brandcon{width:987px; height:216px;}
+.brandcon li{float:left;}
+.brandcon a{width:140px; height:70px; display:block; border-right:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf; background:url(../images/logo.png) no-repeat 40px -175px;}
+.shoes2 a{background-position:-107px -175px;}
+.shoes3 a{background-position:-968px -330px;}
+.shoes4 a{background-position:-107px -410px;}
+.shoes5 a{background-position:-968px -409px;}
+.shoes6 a{background-position:-452px -99px;}
+.shoes7 a{background-position:-452px -9px;}
+/*----------------new----------------*/
+.news{width:190px; float:right;}
+.news1{ border:1px solid #f1f1f1; padding:3px 7px;}
+.news1 li{background:url(../images/img02.png) no-repeat left center; line-height:20px; padding-left:10px;}
+.news1 a{color:#787878;}
+.newbt{height:34px; background:url(../images/img03.png) no-repeat; text-indent:-99999px;}
+.newpic{width:182px; height:104px; padding:3px; border:1px solid #f1f1f1;}
+/*----------------new----------------*/
+.maincenter{margin-top:10px;}
+.main2{width:1210px; overflow:hidden; }
+.main2 li{float:left;margin-right:10px; }
+.main2 a{display:block;}
+
+/*----------------main3---------------*/
+.main3{width:1190px; height:auto; background:#fff; overflow:hidden; margin:25px auto 22px;}
+.sport{width:190px; float:left; height:426px; margin-right:9px;}
+.sportimg{width:393px; height:426px; float:left;}
+.shoe{float:right; width:597px; height:426px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

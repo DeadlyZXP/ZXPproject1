@@ -1,0 +1,133 @@
+body,p,ul,dl,ol,li,h1,h3,h4,h2,h5,h6,fieldset,legend,dl,dt,dd,span{margin:0;padding:0;}
+body{font:12px/24px "微软雅黑";}
+ul,li{list-style:none;}
+a{text-decoration:none; color:#666;}
+img{border:none;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight:normal;}
+em,i{font-style:normal;}
+.top{
+	height:36px;
+	background:#ecf0f1;
+}
+.bodytop{
+	height:36px;
+	padding:0 40px;
+	width:1080px;
+	margin:0 auto;
+	line-height:36px;
+}
+.topleft{
+	float:left;
+	color:#797a7c;
+}
+.topright{
+	float:right;
+}
+.topright a{
+	color:#77787a;
+}
+/****************************************咨询******************************************/
+.top1{
+	margin-top:1px;
+	height:112px;
+	border-top:1px solid #ecf0f1;
+}
+.bodytop1{
+	height:112px;
+	width:1080px;
+	padding:0 40px;
+	margin:0 auto;
+}
+.top1 img{
+	float:left;
+	margin-top:20px;
+}
+.top1right{
+	float:right;
+	height:112px;
+}
+.top1right li{
+	float:left;
+	margin-left:58px;
+}
+.right{
+	float:left;
+}
+.right p{
+	margin-top:18px;
+	font-size:16px;
+	line-height:22px;
+}
+.right i{
+	color:#de4d4a;
+	font-size:18px;
+}
+/*********************************************NAV******************/
+.bodytop2{
+	height:50px;
+	background:#3598db;
+}
+.top2{
+	width:1080px;
+	margin:0 auto;
+}
+.top2 li{
+	float:left;
+	width:152px;
+	/*margin-right:118px;*/
+	text-align:center;
+}
+.top2 li:hover{
+	background:#2a80b9;
+} 
+.top2 a{
+	color:white;
+	font-size:16px;
+	line-height:50px;
+}
+/*************************banner图*****************************/
+.banner{
+	height:400px;
+	display:block;
+	text-align:center;
+	overflow:hidden;
+	/*position:relative;*/
+	background:url(../image/banner.jpg);
+	background-size:100% 100%;
+}
+.banner img{
+	display:block;
+	vertical-align:middle;
+	/*position:absolute;*/
+	/*margin-left:-400px;*/
+}
+.banner span{
+    width:0;
+    height:100%;
+    display:inline-block;
+    vertical-align:middle;
+}
+/***********/
+.bannerbot{
+	width:1040px;
+	height:18px;
+	margin:30px auto;
+	padding:16px 20px;
+	border:1px solid black;
+}
+.bannerbot img{
+	float:left;
+}
+.bannerbot p{
+	float:left;
+	margin-left:6px;
+	line-height:12px;
+	color:#e7493d;
+	font-size:14px;
+}
+.bannerbot li{
+	float:left;
+	line-height:12px;
+	padding-left:40px;
+	background:url(../image/bannerbot1.jpg)no-repeat 20px center;
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<h1>浏览器兼容</h1>
+<h1>1.为什么会出现浏览器兼容问题？</h1>
+
+  <h2>由于各大主流浏览器由不同的厂家开发，所用的核心架构和代码也很难重和，这就为各种莫名其妙的Bug(代码错误）提供了温床。再加上各大厂商出于自身利益考虑而设置的种种技术壁垒，都让CSS应用起来比想象得要麻烦。浏览器的兼容问题是我们必须去克服的。&#13;</h2>
+<h4>&nbsp;</h4>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+<h1>2.关于浏览器</h1>
+<h2>1）主流浏览器<br/>
+</h2>
+<h2>Internet Explorer、&nbsp;Safari、Mozilla Firefox、&nbsp;Google Chrome、Opera、百度、360、搜狗、傲游&nbsp;&nbsp;</h2>
+<p></p>
+<p>&nbsp;</p>
+<h4><img src="ie.jpg" alt="" width="170" height="170" /><img src="ff.jpg" alt="" width="181" height="181" /><img src="o.jpg" alt="" width="187" height="163" />  <img src="gc.jpg" alt="" width="177" height="177" /><img src="360.jpg" alt="" width="120" height="120" /></h4>
+<h2>&nbsp;</h2>
+<h2>2）最早的浏览器&nbsp;:&nbsp;Mosaic&nbsp;&nbsp;/&nbsp;&nbsp;Netscape Navigator(网景领航者)（1994-2008）简称NN</h2>
+<p>&nbsp;</p>
+<h2>3)浏览器大战</h2>
+<h2>第一次浏览器大战发生在上个世纪90年代，微软发布了它的IE浏览器，和网景公司的Netscape Navigator大打出手。</h2>
+<h2>第二次浏览器大战发生在20世纪。</h2>
+<p><img src="2fdda3cc7cd98d103fb20326233fb80e7bec9046.jpg" alt="" width="400" height="300" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>4）浏览器内核及代表作品</h2>
+<h2>浏览器最关键的部分就是它的渲染引擎（Rendering Engine），也就是大家平常所说的的&ldquo;内核&rdquo;。</h2>
+<p>&nbsp;</p>
+<h1>3、主流浏览器市场份额</h1>
+<h2>2013年2月份全球主流浏览器市场份额排行榜</h2>
+<p><img src="02083150_kJPJ.png" width="845" height="548" /></p>
+<h2>2014年11月份全球主流浏览器市场份额排行榜</h2>
+<p><img src="15.jpg" width="704" height="341" /></p>
+<p>&nbsp;</p>
+<h2>2015年5月份全球主流浏览器市场份额排行榜</h2>
+<p><img src="img.jpg" width="577" height="360" /></p>
+<p>&nbsp;</p>
+<h1>（1）五大浏览器内核</h1>
+<h1>•Trident &nbsp;&nbsp;（MSHTML）     （三叉戟；三叉线；三齿鱼叉）&#13;</h1>
+<h1>•Gecko   &nbsp;&nbsp;&nbsp;（壁虎）&#13;</h1>
+<h1>•Presto      （ 迅速的）&#13;</h1>
+<h1>•Webkit    （Safari内核,Chrome内核原型,它是苹果公司自己的内核，也是苹果的<a href="/view/110484.htm" target="_blank" jquery18006899536264447261="403">Safari</a>浏览器使用的内核）</h1>
+<h1>•Blink&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (由Google和Opera Software开发的浏览器排版引擎)</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>（2）五大浏览器内核代表作品</h1>
+<h2>*Trident:IE、Maxthon(遨游)、腾讯      、Theworld世界之窗、360浏览器</h2>
+<h2>代表作品IE,因为IE捆绑在Windows中，所以占有极高的市场份额，又称IE内核或是MSHTML，此内核只能应用于windows平台，且是不开源的。</h2>
+<h2>*Gecko：代表作品Mozilla Firefox 是开源的,它的最大优势是跨平台，能在Microsoft Windows、Linux和MacOS X等主要操作系统上运行。 </h2>
+<h2>*Webkit :代表作品Safari、Chrome ， 是一个开源项目。</h2>
+<h2>*Presto :代表作品Opera ，Presto是由Opera Software开发的浏览器排版引擎。它也是世界上公认的渲染速度最快的引擎。</h2>
+<h2>*Blink&nbsp;：由Google和Opera Software开发的浏览器排版引擎，2013年4月发布。</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>4、CSS Bug、CSS Hack和Filter</h1>
+
+<h1>1)CSS Bug:CSS样式在各浏览器中解析不一致的情况，或者说CSS样式在浏览器中不能正确显示的问题称为CSS&nbsp;bug.</h1>
+<h1>2)CSS Hack:  CSS中，Hack是指一种兼容CSS在不同浏览器中正确显示的技巧方法，因为它们都属于个人对CSS代码的非官方的修改，或非官方的补丁。有些人更喜欢使用patch(补丁)来描述这种行为。</h1>
+<h1> 3)Filter:表示过滤器的意思，它是一种对特定的浏览器或浏览器组显示或隐藏规则或声明的方法。本质上讲，Filter是一种用来过滤不同浏览器的Hack类型。</h1>
+<div></div>
+<h1>*使用Hack带来的一些副作用</h1>
+ <h2>降低了CSS代码的可读性，增加了代码的负担。</h2>
+ <p>&nbsp;</p>
+<h1><strong>*设计CSS Hack和 Filter通常有两种方法<br />
+  <br />
+</strong>1)一种是利用浏览器自身的Bug，来隐藏或显示样式或声明；</h1>
+<h1><br />
+  2)另一种是利用浏览器对CSS支持的不完善，如对某些规则或语法还没有形成支持，来隐藏或显示样式<strong>。</strong></h1>
+<p>&nbsp;</p>
+<h1>5、IE6常见CSS解析Bug及hack</h1>
+<p>&nbsp;</p>
+<h2>1)图片间隙</h2>
+<h2>A)div中的图片间隙(该bug出现在IE6及更低版本中)</h2>
+<h2>描述：在div中插入图片时，图片会将div下方撑大三像素。</h2>
+<h2>hack1:将&lt;/div&gt;与&lt;img&gt;写在一行上；</h2>
+<h2>hack2:将&lt;img&gt;转为块状元素，给&lt;img&gt;添加声明：display:block;</h2>
+<h2>B)dt,li中图片间隙（IE6）</h2>
+<h2>hack:将&lt;img&gt;转为块状元素，给&lt;img&gt;添加声明：display:block;</h2>
+<p>&nbsp;</p>
+<h2>2)  双倍浮向（双倍边距）</h2>
+<h2>描述：当Ie6及更低版本浏览器在解析浮动元素时，会错误地把浮向边边界加倍显示。</h2>
+<h2>hack:给浮动元素添加声明：display:inline;</h2>
+<h2>&nbsp;</h2>
+<h2>3)默认高度（IE6）</h2>
+<h2>描述：在IE6及以下版本中，部分块元素拥有默认高度（低于18px高度）</h2>
+<h2>hack1:给元素添加声明：font-size:0;</h2>
+<h2>hack2：给元素添加声明：overflow:hidden;</h2>
+<p>&nbsp;</p>
+<h2>4)表单元素行高不一致(IE,MOZ,C,O,S)</h2>
+<h2>描述：表单元素行高对齐方式不一致</h2>
+<h2>hack:给表单元素添加声明：float:left;</h2>
+<h2><br />
+</h2>
+<h2>5)按钮元素默认大小不一</h2>
+<h2>描述：各浏览器中按钮元素大小不一致</h2>
+<h2>hack1： 统一大小/（用a标记模拟）</h2>
+<h2>hack2:input外边套一个标签，在这个标签里写按钮的样式，把input的边框去掉。</h2>
+<h2>hack3:如果这个按钮是一个图片，直接把图片作为按钮的背景图即可。</h2>
+<p>&nbsp;</p>
+<h2>6)百分比bug</h2>
+<h2>描述：在IE6及以下版本中在解析百分比时，会按四舍五入方式计算从而导致50%加50%大于100%的情况。</h2>
+<h2>hack:给右面的浮动元素添加声明：clear:right; &nbsp;&nbsp;&nbsp;&nbsp;意思：清除右浮动。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+<h2>clear:left:清除左浮动</h2>
+<h2>clear:both:清除两边的浮动</h2>
+<h2>7)鼠标指针bug</h2>
+<h2>描述：cursor属性的hand属性值只有IE浏览器识别，其它浏览器不识别该声明，cursor属性的pointer属性值IE6.0以上版本及其它内核浏览器都识别该声明。</h2>
+<h2>hack:如统一某元素鼠标指针形状为手型，应添加声明：cursor:pointer;</h2>
+<h2>8)透明属性</h2>
+<h2>IE浏览器写法：filter:alpha(opacity=value);取值范围 1-100</h2>
+<h2>兼容其他浏览器写法：opacity:.value;(value的取值范围0-1,0.1,0.2,0.3-----0.9)</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>9）li里a加display：block；出现行高不一致；</h2>
+<h2>hack1：给a加display：inline-block；</h2>
+<h2>hack1：给a加display：inline;</h2>
+<h2>&nbsp;</h2>
+<h2></h2>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p>&nbsp;</p>
+<h1>6.FF及其他浏览器兼容问题</h1>
+<p>&nbsp;</p>
+<h1>1)透明属性兼容</h1>
+<h1>opacity:.value;</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>7、过滤器(filter)</h1>
+<p>&nbsp;</p>
+<h1> <strong>1</strong>）<strong>下划线属性过滤器<br />
+</strong>    当在一个属性前面增加了一个下划线后，由于符合标准的浏览器不能识别带有下划线的属性而忽略了这个声明，但是在IE6及更低版本浏览器中会继续解析这个规则。</h1>
+<h1>语法：选择符{_属性：属性值；}</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1><strong>2）!important关键字过滤器</strong><br />
+它表示所附加的声明具有最高优先级的意思。但由于IE6及更低版本不能识别它，我们可以利用IE6的这个Bug作为过滤器来兼容ＩＥ６和其它标准浏览器。</h1>
+<h1>语法：选择符{属性：属性值!important;} </h1>
+<p>&nbsp;</p>
+<h1>3）*属性过滤器</h1>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;当在一个属性前面增加了*后，该属性只能被IE7浏览器识别，其它浏览器混略该属性的作用。</h1>
+<h1>语法：选择符{*属性：属性值；}</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>cursor:;</h1>
+<h2>auto默认</h2>
+<h2>crosshair加号</h2>
+<h2>text文本</h2>
+<h2>wait等待</h2>
+<h2>help帮助</h2>
+<h2>progress过程</h2>
+<h2>inherit继承</h2>
+<h2>move移动</h2>
+<h2>ne-resize向上或向右移动</h2>
+<h2>pointer手形</h2>
+<h2></h2>
+<p>&nbsp;</p>
+<h1>&nbsp;</h1>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

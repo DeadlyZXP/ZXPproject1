@@ -1,0 +1,20 @@
+.banner{
+	height:200px;
+	background:url(../image/successcasebanner.png) no-repeat 0 0;
+}
+.menubox{
+	height:62px;
+	background:#f7f7f7;
+}
+.menu{
+	margin-right:14px;
+	height:62px;
+	width:1140px;
+	margin:0 auto;
+}
+.menu li{
+	line-height:62px;
+	float:right;
+	font-size:14px;
+	margin-right:34px;
+}

@@ -1,0 +1,50 @@
+/*修改留言框的宽度*/
+#tbCommentBody{
+    width:100%;
+}
+#header {
+    position:fixed;
+    z-index:100;
+    top:0;
+}
+#main{
+    top:40px;
+}
+#navigator, #blogTitle, #main, #footer {
+    width: 1100px;
+}
+#mainContent {
+    width: 865px;
+}
+body {
+    font-family: "Comic Sans MS","微软雅黑";
+}
+/*清除浮动*/
+.clear {
+    clear: both;
+}
+/*屏蔽广告*/
+.c_ad_block {
+    display: none;
+}
+#ad_t2 {
+display:none;
+}
+#cnblogs_post_body h2 {
+    background: none repeat scroll 0% 0% rgb(216, 216, 216);
+    border-radius: 6px 6px 6px 6px;
+    color: rgb(102, 102, 102);
+    font-family:"Comic Sans MS","微软雅黑";
+    font-size: 17px;
+    margin: 15px 0px !important;
+    padding: 5px 0px 5px 20px;
+}
+h4 {
+    background-color: #FFF;
+    color: #F01010;
+}
+#cnzz_stat_icon_1259029673 {
+position: relative;
+    top: 40px;
+    z-index: 1000;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	input,select{
+		margin-top:10px;
+	}
+	i{
+		color:red;
+	}
+	
+</style>
+</head>
+<body>
+<b>个人信息</b>
+<hr>
+	<form>
+	    <i>*</i>姓名<input type="text"/><br>
+		<i>*</i>性别<input type="radio" name="ral"/>男
+		    <input type="radio" name="ral"/>女<br>
+		<i>*</i>出生日期<select>
+			<option>2016</option>
+			<option>2015</option>
+			<option>2014</option>
+		</select>年
+		<select>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>月<br>
+		<i>*</i>参加工作年份<select>
+			<option>2016</option>
+			<option>2015</option>
+			<option>2014</option>
+		</select><br>
+		<i>*</i>户口所在地<select>
+			<option>北京</option>
+			<option>淄博</option>
+			<option>德州</option>
+		</select><br>
+		<i>*</i>联系方式<input type="text"/><br>
+		<i>*</i>电子邮箱<input type="email"/><br>
+		婚姻状况<input type="radio" name="ma"
+		checked="checked"/>未婚
+                <input type="radio" name="ma"/>
+                已婚
+                <input type="radio" name="ma"/>
+                离异<br>
+        国籍<select>
+        	<option>中国大陆</option>
+        	<option>中国台湾</option>
+        	<option>中国香港</option>
+        </select><br>
+        证件<select>
+        	<option>身份证</option>
+        	<option>学生证</option>
+        	<option>军官证</option>
+        </select><br>
+        海外工作经历<input type="radio" name="work" />有
+                    <input type="radio" name="work" checked="checked"/>无<br>
+        政治面貌<input type="radio" name="wo" />中共党员（含预备党员）
+        <input type="radio" name="wo" checked="checked" />团员
+        <input type="radio" name="wo" />群众
+        <input type="radio" name="wo" />民主党派
+        <input type="radio" name="wo" />无党派人士
+	</form><hr>
+	<b>求职意向</b>
+	<form>
+		<i>*</i>期望工作性质<input type="checkbox" name="newework"/>全职
+		<input type="checkbox" name="newework"/>兼职
+		<input type="checkbox" name="newework"/>实习<br>
+		<i>*</i>期望工作地点<select>
+        	<option>选择修改</option>
+        	<option></option>
+        	<option></option>
+        </select><br>
+        <i>*</i>期望从事职业<select>
+        	<option>选择修改</option>
+        	<option></option>
+        	<option></option>
+        </select><br>
+        <i>*</i>期望从事行业<select>
+        	<option>选择修改</option>
+        	<option></option>
+        	<option></option>
+        </select><br>
+        <i>*</i>期望月薪<select>
+        	<option>请选择</option>
+        	<option>15000-20000</option>
+        	<option>20000以上</option>
+        </select>月<br>
+        工作状态<select>
+        	<option>我目前处于离职状态，可立即上岗</option>
+        	<option>15000-20000</option>
+        	<option>20000以上</option>
+        </select><br>
+        <input type="checkbox" name="yixiang" checked="checked"/>将此求职意向显示在我的简历中
+	</form><hr>
+	<b>自我评价</b>
+	<form>
+		标题<select>
+        	<option>自我评价</option>
+        	<option>他人评价</option>
+        	<option></option>
+        </select><br>
+        
+        内容 <textarea rows="20" cols="40"></textarea><br>
+        <input type="button" name="submit" value="保存并下一步"/>
+	</form>
+</body>
+</html>

@@ -1,0 +1,267 @@
+/*-------          banner部分    ------------- */
+.banner{
+   height:457px;
+   width:100%;
+   background:url(../image/banner.png) no-repeat -100px 0px;
+   overflow:hidden;
+   /*text-align:center;*/
+}
+/*-------          战略合作伙伴部分    ------------- */
+.partner{
+	width:1140px;
+	height:290px;
+	margin:38px auto 0;
+	text-align:center;
+	/*background:red;*/
+}
+.partner h2{
+	font-size:24px;
+}
+.partner p{
+	font-size:18px;
+	color:#999999;
+}
+.partner ul li{
+    float:left;
+}
+.partner .partner1 li{
+	float:left;
+	width:188px;
+	height:100px;
+	overflow:hidden;
+	
+}
+.partner span{
+	display:block;
+	float:left;
+	width:189px;
+	height:99px;
+	background:yellow;
+	/*border-top:1px solid #eee;*/
+	/*border-bottom:1px solid #eee;*/
+}
+.partner .partner5 span,.partner .partner10 span{
+	width:358px;
+	background:blue;
+}
+.partner .partner1 span{
+	background:url(../image/partner.png) no-repeat 0px 0px;
+	/*border-top:1px solid #eee;*/
+}
+.partner .partner2 span{
+	background:url(../image/partner.png) no-repeat -186px 0px;
+}
+.partner .partner3 span{
+	background:url(../image/partner.png) no-repeat -376px 0px;
+}
+.partner .partner4 span{
+	background:url(../image/partner.png) no-repeat -567px 0px;
+}
+.partner .partner5 span{
+	background:url(../image/partner.png) no-repeat -754px 0px;
+}
+.partner .partner6 span{
+	background:url(../image/partner.png) no-repeat 0px -97px;
+}
+.partner .partner7 span{
+	background:url(../image/partner.png) no-repeat -186px -97px;
+}
+.partner .partner8 span{
+	background:url(../image/partner.png) no-repeat -378px -97px;
+}
+.partner .partner9 span{
+	background:url(../image/partner.png) no-repeat 0px -97px;
+}
+.partner .partner10 span{
+	background:url(../image/partner.png) no-repeat -186px -97px;
+}
+/*-------------     我们的优势     -------*/
+.advantagebox{
+	height:532px;
+	background:#1a1b1f;
+}
+.advantage{
+	padding-top:52px;
+	width:1140px;
+	height:480px;
+	margin:0 auto;
+	text-align:center;
+	background:#1a1b1f;
+	position:relative;
+}
+.advantage h2{
+	font-size:24px;
+	color:white;
+}
+.advantage p{
+	margin-top:10px;
+	margin-bottom:108px;
+	font-size:14px;
+	color:white;
+}
+.advantage div{
+	width:220px;
+	height:260px;
+	background:#cfcfd1;
+	float:left;	
+	padding:0 50px;
+}
+.advantage div p{
+	padding-top:60px;
+	font-size:18px;
+	color:#e54142;
+	font-weight:600;
+	margin-bottom:18px;
+}
+.advantage .design2{
+	margin-left:86px;
+}
+.advantage .design3{
+   float:right;
+   margin-right:0;
+}
+.advantage div span{
+	display:block;
+	width:131px;
+	height:134px;
+	position:absolute;
+}
+.advantage .design1 span{
+	background:url(../image/advantage1.png) no-repeat 0 0;
+	top:146px;
+	left:80px;
+}
+.advantage .design2 span{
+	background:url(../image/advantage2.png) no-repeat 0 0;
+	top:146px;
+	left:510px;
+}
+.advantage .design3 span{
+	background:url(../image/advantage3.png) no-repeat 0 0;
+	top:146px;
+	right:90px;
+}
+.advantage div i{
+    font-style:normal;
+}
+/*---------       成功的案例   --------*/
+.success{
+	width:1140px;
+	height:650px;
+	/*background:yellow;*/
+	margin:0 auto;
+	text-align:center;
+	padding-top:50px;
+}
+.success h2{
+	font-size:26px;
+	margin-bottom:10px;
+}
+.success p{
+	font-size:14px;
+	color:#989a97;
+}
+.success .tab1{
+	background:white;
+	width:802px;
+	height:40px;
+    padding-left:10%;
+}
+.success .tab2{
+	background:white;
+}
+.success .tab1 li{
+	width:200px;
+	height:40px;
+	float:left;
+	line-height:40px;
+	background:#666666;
+}
+
+.success .tab1 li a{
+	color:white;
+	display:block;
+	width:200px;
+	height:40px;
+}
+.success .tab1 li a:hover{
+	background:#f75a53;
+}
+.success .tab2 li{
+	float:left;
+}
+.success .tab2 .pic3,.success .tab2 .pic6{
+	float:right;
+}
+.success .tab2 .pic2,.success .tab2 .pic5{
+	margin:0 8px;
+}
+.success .tab2 li span{
+	display:block;
+	width:360px;
+	height:256px;
+	background:blue;
+	margin-right:14px;
+	margin-top:26px;
+}
+.success .tab2 .pic1 span{
+	background:url(../image/success.png) no-repeat 0 0;
+}
+.success .tab2 .pic2 span{
+	background:url(../image/success.png) no-repeat -392px 0;
+}
+.success .tab2 .pic3 span{
+	background:url(../image/success.png) no-repeat -780px 0;
+}
+.success .tab2 .pic4 span{
+	background:url(../image/success.png) no-repeat 0 -289px;
+}
+.success .tab2 .pic5 span{
+	background:url(../image/success.png) no-repeat -392px -288px;
+}
+.success .tab2 .pic6 span{
+	background:url(../image/success.png) no-repeat -782px -288px;
+}
+/*---------  公司新闻部分   -------------*/
+.newsbox{
+	margin-top:60px;
+	background:#f2f2f2;
+}
+.news{
+	width:1140px;
+	height:300px;
+	/*background:yellow;*/
+	margin:0 auto;
+}
+.news ul{
+	width:360px;
+	float:left;
+}
+.news h2{
+	font-size:16px;
+	margin-top:34px;
+	margin-bottom:20px;
+}
+.news li{
+	padding-bottom:8px;
+}
+.news li a{
+	font-size:14px;
+	color:#888;
+}
+.news li span{
+	float:right;
+	margin-right:16px;
+}
+.news .more span{
+   clear:both;
+   display:block;
+   width:117px;
+   height:32px;
+   margin-top:16px;
+   float:left;
+   background:url(../image/more.png) no-repeat 0 0;
+}
+.news .tab2,.news .tab3{
+	margin-left:30px;
+}

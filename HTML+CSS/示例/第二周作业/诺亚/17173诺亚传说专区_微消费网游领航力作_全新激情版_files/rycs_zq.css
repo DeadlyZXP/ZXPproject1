@@ -1,0 +1,178 @@
+@charset "utf-8";/******调用问题列表样式:开始****/
+
+/*调用问题页样式*/
+body{
+	margin:auto;	    /* 页面位置(居中)  */
+	padding:auto;		/* 内容距四角位置  */
+	background-color:transparent; /* 背景为透明色      */
+	font-size:12px;     /* 字体为12px      */
+	font-family: Arial, Helvetica,sans-serif, 宋体;
+	color: #333333; 	/* 页面中字体颜色   */		 
+	text-align:center;  /* 页面中的项目居中 */
+}
+
+.title_style a {
+ text-decoration:none;
+}
+
+.title_style a:hover {
+	color: #333333; 
+      LINE-HEIGHT: 19px;
+      BORDER-BOTTOM: #333333 1px dashed; 
+      TEXT-DECORATION: none; 
+}
+
+/* 问题列表表格样式 */
+.asklist_table{
+	margin:auto;
+	padding:auto;
+	width:100%; 		/* 表格宽度     */
+	border:0px;  		/* 是否需要边框 */
+	line-height:19px;   /* 每行间距     */
+    text-align:left;    /* 文字左对齐   */
+}
+
+
+/*新加样式：图标标题列（如果未用图标请将该项隐藏)*/
+.title_icon_style {
+
+}
+
+
+/* 问题列表标题: 标题样式 */
+.title_title_style{
+	color: #333333; 
+
+}
+
+/* 问题列表标题:回答样式 */
+.title_num_style{
+	text-align:center; 
+	color: #333333; 
+
+}
+
+/* 问题列表标题:状态样式 */
+.title_status_style{
+	text-align:center; 
+	color: #333333; 
+
+}
+
+/* 问题列表标题:时间样式 */
+.title_time_style{
+	 display:none;   /* 隐藏 */
+}
+
+/* 问题列表标题:悬赏分样式 */
+.title_score_style{
+	 display:none;   /* 隐藏 */
+}
+
+/* 问题列表标题：提问者样式 */
+.title_user_style{
+	 display:none; /* 隐藏 */
+
+}
+
+
+
+
+/*[新加样式]问题列表内容：标题前图片样式（可设置显示图标[设置背景图],注意使用此项，请将point_icon设置为隐藏)*/
+.title_icon{
+
+}
+
+
+
+/*[新加样式]问题列表内容：・样式：是否显示(若已设置图标，请使用display:none将此项隐藏*/
+.point_icon{
+               font-size:16px;
+               font-weight:bold;
+}
+
+/* 问题列表内容：标题样式 */
+.title_style{
+	
+}
+
+
+/* 问题列表内容：标题链接样式 */
+.title_style a{
+color: #333333; 	
+    
+}
+
+
+/* 问题列表内容：问题回答样式 */
+.num_style{
+	text-align:center; 
+color: #333333; 
+}
+
+/* 问题列表内容：问题状态样式 */
+.status_style{
+	text-align:center; 
+color: #333333; 
+}
+
+
+/* 问题列表内容：提问时间样式 */
+.time_style{
+   display:none; /* 隐藏 */
+}
+
+/* 问题列表内容：悬赏分样式 */
+.score_style{
+   display:none; /* 隐藏 */
+
+}
+
+/* 问题列表内容：提问者样式 */
+.user_style{
+	 display:none;
+
+}
+
+/* 问题列表内容：提问者链接样式 */
+.user_style a{
+	color:#333333 ;
+}
+
+
+
+/*[新加样式] 数据行之间分隔  标题图标列->分隔样式(可使用背景图片进行分隔)*/
+.li_split_style{
+}
+
+
+
+/*[新加样式] 数据行之间分隔 剩余列间隔样式 (可使用背景图片进行分隔)*/
+.split_style{
+}
+
+
+
+
+/*问题分页样式*/
+.mainlist_page{
+	width:390px;        /* 宽度     */
+	text-align:center;  /* 文字居中 */
+                margin-top:2px;
+                *margin-top:2px;
+display:none; /* 隐藏 */
+}
+.mainlist_page a{
+	height:18px; border:1px solid #D3D3D3; line-height:18px; padding:0 5px; background: #333333; color: #747474; 
+	text-decoration:none;
+display:none; /* 隐藏 */
+}
+.mainlist_page a:hover {
+	background: #A80002; color: #333333; border:1px solid #D3D3D3;
+	text-decoration:none;
+display:none; /* 隐藏 */
+}
+
+
+
+/******调用问题列表样式:结束*******/

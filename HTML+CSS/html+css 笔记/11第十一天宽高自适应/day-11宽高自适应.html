@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>第11天 CSS Sprites和滑动门</title>
+</head>
+
+<body>
+<h1>一、宽高自适应</h1>
+<H2>网页布局中经常要定义元素的宽和高。但很多时候我们希望元素的大小能够根据窗口或子元素自动调整，这就是自适应。</H2>
+<H2>元素自适应在网页布局中非常重要，它能够使网页显示更灵活，可以适应在不同设备、不同窗口和不同分辨率下显示。</H2>
+<H1>（1）宽度自适应</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元素宽度设置为100%。（块元素宽度默认为100%）</H1>
+<H1>&nbsp;</H1>
+<H1>&nbsp;</H1>
+<H1>（2）元素具备最小高度的自适应</H1>
+<H1>min-height属性：最小高度；(IE6浏览器不识别该属性)</H1>
+<H1>&nbsp;</H1>
+<h1>hack1:min-height:value; _height:value;</h1>
+<h1>hack2:min-height:value;  height:auto!important;   height:value;(建议使用)</h1>
+<p>&nbsp;</p>
+<h1>注：height属性在IE6里就类似min-height作用。</h1>
+<H2>&nbsp;</H2>
+<H1>min-height（最小高度）</H1>
+<H1>max-height(最大高度)</H1>
+<H1>min-width(最小宽度)</H1>
+<H1>max-width(最大宽度)</H1>
+<H1>注：IE6及以下版本不识别该组属性。</H1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>二、过滤器(filter)</h1>
+<p>&nbsp;</p>
+<h1> <strong>1</strong>）<strong>下划线属性过滤器<br />
+</strong>    当在一个属性前面增加了一个下划线后，由于符合标准的浏览器不能识别带有下划线的属性而忽略了这个声明，但是在IE6及更低版本浏览器中会继续解析这个规则。</h1>
+<h1>语法：选择符{_属性：属性值；}</h1>
+<p>&nbsp;</p>
+<h1><strong>2）!important关键字过滤器</strong><br />
+它表示所附加的声明具有最高优先级的意思。但由于IE6及更低版本不能识别它，我们可以利用IE6的这个Bug作为过滤器来兼容ＩＥ６和其它标准浏览器。</h1>
+<h1>语法：选择符{属性：属性值!important;} </h1>
+<p>&nbsp;</p>
+<h1>3）*属性过滤器</h1>
+<h1>&nbsp;&nbsp;&nbsp;&nbsp;当在一个属性前面增加了*后，该属性只能被IE7浏览器及以下版本识别，其它浏览器忽略该属性的作用。</h1>
+<h1>语法：选择符{*属性：属性值；}</h1>
+<h1>(2)语法： *html &nbsp;&nbsp;&nbsp;选择符{属性：属性值;}</h1>
+<p>&nbsp;</p>
+<H1>（3）高度自适应</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1)元素高度自适应窗口高度</H1>
+<H1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置方法：html,body{height:100%;}</H1>
+<H1>&nbsp;</H1>
+<H1>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2)自适应元素高度：height:100%;</H1>
+<H1></H1>
+<p>&nbsp;</p>
+<H1>（4）浮动元素父元素高度自适应（高度塌陷）</H1>
+<H1>hack1：给父元素添加声明overflow:hidden;</H1>
+<p> </p>
+<H1>hack2:在浮动元素下方添加空div,并给该元素添加声明：clear:both;height:0;overflow:hidden;</H1>
+<H1>&nbsp;</H1>
+<H1>hack3:万能清除浮动法(建议使用)</H1>
+<H1>:after{content:".";display:block; clear:both;height:0;overflow:hidden;visibility:hidden;}</H1>
+<H1>&nbsp;</H1>
+<H1>&nbsp;</H1>
+<H1>一、伪对象选择符：</H1>
+<H1>1）、选择符:after:与content属性一起使用，定义在对象后的内容。</H1>
+<h2>如：div:after{content:url(logo.jpg);}</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;div:after{content:&quot;文本内容&quot;;}</h2>
+<p>&nbsp;</p>
+<H1>2）、:before:与content属性一起使用，定义在对象前的内容。</H1>
+<h2>如：div:before{content:&quot;在其前放内容&quot;;}</h2>
+<H1>3）、：first-letter:定义对象内第一个字符的样式。</H1>
+<h2>说明：(该伪元素只能用于块级元素。) </h2>
+<H1>4）、：first-line:定义对象内第一行的样式。</H1>
+<h2>说明：</h2>
+<h2>*(该伪元素只能用于块级元素。) </h2>
+<H2>*ie6以下版本浏览器不支持伪对象选择符。</H2>
+<H2>&nbsp;</H2>
+<H2>&nbsp;</H2>
+<H2>&nbsp;</H2>
+<H2>&nbsp;</H2>
+<H2>&nbsp;</H2>
+<h1>*visibility:hidden/visible;隐藏/可见</h1>
+<h1>*visibility:hidden;和display:none;的区别：</h1>
+<h2>visibility:hidden;属性会使对象不可见，但该对象在网页所占的空间没有改变，等于留出了一块空白区域，而 display:none属性会使这个对象彻底消失。</h2>
+<p>&nbsp;</p>
+<h1>&nbsp;</h1>
+<H2>&nbsp;</H2>
+</body>
+</html>

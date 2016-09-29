@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.cnblogs.com/dojo-lzz/p/3999013.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>我对BFC的理解 - 木的树 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./我对BFC的理解 - 木的树 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./我对BFC的理解 - 木的树 - 博客园_files/bundle-SimpleMemory.css">
+<link type="text/css" rel="stylesheet" href="./我对BFC的理解 - 木的树 - 博客园_files/118404.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/dojo-lzz/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/dojo-lzz/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/dojo-lzz/wlwmanifest.xml">
+<script type="text/javascript" src="./我对BFC的理解 - 木的树 - 博客园_files/encoder.js"></script><script src="./我对BFC的理解 - 木的树 - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'dojo-lzz', cb_enable_mathjax=false;</script>
+<script src="./我对BFC的理解 - 木的树 - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/dojo-lzz/"><img id="blogLogo" src="./我对BFC的理解 - 木的树 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/dojo-lzz/">我的小树林</a></h1>
+<h2>褪一分浮躁，守一分宁静，握一份真诚，携一份善良，简单程序员。。。
+专注于webGIS、dojo、Node.js欢迎各位道友前来论道</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/dojo-lzz/">首页</a></li>
+<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91">联系</a></li>
+<li>
+<!----></li>
+<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+<span id="stats_post_count">随笔 - 99&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 555</span>
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/dojo-lzz/p/3999013.html">我对BFC的理解</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>　　最初这篇文章打算回答寒冬大神的<a href="http://www.weibo.com/1196343093/Bhj510t50#_loginLayer_1411048014706" target="_blank">第一问</a>，谈谈CSS布局。本来呢我以为布局主要涉及float跟display相关属性，以及他们的包含框、静态位置等等。后来看了大神的一片<a href="http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072926.html" target="_blank">面试文章</a>，嗯？这里怎么还有个BFC，这是神马东东。待我搜索一下，萨萨萨，不看不知道，越看越糊涂，这到底是个神马东东。。。经过一个周时间的查阅资料和自我思考，在此总结一下我对BFC的认识，愿与各位道友分享，欢迎拍砖！</p>
+<p>&nbsp;</p>
+<p>　　对CSS有了解的道友们肯定都知道盒式模型这个概念，对一个元素设置CSS，首先需要知道这个元素是block还是inline类型。而BFC就是用来格式化块级盒子，同样管理inline类型的盒子还有IFC，以及<a href="http://reference.sitepoint.com/css/blockformatting" target="_blank">其他的FC</a>。那首先我们就来看一下FC的概念。</p>
+<p>　 &nbsp;<span style="font-size: 18px;">Formatting Context：指页面中的一个渲染区域，并且拥有一套渲染规则，他决定了其子元素如何定位，以及与其他元素的相互关系和作用。</span></p>
+<p><span style="font-size: 18px;">　 BFC：块级格式化上下文，它是指一个独立的块级渲染区域，只有Block-level BOX参与，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。</span></p>
+<p>&nbsp;</p>
+<p>　　<span style="font-size: 18pt;"><strong><span style="color: #3366ff;">BFC的生成</span></strong></span></p>
+<p>&nbsp;</p>
+<p>　　既然上文提到BFC是一块渲染区域，那这块渲染区域到底在哪，它又是有多大，这些由生成BFC的元素决定，CSS2.1中规定满足下列CSS声明之一的元素便会生成BFC。</p>
+<ul>
+<li>根元素</li>
+<li>float的值不为none</li>
+<li>overflow的值不为visible</li>
+<li>display的值为inline-block、table-cell、table-caption</li>
+<li>position的值为absolute或fixed</li>
+</ul>
+<p>　　看到有道友文章中把display：table也认为可以生成BFC，其实这里的主要原因在于Table会默认生成一个匿名的table-cell，正是这个匿名的table-ccell生成了BFC</p>
+<p>&nbsp;</p>
+<p>　　<span style="font-size: 18pt;"><strong><span style="color: #3366ff;">BFC的约束规则</span></strong></span></p>
+<p><span style="font-size: 18pt;"><span style="color: #3366ff;">　</span></span><span style="color: #000000;">浏览器对于BFC这块区域的约束规则如下：</span></p>
+<ul>
+<li><span style="color: #000000;">生成BFC元素的子元素会一个接一个的放置。垂直方向上他们的起点是一个包含块的顶部，两个相邻子元素之间的垂直距离取决于元素的margin特性。在BFC中相邻的块级元素外边距会折叠。</span></li>
+<li>生成BFC元素的子元素中，每一个子元素做外边距与包含块的左边界相接触，（对于从右到左的格式化，右外边距接触右边界），即使浮动元素也是如此（尽管子元素的内容区域会由于浮动而压缩），除非这个子元素也创建了一个新的BFC（如它自身也是一个浮动元素）。</li>
+</ul>
+<p><span style="color: #000000;">　　有道友对它做了<a href="http://f2e-js.com/?p=2599" target="_blank">分解</a>，我们直接拿来：</span></p>
+<ol>
+<li>内部的Box会在垂直方向上一个接一个的放置</li>
+<li>垂直方向上的距离由margin决定。（完整的说法是：属于同一个BFC的两个相邻Box的margin会发生重叠，与方向无关。）</li>
+<li>每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。（这说明BFC中子元素不会超出他的包含块，而position为absolute的元素可以超出他的包含块边界）</li>
+<li>BFC的区域不会与float的元素区域重叠</li>
+<li>计算BFC的高度时，浮动子元素也参与计算</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面元素，反之亦然</li>
+</ol>
+<p>　　看到以上的几条约束，让我想起学习css时的几条规则</p>
+<ul>
+<li>Block元素会扩展到与父元素同宽，所以block元素会垂直排列</li>
+<li>垂直方向上的两个相邻DIV的margin会重叠，而水平方向不会(此规则并不完全正确)</li>
+<li>浮动元素会尽量接近往左上方（或右上方）</li>
+<li>为父元素设置overflow：hidden或浮动父元素，则会包含浮动元素</li>
+<li>......</li>
+</ul>
+<p>　　哈哈，一股恍然大悟的感觉有木有，原来这些规则的背后都有更深层的概念，冥冥之中自有定数。。。</p>
+<p>　　</p>
+<p><span style="color: #000000;">　　<span style="font-size: 18pt;"><strong><span style="color: #3366ff;">BFC在布局中的应用</span></strong></span></span></p>
+<p><span style="color: #000000;">　　上面说了那么多，那BFC究竟有何用处，毕竟再好的东西也要为我所用才行。</span></p>
+<p><span style="color: #000000;">　　<span style="color: #3366ff;">防止margin重叠：</span></span></p>
+<p><span style="color: #000000;">　　同一个BFC中的两个相邻Box才会发生重叠与方向无关，不过由于上文提到的第一条限制，我们甚少看到水平方向的margin重叠。这在IE中是个例外，IE可以设置write-mode。下面这个demo来自寒冬大神的<a href="http://www.cnblogs.com/winter-cn/archive/2012/11/16/2772562.html" target="_blank">博客</a>。</span></p>
+<p><span style="color: #000000;">　　</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;4055ae8c-d2cd-4abc-858a-9682a8795035&#39;)"><img id="code_img_closed_4055ae8c-d2cd-4abc-858a-9682a8795035" class="code_img_closed" src="./我对BFC的理解 - 木的树 - 博客园_files/ContractedBlock.gif" alt="" style="display: none;"><img id="code_img_opened_4055ae8c-d2cd-4abc-858a-9682a8795035" class="code_img_opened" style="" onclick="cnblogs_code_hide(&#39;4055ae8c-d2cd-4abc-858a-9682a8795035&#39;,event)" src="./我对BFC的理解 - 木的树 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_4055ae8c-d2cd-4abc-858a-9682a8795035" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./我对BFC的理解 - 木的树 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">doctype HTML</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="text/css"</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;">
+
+    #green </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+        margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">10px 10px 10px 10px
+    </span><span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    #blue </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+        margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">10px 10px 10px 10px
+    </span><span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    #red </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+        margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">10px 10px 10px 10px
+    </span><span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    body </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+        writing-mode</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">tb-rl</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span>
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="green"</span><span style="color: #ff0000;"> style</span><span style="color: #0000ff;">="background:lightgreen;height:100px;width:100px;"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="blue"</span><span style="color: #ff0000;"> style</span><span style="color: #0000ff;">="background:lightblue;height:100px;width:100px;"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">id</span><span style="color: #0000ff;">="red"</span><span style="color: #ff0000;"> style</span><span style="color: #0000ff;">="background:pink;height:100px;width:100px;"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./我对BFC的理解 - 木的树 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<span class="cnblogs_code_collapse" style="display: none;">margin水平重叠</span></div>
+<p>　　可以看到水平方向的margin发生了重叠。　　</p>
+<p><img src="./我对BFC的理解 - 木的树 - 博客园_files/282102232799113.jpg" alt=""></p>
+<p><span style="color: #000000;">　　要阻止margin重叠，只要将两个元素别放在一个BFC中即可（可以用上文提到的方式让相邻元素其中一个生成BFC）</span><span>。阻止两个相邻元素的margin重叠看起来没有什么意义，主要用于嵌套元素。</span></p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;9827c7c7-55a6-4b68-b0a9-343de3f848f3&#39;)"><img id="code_img_closed_9827c7c7-55a6-4b68-b0a9-343de3f848f3" class="code_img_closed" src="./我对BFC的理解 - 木的树 - 博客园_files/ContractedBlock.gif" alt="" style="display: none;"><img id="code_img_opened_9827c7c7-55a6-4b68-b0a9-343de3f848f3" class="code_img_opened" style="" onclick="cnblogs_code_hide(&#39;9827c7c7-55a6-4b68-b0a9-343de3f848f3&#39;,event)" src="./我对BFC的理解 - 木的树 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_9827c7c7-55a6-4b68-b0a9-343de3f848f3" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./我对BFC的理解 - 木的树 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>  
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">="Content-Type"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="text/html; charset=utf-8"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #008000;">&lt;!--</span><span style="color: #008000;">The viewport meta tag is used to improve the presentation and behavior of the samples 
+    on iOS devices</span><span style="color: #008000;">--&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="viewport"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="initial-scale=1, maximum-scale=1,user-scalable=no"</span><span style="color: #0000ff;">/&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;"> 
+    html, body </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;"> height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span> <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    #map</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">0</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    .first</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">20px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">lightgreen</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">100px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">100px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    ul</span><span style="background-color: #f5f5f5; color: #000000;">{</span>
+      <span style="background-color: #f5f5f5; color: #008000;">/*</span><span style="background-color: #f5f5f5; color: #008000;">display:inline-block;</span><span style="background-color: #f5f5f5; color: #008000;">*/</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">10px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">lightblue</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    li</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">25px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span> 
+  
+  
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="claro"</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="first"</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>1<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>2<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>3<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span> 
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./我对BFC的理解 - 木的树 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<span class="cnblogs_code_collapse" style="display: none;">margin嵌套重叠</span></div>
+<p>　　此时div与ul之间的垂直距离，取div、ul、li三者之间的最大外边距。</p>
+<p><img src="./我对BFC的理解 - 木的树 - 博客园_files/291925114725177.jpg" alt=""><img src="./我对BFC的理解 - 木的树 - 博客园_files/291926585665399.jpg" alt=""><img src="./我对BFC的理解 - 木的树 - 博客园_files/291928166914329.png" alt=""></p>
+<p>　　要阻止嵌套元素的重叠，只需让ul生成BFC即可（将上例中的注释去掉），这样div、ul、li之间便不会发生重叠现象。而li位于同一BFC内所以仍然存在重叠现象。</p>
+<p><img src="./我对BFC的理解 - 木的树 - 博客园_files/291934549415396.png" alt=""><img src="./我对BFC的理解 - 木的树 - 博客园_files/291935025039174.png" alt=""><img src="./我对BFC的理解 - 木的树 - 博客园_files/291935135033069.png" alt=""></p>
+<p>　　需要注意的是：</p>
+<ul>
+<li>如果将为ul使用overflow：hidden的方式，ul生成BFC不应该再发生重叠现象可是我在chrome、firefox、ie上的测试结果都有发生重叠现象。这个问题，我没找到答案，还请道友们给解答一下</li>
+<li>如果为ul设置了border或padding，那元素的margin便会被包含在父元素的盒式模型内，不会与外部div重叠。《CSS权威指南》中提到块级正常流元素的高度设置为auto，而且只有块级子元素，其默认高度将是从最高块级子元素的外边框边界到最低块级子元素外边框边界之间的距离。如果块级元素右上内边距或下内边距，或者有上边框或下边框，其高度是从其最高子元素的上外边距边界到其最低子元素的下外边距边界之间的距离。</li>
+</ul>
+<p>　　<span style="color: #3366ff;">浮动相关问题：</span></p>
+<p>　　使得父元素包含子元素，常见的方式是为父元素设置overflow:hidden或浮动父元素。根本原因在于创建BFC的元素，子浮动元素也会参与其高度计算，即不会产生高度塌陷问题。实际上只要让父元素生成BFC即可，并不只有这两种方式。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;c2a5987f-322b-44f9-95b3-6a6d882202f5&#39;)"><img id="code_img_closed_c2a5987f-322b-44f9-95b3-6a6d882202f5" class="code_img_closed" src="./我对BFC的理解 - 木的树 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_c2a5987f-322b-44f9-95b3-6a6d882202f5" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;c2a5987f-322b-44f9-95b3-6a6d882202f5&#39;,event)" src="./我对BFC的理解 - 木的树 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_c2a5987f-322b-44f9-95b3-6a6d882202f5" class="cnblogs_code_hide">
+<pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>  
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">="Content-Type"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="text/html; charset=utf-8"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #008000;">&lt;!--</span><span style="color: #008000;">The viewport meta tag is used to improve the presentation and behavior of the samples 
+    on iOS devices</span><span style="color: #008000;">--&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="viewport"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="initial-scale=1, maximum-scale=1,user-scalable=no"</span><span style="color: #0000ff;">/&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;"> 
+    html, body </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;"> height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span> <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    #map</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">0</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    .first</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">20px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">lightgreen</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      border</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 2px solid lightgreen</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+      <span style="background-color: #f5f5f5; color: #008000;">/*</span><span style="background-color: #f5f5f5; color: #008000;">display:inline-block;</span><span style="background-color: #f5f5f5; color: #008000;">*/</span>
+      <span style="background-color: #f5f5f5; color: #008000;">/*</span><span style="background-color: #f5f5f5; color: #008000;">overflow:hidden;</span><span style="background-color: #f5f5f5; color: #008000;">*/</span>
+      <span style="background-color: #f5f5f5; color: #008000;">/*</span><span style="background-color: #f5f5f5; color: #008000;">float: left;</span><span style="background-color: #f5f5f5; color: #008000;">*/</span>
+      <span style="background-color: #f5f5f5; color: #008000;">/*</span><span style="background-color: #f5f5f5; color: #008000;">position: absolute;</span><span style="background-color: #f5f5f5; color: #008000;">*/</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    ul</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      overflow</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">hidden</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">10px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">lightblue</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">100px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">200px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      float</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> left</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    li</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">25px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span> 
+  
+  
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="claro"</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="first"</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>1<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>2<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>3<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+  
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span> 
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<span class="cnblogs_code_collapse">包围浮动</span></div>
+<p>　　<img src="./我对BFC的理解 - 木的树 - 博客园_files/292000092536095.png" alt=""></p>
+<p>　　将上例中first中任意一项注释去掉都可以得到包围浮动的效果，其中overflow：hidden方式，与正常流最接近。</p>
+<p><img src="./我对BFC的理解 - 木的树 - 博客园_files/292002209878806.png" alt="">&nbsp; &nbsp; &nbsp;<img src="./我对BFC的理解 - 木的树 - 博客园_files/292002557068045.png" alt=""></p>
+<p>　　关于清除浮动更详尽的方式，请大家参考这篇文章<a href="http://www.cnblogs.com/dolphinX/p/3508869.html" target="_blank">此处</a>，dolphinX道友的博客简洁明了。</p>
+<p><span style="color: #3366ff;">　　多栏布局的一种方式</span></p>
+<p>　　上文提到的一条规则：与浮动元素相邻的已生成BFC的元素不能与浮动元素相互覆盖。利用该特性可以作为多栏布局的一种实现方式。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show(&#39;53c04a92-741b-46dc-b52a-54f9eca6453f&#39;)"><img id="code_img_closed_53c04a92-741b-46dc-b52a-54f9eca6453f" class="code_img_closed" src="./我对BFC的理解 - 木的树 - 博客园_files/ContractedBlock.gif" alt=""><img id="code_img_opened_53c04a92-741b-46dc-b52a-54f9eca6453f" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide(&#39;53c04a92-741b-46dc-b52a-54f9eca6453f&#39;,event)" src="./我对BFC的理解 - 木的树 - 博客园_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_53c04a92-741b-46dc-b52a-54f9eca6453f" class="cnblogs_code_hide">
+<pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span>  
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">http-equiv</span><span style="color: #0000ff;">="Content-Type"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="text/html; charset=utf-8"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #008000;">&lt;!--</span><span style="color: #008000;">The viewport meta tag is used to improve the presentation and behavior of the samples 
+    on iOS devices</span><span style="color: #008000;">--&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">name</span><span style="color: #0000ff;">="viewport"</span><span style="color: #ff0000;"> content</span><span style="color: #0000ff;">="initial-scale=1, maximum-scale=1,user-scalable=no"</span><span style="color: #0000ff;">/&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span><span style="background-color: #f5f5f5; color: #800000;"> 
+    html, body </span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;"> height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 100%</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;"> padding</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0</span><span style="background-color: #f5f5f5; color: #000000;">;</span> <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    .left</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">pink</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      float</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> left</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">180px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    .center</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">lightyellow</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      overflow</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">hidden</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+      
+    <span style="background-color: #f5f5f5; color: #000000;">}</span><span style="background-color: #f5f5f5; color: #800000;">
+    .right</span><span style="background-color: #f5f5f5; color: #000000;">{</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> lightblue</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">180px</span><span style="background-color: #f5f5f5; color: #000000;">;</span><span style="background-color: #f5f5f5; color: #ff0000;">
+      float</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;">right</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+    <span style="background-color: #f5f5f5; color: #000000;">}</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span> 
+  
+  
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span> 
+
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="claro"</span><span style="color: #0000ff;">&gt;</span> 
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="container"</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="left"</span><span style="color: #0000ff;">&gt;</span>
+      <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+  .left{
+    background:pink;
+    float: left;
+    width:180px;
+  }
+      </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="right"</span><span style="color: #0000ff;">&gt;</span>
+       <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+  .right{
+    background:lightblue;
+    width:180px;
+    float:right;
+  }
+      </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="center"</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+  .center{
+    background:lightyellow;
+    overflow:hidden;
+    height:116px;
+  }
+      </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">pre</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+<span class="cnblogs_code_collapse">多栏布局</span></div>
+<p>　　<span style="line-height: 1.5;">这种布局的特点在于左右两栏宽度固定，中间栏可以根据浏览器宽度自适应。</span></p>
+<p>　　<img src="./我对BFC的理解 - 木的树 - 博客园_files/292050554726831.png" alt=""></p>
+<p>　　IE中也有与BFC类似的概念成为hasLayout,我平时工作最低也是使用IE8，并没有涉及到这部分所以还请道友们查询其他资料。</p>
+<p>　　<span style="color: #3366ff; font-size: 18pt;">总结</span></p>
+<p>　　在我第一次接触到BFC时经常有一个疑问，BFC的结构是什么样的，像DOM一样的树状结构，还是一个BFC集合。其实我们不需要关心BFC的具体结构，这要看浏览器的具体实现采用什么样的数据结构。对于BFC我们只需要知道使用一定的CSS声明可以生成BFC，浏览器对生成的BFC有一系列的渲染规则，利用这些渲染规则可以达到一定的布局效果，为了达到特定的布局效果我们让元素生成BFC。</p>
+<p>　　对于CSS新手来说不建议涉猎BFC，还是应该去看看相应的CSS布局规则，像《CSS设计指南》、《CSS权威指南》这两本都很不错，达到一定积累再来看BFC，说不定会有一种豁然开朗的感觉。BFC中几乎涉及到CSS布局的所有重要属性，这也是BFC的难点和我们需要掌握BFC的意义所在。</p>
+<p>　　文章中的部分内容可能与道友看到的其他博客有所出入，毕竟每个人的工作经验、所遇问题跟测试方法不一样，差异在所难免，探讨技术的乐趣在于不断的总结积累与自我推翻，只要大方向正确细节问题可以慢慢探索。</p>
+<p>&nbsp;</p>
+<p>　 &nbsp;<span style="color: #3366ff; font-size: 18pt;">参考文章</span></p>
+<p>　　<a href="http://www.cnblogs.com/winter-cn/archive/2012/11/16/2772562.html">http://www.cnblogs.com/winter-cn/archive/2012/11/16/2772562.html</a></p>
+<p>　　<a href="http://f2e-js.com/?p=2599">http://f2e-js.com/?p=2599</a></p>
+<p>　　<a href="http://www.cnblogs.com/dolphinX/p/3508869.html">http://www.cnblogs.com/dolphinX/p/3508869.html</a></p>
+<p>　　<a href="http://wenku.baidu.com/link?url=yRqbHnEVEL58mfPg1KDneWqX5AjcL34U70ANznTaWU6DUcTx6yaEcKBbDjPxyP3GVoNN7-GdTSPbEmty6RmCTJ3qY6FzPqSB7TvwbmFayYO">http://wenku.baidu.com/link?url=yRqbHnEVEL58mfPg1KDneWqX5AjcL34U70ANznTaWU6DUcTx6yaEcKBbDjPxyP3GVoNN7-GdTSPbEmty6RmCTJ3qY6FzPqSB7TvwbmFayYO</a></p>
+<p>　　<a href="http://reference.sitepoint.com/css/blockformatting">http://reference.sitepoint.com/css/blockformatting</a></p>
+<p>　　<a href="http://www.yuiblog.com/blog/2010/05/19/css-101-block-formatting-contexts/">http://www.yuiblog.com/blog/2010/05/19/css-101-block-formatting-contexts/</a></p>
+<p>　　<a href="http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html">http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html</a></p>
+<p>&nbsp;</p>
+<p>　　到了各位道友点评时间，如有错误，还请不吝指正。。。</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/dojo-lzz/tag/css/">css</a></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(3999013,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./我对BFC的理解 - 木的树 - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./我对BFC的理解 - 木的树 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/dojo-lzz/" target="_blank"><img src="./我对BFC的理解 - 木的树 - 博客园_files/20160315154755.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/dojo-lzz/">木的树</a><br>
+<a href="http://home.cnblogs.com/u/dojo-lzz/followees">关注 - 10</a><br>
+<a href="http://home.cnblogs.com/u/dojo-lzz/followers">粉丝 - 469</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(3999013,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">19</span>
+    </div>
+	<div class="buryit" onclick="votePost(3999013,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/dojo-lzz/p/3983335.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/dojo-lzz/p/3983335.html" title="发布于2014-09-20 15:22">HTML渲染过程详解</a><br><a href="http://www.cnblogs.com/dojo-lzz/p/4265637.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/dojo-lzz/p/4265637.html" title="发布于2015-02-01 16:08">探讨跨域请求资源的几种方式</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2014-09-29 21:23</span> <a href="http://www.cnblogs.com/dojo-lzz/">木的树</a> 阅读(<span id="post_view_count">12872</span>) 评论(<span id="post_comment_count">26</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=3999013" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#" onclick="AddToWz(3999013);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=118404,cb_entryId=3999013,cb_blogApp=currentBlogApp,cb_blogUserGuid='d4a4b9ee-c6a4-e111-aa3f-842b2b196315',cb_entryCreatedDate='2014/9/29 21:23:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037279" class="layer">#1楼</a><a name="3037279" id="comment_anchor_3037279"></a>  <span class="comment_date">2014-09-29 21:47</span> <a id="a_comment_author_3037279" href="http://home.cnblogs.com/u/677487/" target="_blank">sciencedoris</a> <a href="http://msg.cnblogs.com/send/sciencedoris" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037279" class="blog_comment_body">内容不错，值得一看</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037279,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037279,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037292" class="layer">#2楼</a><a name="3037292" id="comment_anchor_3037292"></a>  <span class="comment_date">2014-09-29 22:03</span> <a id="a_comment_author_3037292" href="http://www.cnblogs.com/whwqs/" target="_blank">whwqs</a> <a href="http://msg.cnblogs.com/send/whwqs" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037292" class="blog_comment_body">要收藏一下</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037292,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037292,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037691" class="layer">#3楼</a><a name="3037691" id="comment_anchor_3037691"></a>  <span class="comment_date">2014-09-30 12:48</span> <a id="a_comment_author_3037691" href="http://www.cnblogs.com/sunqun/" target="_blank">iSpring</a> <a href="http://msg.cnblogs.com/send/iSpring" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037691" class="blog_comment_body">不错，有自己的理解</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037691,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037691,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3037691_avatar" style="display:none;">http://pic.cnblogs.com/face/u301420.png?id=25105616</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037815" class="layer">#4楼</a><a name="3037815" id="comment_anchor_3037815"></a>  <span class="comment_date">2014-09-30 14:37</span> <a id="a_comment_author_3037815" href="http://www.cnblogs.com/diligenceday/" target="_blank">方方和圆圆</a> <a href="http://msg.cnblogs.com/send/%E6%96%B9%E6%96%B9%E5%92%8C%E5%9C%86%E5%9C%86" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037815" class="blog_comment_body">css太难了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037815,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037815,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3037815_avatar" style="display:none;">http://pic.cnblogs.com/face/497865/20150117172039.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037817" class="layer">#5楼</a><a name="3037817" id="comment_anchor_3037817"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2014-09-30 14:40</span> <a id="a_comment_author_3037817" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3037817" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3037815" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3037815);">@</a>
+方方和圆圆<br>CSS不是难是杂；《CSS设计指南》跟《CSS权威指南》这两本都不错</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3037817,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3037817,&#39;Bury&#39;,this)">反对(1)</a></div><span id="comment_3037817_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3209211" class="layer">#6楼</a><a name="3209211" id="comment_anchor_3209211"></a>  <span class="comment_date">2015-06-16 09:36</span> <a id="a_comment_author_3209211" href="http://www.cnblogs.com/huazhen/" target="_blank">Fight_4_ever</a> <a href="http://msg.cnblogs.com/send/Fight_4_ever" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3209211" class="blog_comment_body">怎么是张鑫旭的风格</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3209211,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3209211,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3209211_avatar" style="display:none;">http://pic.cnblogs.com/face/576728/20131112182759.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3209245" class="layer">#7楼</a><a name="3209245" id="comment_anchor_3209245"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-06-16 10:00</span> <a id="a_comment_author_3209245" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3209245" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3209211" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3209211);">@</a>
+Fight_4_ever<br>纯自主研究</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3209245,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3209245,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3209245_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3209495" class="layer">#8楼</a><a name="3209495" id="comment_anchor_3209495"></a>  <span class="comment_date">2015-06-16 14:11</span> <a id="a_comment_author_3209495" href="http://www.cnblogs.com/huazhen/" target="_blank">Fight_4_ever</a> <a href="http://msg.cnblogs.com/send/Fight_4_ever" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3209495" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3209245" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3209245);">@</a>
+木的树<br>嗯，支持博主，喜欢钻研的精神，加油</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3209495,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3209495,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3209495_avatar" style="display:none;">http://pic.cnblogs.com/face/576728/20131112182759.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3256337" class="layer">#9楼</a><a name="3256337" id="comment_anchor_3256337"></a>  <span class="comment_date">2015-08-28 17:14</span> <a id="a_comment_author_3256337" href="http://www.cnblogs.com/xlaoyu/" target="_blank">Christmas./</a> <a href="http://msg.cnblogs.com/send/Christmas.%2F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3256337" class="blog_comment_body">看得似懂非懂。。概念怎么都理解不了。。但是一些用法一直都知道。有点像以前看到的所谓文档流这种说法。。设置了absolute或者float什么的。就会脱离正常文档流。。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3256337,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3256337,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3260088" class="layer">#10楼</a><a name="3260088" id="comment_anchor_3260088"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-09-05 10:43</span> <a id="a_comment_author_3260088" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3260088" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3256337" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3256337);">@</a>
+Christmas./<br>涉及到了渲染引擎的工作方式，对于前端来说有雾里看花的感觉是正常的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3260088,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3260088,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3260088_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3279855" class="layer">#11楼</a><a name="3279855" id="comment_anchor_3279855"></a>  <span class="comment_date">2015-10-08 10:04</span> <a id="a_comment_author_3279855" href="http://www.cnblogs.com/tiantianwaigong/" target="_blank">icantunderstand</a> <a href="http://msg.cnblogs.com/send/icantunderstand" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3279855" class="blog_comment_body">您好 您说的CSS规则 例如block元素会扩展到与父元素同宽 这样的知识点是在哪里学习呢 我是一个刚学习前端不久的小菜 想多学习下这样的规范  系统 的学习下这方面的知识</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3279855,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3279855,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3280913" class="layer">#12楼</a><a name="3280913" id="comment_anchor_3280913"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2015-10-09 14:02</span> <a id="a_comment_author_3280913" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3280913" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3279855" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3279855);">@</a>
+icantunderstand<br>《CSS设计指南》、《CSS权威指南》看完这两本大部分css知识都明白了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3280913,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3280913,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3280913_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3291388" class="layer">#13楼</a><a name="3291388" id="comment_anchor_3291388"></a>  <span class="comment_date">2015-10-24 18:06</span> <a id="a_comment_author_3291388" href="http://www.cnblogs.com/tiantianwaigong/" target="_blank">icantunderstand</a> <a href="http://msg.cnblogs.com/send/icantunderstand" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3291388" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3280913" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3280913);">@</a>
+木的树<br>好的 多谢  又回来温习下这篇文章</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3291388,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3291388,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3328501" class="layer">#14楼</a><a name="3328501" id="comment_anchor_3328501"></a>  <span class="comment_date">2015-12-16 21:59</span> <a id="a_comment_author_3328501" href="http://www.cnblogs.com/happy-rabbit/" target="_blank">熟睡的兔子</a> <a href="http://msg.cnblogs.com/send/%E7%86%9F%E7%9D%A1%E7%9A%84%E5%85%94%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3328501" class="blog_comment_body">内容不错~说的也清楚~佳作啊！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3328501,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3328501,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3328835" class="layer">#15楼</a><a name="3328835" id="comment_anchor_3328835"></a>  <span class="comment_date">2015-12-17 11:59</span> <a id="a_comment_author_3328835" href="http://www.cnblogs.com/coolhector/" target="_blank">CoolHector</a> <a href="http://msg.cnblogs.com/send/CoolHector" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3328835" class="blog_comment_body">如果将为ul使用overflow：hidden的方式，ul生成BFC不应该再发生重叠现象可是我在chrome、firefox、ie上的测试结果都有发生重叠现象。这个问题，我没找到答案，还请道友们给解答一下。<br>我也被这个问题困惑。不知道博主现在解决了没有。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3328835,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3328835,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3328835_avatar" style="display:none;">http://pic.cnblogs.com/face/844320/20151125090951.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3328841" class="layer">#16楼</a><a name="3328841" id="comment_anchor_3328841"></a>  <span class="comment_date">2015-12-17 12:09</span> <a id="a_comment_author_3328841" href="http://www.cnblogs.com/coolhector/" target="_blank">CoolHector</a> <a href="http://msg.cnblogs.com/send/CoolHector" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3328841" class="blog_comment_body">再者，ul display为inline-block后 这样就已经触发BFC成立的条件了，也无须再设置溢出隐藏的属性了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3328841,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3328841,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3328841_avatar" style="display:none;">http://pic.cnblogs.com/face/844320/20151125090951.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3343621" class="layer">#17楼</a><a name="3343621" id="comment_anchor_3343621"></a>  <span class="comment_date">2016-01-08 11:12</span> <a id="a_comment_author_3343621" href="http://www.cnblogs.com/zha-zha/" target="_blank">js渣渣</a> <a href="http://msg.cnblogs.com/send/js%E6%B8%A3%E6%B8%A3" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3343621" class="blog_comment_body">树神v5</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3343621,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3343621,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3348682" class="layer">#18楼</a><a name="3348682" id="comment_anchor_3348682"></a>  <span class="comment_date">2016-01-15 17:56</span> <a id="a_comment_author_3348682" href="http://www.cnblogs.com/xinxingyu/" target="_blank">不得不爱xxy</a> <a href="http://msg.cnblogs.com/send/%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%88%B1xxy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3348682" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3328835" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3328835);">@</a>
+CoolHector<br>这个给ul加这个本来就不管用。要让li 变成bfc</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3348682,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3348682,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3348682_avatar" style="display:none;">http://pic.cnblogs.com/face/564308/20130903225759.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370211" class="layer">#19楼</a><a name="3370211" id="comment_anchor_3370211"></a>  <span class="comment_date">2016-03-02 13:12</span> <a id="a_comment_author_3370211" href="http://www.cnblogs.com/mcfly007/" target="_blank">mcfly007</a> <a href="http://msg.cnblogs.com/send/mcfly007" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3370211" class="blog_comment_body">在清除浮动这一点上面有个疑问，具体代码如下<br><div class="cnblogs_Highlighter sh-gutter"><div><div id="highlighter_102273" class="syntaxhighlighter  javascript"><div class="toolbar"><span><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="javascript plain">&lt;li style=</code><code class="javascript string">"width:100%;position:relative;"</code><code class="javascript plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">&lt;img src=</code><code class="javascript string">"images/1.jpg"</code> <code class="javascript plain">style=</code><code class="javascript string">"width:90px;height:90px;position:absolute;top:0px;left:0px"</code><code class="javascript plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="javascript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="javascript plain">&lt;span style=</code><code class="javascript string">"margin-left:100px"</code><code class="javascript plain">&gt;浙江省&lt;/span&gt;</code></div><div class="line number4 index3 alt1"><code class="javascript plain">&lt;/li&gt;</code></div></div></td></tr></tbody></table></div></div></div><br><br>我给li元素添加display:inline-block或者float：left或者overflow：hidden都不能是li包围img，是不是因为子元素是相对父级元素定位了bfc就不适合了？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3370211,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3370211,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3370211_avatar" style="display:none;">http://pic.cnblogs.com/face/890914/20160218155102.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370546" class="layer">#20楼</a><a name="3370546" id="comment_anchor_3370546"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-03-02 21:07</span> <a id="a_comment_author_3370546" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3370546" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370211" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3370211);">@</a>
+mcfly007<br>是的，绝对定位已经脱离正常文档流了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3370546,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3370546,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3370546_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370879" class="layer">#21楼</a><a name="3370879" id="comment_anchor_3370879"></a>  <span class="comment_date">2016-03-03 10:52</span> <a id="a_comment_author_3370879" href="http://www.cnblogs.com/mcfly007/" target="_blank">mcfly007</a> <a href="http://msg.cnblogs.com/send/mcfly007" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3370879" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370546" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3370546);">@</a>
+木的树<br>那案例里面的ul里面也有float：left ，它也脱离正常流了啊？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3370879,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3370879,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3370879_avatar" style="display:none;">http://pic.cnblogs.com/face/890914/20160218155102.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3371137" class="layer">#22楼</a><a name="3371137" id="comment_anchor_3371137"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-03-03 14:57</span> <a id="a_comment_author_3371137" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3371137" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370879" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3370879);">@</a>
+mcfly007<br>Float定位有一系列规则，总起来说是尽量往上靠，但是不能超出包含框。<br><br>absolute定位是可以超出包含框的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3371137,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3371137,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3371137_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3371139" class="layer">#23楼</a><a name="3371139" id="comment_anchor_3371139"></a>  <span class="comment_date">2016-03-03 14:58</span> <a id="a_comment_author_3371139" href="http://www.cnblogs.com/mcfly007/" target="_blank">mcfly007</a> <a href="http://msg.cnblogs.com/send/mcfly007" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3371139" class="blog_comment_body">恩，我再仔细看下，谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3371139,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3371139,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3371139_avatar" style="display:none;">http://pic.cnblogs.com/face/890914/20160218155102.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3371143" class="layer">#24楼</a><a name="3371143" id="comment_anchor_3371143"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-03-03 15:00</span> <a id="a_comment_author_3371143" href="http://www.cnblogs.com/dojo-lzz/" target="_blank">木的树</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E7%9A%84%E6%A0%91" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3371143" class="blog_comment_body"><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3370879" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3370879);">@</a>
+mcfly007<br>布局里面有很多规则相互制约，有的优先级高有的低，需要综合考虑。<br>这个系统的教程不错：<a href="http://www.w3help.org/zh-cn/kb/" target="_blank">http://www.w3help.org/zh-cn/kb/</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3371143,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3371143,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3371143_avatar" style="display:none;">http://pic.cnblogs.com/face/412020/20160315154755.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3371148" class="layer">#25楼</a><a name="3371148" id="comment_anchor_3371148"></a>  <span class="comment_date">2016-03-03 15:02</span> <a id="a_comment_author_3371148" href="http://www.cnblogs.com/mcfly007/" target="_blank">mcfly007</a> <a href="http://msg.cnblogs.com/send/mcfly007" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3371148" class="blog_comment_body">恩，有些东西会冲突，还需要再仔细看下。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3371148,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3371148,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3371148_avatar" style="display:none;">http://pic.cnblogs.com/face/890914/20160218155102.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#3430707" class="layer">#26楼</a><a name="3430707" id="comment_anchor_3430707"></a><span id="comment-maxId" style="display:none;">3430707</span><span id="comment-maxDate" style="display:none;">2016/5/13 17:24:35</span>  <span class="comment_date">2016-05-13 17:24</span> <a id="a_comment_author_3430707" href="http://home.cnblogs.com/u/796104/" target="_blank">7P_LonG</a> <a href="http://msg.cnblogs.com/send/7P_LonG" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3430707" class="blog_comment_body">重新感谢lz,一年前就收藏了这篇文章，当时还是似懂非懂。现在回看，收获依然很多。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3430707,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3430707,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/dojo-lzz/p/3999013.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－豆果美食、Faceu等亿级APP都在用</a><br><a href="http://group.cnblogs.com/topic/75069.html" target="_blank">【福利】你是我的好朋友，我要送你个天猫红包</a><br><a href="http://event.open.alipay.com/?adtag=bokeyuan2016" target="_blank">【活动】蚂蚁金服开放平台合作伙伴大会(北京8.10)</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img width="300" height="250" src="./我对BFC的理解 - 木的树 - 博客园_files/24442-20160630110700952-722310635.gif" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/550307/" target="_blank">小米笔记本Air上手体验：4999元的轻薄本值得买吗？</a><br> ·  <a href="http://news.cnblogs.com/n/550306/" target="_blank">任天堂第一财季净亏2.32亿美元 将推迟发售Pokemon GO配件</a><br> ·  <a href="http://news.cnblogs.com/n/550305/" target="_blank">谷歌街景新技能：穿梭时空回到2007年</a><br> ·  <a href="http://news.cnblogs.com/n/550304/" target="_blank">什么？！微软给iPhone做拍摄应用竟然比苹果还在行！</a><br> ·  <a href="http://news.cnblogs.com/n/550303/" target="_blank">新东方在线今日申请挂牌新三板 新东方持股67.97%</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jiguang.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./我对BFC的理解 - 木的树 - 博客园_files/24442-20160613130538213-1713265809.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/540529/" target="_blank">可是姑娘，你为什么要编程呢？</a><br> ·  <a href="http://kb.cnblogs.com/page/549631/" target="_blank">知其所以然（以算法学习为例）</a><br> ·  <a href="http://kb.cnblogs.com/page/548394/" target="_blank">如何给变量取个简短且无歧义的名字</a><br> ·  <a href="http://kb.cnblogs.com/page/549080/" target="_blank">编程的智慧</a><br> ·  <a href="http://kb.cnblogs.com/page/549049/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><h3 class="catListTitle">友情链接</h3>
+<strong><a href="http://www.cnblogs.com/vajoy/" target="_blank">vajoy</a></strong>
+<br>
+<strong><a href="http://www.cnblogs.com/silin6/" target="_blank">linkFly</a></strong>
+<br>
+<strong><a href="http://www.giser.net/" target="_blank">barry的后院</a></strong>
+<br>
+<strong><a href="http://www.igis.me/" target="_blank">iGIS</a></strong>
+<br>
+<strong><a href="http://www.cnblogs.com/coco1s/" target="_blank">ChokCoco</a></strong>
+<br>
+<strong><a href="http://www.cnblogs.com/aaronjs/" target="_blank">艾伦 Aaron</a></strong><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/dojo-lzz/">木的树</a><br>园龄：<a href="http://home.cnblogs.com/u/dojo-lzz/" title="入园时间：2012-05-23">4年2个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/dojo-lzz/followers/">469</a><br>关注：<a href="http://home.cnblogs.com/u/dojo-lzz/followees/">10</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;d4a4b9ee-c6a4-e111-aa3f-842b2b196315&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/06/01&#39;);return false;">&lt;</a></td><td align="center">2016年7月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2016/08/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center">9</td></tr><tr><td class="CalWeekendDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center"><a href="http://www.cnblogs.com/dojo-lzz/archive/2016/07/20.html"><u>20</u></a></td><td align="center">21</td><td align="center">22</td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalTodayDay" align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalWeekendDay" align="center">31</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 木的树
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

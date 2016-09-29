@@ -1,0 +1,220 @@
+body,p,ul,dl,ol,li,h1,h3,h4,h2,h5,h6,fieldset,legend,dl,dt,dd,span{margin:0;padding:0;}
+body{font:12px/24px "微软雅黑";background:#efefef;}
+ul,li{list-style:none;}
+body,html{height: 100%;width: 100%;}
+a{text-decoration:none; color:#666;}
+img{border:none;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight:normal;}
+em,i{font-style:normal;}
+.clear:after{
+	content:"."; 
+	clear:both;
+	display:block;
+	height:0;
+	/*overflow:hidden;
+	visibility:hidden;*/
+}
+
+.top{
+	width: 100%;
+	height: 90px;
+	background: #7ab5e9 url(../image/bt.png)no-repeat 50px -700px;
+	position:absolute;
+	border-bottom: 4px solid #417ec8;
+	top: 0;
+	left: 0;
+}
+.top ul{
+	float: right;
+	margin:34px 30px 0 0;
+}
+.top a{
+	color: white;
+}
+.top li{
+	float: left;
+	width: 96px;
+	height: 56px;
+	text-align: center;
+	line-height: 30px;
+	padding-top: 2px;
+}
+.topli1 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat 0 0;
+}
+.topli2 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat 0 -120px;
+}
+.topli3 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat 0 -240px;
+}
+.topli4 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat 0 -360px;
+}
+.topli5 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat -90px 0;
+}
+.topli6 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat -90px -120px;
+}
+.topli7 span{
+	margin:0 auto;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url(../image/bt.png)no-repeat -90px -240px;
+}
+.top li:hover{
+	background: url(../image/libj.png)no-repeat;
+}
+.topright{
+	width: 268px;
+	height: 22px;
+	background: white;
+	position: absolute;
+	right: 40px;
+}
+.topright p{
+	float: left;
+}
+.toprightp1{
+	float: left;
+	text-align: center;
+	width: 160px;
+	height: 22px;
+	background: url(../image/bt.png)no-repeat -302px -540px;
+}
+.toprightp1 span{
+	float: left;
+	display: block;
+	margin-left: 20px;
+	width: 20px;
+	height: 18px;
+	background: url(../image/bt.png)no-repeat -180px -238px;
+}
+.toprightp2{
+	text-align: left;
+	width: 108px;
+	height: 22px;
+	background: url(../image/bt.png)no-repeat -194px -569px;
+}
+.toprightp2 span{
+	float: left;
+	display: block;
+	width: 20px;
+	height: 18px;
+	background: url(../image/bt.png)no-repeat -180px -238px;
+}
+.center{width:100%; background:#30C; position:absolute; top:90px; bottom:0;}
+
+/****************左边部分*******************/
+.left{
+	width: 196px;
+	background: #417EC8;
+	height: 100%;
+	float: left;
+	clear: both;
+}
+.lefttop{
+	width: 196px;
+	height: 28px;
+	background: url(../image/bt.png)no-repeat 0 -660px;
+	border: 1px solid #2a5ca3;
+}
+/**********************************************/
+.information{
+	width: 196px;
+	text-align: left;
+	line-height: 32px;
+}
+.information span{
+	float: left;
+	margin: 8px 4px 0 20px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url(../image/bt.png)no-repeat -180px 0;
+}
+.information a{
+	color: black;
+}
+.informationul{
+	width: 196px;
+}
+.informationul li{
+	margin-top: 8px;
+	text-align: left;
+}
+.informationul a{
+	color: #b9ddff;
+}
+.informationul span{
+	display: block;
+	margin-top: 8px;
+	width: 46px;
+	height: 10px;
+	float: left;
+	background: url(../image/bt.png)no-repeat -264px -507px;
+}
+
+.information2{
+	width: 196px;
+	height: 38px;
+	background: url(../image/bt.png)no-repeat -240px -60px;
+	text-align: left;
+	line-height: 32px;
+}
+.information2 span{
+	float: left;
+	margin: 8px 4px 0 20px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url(../image/bt.png)no-repeat -180px -61px;
+}
+.information3{
+	width: 196px;
+	height: 38px;
+	background: url(../image/bt.png)no-repeat -240px -60px;
+	text-align: left;
+	line-height: 32px;
+}
+.information3 span{
+	float: left;
+	margin: 8px 4px 0 20px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	background: url(../image/bt.png)no-repeat -180px -120px;}
+.information2 a{color: white;} 
+.information3 a{color: white;} 	
+/**************右边部分**********************/
+.right{background:#CF3; overflow:hidden; height:100%;}
+.right iframe{
+	height: 100%;
+	width:100% ;
+}

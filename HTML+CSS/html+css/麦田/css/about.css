@@ -1,0 +1,145 @@
+.banner{
+	height:200px;
+	background:url(../image/aboutbanner.png) no-repeat 0 0;
+}
+.menubox{
+	height:62px;
+	background:#f7f7f7;
+}
+.menu{
+	margin-right:14px;
+	height:62px;
+	width:1140px;
+	margin:0 auto;
+}
+.menu li{
+	line-height:62px;
+	float:right;
+	font-size:14px;
+	margin-right:34px;
+}
+/*--------          关于我们     ---------------*/
+.aboutus{
+	width:1140px;
+	height:231px;
+	margin:0 auto;
+	/*background:yellow;*/
+}
+.aboutus span{
+	float:left;
+	display:block;
+	height:231px;
+	width:355px;
+	background:url(../image/aboutus.png) no-repeat 0 0;
+}
+.aboutus dl{
+	padding-top:6px;
+	width:736px;
+	float:right;
+	/*background:blue;*/
+	padding-bottom:28px;
+	border-bottom:1px solid #eeeeee;
+}
+.aboutus dt{
+	float:left;
+	font-size:16px;
+	color:#323433;
+	margin-bottom:16px;
+}
+.aboutus dd{
+	float:left;
+	line-height:30px;
+	font-size:14px;
+	color:#666;
+}
+/*--------      企业使命      ---------*/
+.mission{
+	width:1140px;
+	height:347px;
+	/*background:yellow;*/
+	margin:0 auto;
+	text-align:center;
+	border-bottom:1px solid #eee;
+}
+.mission h2,.office h2{
+	font-size:18px;
+	margin:28px 0;
+}
+.mission li{
+	float:left;
+}
+.mission ul li i{
+	font-style:normal;
+	font-size:14px;
+}
+.mission span{
+	display:block;
+	height:228px;
+	width:339px;
+	margin-bottom:20px;
+}
+.mission .li3{
+	float:right;
+}
+.mission .li1 span{
+	background:url(../image/mission_03.gif) no-repeat 0 0;
+}
+.mission .li2 span{
+	background:url(../image/mission_05.gif) no-repeat 0 0;
+}
+.mission .li3 span{
+	background:url(../image/mission_07.gif) no-repeat 0 0;
+}
+.mission .li2{
+	margin:0 59px;
+}
+/*--------      办公环境      ------*/
+.office{
+	width:1140px;
+	height:834px;
+	margin:0 auto 112px;
+	/*background:yellow;*/
+	text-align:center;
+}
+.office li{
+	float:left;
+	margin-bottom:48px;
+}
+.office li span{
+	display:block;
+	height:228px;
+	width:341px;
+}
+.office .offli3,.office .offli6,.office .offli9{
+    float:right;
+}
+.office .offli2,.office .offli5,.office .offli8{
+    margin-left:58px;
+}
+.office .offli1 span{
+	background:url(../image/office_03.gif) no-repeat 0 0;
+}
+.office .offli2 span{
+	background:url(../image/office_05.gif) no-repeat 0 0;
+}
+.office .offli3 span{
+	background:url(../image/office_08.gif) no-repeat 0 0;
+}
+.office .offli4 span{
+	background:url(../image/office_13.gif) no-repeat 0 0;
+}
+.office .offli5 span{
+	background:url(../image/office_14.gif) no-repeat 0 0;
+}
+.office .offli6 span{
+	background:url(../image/office_15.gif) no-repeat 0 0;
+}
+.office .offli7 span{
+	background:url(../image/office_19.gif) no-repeat 0 0;
+}
+.office .offli8 span{
+	background:url(../image/office_20.gif) no-repeat 0 0;
+}
+.office .offli9 span{
+	background:url(../image/office_21.gif) no-repeat 0 0;
+}

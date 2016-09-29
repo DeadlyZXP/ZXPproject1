@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>第9天 定位属性</title>
+</head>
+
+<body>
+<h1>position 定位属性，检索对象的定位方式；</h1>
+<h2>一、语法：position：static /absolute/relative/fixed</h2>
+<h2>取值：</h2>
+<h2>1、static：默认值，无特殊定位，对象遵循HTML原则；</h2>
+<h2>2、absolute：绝对定位，将对象从文档流中拖离出来，使用left/right/top/bottom等属性相对其最接近的一个并有定位设置的父元素进行绝对定位；如果不存在这样的父对象，则依据body对象(浏览器)，而其层叠通过z-index属性定义；</h2>
+<h2>3、relative ：相对定位，对象不可层叠，将依据right，top，left，bottom（相对定位）等属性在正常文档流中偏移位置；</h2>
+<h2>4、fixed：(固定定位)未支持，对象定位遵从绝对定位方式（absolute）；但是要遵守一些规范；</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>二、绝对定位和相对定位的区别</h1>
+<h2>1、参照物不同绝对定位的参照物是包含块，相对定位的参照物是元素本身位置；</h2>
+<h2>2、绝对定位将对象从文档流中拖离出来因此不占据空间，相对定位不破坏正常的文档流顺序无论是否进行移动，元素仍然占据原来的空间。</h2>
+<p>&nbsp;</p>
+<h1>三、包含块的概念及作用<br />
+</h1>
+<h2> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包含块是绝对定位的基础，包含块就是为决定定位元素提供坐标，偏移和显示范围的参照物，即确定绝对定位的偏移起点和百分比 长度的参考；</h2>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;默认状态下，body是一个大的包含块，所有绝对定位的元素都是根据窗口来定自己所处的位置和百分比大小的显示的，如果我们定义了包含元素为包含元素块以后，对于被包含的绝对定位元素来说，就会根据最接近的具有定位功能的上级包含元素来定位自己的显示位置。</h2>
+<h2>定义元素为包含块：给绝对定位元素的父元素添加声明position：relative；</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<H1>三、定位元素层叠属性：</H1>
+<H1><STRONG>z-index : </STRONG><STRONG>auto</STRONG> | <EM> </EM></H1>
+<H1>检索或设置对象的层叠顺序。</H1>
+
+<h2>auto：默认值。遵从其父对象</h2>
+<h2>number:无单位的整数值。可为负数</h2>
+  <H2>说明：</H2>
+
+<H2>1）较大<EM> number </EM>值的对象会覆盖在较小<EM> number </EM>值的对象之上。如两个绝对定位对象的此属性具有同样的<EM> number </EM>值，那么将依据它们在HTML文档中声明的顺序层叠。<BR>
+    此属性仅仅作用于<A href="c_position.html"> position </A>属性值为<STRONG> relative </STRONG>或<STRONG> absolute </STRONG>的对象。</H2>
+<H2><BR>
+    2）这个属性不会作用于窗口控件，如<STRONG> select </STRONG>对象。<BR>
+</H2>
+<h1>五、命名锚点链接的应用</h1>
+<h2>定义：</h2>
+<h2>是网页制作中超级链接的一种，又叫命名锚记。命名锚记像一个迅速定位器一样是一种页面内的超级链接，运用相当普遍。</h2>
+<h1>命名锚点链接的应用：</h1>
+<h1>1)命名锚点的作用：在同一页面内的不同位置进行跳转。</h1>
+<h1>2)给元素定义命名锚记名</h1>
+<h1>语法：&lt;标记 &nbsp;&nbsp;id=&quot;命名锚记名&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/标记&gt;</h1>
+<h1>3)命名锚记连接</h1>
+<h1>语法：&lt;a href=&quot;#命名锚记名称&quot;&gt;&lt;/a&gt;</h1>
+<h1>三、圆角切图</h1>
+<h2>1、纯css 书写</h2>
+<h2>2、切图拼接；</h2>
+<p>&nbsp;</p>
+<h1>四、Flash和marquee(滚动字幕)</h1>
+<h2>1、插入flash</h2>
+<h2>1）语法：</h2>
+<h2>&lt;object width=&quot;value&quot; height=&quot;value&quot;&gt;<br />
+  &lt;param name=&quot;movie&quot; value=&quot;flash路径及全称&quot; /&gt;<br />
+  &lt;embed width=&quot;value&quot; height=&quot;value&quot; src=&quot;flash路径及全称&quot;&gt;&lt;/embed&gt;<br />
+  &lt;/object&gt;</h2>
+<p>&nbsp;</p>
+<h2>说明：flash源文件格式.fla,</h2>
+<h2>导出影片为.swf,</h2>
+<h2>创建播放器格式为.exe.</h2>
+<h2>gif格式：.gif</h2>
+<p> </p>
+<h2>2）将flash背景设置为透明</h2>
+<h2>&lt;param name=&quot;wmode&quot; value=&quot;transparent&quot; /&gt;</h2>
+<h2>给&lt;embed&gt;标记添加属性：wmode=&quot;transparent&quot;</h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<h2>3）IE中不显示flash,可做如下操作：</h2>
+<h2>A.下载安装flash player;</h2>
+<h2>B.打开IE浏览器，选择工具菜单--Internet选项----安全----低。</h2>
+<p>  </p>
+<h1>2、滚动字幕的应用：</h1>
+<h1> &lt;marquee</h1>
+<h1>behavior（行为）=&quot;scroll(滚动)/alternate（晃动）&quot;direction（方向）=&quot;up(从下向上)/down（从上向下）/left（从右向左）/right（从左向右）&quot;</h1>
+<h1>scrollamount（滚动速度）=&quot;value&quot;height=&quot;value(上下滚动范围)&quot;width=&quot;&quot;(左右滚动范围)&gt;<br />
+  内容<br />
+&lt;/marquee&gt;</h1>
+<p>&nbsp;</p>
+<h1>&nbsp;</h1>
+<h1>五、滚动条</h1>
+<h2>1,Overflow内容溢出时的设置</h2>
+<h1>属性：</h1>
+<h2>overflow 水平及垂直方向内容溢出时的设置 <br />
+  overflow-x 水平方向内容溢出时的设置 <br />
+  overflow-y 垂直方向内容溢出时的设置</h2>
+<h1>以上三个属性设置的属性值：</h1>
+<h2>visible、scroll、hidden、auto、</h2>
+<h2>visible 默认值。使用该值时，无论设置的&quot;width&quot;和&quot;height&quot;的值是多少，其中的内容无论是否超出范围都将被强制显示。</h2>
+<h2> hidden 效果与visible相反。任何超出&quot;width&quot;和&quot;height&quot;的内容都会不可见。</h2>
+<h2> scroll 无论内容是否超越范围，都将显示滚动条。</h2>
+<h2> auto 当内容超出范围时，显示滚动条，否则不显示。</h2>
+<p>&nbsp;</p>
+<h1>应用:</h1>
+<h2>1）没有水平滚动条:<br />
+  &lt;div style=&quot;overflow-x:hidden&quot;&gt;test&lt;/div&gt;</h2>
+<h2>2）没有垂直滚动条 <br />
+  &lt;div style=&quot;overflow-y:hidden&quot;&gt;test&lt;/div&gt;</h2>
+<h2><br />
+  3）没有滚动条 <br />
+  &lt;div style=&quot;overflow-x:hidden;overflow-y:hidden&quot; 或</h2>
+<h2>style=&quot;overflow:hidden&quot;&gt;test&lt;/div&gt;</h2>
+<p>&nbsp;</p>
+<h2>4）自动显示滚动条<br />
+  &lt;div&nbsp;&nbsp;style=&quot;height:100px;width:100px;overflow:auto;&quot;&gt;test&lt;/div&gt;</h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>2、自己定义滚动条的颜色</h1>
+<h2>Body {<br />
+  scrollbar-arrow-color: #f4ae21; /*图6,三角箭头的颜色*/<br />
+  scrollbar-face-color: #333; /*图5,立体滚动条的颜色*/<br />
+  scrollbar-3dlight-color: #666; /*图1,立体滚动条亮边的颜色*/<br />
+  scrollbar-highlight-color: #666; /*图2,滚动条空白部分的颜色*/<br />
+  scrollbar-shadow-color: #999; /*图3,立体滚动条阴影的颜色*/<br />
+  scrollbar-darkshadow-color: #666; /*图4,立体滚动条强阴影的颜色*/<br />
+  scrollbar-track-color: #666; /*图7,立体滚动条背景颜色*/</h2>
+<h2>scrollbar-base-color:#f8f8f8; /*滚动条的基本颜色*/</h2>
+<h2><br />
+  Cursor:url(mouse.cur); /*自定义个性鼠标*/<br />
+  }</h2>
+<h2>以上适用与&lt;body&gt;、&lt;div&gt;、&lt;textarea&gt;、&lt;iframe&gt;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.fie{
+	border:none;
+	border-top:1px solid #ccc;
+}
+input,select{
+		margin-top:10px;
+	}
+/*body{
+	margin:0 auto;
+}*/

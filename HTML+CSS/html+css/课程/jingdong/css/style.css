@@ -1,0 +1,54 @@
+body,ul,li,p,dl{
+	padding:0;
+	margin:0;
+}
+img{
+	margin:0 auto;
+	display:block;
+	line-height:237px;
+}
+.box{
+	width:1006px;
+	height:474px;
+	margin:0 auto;
+	background:red;
+	vertical-align:middle; 
+}
+.box div{
+	display:inline;
+	/*float:left;*/
+	width:200px;
+	height:237px;
+}
+.top1 span{
+	display:table-cell;
+	vertical-align:middle;
+
+}
+.top1{
+	float:left;
+	height:237px;
+	text-align:center; 
+	display: table;
+	vertical-align:middle; 
+	border:1px solid #d3d3d3;background:#fff;
+}
+/*.top2{
+	float:left;
+	height:237px;
+}
+.top3{
+	float:left;
+	height:237px;
+}
+.top4{
+	float:left;
+	height:237px;
+}
+.top5{
+	float:left;
+	height:237px;
+}*/
+/*.box dl dt{
+	float:left;
+}*/

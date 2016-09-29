@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+   <head>
+	<meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href=""/>
+        <title></title>
+        <style>
+        	*{
+        		margin:0;
+        		padding:0;
+        	}
+        	ul,li{
+        		list-style:none;
+        	}
+             a{
+                  color:block;
+                  text-decoration:none;
+              }
+        	.box{
+        		width:260px;
+        		height:22px;
+        		/*overflow:hidden;*/
+        	}
+            .box a{
+                float:left;
+                text-align:right;
+                line-height:22px;
+            }
+        	.pic1{
+                display:block;
+        		width:63px;
+        		height:22px;
+        		background:url(images/bg.gif) no-repeat;
+        	}
+            .pic1:hover{
+                background:url(images/bg.gif) no-repeat 0 -22px;
+            }
+            .pic2{
+                display:block;
+                width:63px;
+                height:22px;
+                background:url(images/bg.gif) no-repeat -62px 0;
+            }
+             .pic2:hover{
+                background:url(images/bg.gif) no-repeat -62px -22px;
+            }
+            .pic3{
+                display:block;
+                width:63px;
+                height:22px;
+                background:url(images/bg.gif) no-repeat -124px 0;
+            }
+             .pic3:hover{
+                background:url(images/bg.gif) no-repeat -124px -22px;
+            }
+            .pic4{
+                display:block;
+                width:63px;
+                height:22px;
+                background:url(images/bg.gif) no-repeat -186px 0;
+            }
+            .pic4:hover{
+                background:url(images/bg.gif) no-repeat -186px -22px;
+            }
+            /********滑动门********/
+          	.transfrom{
+                height:80px;
+                background:blue;
+                margin-top:35px;
+                position:relative;
+                margin-bottom:100px;
+            }
+            .box2{
+                height:42px;
+                position:absolute;
+                left:60px;
+                bottom:0;
+            }
+            a,span{
+                display:block;
+            }
+            a{
+                color:white;
+            }
+            .box2{
+                padding:10px 0 0 6px;
+            }
+            .box2 li{
+                margin-left:10px;
+                float:left;
+                height:42px;
+            }
+            .box2 a{
+                 padding-left:4px;
+                background:url(images/tableft.gif) no-repeat left top;
+            }
+            .box2 span{
+                height:42px;
+                line-height:42px;
+                background:url(images/tabright.gif) no-repeat right top;
+            }
+            .box2 a:hover{
+                background-position:top -42px left 0;
+            }
+            .box2 a:hover span{
+                background-position:top -42px right 0;
+            }
+            /********nav*********/
+            .nav{
+            	width:100%;
+            	height:60px;
+            	background:red;
+            	text-align:center;
+            	line-height:60px;
+            }
+            .nav ul{
+            	float:left;
+            }
+            .nav li{
+            	float:left;
+            	width:80px;
+            }
+            .nav li:hover{
+            	background:blue;
+            }
+            .li1{
+            	background:#fc6808;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="box">
+    	<a class="pic1" href="#">首页</a>
+        <a class="pic2" href="#">首页</a>
+        <a class="pic3" href="#">首页</a>
+        <a class="pic4" href="#">首页</a>
+    </div>
+    <!-- 滑动门 -->
+  <div class="transfrom">
+    <ul class="box2">
+        <li><a href="#"><span>首页</span></a></li>
+        <li><a href="#"><span>关于我们</span></a></li>
+        <li><a href="#"><span>产品中心</span></a></li>
+        <li><a href="#"><span>联系我们</span></a></li>
+        <li><a href="#"><span>偶发的收费</span></a></li>
+    </ul>
+</div>
+<!--       导航          -->
+	<div class="nav">
+		<ul>
+			<li class="li1"><a href="#">首页</a></li>
+			<li><a href="#">设计团队</a></li>
+			<li><a href="#">服务范围</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">公司简介</a></li>
+		</ul>
+	</div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+body,p,ul,dl,ol,li,h1,h3,h4,h2,h5,h6,fieldset,legend,dl,dt,dd,span{margin:0;padding:0;}
+body{font:12px/24px "微软雅黑";}
+ul,li{list-style:none;}
+img{border:none;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight:normal;}
+em,i{font-style:normal;}
+html,body{
+	height:100%;
+}
+.banner{
+	width:100%;
+	height:84%;
+	background:blue;
+}
+.banner img{
+	width:100%;
+	height:100%;
+}
+.nav{
+	width:100%;
+	height:10%;
+	text-align:center;
+}
+.nav p{
+	position:relative;
+	top:40%;
+}
+.nav a{
+	padding:0 1%;
+	color:#a7a7a7;
+	text-decoration:none;
+}
+.footer{
+	width:100%;
+	height:6%;
+	background:url(jiankangbt.jpg)repeat-x;
+	text-align:center;
+}

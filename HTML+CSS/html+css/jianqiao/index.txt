@@ -1,0 +1,59 @@
+<!--  <div class="new">
+			<div class="pic">
+				<h3>图片</h3>
+				可以用dl dt dd
+				<img src="image/pic.jpg"/>
+				<p>商学院首届建筑模型制作大赛决赛型制作大赛决赛型制作大赛决赛</p>
+			</div>
+			<div class="pic1">
+					<h3>院部动态</h3>
+					<div class="shi">
+						<img src="image/pic1.jpg"/>
+						<img src="image/pic1.jpg" class="tu2"/>
+					</div>
+					<div class="pp">
+						<p class="p"><a href="#">我校举行开学典礼临港新校区落成启用仪..</a></p>
+						<p class="p1"><a href="#">9月18日下午，我校举行2015秋季开学典礼临港新校区落成启动仪式。中共上海市教育卫生工作委员会巡视员李..</a></p>
+					</div>
+					<div class="pp">
+						<p><a href="#">我校举行开学典礼临港新校区落成启用仪..</a></p>
+						<p class="p1"><a href="#">9月18日下午，我校举行2015秋季开学典礼临港新校区落成启动仪式。中共上海市教育卫生工作委员会巡视员李..</a></p>
+					</div>
+			</div>
+		</div>
+		<div class="ri">
+			<img src="image/right.jpg"/>
+			<img src="image/right1.jpg"/>
+			<img src="image/right2.jpg"/>
+		</div>
+		<div class="pic3">
+				<h3>讲座报告</h3>
+				<ul>
+					<li><a herf="#">本科生毕业典礼学位授予仪式（6月2
+					..）</a><span>04-15</span></li>
+					<li><a herf="#">专科生毕业典礼（6月18日，体育馆）</a><span>04-15</span></li>
+					<li><a herf="#">“记忆留夏，定格康桥”摄影大赛</a><span>04-13</span></li>
+					<li><a herf="#">[高雅艺术]“相约经典”大学生公益票..</a><span>12-22</span></li>
+					<li><a herf="#">关于开展“我心中的好老师”系列活动</a><span>06-09</span></li>
+					<li><a herf="#">艺术设计学院站通开放告示</a><span>05-20</span></li>
+				</ul>
+			</div>
+			<div class="pic1">
+					<h3>院部动态</h3>
+					<ul>
+					<li><a herf="#">本科生毕业典礼学位授予仪式（6月2
+					..）</a><span>04-15</span></li>
+					<li><a herf="#">专科生毕业典礼（6月18日，体育馆）</a><span>04-15</span></li>
+					<li><a herf="#">“记忆留夏，定格康桥”摄影大赛</a><span>04-13</span></li>
+					<li><a herf="#">[高雅艺术]“相约经典”大学生公益票..</a><span>12-22</span></li>
+					<li><a herf="#">关于开展“我心中的好老师”系列活动</a><span>06-09</span></li>
+					<li><a herf="#">艺术设计学院站通开放告示</a><span>05-20</span></li>
+				</ul>
+			</div>
+			<div class="pic4">
+				<h3>建桥邮箱</h3>
+				<form>
+					<input class="txt5" type="text" value="用户名"/><br>
+					<input type="password" value=""/>
+				</form>
+			</div> --> 

@@ -1,0 +1,148 @@
+*{
+	padding:0;
+	margin:0;
+	/*list-style:none;*/
+}
+ul,li{
+	display:block;
+}
+div{
+    width:1000px;
+	margin:0 auto;
+}
+.header{
+	height:100px;
+}
+.search{
+	float:right;
+	width:225px;
+}
+.header1{
+	height:80px;
+	background-color:black;
+}
+.header1 ul li{
+	border-right:1px solid;
+	color:white;
+	float:left;
+	line-height:80px;
+	margin-left:36px;
+	padding-right:16px;
+	list-style:none;
+	/*width:10%;*/
+}
+#l1{
+	border-right:none;
+}
+.news{
+	height:240px;
+	
+}
+.news .news1{
+	width:500px;
+	height:240px;
+	/*background-color:yellow;*/
+	float:left;
+}
+.top{
+	margin-top:36px;
+	margin-left:22px;
+}
+.second{
+
+	line-height:20px;
+	font-size:14px;
+	margin-top:16px;
+	margin-left:36px;
+}
+.news2{
+	width:250px;
+	height:240px;
+	float:left;
+	
+	background-color:#ddd;
+}
+.new1{
+	margin-top:12px;
+	margin-left:22px;
+	font-size:18px;
+}
+.new2{
+	margin-top:12px;
+	margin-left:22px;
+	font-size:12px;
+}
+.new3{
+	margin-top:12px;
+	margin-left:22px;
+	font-size:11px;
+}
+.news3{
+	width:250px;
+	height:240px;
+	float:left;
+
+}
+.wolong{
+	height:290px;
+
+}
+.wolong div{
+	width:25%;
+	float:left;
+	
+}
+.wolong p{
+	font-size:12px;
+	color:555;
+}
+.wolong div img,p{
+	margin-left:22px;
+	
+}
+.bottom{
+	margin-top:20px;
+	height:290px;
+	background-color:#ddd;
+}
+.bot1{
+	width:500px;
+	float:left;
+}
+.bot{
+  margin-top:36px;
+	margin-left:22px;
+	font-weight:200;
+}
+.bot hr{
+	width:80%;
+}
+.bot1 .bo1{
+	width:30%;
+	float:left;
+	margin-top:16px;
+	margin-left:16px;
+	line-height:22px;
+	list-style-image:url(../image/biao.jpg);
+}
+
+.bot2{
+	width:250px;
+	float:left;
+}
+.hr1{
+	margin-left:20px;
+	width:80%;
+}
+.bot2 .bo1{
+	margin-top:16px;
+	line-height:22px;
+	list-style-image:url(../image/biao.jpg);
+}
+.bot3{
+	width:250px;
+	float:left;
+}
+.bot3 img{
+	width:100%;
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+			}
+			ul,li{
+				list-style:none;
+			}
+			.box{
+				width:500px;
+				height:375px;
+				border:1px solid #000;
+				position:relative;	
+			}
+			.pic{
+				width:500px;
+				height:375px;
+				overflow:hidden;	
+			}
+			.boxli{
+				position:absolute;
+				right:10px;
+				bottom:10px;
+			}
+			.boxli a{
+				display:block;
+				width:20px;
+				height:20px;
+				float:left;
+				border:1px solid #000;
+				text-decoration:none;
+				color:white;
+				background:#000;
+				margin-left:6px;
+				text-align:center;
+				opacity:0.6;
+				filter:alpha(opacity=60);
+			}
+			.boxli a:hover {
+				opacity:0.8;
+				filter:alpha(opacity=80);
+			}
+			img{
+				display:block;
+			}
+			/******************/
+			.second{
+				width:400px;
+				height:400px;
+				border:1px solid #000;
+			}
+			.secondright{
+				float:right;
+			}
+			.secondright li{
+				width:60px;
+				height:100px;
+				margin-top:30px;
+				text-align:center;
+				line-height:100px;
+				background:#000;
+				color:white;
+				opacity:0.6;
+			}
+			.secondright li:hover {
+				opacity:0.8;
+				filter:alpha(opacity=80);
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li class="pic"><img id="box1" src="images/img04.jpg"/><img id="box2" src="images/img05.jpg"/><img id="box3" src="images/img06.jpg"/><img id="box4" src="images/img07.jpg"/></li>
+			<li class="boxli">
+				<a href="#box1">1</a>
+				<a href="#box2">2</a>
+				<a href="#box3">3</a>
+				<a href="#box4">4</a>
+			</li>
+		</ul>
+<!--  -->
+		<div class="second">
+			<ul class="secondleft1">
+				
+			</ul>
+			<ul class="secondright">
+				<li>新闻</li>
+				<li>娱乐</li>
+				<li>体育</li>
+			</ul>
+		</div>
+	</body>
+</html>

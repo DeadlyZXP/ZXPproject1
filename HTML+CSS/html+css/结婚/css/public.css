@@ -1,0 +1,157 @@
+body,p,ul,dl,ol,li,h1,h3,h4,h2,h5,h6,fieldset,legend,dl,dt,dd,span{margin:0;padding:0;}
+body{font:12px/24px "微软雅黑";}
+ul,li{list-style:none;}
+a{text-decoration:none; color:#666;}
+img{border:none;}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight:normal;}
+em,i{font-style:normal;}
+.clear:after{
+	content:"."; 
+	clear:both;
+	display:block;
+	height:0;
+	/*overflow:hidden;
+	visibility:hidden;*/
+}
+.topbox{
+	height:50px;
+	background:#3c3c3c;
+}
+.topli{
+	background:url(../image/logosanjiao.png)no-repeat right center;
+}
+.box{
+	width:1180px;
+	height:50px;
+	margin:0 auto;
+	background:url(../image/bt.png)no-repeat -966px -16px;
+}
+.box ul{
+	float:left;
+}
+.box li{
+	float:left;
+	margin-left:30px;
+	line-height:50px;
+	padding-right:10px;
+}
+.box a{
+	color:white;
+}
+.box p{
+	float:right;
+	line-height:50px;
+	background:url(../image/bt.png)no-repeat -938px -64px;
+}
+.box span{
+	margin-left:40px;
+	padding-left:20px;
+}
+/***********foot************/
+.footbox{
+	height:auto;
+	background:#f4f4f4 url(../image/logo1.png)no-repeat center 340px;
+	padding:60px 40px 80px;
+}
+.foot{
+	width:1180px;
+}
+.foot dl{
+	float:left;
+	/*width:20%;*/
+	height:320px;
+}
+.foot dt{
+	margin-left:10px;
+}
+.foot dd{
+	margin-left:10px;
+	float:left;
+}
+/*.foot4 a{
+	float:left;
+}*/
+.foot1{
+	float:left;
+	width:25%;
+}
+.foot2{
+	float:left;
+	width:15%;
+}
+.foot5{
+	float:left;
+	width:10%
+}
+.foot5 dd{
+	margin-top:20px;
+}
+.foot dt{
+	font-size:18px;
+	margin-bottom:20px;
+}
+.footp{
+	/*display:block;*/
+	text-align:center;
+	margin-bottom:0px;
+}
+
+.header{
+	width:1140px;
+	height:102px;
+	margin:0 auto;
+}
+.header h1{
+   display:block;
+   width:249px;
+   height:58px;
+   float:left;
+   background:url(../image/logo.png) no-repeat 0 0;
+   margin:23px 38px 22px 0;
+}
+.header .logoword{
+	text-align:center;
+	float:left;
+	/*background:red;*/
+	font-size:14px;
+	color:#9a9a9c;
+	height:58px;
+	margin-top:10px;
+	padding-top:20px;
+	padding-left:26px;
+	background:url(../image/logoboder.png) no-repeat left center;
+	
+}
+.header .logoword p{
+	font-style:oblique;
+}
+.header ul{
+	float:right;
+	margin-top:30px;
+}
+.header ul li{
+	text-align:center;
+	float:left;
+	width:88px;
+	height:43px;
+	padding-top:30px;
+	background:white;
+}
+.header ul li:hover{
+	background:#f75a53;
+}
+.header ul li:hover a{
+		color:white;
+}
+
+/*----------- footer部分   --------*/
+.footer{
+	padding-top:28px;
+	height:110px;
+	background:#363636;
+	text-align:center;
+}
+.footer p{
+	color:#777777;
+	margin-top:8px;
+}

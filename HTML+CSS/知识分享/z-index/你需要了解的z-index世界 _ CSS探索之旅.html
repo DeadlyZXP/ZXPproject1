@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<!-- saved from url=(0178)http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1 -->
+<html class="theme-next use-motion theme-next-mist"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/icon.png">
+<link rel="apple-touch-icon-precomposed" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/icon.png">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="./你需要了解的z-index世界 _ CSS探索之旅_files/jquery.fancybox.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="./你需要了解的z-index世界 _ CSS探索之旅_files/main.css">
+
+
+    <meta name="description" content="CSS探索之旅带你领略CSS世界的极致之美">
+
+
+
+  <meta name="keywords" content="w3c,z-index,层叠上下文,">
+
+
+
+  <link rel="alternate" href="http://blog.doyoe.com/atom.xml" title="CSS探索之旅" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="http://blog.doyoe.com/favicon.ico?v=0.4.5.1">
+
+
+<meta name="description" content="z-index的重要性在我看来，z-index 给了我们日常工作中以极大的帮助，我们用它来定义元素的层叠级别（stack level）。受益于它，你能做Popup, DropDown, Tips, 图文替换等等。
+在开始本篇之前，或许我们要先了解一下关于z-index的基本信息。
+W3C这样描述每个元素都具有三维空间位置，除了水平和垂直位置外，还能在 “Z轴” 上层层相叠、排列。元素在 “Z轴”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你需要了解的z-index世界">
+<meta property="og:url" content="http://blog.doyoe.com/2014/01/21/css/你需要了解的z-index世界/index.html">
+<meta property="og:site_name" content="CSS探索之旅">
+<meta property="og:description" content="z-index的重要性在我看来，z-index 给了我们日常工作中以极大的帮助，我们用它来定义元素的层叠级别（stack level）。受益于它，你能做Popup, DropDown, Tips, 图文替换等等。
+在开始本篇之前，或许我们要先了解一下关于z-index的基本信息。
+W3C这样描述每个元素都具有三维空间位置，除了水平和垂直位置外，还能在 “Z轴” 上层层相叠、排列。元素在 “Z轴”">
+<meta property="og:image" content="http://demo.doyoe.com/css/z-index/images/create-stacking-context.png">
+<meta property="og:image" content="http://demo.doyoe.com/css/z-index/images/create-stacking-context-ie6-7-bug.png">
+<meta property="og:image" content="http://demo.doyoe.com/css/z-index/images/back-top.png">
+<meta property="og:updated_time" content="2016-03-29T02:40:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你需要了解的z-index世界">
+<meta name="twitter:description" content="z-index的重要性在我看来，z-index 给了我们日常工作中以极大的帮助，我们用它来定义元素的层叠级别（stack level）。受益于它，你能做Popup, DropDown, Tips, 图文替换等等。
+在开始本篇之前，或许我们要先了解一下关于z-index的基本信息。
+W3C这样描述每个元素都具有三维空间位置，除了水平和垂直位置外，还能在 “Z轴” 上层层相叠、排列。元素在 “Z轴”">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> 你需要了解的z-index世界 | CSS探索之旅 </title>
+<script type="text/javascript" async="" src="./你需要了解的z-index世界 _ CSS探索之旅_files/embed.js" charset="UTF-8"></script><style type="text/css">.fancybox-margin{margin-right:17px;}</style><link type="text/css" rel="stylesheet" href="./你需要了解的z-index世界 _ CSS探索之旅_files/embed.default.css"></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans" class="" style="padding-right: 320px;">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i class="" style="transform: translateX(100%);"></i></span>
+  <a href="http://blog.doyoe.com/" class="brand" rel="start" style="opacity: 1;">
+      <span class="logo" style="opacity: 1; top: 0px;">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title" style="opacity: 1; top: 0px;">CSS探索之旅</span>
+  </a>
+  <span class="logo-line-after"><i class="" style="transform: translateX(-100%);"></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://blog.doyoe.com/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://blog.doyoe.com/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://blog.doyoe.com/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://blog.doyoe.com/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about" style="opacity: 1; transform: translateY(0px);">
+          <a href="http://blog.doyoe.com/about/" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article" style="opacity: 1; display: block; transform: translateY(0px);">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              你需要了解的z-index世界
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2014-01-21T11:15:00+08:00" content="2014-01-21">
+            2014-01-21
+          </time>
+        </span>
+
+        
+        <span class="post-time">
+          &nbsp; | &nbsp; 杜瑶
+        </span>
+        
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                <a href="http://blog.doyoe.com/categories/CSS/" itemprop="url" rel="index">
+                  <span itemprop="name">CSS</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/21/css/你需要了解的z-index世界/" itemprop="commentsCount">15条评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="z-index的重要性">z-index的重要性</h2><p>在我看来，<code>z-index</code> 给了我们日常工作中以极大的帮助，我们用它来定义元素的层叠级别（stack level）。受益于它，你能做Popup, DropDown, Tips, 图文替换等等。</p>
+<p>在开始本篇之前，或许我们要先了解一下关于z-index的基本信息。</p>
+<h2 id="W3C这样描述">W3C这样描述</h2><p>每个元素都具有三维空间位置，除了水平和垂直位置外，还能在 “Z轴” 上层层相叠、排列。元素在 “Z轴” 方向上的呈现顺序，由层叠上下文和层叠级别决定。</p>
+<p>在文档中，每个元素仅属于一个层叠上下文。元素的层叠级别为整型，它描述了在相同层叠上下文中元素在 “Z轴” 上的呈现顺序。</p>
+<p>同一层叠上下文中，层叠级别大的显示在上，层叠级别小的显示在下，相同层叠级别时，遵循后来居上的原则，即其在HTML文档中的顺序。</p>
+<p>不同层叠上下文中，元素呈现顺序以父级层叠上下文的层叠级别来决定呈现的先后顺序，与自身的层叠级别无关。</p>
+<a id="more"></a>
+<h2 id="z-index语法和应用">z-index语法和应用</h2><pre><code>z-<span class="built_in">index</span>: auto | &lt;<span class="type">integer</span>&gt;
+</code></pre><p><code>z-index</code> 接受的属性值为：关键字auto和整数，整数可以是负值（Firefox2.0及之前不支持负值）。</p>
+<p>需要注意的是 <code>z-index</code> 虽然很给力，却只能应用于定位元素（即设置了 <code>position</code> 属性为非 <code>static</code> 值），其它情况下，<code>z-index</code> 将被忽略。</p>
+<p>对于定位元素而言，<code>z-index</code> 意味着：</p>
+<ul>
+<li>确定该元素在当前层叠上下文中的层叠级别。</li>
+<li>确定该元素是否创建了一个新的局部层叠上下文。</li>
+</ul>
+<h2 id="创建层叠上下文">创建层叠上下文</h2><p>在规范中说明：当某个元素的 <code>z-index</code> 未显式定义或者被指定为 <code>auto</code> 时，该元素不会产生新的局部层叠上下文。也就是说它可以和兄弟，祖先，后辈元素处在同一个堆叠上下文中，它们被放在一起比较层叠级别，儿子可以盖住祖先，父亲也可以盖住儿子，儿子甚至可以越过祖先，盖住祖先的兄弟，在层叠上下文中，它们是并级的关系。来看这样一个例子 <code>DEMO1</code>: <a href="http://demo.doyoe.com/css/z-index/stacking-context.htm" target="_blank" rel="external">z-index与创建层叠上下文</a></p>
+<p>值得高兴的是，大部分浏览器都实现了这个特性；不过在IE6/7下，不论 <code>z-index</code> 值是否被显式定义，都将产生新的局部层叠上下文，也就是说子元素不可以越过是定位元素的父亲，子元素都处在新创建的局部层叠上下文中，只能在内部进行层叠级别的比较。</p>
+<h2 id="深入浅出">深入浅出</h2><p>某区域内有个浮层提示或者下拉菜单，于是可能需要遮住该区域之下的区域。</p>
+<h3 id="HTML">HTML</h3><pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"a"</span>&gt;
+    ...
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips"</span>&gt;我是一个简陋的浮层提示&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"b"</span>&gt;
+    ...
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h3 id="CSS">CSS</h3><pre><code><span class="class">.a</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;}</span>
+<span class="class">.tips</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">z-index</span>:<span class="value"><span class="number">99</span></span></span>;}</span>
+</code></pre><p>如上HTML/CSS代码，很显然，浮层 <code>tips</code> 将可以覆盖在其父级元素 <code>a</code> 的兄弟元素 <code>b</code> 之上。</p>
+<p>于是你的意图得到实现，效果如下 <code>图一</code>：</p>
+<p><a href="./你需要了解的z-index世界 _ CSS探索之旅_files/create-stacking-context.png" class="fancybox" title="create stacking context"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/create-stacking-context.png" alt="create stacking context"><div class="pic-title"><span>create stacking context</span></div></a>（图一）</p>
+<p>这是具体的实现例子  <code>DEMO2</code>: <a href="http://demo.doyoe.com/css/z-index/create-stacking-context-normal.htm" target="_blank" rel="external">z-index实现元素层叠</a>。</p>
+<p>不过很显然，从 <code>DEMO2</code> 来看，你依然无法准确的判断出在各浏览器下，<code>tips</code> 能盖住 <code>b</code> 是因为其父级的定位还是本身的定位。</p>
+<p>但是我们可以做这样一个测试，我们让 <code>b</code> 也拥有定位，Code如下：</p>
+<h3 id="CSS-1">CSS</h3><pre><code><span class="class">.a</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;}</span>
+<span class="class">.tips</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">z-index</span>:<span class="value"><span class="number">99</span></span></span>;}</span>
+<span class="class">.b</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;}</span>
+</code></pre><p>这段代码run完之后，就比较纠结了，你能得到的效果将会如下 <code>图二</code>：</p>
+<p><a href="./你需要了解的z-index世界 _ CSS探索之旅_files/create-stacking-context-ie6-7-bug.png" class="fancybox" title="IE6/7 create stacking context bug"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/create-stacking-context-ie6-7-bug.png" alt="IE6/7 create stacking context bug"><div class="pic-title"><span>IE6/7 create stacking context bug</span></div></a>（图二）</p>
+<p>当然要给出具体实现 <code>DEMO3</code>: <a href="http://demo.doyoe.com/css/z-index/create-stacking-context-ie6-7-bug.htm" target="_blank" rel="external">验证创建局部层叠上下文</a>。</p>
+<p>首先，我们来解读一下这个例子：因为 <code>a</code> 和 <code>b</code> 都是 <code>relative</code> 且没有定义 <code>z-index</code> （等同于z-index:auto），根据后来居上的原则，此时 <code>b</code> 的层叠级别是要高于 <code>a</code> 的，意思就是说 <code>a</code> 是无法遮住 <code>b</code> 的。不过从 <code>DEMO3</code> 中，我们看到 <code>a</code> 的子元素 <code>tips</code> 遮住了 <code>b</code>，这就表示 <code>tips</code> 能越过它，所以可以判断出 <code>a</code> 没有创建新的局部层叠上下文。很明显，这是完全吻合标准对此的定义。</p>
+<p>不过这是在非IE6/7之下结果。在IE6/7下，我们看到 <code>tips</code> 并没能遮住 <code>b</code>，也就是说 <code>tips</code> 无法越过父级，因为 <code>a</code> 创建了新的局部层叠上下文，而 <code>a</code> 的层叠级别又比 <code>b</code> 低，所以 <code>tips</code> 无法遮住 <code>b</code>，这也就是在IE6/7下常出现覆盖Bug的根源。</p>
+<p>结合 <code>DEMO2</code> 和 <code>DEMO3</code>，你能很肯定的得出以下结论：</p>
+<ul>
+<li>当定位元素没有显式定义z-index值时，不会创建新的局部层叠上下文</li>
+<li>子元素有可能和祖先的兄弟或者祖先兄弟的子元素处在同一个层叠上下文中</li>
+</ul>
+<p>在实际工作中，有些情况可能是你没注意或者已然存在的。比如你事先可能并不知道 <code>b</code> 也是定位元素，或者由于某些原因，你需要将其设置为定位元素，于是可能出现各种兼容问题。如果你不了解 <code>z-index</code> 是如何创建局部层叠上下文，且又没注意到IE6/7的实现错误，那么处理起这样的问题将会让你深陷泥潭。</p>
+<p>所以在实际的场景中，如果是为了相互覆盖而设置为定位，那么显式的定义 <code>z-index</code> 值，将可避免出现创建新局部层叠上下文差异。</p>
+<p>如果需要越过祖先和其它区块内部元素进行相互层叠，那么考虑IE6/7的情况，也应该尽量避免给父级元素进定位。</p>
+<h2 id="opacity与层叠上下文">opacity与层叠上下文</h2><p>我们知道 <code>opacity</code> 属性是用来设置元素不透明度的。但可能知道 <code>opacity</code> 和层叠上下文有关的不多，不过没关系，这里我们简单聊聊这个话题，有两点必须注意：</p>
+<ul>
+<li>当opacity值小于1时，该元素会创建新的局部层叠上下文，也就是说它可以和定位元素进行层叠层别比较</li>
+<li>当opacity值小于1时，该元素拥有层叠级别且相当于z-index:0或auto，但不能定义 z-index ，除非本身是定位元素</li>
+</ul>
+<p>简单来说，当一个普通的元素定义了 <code>opacity</code> 的值小于1时（比如 opacity:.5），那么该元素的层叠级别将会高于普通元素，其效果类同于定位元素没有显式定义 <code>z-index</code> 的情况，唯一的区别是没有显式定义 <code>z-index</code> 的定位元素不会产生局部层叠上下文，而定义了 <code>opacity</code> 值小于1的元素会产生新的局部层叠上下文。</p>
+<h3 id="opacity猜想">opacity猜想</h3><p>假定我们有 <code>a</code>, <code>b</code>, <code>c</code> 三个元素，它们相互层层覆盖在一起，如果这时将 <code>a</code> 元素定义为 <code>opacity:.8</code>，你知道结果会怎样吗？</p>
+<h3 id="HTML-1">HTML</h3><pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"a"</span>&gt;a&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"b"</span>&gt;b&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"c"</span>&gt;c&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h3 id="CSS-2">CSS</h3><pre><code><span class="class">.a</span>,<span class="class">.b</span>,<span class="class">.c</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;}</span>
+<span class="class">.a</span><span class="rules">{<span class="rule"><span class="attribute">opacity</span>:<span class="value">.<span class="number">8</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#999</span></span></span>;}</span>
+<span class="class">.b</span><span class="rules">{<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">30px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#090</span></span></span>;}</span>
+<span class="class">.c</span><span class="rules">{<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">60px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#f00</span></span></span>;}</span>
+</code></pre><p>如果你看明白了我对于 <code>opacity</code> 与层叠上下文的描述，相信你可以猜到结果，是的，<code>a</code> 元素将会覆盖 <code>b</code> 和 <code>c</code> 元素，虽然它在HTML文档中出现在 <code>b</code> 和 <code>c</code> 之前，且不是定位元素。</p>
+<p>必须看看具体的示例不是么？<code>DEMO4</code>: <a href="http://demo.doyoe.com/css/z-index/create-stacking-context-by-opacity.htm" target="_blank" rel="external">opacity与局部层叠上下文猜想</a>。</p>
+<p>如果我们将 <code>b</code> 和 <code>c</code> 设置为定位元素，又将会如何呢？</p>
+<h3 id="CSS-3">CSS</h3><pre><code><span class="class">.a</span>,<span class="class">.b</span>,<span class="class">.c</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;}</span>
+<span class="class">.a</span><span class="rules">{<span class="rule"><span class="attribute">opacity</span>:<span class="value">.<span class="number">8</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#999</span></span></span>;}</span>
+<span class="class">.b</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">30px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#090</span></span></span>;}</span>
+<span class="class">.c</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">60px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#f00</span></span></span>;}</span>
+</code></pre><p>不急，我们可以接着看示例 <code>DEMO5</code>: <a href="http://demo.doyoe.com/css/z-index/create-stacking-context-by-opacity-2.htm" target="_blank" rel="external">opacity与局部层叠上下文猜想2</a>。</p>
+<p>从 <code>DEMO4</code> 和 <code>DEMO5</code> 两例，我们可以验证：当一个普通元素定义了 <code>opacity</code> 为小于1的值时，该元素将像定位元素一样拥有层叠级别，可以覆盖普通元素，并且其层叠级别与未显式定义 <code>z-index</code> 的定位元素一样。</p>
+<h3 id="opacity创建局部层叠上下文">opacity创建局部层叠上下文</h3><p>与未显式定义 <code>z-index</code> 的定位元素唯一不同的是 <code>opacity</code> 值小于1的元素会创建局部层叠上下文。</p>
+<p>创建局部层叠上下文意味着什么，前文我们已经详述过。所以不再赘述，这里只给一个示例用以验证该特性。先奉上代码：</p>
+<h3 id="HTML-2">HTML</h3><pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"a"</span>&gt;a
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"d"</span>&gt;d&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"b"</span>&gt;b&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"c"</span>&gt;c&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h3 id="CSS-4">CSS</h3><pre><code><span class="class">.a</span>,<span class="class">.b</span>,<span class="class">.c</span>,<span class="class">.d</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;}</span>
+<span class="class">.a</span><span class="rules">{<span class="rule"><span class="attribute">opacity</span>:<span class="value">.<span class="number">8</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#999</span></span></span>;}</span>
+<span class="class">.b</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">30px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#090</span></span></span>;}</span>
+<span class="class">.c</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value">-<span class="number">70px</span> <span class="number">0</span> <span class="number">0</span> <span class="number">60px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#f00</span></span></span>;}</span>
+<span class="class">.d</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">z-index</span>:<span class="value"><span class="number">99</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">50px</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#090</span></span></span>;}</span>
+</code></pre><p>你可以先看看具体结果 <code>DEMO6</code>: <a href="http://demo.doyoe.com/css/z-index/create-stacking-context-by-opacity-3.htm" target="_blank" rel="external">opacity创建新局部层叠上下文</a>。</p>
+<p>你会发现虽然 <code>a</code> 的子元素 <code>d</code> 将 <code>z-index</code> 定义为99，但 <code>d</code> 仍然无法遮住 <code>b</code> 和 <code>c</code> 元素，这是因为 <code>a</code> 创建了新的局部层叠上下文，<code>d</code> 元素无法超越父级。</p>
+<p>需要注意的是，此时就算 <code>a</code> 元素变成了定位元素，也不能改变其会创建新局部层叠上下文的命运，因为他设置了 <code>opacity:.8</code>。</p>
+<p>按照我们前文所说，如果 <code>a</code> 没有定义 <code>opacity:.8</code> ，但却像 <code>b</code> 和 <code>c</code> 元素一样设置了 <code>relative</code>，那么其子元素 <code>d</code> 将可以覆盖 <code>b</code> 和 <code>c</code>，至于这个例子就不再奉上了，大家随便写个测试一下即可。</p>
+<h2 id="图文替换">图文替换</h2><p>上述都是理论性的东西，相对枯燥，来个实际点的应用场景。</p>
+<p>我们聊聊图文替换的事，相对于使用较广的方案如：缩进正/负值（正/负text-indent）、超小字体、margin溢出、padding溢出、line-height溢出、透明字体、display:none、visibility:hidden等方案而言，使用 <code>z-index</code> 负值的方案，有一些明显的优势：</p>
+<ul>
+<li>无需考虑是否会有性能问题类同使用上述列举中的前几种方案（比如使用负缩进值-9999px，虽然此时文本被移到屏幕之外或者被裁减，但仍然会绘制一个宽9999px的盒子）；</li>
+<li>没有像类似超小字体和透明字体一样的方案会需要一些额外的hack；</li>
+<li>不像display:none方案那样有SEO欺骗嫌疑；</li>
+<li>当图片加载失败时，可以显示文字；</li>
+<li>and etc…</li>
+</ul>
+<p>先来看看一个图文替换的例子 <code>DEMO7</code>: <a href="http://demo.doyoe.com/css/z-index/back-top.htm" target="_blank" rel="external">图文替换实例</a>。</p>
+<p>在不同的网络环境下，它的表现如下 <code>图三</code>：</p>
+<p><a href="./你需要了解的z-index世界 _ CSS探索之旅_files/back-top.png" class="fancybox" title="back top"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/back-top.png" alt="back top"><div class="pic-title"><span>back top</span></div></a>（图三）</p>
+<p>具体的Code很简单：</p>
+<h3 id="HTML-3">HTML</h3><pre><code><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#top"</span> <span class="attribute">title</span>=<span class="value">"回到顶部"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>TOP▲<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+</code></pre><h3 id="CSS-5">CSS</h3><pre><code><span class="tag">a</span>,<span class="tag">a</span> <span class="tag">span</span><span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value">inline-block</span></span>;<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">38px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">38px</span></span></span>;}</span>
+<span class="tag">a</span><span class="rules">{<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">url</span>(images/ico.png) no-repeat</span></span>;}</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">hover{background-position:<span class="number">0</span> -<span class="number">39px</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fff</span></span></span>;}
+<span class="tag">a</span> <span class="tag">span</span><span class="rules">{<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;<span class="rule"><span class="attribute">z-index</span>:<span class="value">-<span class="number">1</span></span></span>;<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#eee</span></span></span>;}</span>
+<span class="rule"><span class="attribute">a</span>:<span class="value">hover span{background-color:<span class="hexcolor">#999</span></span></span>;}
+</code></pre><p>你会发现我们将 span 设置为了 <code>z-index:-1</code>，此时它的层叠级别将比正常的元素还要低，所以它可以被其父元素超链接a盖住，从而在图片正常载入时显示父元素的背景图，在网络环境不好图片载入有问题时，显示自身。</p>
+<p>很多时候，要实现一个需求可能有无数种解决方案，能够适应情况越多的方案毫无疑问会脱颖而出，这就要求我们可以去更多的思考，而不是更多的拷贝。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+
+      
+        <div class="post-tags">
+          
+            <a href="http://blog.doyoe.com/tags/w3c/" rel="tag">#w3c</a>
+          
+            <a href="http://blog.doyoe.com/tags/z-index/" rel="tag">#z-index</a>
+          
+            <a href="http://blog.doyoe.com/tags/%E5%B1%82%E5%8F%A0%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="tag">#层叠上下文</a>
+          
+        </div>
+      
+
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="http://blog.doyoe.com/2015/03/09/css/%E8%A7%86%E8%A7%89%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E6%A1%86/" rel="prev">视觉格式化模型中的各种框</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="http://blog.doyoe.com/2013/12/31/css/margin%E7%B3%BB%E5%88%97%E4%B9%8B%E5%B8%83%E5%B1%80%E7%AF%87/" rel="next">margin系列之布局篇</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2014/01/21/css/你需要了解的z-index世界/" data-title="你需要了解的z-index世界" data-url="http://blog.doyoe.com/2014/01/21/css/你需要了解的z-index世界/" id="ds-thread">
+              <div id="ds-reset"><div class="ds-meta" style="display: none;"><a href="javascript:void(0)" class="ds-like-thread-button ds-rounded"><span class="ds-icon ds-icon-heart"></span> <span class="ds-thread-like-text">喜欢</span><span class="ds-thread-cancel-like">取消喜欢</span></a><span class="ds-like-panel"></span></div><div class="ds-comments-info"><div class="ds-sort"><a class="ds-order-desc">最新</a><a class="ds-order-asc ds-current">最早</a><a class="ds-order-hot">最热</a></div><ul class="ds-comments-tabs"><li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);"><span class="ds-highlight">17</span>条评论</a></li>  </ul></div><ul class="ds-comments"><li class="ds-post" data-post-id="1397639807600951631"><div class="ds-post-self" data-post-id="1397639807600951631" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="cc"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">cc</span></div><p>不错，很深入</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-01-27T15:41:54+08:00" title="2015年1月27日 下午3:41:54">2015年1月27日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951634"><div class="ds-post-self" data-post-id="1397639807600951634" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="10592499"><a rel="nofollow author" target="_blank" href="http://www.itkaoyan.cn/" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=10592499&#39;;" title="JustNode"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/1" alt="JustNode"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://www.itkaoyan.cn/" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=10592499&#39;;" rel="nofollow" target="_blank" data-user-id="10592499">JustNode</a></div><p>说的好。做技术的总要多思考才行</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-02-04T16:42:58+08:00" title="2015年2月4日 下午4:42:58">2015年2月4日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951636"><div class="ds-post-self" data-post-id="1397639807600951636" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="山东济南网友"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">山东济南网友</span></div><p> <img src="./你需要了解的z-index世界 _ CSS探索之旅_files/good_org.gif" alt="[good]" title="[good]" class="ds-smiley"> </p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-03-04T10:02:51+08:00" title="2015年3月4日 上午10:02:51">2015年3月4日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951637"><div class="ds-post-self" data-post-id="1397639807600951637" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="510491"><a rel="nofollow author" target="_blank" href="http://weibo.com/jandou" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=510491&#39;;" title="煎豆网"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/1(1)" alt="煎豆网"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/jandou" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=510491&#39;;" rel="nofollow" target="_blank" data-user-id="510491">煎豆网</a></div><p>复杂布局必须吧z-index搞懂才行啊，对了，杜老师你用的是什么Node主机？</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-03-10T10:38:21+08:00" title="2015年3月10日 上午10:38:21">2015年3月10日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951639"><div class="ds-post-self" data-post-id="1397639807600951639" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="10489127"><a rel="nofollow author" target="_blank" href="http://t.qq.com/cai123529867" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=10489127&#39;;" title="心勿"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/100" alt="心勿"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/cai123529867" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=10489127&#39;;" rel="nofollow" target="_blank" data-user-id="10489127">心勿</a></div><p>第一次关注楼主的博客，之后的前端之旅得多向楼主学习了</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-04-19T22:24:02+08:00" title="2015年4月19日 下午10:24:02">2015年4月19日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951652"><div class="ds-post-self" data-post-id="1397639807600951652" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="11808682"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/100(1)" alt="下午茶"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-user-id="11808682" data-qqt-account="">下午茶</span></div><p>透明度不为1时，层级比正常的文档流中的层级要高，不兼容IE6-8。就像没有产生层叠上下文一样。透明度的第二个例子楼主在IE中与在chrome下表现依然有很大的差距的。这个不知为何？</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-15T15:08:00+08:00" title="2015年5月15日 下午3:08:00">2015年5月15日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951653"><div class="ds-post-self" data-post-id="1397639807600951653" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="11808682"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/100(1)" alt="下午茶"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-user-id="11808682" data-qqt-account="">下午茶</span></div><p>楼主有兼容方面的测试结论就更好了。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-05-15T15:10:05+08:00" title="2015年5月15日 下午3:10:05">2015年5月15日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951662"><div class="ds-post-self" data-post-id="1397639807600951662" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="dongtianee"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">dongtianee</span></div><p>谢谢。你是个伟大的人。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-06-02T17:50:37+08:00" title="2015年6月2日 下午5:50:37">2015年6月2日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951678"><div class="ds-post-self" data-post-id="1397639807600951678" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="cyl"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">cyl</span></div><p>结合这篇文章看，就齐活了http://w3help.org/zh-cn/kb/013/</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-09T22:11:26+08:00" title="2015年7月9日 下午10:11:26">2015年7月9日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951682"><div class="ds-post-self" data-post-id="1397639807600951682" data-thread-id="1397639807600951336" data-root-id="1397639807600951652" data-source="duoshuo"><div class="ds-avatar" data-user-id="4367534"><a rel="nofollow author" target="_blank" href="http://weibo.com/doyoe" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=4367534&#39;;" title="doyoe"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/1(2)" alt="doyoe"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/doyoe" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=4367534&#39;;" rel="nofollow" target="_blank" data-user-id="4367534">doyoe</a></div><p><a class="ds-comment-context" data-post-id="1397639807600951682" data-parent-id="1397639807600951652">回复 下午茶: </a>IE6-8不支持opacity属性</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-07-22T13:57:21+08:00" title="2015年7月22日 下午1:57:21">2015年7月22日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951685"><div class="ds-post-self" data-post-id="1397639807600951685" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="13077242"><a rel="nofollow author" target="_blank" href="http://t.qq.com/Twangkun126" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=13077242&#39;;" title="昂里"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/50" alt="昂里"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://t.qq.com/Twangkun126" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=13077242&#39;;" rel="nofollow" target="_blank" data-user-id="13077242">昂里</a></div><p>受教。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-08-07T12:17:27+08:00" title="2015年8月7日 下午12:17:27">2015年8月7日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951706"><div class="ds-post-self" data-post-id="1397639807600951706" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="无语"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">无语</span></div><p>博主都不更新l ?</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-09-03T21:32:15+08:00" title="2015年9月3日 下午9:32:15">2015年9月3日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="1397639807600951707"><div class="ds-post-self" data-post-id="1397639807600951707" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="无语"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">无语</span></div><p>博主这篇文章写的是给有堆叠上下文的基础的人看的吧。也就是说必须得了解工作原理。</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-09-04T09:02:09+08:00" title="2015年9月4日 上午9:02:09">2015年9月4日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6227665065345024770"><div class="ds-post-self" data-post-id="6227665065345024770" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="11562804"><a rel="nofollow author" target="_blank" href="http://weibo.com/3235949794" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=11562804&#39;;" title="杨琼璞"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/1(3)" alt="杨琼璞"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://weibo.com/3235949794" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=11562804&#39;;" rel="nofollow" target="_blank" data-user-id="11562804">杨琼璞</a></div><p>为楼主这深入浅出以及严谨的姿态，＋1；</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2015-12-13T15:21:05+08:00" title="2015年12月13日 下午3:21:05">2015年12月13日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6237583803259290369"><div class="ds-post-self" data-post-id="6237583803259290369" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar" data-user-id="6234486547723322114"><a rel="nofollow author" target="_blank" href="http://1024xyz.com/?k_sm" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=6234486547723322114&#39;;" title="淑梅"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/209344.jpg" alt="淑梅"></a></div><div class="ds-comment-body"><div class="ds-comment-header"><a class="ds-user-name ds-highlight" data-qqt-account="" href="http://1024xyz.com/?k_sm" onclick="this.href=&#39;http://doyoe.duoshuo.com/user-url/?user_id=6234486547723322114&#39;;" rel="nofollow" target="_blank" data-user-id="6234486547723322114">淑梅</a></div><p>很久没来了，过来看看</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-01-09T08:50:51+08:00" title="2016年1月9日 上午8:50:51">1月9日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6290012133883118337"><div class="ds-post-self" data-post-id="6290012133883118337" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="江西老表"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">江西老表</span></div><p>作为江西老表，我只能说“恰噶！”</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-05-29T15:39:33+08:00" title="2016年5月29日 下午3:39:33">5月29日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li><li class="ds-post" data-post-id="6300082359857316610"><div class="ds-post-self" data-post-id="6300082359857316610" data-thread-id="1397639807600951336" data-root-id="0" data-source="duoshuo"><div class="ds-avatar"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt="有意思"></div><div class="ds-comment-body"><div class="ds-comment-header"><span class="ds-user-name" data-qqt-account="">有意思</span></div><p>呃</p><div class="ds-comment-footer ds-comment-actions"><span class="ds-time" datetime="2016-06-25T18:57:10+08:00" title="2016年6月25日 下午6:57:10">6月25日</span><a class="ds-post-reply" href="javascript:void(0);"><span class="ds-icon ds-icon-reply"></span>回复</a><a class="ds-post-likes" href="javascript:void(0);"><span class="ds-icon ds-icon-like"></span>顶</a><a class="ds-post-repost" href="javascript:void(0);"><span class="ds-icon ds-icon-share"></span>转发</a><a class="ds-post-report" href="javascript:void(0);"><span class="ds-icon ds-icon-report"></span>举报</a></div></div></div></li></ul><div class="ds-paginator" style="display: none;"><div class="ds-border"></div><a data-page="1" href="javascript:void(0);" class="ds-current">1</a></div><a name="respond"></a><div class="ds-login-buttons"><p>社交帐号登录:</p><div class="ds-social-links"><ul class="ds-service-list"><li><a href="http://doyoe.duoshuo.com/login/weixin/" rel="nofollow" class="ds-service-link ds-weixin">微信</a></li><li><a href="http://doyoe.duoshuo.com/login/weibo/" rel="nofollow" class="ds-service-link ds-weibo">微博</a></li><li><a href="http://doyoe.duoshuo.com/login/qq/" rel="nofollow" class="ds-service-link ds-qq">QQ</a></li><li><a href="http://doyoe.duoshuo.com/login/renren/" rel="nofollow" class="ds-service-link ds-renren">人人</a></li><li><a class="ds-more-services" href="javascript:void(0)">更多»</a></li></ul><ul class="ds-service-list ds-additional-services"><li><a href="http://doyoe.duoshuo.com/login/douban/" rel="nofollow" class="ds-service-link ds-douban">豆瓣</a></li><li><a href="http://doyoe.duoshuo.com/login/kaixin/" rel="nofollow" class="ds-service-link ds-kaixin">开心</a></li><li><a href="http://doyoe.duoshuo.com/login/baidu/" rel="nofollow" class="ds-service-link ds-baidu">百度</a></li><li><a href="http://doyoe.duoshuo.com/login/google/" rel="nofollow" class="ds-service-link ds-google">谷歌</a></li></ul></div></div><div class="ds-replybox"><a class="ds-avatar" href="javascript:void(0);" onclick="return false"><img src="./你需要了解的z-index世界 _ CSS探索之旅_files/noavatar_default.png" alt=""></a><form method="post"><input type="hidden" name="thread_id" value="1397639807600951336">
+<input type="hidden" name="parent_id" value="">
+<input type="hidden" name="nonce" value="573583ea26dbd"><div class="ds-textarea-wrapper ds-rounded-top"><textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea><pre class="ds-hidden-text"></pre></div><div class="ds-post-toolbar"><div class="ds-post-options ds-gradient-bg"><span class="ds-sync"></span></div><button class="ds-post-button" type="submit">发布</button><div class="ds-toolbar-buttons"><a class="ds-toolbar-button ds-add-emote" title="插入表情"></a></div></div></form></div><p class="ds-powered-by"><a href="http://duoshuo.com/" target="_blank" rel="nofollow">CSS探索之旅正在使用多说</a></p></div></div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first" style="top: 5px; transform: rotateZ(-45deg); width: 100%;"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle" style="opacity: 0;"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last" style="top: -5px; transform: rotateZ(45deg); width: 100%;"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar sidebar-active" style="display: block; width: 320px;">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="opacity: 1; display: block; transform: translateX(0px);">
+          <img class="site-author-image" src="./你需要了解的z-index世界 _ CSS探索之旅_files/avatar.jpg" alt="CSS探索之旅" width="200" itemprop="image">
+          <p class="site-author-name" itemprop="name">CSS探索之旅</p>
+        </div>
+        <nav class="site-state motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          <div class="site-state-item site-state-posts">
+            <a href="http://blog.doyoe.com/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="http://blog.doyoe.com/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="http://blog.doyoe.com/tags">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        <div class="links-of-social motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          
+            
+            <a href="https://github.com/doyoe/doyoe.github.io" class="links-of-social-item github" target="_blank">github</a>
+            
+            <a href="http://weibo.com/doyoe" class="links-of-social-item weibo" target="_blank">weibo</a>
+            
+            <a href="http://blog.doyoe.com/atom.xml" class="links-of-social-item rss" target="_blank">rss</a>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          
+        </div>
+
+        <div class="links-of-author motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+            <p class="site-author-name">订阅号</p>
+            <p style="padding:20px 75px">
+                <img src="./你需要了解的z-index世界 _ CSS探索之旅_files/wechat.jpg" width="150px" style="border-radius:10px">
+            </p>
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active motion-element" style="opacity: 1; display: block; transform: translateX(0px);">
+          <div class="post-toc-indicator-top post-toc-indicator" style="opacity: 0;"></div>
+          <div class="post-toc" style="height: 614px;">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#z-index的重要性"><span class="nav-number">1.</span> <span class="nav-text">z-index的重要性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#W3C这样描述"><span class="nav-number">2.</span> <span class="nav-text">W3C这样描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#z-index语法和应用"><span class="nav-number">3.</span> <span class="nav-text">z-index语法和应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#创建层叠上下文"><span class="nav-number">4.</span> <span class="nav-text">创建层叠上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#深入浅出"><span class="nav-number">5.</span> <span class="nav-text">深入浅出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#HTML"><span class="nav-number">5.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS"><span class="nav-number">5.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS-1"><span class="nav-number">5.3.</span> <span class="nav-text">CSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#opacity与层叠上下文"><span class="nav-number">6.</span> <span class="nav-text">opacity与层叠上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#opacity猜想"><span class="nav-number">6.1.</span> <span class="nav-text">opacity猜想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#HTML-1"><span class="nav-number">6.2.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS-2"><span class="nav-number">6.3.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS-3"><span class="nav-number">6.4.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#opacity创建局部层叠上下文"><span class="nav-number">6.5.</span> <span class="nav-text">opacity创建局部层叠上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#HTML-2"><span class="nav-number">6.6.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS-4"><span class="nav-number">6.7.</span> <span class="nav-text">CSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#图文替换"><span class="nav-number">7.</span> <span class="nav-text">图文替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#HTML-3"><span class="nav-number">7.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="http://blog.doyoe.com/2014/01/21/css/%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84z-index%E4%B8%96%E7%95%8C/?plg_nld=1&plg_uin=1&plg_nld=1&plg_usr=1&plg_vkey=1&plg_dev=1#CSS-5"><span class="nav-number">7.2.</span> <span class="nav-text">CSS</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator" style="opacity: 0;"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  © &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CSS探索之旅</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io/">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/index.js"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"doyoe"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/fancy-box.js"></script>
+
+
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/helpers.js"></script>
+  
+
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/velocity.min.js"></script>
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/motion_global.js" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/nav-toggle.js"></script>
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/fastclick.min.js"></script>
+
+  
+  
+<script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/bootstrap.scrollspy.js" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="./你需要了解的z-index世界 _ CSS探索之旅_files/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+
+
+</body></html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<h1>盒模型</h1>
+<h1>一、 盒模型的概念和组成</h1>
+<h2>盒模型是css布局的基石，它规定了网页元素如何显示以及元素间相互关系。css定义所有的元素都可以拥有像盒子一样的外形和平面空间，即都包含边框、边界、补白、内容区，这就是盒模型。</h2>
+<p><img src="box1.jpg" /></p>
+<h1>&nbsp;</h1>
+<h1>1） padding的使用方法</h1>
+<h2> 填充：padding,在设定页面中一个元素内容到元素的边缘(边框) 之间的距离。 也称补白。 </h2>
+<h1>用法：</h1>
+<h1>1）用来调整内容在容器中的位置关系</h1>
+<h1>2）用来调整子元素在父元素中的位置关系。</h1>
+<h1>注：padding属性需要添加在父元素上。</h1>
+<p>&nbsp;</p>
+<h1>3）padding值是额外加在元素原有大小之上的，如想保证元素大小不变，需从元素宽或高上减掉后添加的padding属性。</h1>
+<h1>&nbsp;</h1>
+<h1>&nbsp;</h1>
+<h1>&nbsp;</h1>
+<h1><BR>
+  &nbsp;属性值的4种方式：</h1>
+<h2>&nbsp;说明：可单独设置一方向填充，如：padding-top:10px; padding-right:10px;padding-bottom:10px;padding-left:10px;</h2>
+<h2>&nbsp;&nbsp;四个值：上  &nbsp;&nbsp;右&nbsp;&nbsp;  下  &nbsp;&nbsp;左 {padding:10px &nbsp;&nbsp;20px &nbsp;&nbsp;30px&nbsp;&nbsp;&nbsp; 40px;}</h2>
+<h2>&nbsp;&nbsp;三个值：上  &nbsp;&nbsp;&nbsp;左右&nbsp;&nbsp;&nbsp;  下  {padding:10px &nbsp;&nbsp;20px &nbsp;&nbsp;30px&nbsp;;}</h2>
+<h2>&nbsp;&nbsp;二个值：上下  &nbsp;&nbsp;&nbsp;左右  {padding:10px &nbsp;&nbsp;20px &nbsp;;}</h2>
+<h2> &nbsp;&nbsp;一个值：四个方向
+  padding:2px;/*定义元素四周填充为2px*/</h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>3） border的使用方法</h1>
+<h1>&nbsp;&nbsp;border:边框宽度  边框风格  边框颜色;</h1>
+<h1>&nbsp;&nbsp;例如：border:5px solid #f00</h1>
+<p>&nbsp;</p>
+<h2> 边框：border,网页中很多修饰性线条都是由边框来实现的。<BR>
+  边框宽度：border-width:<BR>
+  边框颜色：border-color:<BR>
+  边框样式：border-style:solid(实线)/dashed(虚线)dotted(点划线)<BR>
+可单独设置一方向边框，</h2>
+<h2>如：border-bottom:边框宽度 边框风格 边框颜色;底边框</h2>
+<h2>border-left:边框宽度 边框风格 边框颜色;左边框</h2>
+<h2>border-right:边框宽度 边框风格 边框颜色;右边框</h2>
+<h2>border-top:边框宽度 边框风格 边框颜色;上边框<BR>
+</h2>
+<h2><BR>
+</h2>
+<h1>4） margin的使用方法</h1>
+<h2>&nbsp;&nbsp;边界：margin,在元素外边的空白区域，被称为边距。</h2>
+<h2> &nbsp;&nbsp;属性值的4种方式： <br>
+  &nbsp;&nbsp;四个值：上  右  下  左</h2>
+<h2>&nbsp;&nbsp;三个值：上  左右  下</h2>
+<h2>&nbsp;&nbsp;二个值：上下  左右</h2>
+<h2>&nbsp;&nbsp;一个值：四个方向
+  
+  margin:2px;/*定义元素四边边界为2px*/</h2>
+<h2><BR>
+  &nbsp;margin:2px 4px;/*定义元素上下边界为2px，左右边界为4px/<BR>
+  &nbsp;margin:2px 4px   6px;/*定义元素上边界为2px，左右边界4px下边界为6px，*/<BR>
+  &nbsp;margin:2px   4px 6px 8px;/*定义元素上、右边界为2px，下右边界为6px，左边界为8px*/<BR>
+  &nbsp;margin:0   auto;/*定义元素上、下边界为2px，在浏览器中横向居中。<BR>
+  说明：可单独设置一方向边界，如：margin-top:10px;</h2>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<h1>1）盒子的实际大小（公式）：</h1>
+<h2>宽 =左右margin+左右border+左右padding+width</h2>
+<h2> 高 =上下margin+上下border+上下padding+height</h2>
+<h2> 例如：一个盒子的 margin 为 20px，border 为 1px，padding 为 10px，content 的宽为 200px、高为 50px </h2>
+<h2>宽=margin*2 + border*2 + padding*2 + content.width = 20*2 + 1*2 + 10*2 +200 = 262px</h2>
+<h2> 高=margin*2 + border*2 + padding*2 + content.height = 20*2 + 1*2 +10*2 + 50 = 112px</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>	
+
+</body>
+</html>
