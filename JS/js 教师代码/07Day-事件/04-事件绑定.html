@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"  onclick="fClick();"></div>
+<div id="div2"  style="background: blue"></div>
+<div id="div3"  style="background: yellow"></div>
+ <script>
+
+     window.onload= function () {
+         //
+         var oDiv2=document.getElementById("div2");
+         //添加点击事件处理程序；
+         //每个事件处理程序 会被后面的覆盖；
+         oDiv2.onclick=function(){
+             alert(2);
+         }
+         oDiv2.onclick=function(){
+             alert(22);
+         }
+
+         //
+         var oDiv3=document.getElementById("div3");
+         //监听点击事件； 不会覆盖
+         oDiv3.addEventListener("click", function () {
+             alert(33);
+         },false);
+
+         oDiv3.addEventListener("click", function () {
+             alert(3);
+         },false);
+
+         //移出不掉；
+         oDiv3.removeEventListener("click",function(){
+             alert(3);
+         },false);
+
+         oDiv3.addEventListener("click",fnEventListener,false);
+         function  fnEventListener(){
+             alert(333);
+             return function(){
+                 alert(444);
+             }
+         }
+         oDiv3.removeEventListener("click",fnEventListener,false);
+
+         oDiv3.addEventListener("click",fnEL,false);
+         function  fnEL(){
+             alert(55);
+         }
+         oDiv3.removeEventListener("click",fnEL,false);
+         // 移出监听  1. 事件的名称 2. 事件处理函数的名称  3.阶段；
+         //要想移出监听，必须是添加的时候，是有名字的函数；
+     }
+
+
+     //保证fClick是个全局；  不是绑定关系；而是调用；
+     function fClick(){
+         alert(1);
+     }
+
+     function addListener(){
+         oDiv.addEventListener("click",function(){},false);
+         oDiv.attachEvent("onclick",function(){});
+     }
+
+ </script>
+</body>
+</html>

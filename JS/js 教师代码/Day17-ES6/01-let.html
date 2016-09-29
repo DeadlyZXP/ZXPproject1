@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    /*var divs=document.getElementsByTagName("div");
+
+   /!* for(var i=0;i<divs.length;i++){
+        divs[i].index=i;
+        divs[i].onclick=function(){
+            alert(this.index);
+        }
+    }*!/
+
+    //let 块级
+
+    for(let i=0;i<divs.length;i++){
+
+        divs[i].onclick=function(){
+            i++;
+            alert(i);
+        }
+    }*/
+    //alert(i);
+
+   /* {
+        alert(k);  //err
+        let k=1;
+    }*/
+
+   /* var b=1;
+    function f(){
+        var a=b;
+        alert(a);
+        let b=10;
+    }
+    f();*/
+
+
+    function f(b){
+        {let b=10;}
+        var a=b;
+        alert(a);
+    }
+    f(1);
+
+    function fn1(){
+        function fn2(){
+            alert(2);
+        }
+        {{let fn2=10;}}
+    }
+
+    var a=1;
+    alert(window.a);
+
+    let b=1;
+    alert(window.b);//err
+
+</script>
+</body>
+</html>

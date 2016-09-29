@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例</title>
+    <style>
+        .divc1{
+            width:10px;
+            height:10px;
+            background: black;
+            position: absolute;
+            left:0;
+            top:0;
+            display: none;
+        }
+        div{
+            width:600px;
+            height:200px;
+            background: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<script>
+
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");
+    oDiv1.onclick=function(e){
+        var leftVal= e.clientX;
+        var topVal= e.clientY;
+        var divSingleton1=divSingleton.getSingleton();
+        divSingleton1.show(leftVal,topVal);
+    }
+    oDiv2.onclick=function(e){
+        var leftVal= e.clientX;
+        var topVal= e.clientY;
+        var divSingleton2=divSingleton.getSingleton();
+        divSingleton2.show(leftVal,topVal);
+    }
+
+
+    oDiv3.onclick=function(){
+        var divSingleton4=divSingleton.getSingleton();
+        divSingleton4.hidden();
+    }
+    //
+    var divSingleton=(function(){
+        var singleton;
+        function init(){
+            var oDiv=document.createElement("div");
+            oDiv.className="divc1";
+            document.body.appendChild(oDiv);
+            return {
+                show:function(leftVal,topVal){
+                    oDiv.style.left=leftVal+"px";
+                    oDiv.style.top= topVal+"px";
+                    oDiv.style.display="block";
+                },
+                hidden:function(){
+                    oDiv.style.display="none";
+                }
+            }
+        }
+        return {
+            getSingleton:function(){
+                if(!singleton){
+                    singleton=init();
+                }
+                return singleton;
+            }
+        }
+    })();
+
+
+    var odiv;
+    function create(){
+        if(odiv){
+            return odiv;
+        }else {
+            odiv=document.createElement("div");
+            return odiv;
+        }
+    }
+    var div1=create();
+    var div2=create();
+
+
+
+</script>
+</body>
+</html>

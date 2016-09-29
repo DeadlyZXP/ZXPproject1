@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承</title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+        this.id=1;
+    }
+
+    Person.prototype.showName=function(){
+        alert(this.name);
+    }
+    Person.prototype.showAge=function(){
+        alert(this.age);
+    }
+    var person1=new Person("章撒",3);
+    function Student(className,id,name,age){
+        this.class=className;
+        this.id=id;
+        this.name=name;
+        this.age=age;
+    }
+
+    Student.prototype=person1;
+    var student1=new Student("一班",101,"学生李四",13);
+    student1.showName();
+    student1.showAge();
+    alert(student1.name);
+    /*Student.prototype={
+        showID:function(){
+            alert(this.id);
+        }
+    }*/
+
+    Student.prototype.showId=function(){
+        alert(this.id);
+    }
+    var student2=new Student("a",1,"b",23);
+    student2.showName();//
+    student1.showId();
+    person1.showId();//
+
+</script>
+</body>
+</html>

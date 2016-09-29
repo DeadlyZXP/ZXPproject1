@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>汉诺塔</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        ul,li{list-style: none;}
+        #Box{
+            width: 820px;
+            height: 500px;
+            margin:60px auto;
+
+        }
+        ul li{
+            width: 20px;
+            height:500px;
+            background: #8e8e8e;
+            float: left;
+            margin-left: 200px;
+            position: relative;
+        }
+    </style>
+    <script src="js/moveUti.js"></script>
+</head>
+<body>
+    <ul id="Box">
+        <li id="liA"></li>
+        <li id="liB"></li>
+        <li id="liC"></li>
+    </ul>
+    <input type="text" id="txt"/>
+    <input type="button" id="btn" value="生成">
+    <input type="button" id="btn1" value="开始">
+<script>
+    var Txt=document.getElementById("txt");
+    var Btn=document.getElementById("btn");
+    var Btn1=document.getElementById("btn1");
+    var LiA=document.getElementById("liA");
+    var LiB=document.getElementById("liB");
+    var LiC=document.getElementById("liC");
+//    生成圆盘
+    Btn.onclick=function () {
+        var txt=Txt.value;
+        var t=1;
+        for(var i=txt;i>0;i--){
+            var Odiv=document.createElement("div");
+            Odiv.style.width=i*50+"px";
+            Odiv.style.height="20px";
+            Odiv.style.background="lightsalmon";
+            Odiv.style.marginTop="10px";
+            Odiv.style.position="absolute";
+            Odiv.style.borderRadius="100px";
+            Odiv.style.bottom=t*20+"px";
+            Odiv.style.left=i*-20+"px";
+            Odiv.style.zIndex="100";
+            LiA.appendChild(Odiv);
+            t++;
+        }
+    }
+    Btn1.onclick=function () {
+       Movediv();
+    }
+    function Movediv() {
+        var txt=Txt.value;
+        var Odiv=document.getElementsByTagName("div");
+        for(var i=Odiv.length;i>0;i--){
+            if(txt==1){
+                var target={
+                    bottom:500
+                }
+                Move(Odiv[0],target,function () {
+                    var target={
+                        left:430
+                    }
+                    Move(Odiv[0],target,function () {
+                        var target={
+                            bottom:20
+                        }
+                        Move(Odiv[0],target);
+                    });
+                });
+            }
+            if(txt==2){
+
+            }
+        }
+    }
+</script>
+</body>
+</html>

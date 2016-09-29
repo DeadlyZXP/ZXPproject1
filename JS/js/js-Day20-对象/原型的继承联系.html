@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(name,age,id){
+				this.name=name;
+				this.age=age;
+				this.id=id;
+			}
+			Person.prototype.showName=function(){
+				alert(this.name);
+			}
+			Person.prototype.showAge=function(){
+				alert(this.age);
+				Person.showId=function(){
+					alert(this.id);
+				}
+			}
+			
+			/*function Student(name,age,id){
+				
+			}
+			Student.prototype=new Person();
+			var stu=new Person("四分公司答复",6464,1);
+			stu.showAge();*/
+			
+			function Student(name,age,id){
+				Person.call(this,name,age,id);
+			}
+			var stu=new Student("红红火火",464,464);
+			//alert(stu.name);
+			//stu.showName()//错误的call，和apply的放式只能继承所继承构造函数的函数体内的属性
+			
+			
+			
+			//巧用call和apply放式获取最大最小值
+			alert(Math.max.call(this,4,5,4,63,5,8,8));
+			var arr=[45,46,4,6,46,4,6,4,61,6,4,4];
+			alert(Math.max.apply(this,arr));
+		</script>
+	</body>
+</html>

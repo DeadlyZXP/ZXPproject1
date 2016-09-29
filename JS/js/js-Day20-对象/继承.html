@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.showName=function () {
+        alert(this.name);
+    }
+    Person.prototype.showAge=function () {
+        alert(this.age);
+    }
+    var Student=new Person("张三",22);
+    Student.showName();
+    Student.showAge();
+</script>
+</body>
+</html>

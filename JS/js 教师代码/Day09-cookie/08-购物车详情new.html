@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<style type="text/css">
+		*{margin:0; padding: 0; font-size: 14px; font-family: 微软雅黑;}
+		ul li{list-style:none;}
+		.clear{clear: left;}
+		#products{
+			width: 1100px;
+			margin: 10px auto;
+		}
+		#products li{
+			width:260px;
+			float: left;
+			border:solid 1px #E9E9E9;
+			margin-right:10px;
+		}
+		#products li span{
+			display: block;
+			width: 100%;
+			text-align:center;
+		}
+		#products li em{
+			font-size:24px;
+			font-family: Arial;
+			color:#E4393C;
+			display: block;
+			margin-left: 20px;
+		}
+		#products li p{
+			color:#333;
+			margin: 10px 0 0 20px;
+		}
+		#products li a{
+			display: block;
+			width: 120px;
+			height: 30px;
+			line-height: 30px;
+			border: solid 1px #DDDDDD;
+			text-align: center;
+			margin: 20px auto;
+			text-decoration: none;
+			color:#E4393C;
+		}
+		#products li a:hover{
+			border: solid 1px #E4393C;
+		}
+		.shopcart{
+			width:1100px;
+			margin: 50px auto;
+		}
+		.shopcart h1{
+			font-size:18px;
+			color:#E4393C;
+			border-bottom:solid 4px #E9E9E9;
+			padding-bottom: 10px;
+		}
+		.shopcart .list-head{
+			width: 96%;
+			background: #F3F3F3;
+			height: 40px;
+			line-height: 40px;
+			padding:0 2% 0 2%;
+		}
+		.shopcart .list-head div{
+			float:left;
+		}
+		.h1,.c1{width: 50%;}
+		.h2,.c2{width: 15%;}
+		.h3,.c3{width: 20%; }
+		#cart-list .pl{
+			width: 100%;
+			height: 94px;
+			border-bottom:solid 1px #C5C5C5;
+			clear: left;
+		}
+		#cart-list .pl div{
+			float: left;
+			height: 94px;
+			line-height: 94px;
+			background: #FFF4E8;
+		}
+		#cart-list div span{
+			display: block;
+			float: left;
+			padding: 5px 0 0 20px;
+		}
+		#cart-list div p{
+			float: left;
+			padding-left: 20px;
+		}
+		#cart-list div span img{
+			width:80px;
+		}
+		.pl a{
+			color:#666;
+			text-decoration: none;
+		}
+		.pl a:hover{
+			color:#ff0000;
+			text-decoration: underline;
+		}
+		#cartbox {
+			width: 100%;
+			height: 50px;
+		}
+		#cartbox a{
+			width: 200px;
+			height: 50px;
+			background: #cccccc;
+			border: 1px solid;
+			float: right;
+			text-align: center;
+			text-decoration: none;
+		}
+		#cartbox a span{
+			font-size: 30px;
+		}
+		#cartbox a div{
+			font-size: 20px;
+			border-radius: 100%;
+			background: red;
+			width: 30px;
+			height: 30px;
+			margin: -40px 10px 30px 170px;
+		}
+	</style>
+	<script src="js/cookieUtil.js"></script>
+
+</head>
+<body>
+	<div class="clear"></div>
+	<div class="shopcart">
+		<h1>全部商品</h1>
+		<div class="list-head">
+			<div class="h1">商品名称</div>
+			<div class="h2">价格</div>
+			<div class="h2">数量</div>
+			<div class="h3">操作</div>
+		</div>
+		<div id="cart-list">
+
+		</div>
+	</div>
+
+	<script>
+		var oCartList=document.getElementById("cart-list");
+		var strCookie=cookieUtil.getCookie("cookiect");
+		if(strCookie){
+			var arrCookie=strCookie.split("||");
+			var html="";
+			for(var i=0;i<arrCookie.length;i++){
+				var arrInfo=arrCookie[i].split("&&");
+				html+="<div class=\"pl\" id=\"p_"+i+"\">";
+				html+="<div class=\"c1\">";
+				html+="<span><img src=\""+arrInfo[2]+"\"></span>";
+				html+="<p>"+arrInfo[0]+"</p></div>";
+				html+="<div class=\"c2\">"+arrInfo[1]+"</div>";
+				html+="<div class=\"c2\">"+arrInfo[3]+"</div><div class=\"c3\">";
+				html+="<a href=\"javascript:delProduct('p_"+i+"','"+arrInfo[0]+"');\">删除</a>	</div></div>";
+			}
+			oCartList.innerHTML=html;
+		}
+
+		function delProduct(divid,productname){
+			var oPro=document.getElementById(divid);
+			oCartList.removeChild(oPro);
+			//cookie
+			var strCookie=cookieUtil.getCookie("cookiect");
+			var arrCookie=strCookie.split("||");
+			for(var i=0;i<arrCookie.length;i++){
+				var arrInfo=arrCookie[i].split("&&");
+				if(arrInfo[0]==productname){
+					arrCookie.splice(i,1);
+					break;
+				}
+			}
+			var strCookieNew=arrCookie.join("||");
+			cookieUtil.setCookie("cookiect",strCookieNew,30);
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态生成表格</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<input type="text" id="row" value="3"/>
+<input type="text" id="col" value="4"/>
+<input type="button" id="bt" value="生成"/>
+<div id="div1"></div>
+<script>
+    var oBt=document.getElementById("bt");
+    var oTxt1=document.getElementById("row");
+    var oTxt2=document.getElementById("col");
+    var oDiv=document.getElementById("div1");
+    var oTable=document.createElement("table");
+    oBt.onclick=function(){
+        var rowCount=parseInt(oTxt1.value);
+        var colCount=parseInt(oTxt2.value);
+        for(var i=0;i<rowCount;i++){
+            //创建tr；并且把tr渲染到页面。
+            var oTr=document.createElement("tr");
+            for(var j=0;j<colCount;j++){
+                var oTd=document.createElement("td");
+                oTd.innerHTML="坐标：行号："+i+";列号："+j;
+                oTd.style.width="180px";
+                oTd.style.height="30px";
+                oTd.style.background=getRandomColor();
+                oTr.appendChild(oTd);
+            }
+            oTable.appendChild(oTr);
+        }
+        oDiv.innerHTML="";
+        oDiv.appendChild(oTable);
+    }
+
+    function getRandomColor(){
+        var str="000000"+Math.floor(Math.random()*0x1000000).toString(16);
+        return "#"+str.substr(-6);  //#FFFFFF   #000000
+    }
+</script>
+</body>
+</html>

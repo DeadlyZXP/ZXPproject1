@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    function init(a){
+        var b=a;
+        return function (param){
+            b+=param;
+            return b;
+        }
+    }
+
+    var fn=init(100);
+    alert(fn(100));
+    alert(fn(-50));
+    var b=100;
+
+    fn=1;
+
+    var a=init(0);
+    a(100);
+    a(-100);
+
+
+</script>
+</body>
+</html>

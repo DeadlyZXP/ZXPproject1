@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul{
+            width: 800px;
+            list-style: none;
+        }
+        li{
+            float: left;
+        }
+        #div1{
+            width: 400px;
+            height: 400px;
+            position:absolute;
+            display: none;
+            top:100px;
+            left:700px;
+            overflow: hidden;
+            border:1px solid red;
+            background: blue;
+        }
+        #imgbig{
+            width:600px;
+            height:600px;
+            position: absolute;
+            top:-100px;
+            left:-100px;
+        }
+    </style>
+<script src="js/EventUtil.js"></script>
+</head>
+<body>
+<div>
+    <ul id="ul">
+        <li><img src="images/shirt_1.jpg"></li>
+        <li><img src="images/shirt_2.jpg"></li>
+        <li><img src="images/shirt_3.jpg"></li>
+        <li><img src="images/shirt_4.jpg"></li>
+    </ul>
+    <div id="div1"><img id="imgbig" src="images/shirt_1_big.jpg"></div>
+</div>
+<script>
+    var liList=document.getElementById("ul").children;
+    var oDiv=document.getElementById("div1");
+    var oBigImg=document.getElementById("imgbig");
+    for(var i=0;i<liList.length;i++){
+        liList[i].onmouseover=function(){
+            //让大图显示
+            oDiv.style.display="block";
+            //改换对象的图片。
+            var newSrc=this.children[0].src.replace(".jpg","_big.jpg");
+            oDiv.children[0].src=newSrc;
+        }
+        liList[i].onmouseout=function(){
+            oDiv.style.display="none";
+        }
+        liList[i].onmousemove=function(event){
+            event=EventUtil.getEvent(event);
+            var topP=event.offsetY/170*600;
+            var leftP=event.offsetX/170*600;
+            oBigImg.style.top=oDiv.offsetHeight/2-topP+"px";
+            oBigImg.style.left=oDiv.offsetWidth/2-leftP+"px";
+
+
+            //oDiv.style.top=event.clientY+10+"px";
+            //oDiv.style.left=event.clientX+10+"px";
+        }
+    }
+
+    /*
+    var arrLi=document.getElementById("ul").children;
+    var oDiv1=document.getElementById("div1");
+    for(var i=0;i<arrLi.length;i++){
+        //li 绑定mousemove 事件
+        arrLi[i].onmousemove=function(event){
+            //1. 让div1 出来。
+            //2 .给div1 定位。跟随。
+            event=event||window.event;
+            //left + odiv width 大于 浏览器的可是区域的width
+            //left --odiv width
+            var left=event.clientX+10;
+            var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+            //当oDiv1 display none 时 ；oDiv1.offsetWidth =0；
+            if(left+oDiv1.offsetWidth>clientWidth){
+                //大图的容器，超出了 右边界；修改一下left
+                left=left-oDiv1.offsetWidth-20;
+            }
+            oDiv1.style.top=event.clientY+10+"px";
+            oDiv1.style.left=left+"px";
+        }
+        arrLi[i].onmouseover=function(){
+            oDiv1.style.display="block";
+            var srcImg=this.children[0].src;
+            var stcNew=srcImg.replace(".jpg","_big.jpg");
+            //  images/shirt_1.jpg   images/shirt_1_big.jpg;
+            oDiv1.children[0].src=stcNew;
+        }
+        arrLi[i].onmouseout= function () {
+            oDiv1.style.display="none";
+        }
+    }*/
+</script>
+</body>
+</html>

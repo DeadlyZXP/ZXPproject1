@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fibo</title>
+</head>
+<body>
+<script>
+    //第n个月的兔子数； 递归
+    function fibo(n){
+        if(n<=0) {
+            return -1;
+        }
+        if(n==1) {
+            return 1;
+        }else if(n==2){
+            return 1;
+        }else{
+            return fn(n-1)+fn(n-2);
+        }
+    }
+
+    function fibo2(n){
+        if(n==1){
+            return 1;
+        }
+        if(n==2){
+            return 1;
+        }
+        var a1=1;// 前两个月的兔子数；
+        var a2=1;//前一个月的兔子数；
+        var a3; //当月的兔子数；
+        for(var i=3;i<=n;i++){
+            a3=a1+a2;
+            a1=a2;
+            a2=a3;
+        }
+        return a3;
+    }
+
+    function fibo3(n){
+        var arrFibo=[];
+        arrFibo[0]=0;
+        arrFibo[1]=1;
+        arrFibo[2]=1;
+        for(var i=3;i<=n;i++){
+            arrFibo[i]=arrFibo[i-1]+arrFibo[i-2];
+        }
+        return arrFibo[n];
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="number" id="cols" placeholder="请输入列数"/>
+		<input type="number" id="rows" placeholder="请输入行数"/>
+		<input type="button" id="btn" value="点击创建按钮" />
+		<input type="button" id="clraebtn" value="点击清楚表格内容" />
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");		
+			var clearbtn=document.getElementById("clraebtn");
+			//待补充
+			clearbtn.onclick=function(){
+				
+			}
+			
+			btn.onclick = function() {
+				var table = document.createElement("table");
+				var tbody = document.createElement("tbody");
+				var cols = Number(document.getElementById("cols").value);
+				var rows = Number(document.getElementById("rows").value);
+				document.body.appendChild(table);
+				table.appendChild(tbody);
+				/*table.style.width = "200px";
+				table.style.height = "150px";*/
+				/*table.style.border = "1px";
+				table.style.borderStyle = "solid";
+				table.style.borderColor = "red";*/
+				for(var i = 0; i < cols; i++) {
+					var tr = document.createElement("tr");
+					tbody.appendChild(tr);
+					for(var j = 0; j < rows; j++) {
+						var color1=parseInt(Math.random()*256);
+						var color2=parseInt(Math.random()*256);
+						var color3=parseInt(Math.random()*256);
+						var td = document.createElement("td");
+						//td.index=i;
+						if(j==rows-2){
+							td.innerHTML = "删除";
+							td.onclick=function(){
+								//删除一行的功能
+								/*var deltrnum=this.index;
+								var trnum=document.getElementsByTagName("tr");
+								tbody.removeChild(trnum[deltrnum]);*/
+								//this.parentNode.parentNode.removeChild(this.parentNode);
+								//清楚表格内容的功能
+								var tdlist=this.parentNode.children;
+								//alert(tdlist[0].);
+								for(var n=0;n<tdlist.length;n++){
+									if(n!=tdlist.length-1){
+										tdlist[n].innerHTML="";
+									}	
+								}
+							}
+						}
+						if(j==rows-1){
+							td.innerHTML = "添加一行";
+							td.onclick=function(){
+								var tr=document.createElement("tr");
+								this.parentNode.parentNode.insertBefore(tr,this.parentNode.nextElementSibling);
+								for(var i=0;i<rows;i++){
+									var td=document.createElement("td");
+									if(i==rows-1){
+										td.innerHTML="添加一行";
+										
+									}else{
+										td.innerHTML="新插入的行";
+									}
+									tr.appendChild(td);
+									
+								}
+							}
+						}
+						else{
+						td.innerHTML = "行号:"+i+"列号:"+j;
+						}
+					td.style.backgroundColor="rgb("+color1+","+color2+","+color3+")";
+						td.style.border = "1px";
+						td.style.color="rgb("+color3+","+color1+","+color2+")";
+						td.style.width="120px";
+						td.style.height="30px";
+						tr.appendChild(td);
+					}
+				}
+				//table.innerHTML=" ";
+			}
+		</script>
+	</body>
+
+</html>

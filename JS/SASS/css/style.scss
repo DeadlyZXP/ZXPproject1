@@ -1,0 +1,9 @@
+$color:red;
+$side:left;
+div{
+  width: 20px;
+  height: 20px;
+  background: $color;
+  border-#{$side}-radius:20px;
+  margin-#{$side}:50px;
+}

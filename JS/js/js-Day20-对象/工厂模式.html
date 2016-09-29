@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂模式</title>
+</head>
+<body>
+<script>
+    function setPerson(name,age) {
+        var person=new Object();
+        person.name=name;
+        person.age=age;
+        person.showname=function () {
+            alert(person.name);
+        }
+        return person;
+    }
+    var person1=setPerson("张三",20);
+    var person2=setPerson("李四",22);
+    person1.showname();
+    person2.showname();
+</script>
+</body>
+</html>

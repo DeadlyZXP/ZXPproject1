@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{border-collapse: collapse;}
+			table td{
+				border: 1px solid #05525B;
+				width: 120px;
+				text-align: center;
+			}
+		</style>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>商品名称</td>
+				<td>商品价格</td>
+				<td>商品数量</td>
+				<td>删除</td>
+			</tr>
+			<tr>
+				<td>商品1</td>
+				<td>88.88</td>
+				<td>8</td>
+				<td><a href="#">删除</a></td>
+			</tr>
+			<tr>
+				<td>商品2</td>
+				<td>88.88</td>
+				<td>8</td>
+				<td><a href="#">删除</a></td>
+			</tr>
+			<tr>
+				<td>商品3</td>
+				<td>88.88</td>
+				<td>8</td>
+				<td><a href="#">删除</a></td>
+			</tr>
+			<tr>
+				<td>商品4</td>
+				<td>88.88</td>
+				<td>8</td>
+				<td><a href="#">删除</a></td>
+			</tr>
+		</table>
+		
+		<script>
+			$("table a").each(function(){
+				$(this).click(function(e){
+					e.preventDefault();
+					$(this).parent().parent().remove();
+				});
+			});
+		</script>
+	</body>
+</html>

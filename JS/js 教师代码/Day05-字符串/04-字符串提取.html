@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串提取</title>
+</head>
+<body>
+<script>
+    var sYou="This a list of items : cherries,   limes,   oranges,    apples ,apples .    this  list end.";
+    var startIndex=sYou.indexOf(":");
+    var endIndex=sYou.indexOf(".");
+    var subStr=sYou.substring(startIndex+1,endIndex);//
+    document.write(subStr);
+    var arrSubStr=subStr.split(",");
+    console.log(arrSubStr);
+    for(var i=0;i<arrSubStr.length;i++){
+        arrSubStr[i]=arrSubStr[i].trim();//去掉空格后，需要对之前的数组，重新赋值，起到覆盖的作用。
+    }
+    console.log(arrSubStr);
+</script>
+</body>
+</html>

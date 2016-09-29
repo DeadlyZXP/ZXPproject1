@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装cookie的操作</title>
+</head>
+<body>
+    1.存储cookie。
+    2.获取cookie。
+    3.修改cookie。  覆盖。。  set
+    4.删除cookie。  让浏览器帮我删除。
+<script>
+    //setCookie("aCookie","this is demo",10);
+    var aCookieVal=getCookie("aCookie");
+    setCookie("aCookie","this is demo123",10);
+    document.write(aCookieVal);
+    //参数name 是cookie的名称
+    //value 是cookie存储的值，
+    //days 是cookie保留的时间天数。
+    function setCookie(name,value,days){
+        var date=new Date();
+        date.setDate(date.getDate()+days);
+        document.cookie=name+"="+value+";expires="+date;
+    }
+
+    //获取cookie
+    function getCookie(name){
+        var cookieValue;
+        var strCookie=document.cookie;
+        var arrCookie=strCookie.split("; ");
+        for(var i=0;i<arrCookie.length;i++){
+            var item=arrCookie[i].split("=");
+            if(item[0]==name){
+                cookieValue=item[1];
+            }
+        }
+        return cookieValue;
+    }
+
+    function removeCookie(name){
+       setCookie(name,"",-1);
+    }
+</script>
+</body>
+</html>

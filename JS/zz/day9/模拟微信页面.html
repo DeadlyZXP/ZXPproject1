@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#ui{
+				height: 500px;
+				width: 300px;
+				background-color: #eee;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+				position: relative;
+			}
+			#writemsg{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width:240px ;
+				height: 30px;
+			}
+			#subbtn{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 56px;
+				height: 35px;
+			}
+			/*#showmsg{
+				background: coral;
+				color: black;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div id="ui">
+			<!--<span id="showmsg"></span>-->
+			<input type="text" id="writemsg" placeholder="请输入发送的内容" autofocus="autofocus"/>
+			<input type="button" id="subbtn" value="发送"/>
+		</div>
+		<script type="text/javascript">
+			var ui=document.getElementById("ui");
+			var writemsg=document.getElementById("writemsg");
+			var showmsg=document.getElementById("showmsg");
+			var subbtn=document.getElementById("subbtn");
+			subbtn.onclick=function(){
+				var color1=Math.ceil(Math.random()*256);
+				var color2=Math.ceil(Math.random()*256);
+				var color3=Math.ceil(Math.random()*256);
+				var p=document.createElement("p");
+				ui.insertBefore(p,ui.lastElementChild.previousSibling);
+				var vwritemsg=writemsg.value;
+				writemsg.value="";
+				p.innerHTML=vwritemsg+"<br/>";
+				p.style.display="inline";
+				p.style.margin=0;
+				p.style.marginLeft="6px";
+				p.style.padding=0;
+				p.style.background="rgb("+color1+","+color2+","+color3+")";
+				p.style.color="white";
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

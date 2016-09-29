@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ClassName</title>
+</head>
+<body>
+<div class="div1  div2"></div>
+<script>
+    //
+    function getelementByClassNameEx(className){
+        var elementList=[];
+        var tagList=document.getElementsByTagName("*");
+        for(var i=0;i<tagList.length;i++){
+            var classNameCurr=tagList[i].getAttribute("class");//" c1  c11   c3  c1"    ['c1','']
+            var arrClass=classNameCurr.split(" ");
+            for(var j=0;j<arrClass.length;j++){
+                if(arrClass[j]==className){
+                    elementList.push(tagList[i]);
+                    break;
+                }
+            }
+        }
+        return elementList;
+    }
+</script>
+</body>
+</html>

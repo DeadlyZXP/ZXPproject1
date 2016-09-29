@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法</title>
+</head>
+<body>
+<script>
+    var arr1=[1,2,3];
+    var arr2=[4,5,6];
+    var arr3=arr1.concat(arr2);
+    var arr4=arr1.concat(4);
+    var arr5=arr1.concat();//123;
+    arr5.push(10);
+    //alert(arr1);
+
+    var arr6=[1,2,3,4,5,6,7,8,9];
+    var arr7=arr6.slice(3,7); // 4,5,6,7
+    //alert(arr7);
+
+    //下标：
+    /*arr6[8];
+    for(var i=0;i<arr6.length;i++){
+        console.log(arr6[i]);
+    }*/
+    var arr8=[1,2,3,4,5,6,7,8,9,3];
+   /* alert(arr8.indexOf(3));
+    alert(arr8.lastIndexOf(3));
+
+    alert(arr8.indexOf(3,5));
+    alert(arr8.lastIndexOf(3,5));*/
+
+    arr8.forEach(function(item,index,arr){
+       document.write(item+"----"+index+"----"+arr);
+        document.write("<br/>");
+    });
+
+    arr8.filter(function(item,index,arr){
+        document.write(item+"----"+index+"----"+arr+"-----"+this.length);
+        document.write("<br/>");
+    },arr1);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业4_动态添加商品信息</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            width: 120px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<button id="addBtn">增加一个新的商品</button>
+<br/><br/>
+商品名称：<input type="text" name="pname" id="pname" /><br/>
+商品价格：<input type="text" name="price" id="price" /><br/>
+商品数量：<input type="text" name="pnum" id="pnum" /><br/><br/>
+<table>
+    <thead>
+    <tr>
+        <th>商品名称</th>
+        <th>商品价格</th>
+        <th>商品数量</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>商品1</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品2</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品3</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品4</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品5</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>总计：</th>
+        <th></th>
+        <th>总数量</th>
+        <th></th>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

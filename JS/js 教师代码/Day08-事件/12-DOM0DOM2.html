@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+</head>
+<body>
+<div id="div1" style="width:200px;height: 200px;background:red ;position: absolute;top: 0;left: 0;">
+    <div id="div2" style="width:100px;height: 100px;background: blue;position: absolute;top: 0;left: 0;">
+        <div id="div3" style="width:50px;height: 50px;background: yellow;position: absolute;top: 0;left: 0;"></div>
+    </div>
+</div>
+<div id="div4" style="width:200px;height: 200px;background:red ;position: absolute;top: 200px;left: 0;">
+
+</div>
+<input type="button" value="删除监听" id="bt1" style="position: absolute;top: 200px;left: 300px;"/>
+
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");
+    var oDiv4=document.getElementById("div4");
+    var oBt1=document.getElementById("bt1");
+    oDiv1.onclick=function(){
+        alert(11);
+    }
+    var a="onclick";
+    oDiv1.a=function(){
+
+    }
+    oDiv1[a]=
+    oDiv1.onclick=function(){
+        alert(12);
+    }
+
+    //冒泡阶段
+    oDiv4.addEventListener("click",function(){
+        alert(41);
+    },false);
+    oDiv4.addEventListener("click",function(){
+        alert(42);
+    },false);
+    oDiv4.addEventListener("click",div4Click,false);
+
+    oDiv4.attachEvent("on"+"click",div4Click);
+    oDiv4.detachEvent("onclick",div4Click);
+
+
+    oBt1.onclick=function(){
+        oDiv1.onclick=null;
+        oDiv4.removeEventListener("click",div4Click,false);
+        oDiv4.removeEventListener("click",function(){
+            alert(42);
+        },false);
+    }
+    function div4Click(){
+        alert(43);
+    }
+
+    if(oDiv4.addEventListener){
+        oDiv4.addEventListener("click",div4Click,false);
+    }else{
+        oDiv4.attachEvent("on"+"click",div4Click);
+    }
+</script>
+</body>
+</html>

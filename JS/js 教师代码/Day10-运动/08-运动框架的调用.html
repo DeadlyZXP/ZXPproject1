@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调用</title>
+    <style>
+        div{
+            width:50px;
+            height:50px;
+            position: absolute;
+            background: yellow;
+            top:500px;
+            left:100px;
+            text-align: center;
+        }
+    </style>
+    <script src="js/moveUtil.js"></script>
+</head>
+<body>
+<input type="text" id="txt1"/>
+<input type="text" id="txt2"/>
+<input type="button" id="bt1" value="开始运动"/>
+<div id="div1">A</div>
+<div id="div2" style="left: 150px;background: red;">B</div>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oTxt=document.getElementById("txt1");
+    var oTxtTop=document.getElementById("txt2");
+    var oBt=document.getElementById("bt1");
+    var oDiv2=document.getElementById("div2");
+    oBt.onclick=function(){
+        var leftValue=parseInt(oTxt.value);
+        var topValue=parseInt(oTxtTop.value);
+        var target={
+            left:leftValue,
+            top:topValue
+        }
+        move(oDiv1,target);
+    }
+</script>
+</body>
+</html>

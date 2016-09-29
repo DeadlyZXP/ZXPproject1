@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垃圾回收</title>
+</head>
+<body>
+<script>
+    function fn() {
+        var a=10;
+        var b=20;
+        var fnR=function () {
+            a++;
+            alert(a+b);
+        }
+        return fnR;
+    }
+   // fn();
+    var a=fn();
+    a();//31
+    a();//32
+    var b=fn();
+    b();//31
+    a();//33  与b没有关系 各自储存a，b，fnR
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取款机</title>
+</head>
+<body>
+<script>
+    function init(){
+        var a=1;
+        var a1=10;
+        function fn1(){
+           var b=2;
+            var b1=20;
+           var fn2=function(){
+               a++;
+               b++;
+               alert(a+b);
+           }
+           return fn2;
+        }
+        return fn1();
+    }
+
+    var f=init();
+    f();
+</script>
+</body>
+</html>

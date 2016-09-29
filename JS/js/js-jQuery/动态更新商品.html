@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态更新商品</title>
+    <style>
+        table{
+            border: 1px solid #8e8e8e;
+            border-collapse: collapse;
+        }
+        table th,td{
+            border: 1px solid #8e8e8e;
+            text-align: center;
+        }
+    </style>
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+    <button>添加商品</button>
+    商品名称:<input type="text" id="name"/>
+    商品数量:<input type="text" id="shu"/>
+    商品价格:<input type="text" id="money"/>
+    <table>
+        <tr>
+            <th>商品名称</th>
+            <th>商品数量</th>
+            <th>商品价格</th>
+            <th>删除</th>
+        </tr>
+        <tr>
+            <th>总计</th>
+            <th>总数量</th>
+            <th>总价格</th>
+            <th></th>
+        </tr>
+    </table>
+
+    <script>
+        var Name,Shu,Money;
+        var countshu=0;
+        var countmon=0;
+        $(function () {
+            $("button").click(function () {
+                Name=document.getElementById("name").value;
+                Shu=document.getElementById("shu").value;
+                Money=document.getElementById("money").value;
+                countshu+=parseInt(Shu);
+                countmon+=parseInt(Money);
+                var Tr="";
+                Tr="<tr>"+"<td>"+Name+"</td>"+"<td>"+Shu+"</td>"+"<td>"+Money+"</td>"+"<td><a href='#'>"+"删除"+"</a></td>"+"</tr>";
+                $("table tr:last").before(Tr);
+                $("table tr:last th:eq(1)").text(countshu);
+                $("table tr:last th:eq(2)").text(countmon);
+            });
+        })
+        $("table a").each(function(){
+            $(this).click(function(e){
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+        });
+    </script>
+</body>
+</html>

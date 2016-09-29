@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f(){
+        //[a,b]=[1,2]
+        dw(a);
+        dw(b);
+    }
+    f([1,2]);
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+
+    function f({a,b}){
+        //[a,b]=[1,2]
+        dw(a);
+        dw(b);
+    }
+    f({a:1,b:2});
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

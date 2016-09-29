@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom属性获取</title>
+    <style>
+        div{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1" name="dn1" style="width:100px;background: red">
+    <p>p11</p>
+    <p>p12</p>
+    <p>p13</p>
+</div>
+<div id="div2" name="dn2" style="width:100px;background: red">
+    <p>p21</p>
+    <p>p22</p>
+    <p>p23</p>
+</div>
+<div id="div3" name="dn3" data-gao="123" data-wang="456" style="width:100px;background: red;height: 300px"></div>
+<script>
+    var oDiv2=document.getElementById("div3");
+    dw(oDiv2.getAttribute("style"));
+
+    dw(oDiv2.style.width);
+    dw(oDiv2.style.height);//内联
+    dw(window.getComputedStyle(oDiv2,false)["height"]);
+    oDiv2.currentStyle["width"];
+
+    var widthCurr;
+    if(oDiv2.currentStyle){
+        widthCurr=oDiv2.currentStyle["width"];
+    }else{
+        widthCurr=window.getComputedStyle(oDiv2,false)["width"];
+    }
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+
+    function getStyle(dom,styleName){
+        if(dom.currentStyle){
+            return dom.currentStyle[styleName];
+        }else{
+            return window.getComputedStyle(dom,false)[styleName];
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排序移动</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width:5px;
+            height:5px;
+            position: absolute;
+        }
+    </style>
+    <script src="js/moveUtil.js"></script>
+</head>
+<body>
+<script>
+    var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+    var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+    var divCount=Math.floor(clientHeight/5);
+    for(var i=0;i<divCount;i++){
+        var oDiv=document.createElement("div");
+        oDiv.style.background=getRandomColor();
+        oDiv.style.top=getRandomTop();
+        oDiv.style.left=getRandomLeft();
+        document.body.appendChild(oDiv);
+    }
+
+    function getRandomColor(){
+        var str="000000"+Math.floor(Math.random()*0x1000000).toString(16);
+        return "#"+str.substr(-6);  //#FFFFFF   #000000
+    }
+    function getRandomTop(){
+        return Math.floor(Math.random()*(clientHeight-5))+"px";
+    }
+    function getRandomLeft(){
+        return Math.floor(Math.random()*(clientWidth-5))+"px";
+    }
+
+    document.onclick=function(){
+        var divList=document.getElementsByTagName("div");//集合 是一个映射；
+        var arrDiv=[];
+        for(var i=0;i<divList.length;i++){
+            arrDiv.push(divList[i]);
+        }
+
+        for(var m=0;m<arrDiv.length;m++){
+            for(var n=0;n<arrDiv.length-1-m;n++){
+                if(getValue(arrDiv[n])>getValue(arrDiv[n+1])){
+                    var temp=arrDiv[n];
+                    arrDiv[n]=arrDiv[n+1];
+                    arrDiv[n+1]=temp;
+                }
+            }
+        }
+
+        for(var m=0;m<arrDiv.length;m++){
+            for(var n=0;n<arrDiv.length-1-m;n++){
+                if(getValue(arrDiv[n])>getValue(arrDiv[n+1])){
+                    var temp=arrDiv[n];
+                    arrDiv[n]=arrDiv[n+1];
+                    arrDiv[n+1]=temp;
+                }
+            }
+        }
+        //数组里面的dom元素 就排序完成。
+        for(var k=0;k<arrDiv.length;k++){
+            var wStep=Math.floor(clientWidth/divCount);
+            var target={
+                left:k*wStep,
+                top:k*5
+            }
+            move(arrDiv[k],target);
+        }
+    }
+
+    function getValue(element){
+        return Math.pow(element.offsetLeft,2)+Math.pow(element.offsetTop,2);
+    }
+</script>
+</body>
+</html>

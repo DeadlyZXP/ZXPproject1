@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div动画效果</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: lightsalmon;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+    <input type="button" value="1" id="btn1"/>
+    <input type="button" value="stop" id="btnstop"/>
+    <input type="button" id="btnl" value="&laquo"/>
+    <input type="button" id="btnr" value="&raquo"/>
+    <div id="div1"></div>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $("div").animate({left:400,top:200},1000)
+                        .animate({left:0,top:20},"slow")
+                        .animate({height:400,width:800},1000,"linear")
+//                        .animate({left:"+=20"});
+            })
+            $("#btnstop").click(function () {
+               // $("div").stop();//默认结束当前动作 进行下一个
+                //$("div").stop(true);//直接结束所有
+                //$("div").stop(true,true);//直接结束到当前动作的最后一步
+                $("div").stop(false,true);//直接执行到当前动作最后 在进行下一动作
+            })
+            $("#btnl").click(function () {
+                $("div").animate({left:"-=20"});
+            })
+            $("#btnr").click(function () {
+                $("div").animate({left:"+=20"});
+            })
+        })
+    </script>
+</body>
+</html>

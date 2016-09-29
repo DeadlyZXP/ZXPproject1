@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="number" id="num" /><br />
+		<input type="text" id="txt" disabled="disabled"/><br />
+		<input type="button" id="btn" value="点击获取二维码" />
+
+		<script>
+			var num = document.getElementById("num");
+			var txt = document.getElementById("txt");
+			var btn = document.getElementById("btn");
+			btn.onclick = function() {
+				var sigleSum = 0;
+				var doubleSum = 0;
+				var vnum = num.value;
+				if(vnum.length < 12) {
+					alert("请输入12位二维码！");
+				} else {
+					for(var i = 0; i < vnum.length; i++) {
+						if(i % 2 == 0) {
+							doubleSum += Number(vnum[i]);
+						} else {
+							sigleSum += Number(vnum[i]);
+						}
+					}
+					//alert(doubleSum+" "+sigleSum);
+					var sdSum = (doubleSum * 3 + sigleSum) % 10;
+
+					if(sdSum == 0) {
+						vnum += 0;
+					} else {
+						vnum += (10 - sdSum);
+					}
+					//alert(vnum);
+					txt.value = vnum;
+				}
+			}
+		</script>
+	</body>
+
+</html>

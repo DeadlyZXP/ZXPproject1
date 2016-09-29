@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{padding: 0;margin: 0;}
+			#divbox{
+				width: 400px;
+				height: auto;
+				margin: 0 auto;
+				border: 1px solid lightslategrey;
+			}
+			#divh{
+				width: 400px;
+				height: 80px;
+				line-height: 80px;
+				border-bottom: 1px solid lightslategrey;
+			}
+			.row{
+				height: 40px;
+				line-height: 40px;
+			}
+		</style>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<div id="divbox">
+			<div id="divh"><h3>增加候选人</h3></div>
+			<div id="row1">
+				<div class="row">
+					<input type="text" name="username" placeholder="your name"/>
+					<input type="text" name="email" placeholder="email"/>
+				</div>
+			</div>
+			<div class="row">
+				<input type="text" name="username" placeholder="your name"/>
+				<input type="text" name="email" placeholder="email"/>
+			</div>
+			<div class="row">
+				<input type="text" name="username" placeholder="your name"/>
+				<input type="text" name="email" placeholder="email"/>
+			</div>
+			<div class="row">
+				<input type="text" name="username" placeholder="your name"/>
+				<input type="text" name="email" placeholder="email"/>
+			</div>
+			<div class="row">
+				<input type="text" name="username" placeholder="your name"/>
+				<input type="text" name="email" placeholder="email"/>
+			</div>
+			<div class="alist">
+				<a href="#" class="add">增加</a>
+				<a href="#" class="deleat">删除</a>
+			</div>
+		</div>
+		
+		<script>
+			$(function(){
+				$(".add").click(function(){
+					$(".alist").before($("#row1").html());
+					//alert($("#row1").html());
+				})
+				$(".deleat").click(function(){
+//					$(".alist").before().remove();
+					$(".row:last-child").remove();
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom对象属性</title>
+</head>
+<body>
+<div id="div1" name="dn1" style="width:100px;background: red">
+    <p>p11</p>
+    <p>p12</p>
+    <p>p13</p>
+</div>
+<div id="div2" name="dn2" style="width:100px;background: red">
+    <p>p21</p>
+    <p>p22</p>
+    <p>p23</p>
+</div>
+<div id="div3" name="dn3" style="width:100px;background: red"></div>
+
+<script>
+    var oDiv1=document.getElementById("div1");//元素节点
+    dw(oDiv1.nodeName);
+    dw(oDiv1.nodeValue);
+    dw(oDiv1.nodeType);
+
+
+    var oDivList=document.getElementsByTagName("div");
+    dw(oDivList[0].id);
+    dw(oDivList.item(1).id);
+    dw(oDivList["div3"].id);
+
+
+    var  pList=document.getElementsByTagName("p");
+    dw(pList.length);//6
+
+    var pList1=oDiv1.getElementsByTagName("p");
+    dw(pList1.length);//3
+
+    var tagList=document.getElementsByTagName("*");
+    dw(tagList.length);
+
+    if(oDiv1.nodeType==Node.ELEMENT_NODE)
+
+    dw(Node.ELEMENT_NODE)
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变速运动</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            position: absolute;
+            background: #000;
+            top:100px;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="txt1"/>
+<input type="button" id="bt1" value="开始运动"/>
+<div id="div1"></div>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oTxt=document.getElementById("txt1");
+    var oBt=document.getElementById("bt1");
+    var timer;
+    oBt.onclick=function(){
+        clearInterval(timer);
+        var target=parseInt(oTxt.value);//目标值；
+        timer=setInterval(function(){
+            var currentLeft=Math.round(parseFloat(getStyle(oDiv1,"left")));
+            if(currentLeft==target){
+                clearInterval(timer);
+                alert("完成");
+            }else{
+                var speed=(target-currentLeft)/10;//计算速度；
+                if(speed>0){
+                    speed=Math.ceil(speed); //保证速度大于等于1
+                }else{
+                    speed=Math.floor(speed);//保证速度小于等于-1；
+                }
+                oDiv1.style.left=currentLeft+speed+"px";
+            }
+        },30);
+    }
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {   //ie
+            return obj.currentStyle[attr];
+        } else {
+            return window.getComputedStyle(obj, false)[attr];  //非ie
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function</title>
+</head>
+<body>
+<script>
+   /* var go = function*(){
+        yield 1;
+        yield 2;
+        yield 3;
+        yield 4;
+    };
+    //var arr=[...go()];
+
+    for(let item of go()){
+        alert(item);
+    }
+*/
+  /*  var [a,c,...b]=[1,2,3,4,5,6];
+
+    alert(a);
+    alert(b);//[3,4,5,6];*/
+
+    var go = function*(n){
+        yield 100;
+       while(n>0){
+           yield n;
+           n++;
+           alert(n);
+       }
+    };
+   let gent=go(3);
+   var r1=gent.next();
+   dw(r1.value);
+   var r2=gent.next();
+   dw(r2.value);
+
+   //alert(3);
+    //var arr=[...go()];
+   /* for(let item of go(3)){
+        console.log(item);
+    }*/
+   function dw(param){
+       document.write(param);
+       document.write("<br/>")
+   }
+
+    
+
+</script>
+</body>
+</html>

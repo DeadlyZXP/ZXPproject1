@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call继承</title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+        //this=0;
+        this.class="1601";
+        this.name=name;
+        this.age=age;
+        //o.class="1601";
+    }
+    Person.prototype.showName= function () {
+        alert(this.name);
+    }
+    var p2=new Person();
+    Person.call(this);
+    Person();
+    function Student(name,age){
+        //var o=new Object();
+        // this=0;
+        Person.call(this,name,age);
+        //return this;
+    }
+    function Teacher(name,age){
+        Person.apply(this,[name,age]);
+    }
+
+    var s1=new Student("zhangdan",23);
+    alert(s1.class);//1601
+    alert(s1.name);
+    alert(s1.age);
+    //s1.showName();
+
+    var t1=new Teacher("李四",22);
+    alert(t1.name);
+
+</script>
+</body>
+</html>

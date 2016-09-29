@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串提取</title>
+    <!--<script src="stringEx.js"></script>-->
+    <script src="stringfn.js"></script>
+    <script src="stringEx.js"></script>
+</head>
+<body>
+<script>
+    var sYou="This a list of items : cherries,   limes,   oranges,    apples ,apples,apples .    this  list end.";
+    document.write(sYou+"<br/>");
+    //var sYouNew=replaceOfIndex(sYou,"apples","bananas",5);
+    var sYouNew=sYou.replaceEx("apples","bananas",3);
+    document.write(sYouNew);
+</script>
+</body>
+</html>

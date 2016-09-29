@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过期</title>
+</head>
+<body>
+<div>用户名：<span id="spanUserName">123</span></div>
+<script>
+   /* function setCookie(c_name,value,expiredays)
+    {
+        var exdate=new Date()
+        exdate.setDate(exdate.getDate()+expiredays)
+        document.cookie=c_name+ "=" +value+
+                ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }*/
+
+    var dateNow=new Date(); //当前时间
+    dateNow.setDate(dateNow.getDate()+7); //7天时候的时间；
+    document.cookie="nametest=123;expires="+dateNow;  //7天之后过期；  当7天之后，你浏览已启动，就会把这个cookie删除；
+
+    //利用过期的机制；完成删除的功能；
+    //把过期时间，提到当前时间的前面；
+    //把过期时间，设置成昨天；
+    var date2=new Date();
+    date2.setDate(date2.getDate()-1);
+    document.cookie="nametest=;expires="+date2;
+    //兼容；
+    //Json.parse();
+
+   //页面加载的时候，需要去cookie中看有没有 登陆过的用户；
+   //就是看cookie中有没有 一个cookie 叫loginName; 如果有，把这个cookie的value  渲染到span；
+   var strCookies=document.cookie;//string "loginName=gaoge; name=456";  // name=value; name=value
+   var arrCookies=strCookies.split("; ");  //["loginName=gaoge"，"name=456"]  数组元素仍然是string ；name=value
+   for(var i=0;i<arrCookies.length;i++){
+       var arrItem=arrCookies[i].split("=");//["loginName","gaoge"]      ;;["name","456"];
+       if(arrItem[0]=="loginName"){  //loginName  name
+           //找到了cookie；
+           //arrItem[1];  //  gaoge
+           document.getElementById("spanUserName").innerHTML=arrItem[1];
+       }
+   }
+   //
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最大公约数</title>
+</head>
+<body>
+<script>
+    function fn(m,n){
+        if(m<0||n<0) {
+            return -1;
+        }
+        if(m==n){
+            return m;
+        }else{
+            var max=Math.max(m,n);
+            var min=Math.min(m,n);
+            return fn(max-min,min);
+        }
+    }
+</script>
+</body>
+</html>

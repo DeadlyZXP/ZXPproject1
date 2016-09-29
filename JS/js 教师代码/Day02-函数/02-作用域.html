@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+    <script>
+        var aaa=100; //window下面的属性。
+        alert(aaa);
+        alert(window.aaa);
+
+        for(var i=0;i<10;i++){
+            console.log(i);
+        }
+        document.write(i);//i 全局变量；
+
+        function fn(){
+            var a=10;
+            alert(i);//可以； 因为i是全局；  全局变量-===任何地方都可以用；
+            alert(a);//a 是一个局部变量，之后本身的函数能用；
+        }
+        fn();
+        window.fn();
+
+        function fn2(){
+            var aFn="abc";
+            function  fn3(){
+                console.log(aFn);
+            }
+        }
+        fn2();
+        //fn3();//不行
+        //alert(a);//不行；
+
+    </script>
+</body>
+</html>

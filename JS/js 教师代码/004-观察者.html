@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者</title>
+</head>
+<body>
+    <script>
+        var per={
+            eventList:[],
+            listen:function(fn){
+                this.eventList.push(fn);
+            },
+            moneyTotal:0,
+            get:function(){
+                this.moneyTotal+=arguments[0];
+                var that=this;
+                for(var i=0;i<this.eventList.length;i++){
+                    this.eventList[i].apply(this,[that.moneyTotal]);
+                }
+            },
+            send:function(){
+                this.moneyTotal-=arguments[0];
+                var that=this;
+                for(var i=0;i<this.eventList.length;i++){
+                    this.eventList[i].apply(this,[that.moneyTotal]);
+                }
+            }
+        }
+        var per2={
+            showPerMoney:function(){
+                alert(arguments[0]);
+            }
+        }
+
+        per.listen(per2.showPerMoney);
+        per.get(12);
+        per.get(1000);
+        per.moneyTotal+=2000;
+        //每次per的总钱数 发生变化时，per2都是给公布。
+    </script>
+
+</body>
+</html>

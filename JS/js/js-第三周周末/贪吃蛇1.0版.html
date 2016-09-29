@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇1.0版</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        #box{
+            width: 600px;
+            height: 600px;
+            background: silver;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+<script>
+    var snackdiv=[];
+    var Box=document.getElementById("box");
+    var Snack=document.createElement("div");
+    Snack.style.width="20px";
+    Snack.style.height="20px";
+    Snack.style.background="lightseagreen";
+    Snack.style.position="absolute";
+    Snack.id="snack";
+    Box.appendChild(Snack);
+    snackdiv.push(Snack);
+    Setsnack(Snack);
+    Movesnack(Snack);
+    Setfood();
+//    随机生成蛇
+    function Setsnack(snack) {
+        var Snackleft=(Math.floor(Math.random()*30))*20;
+        var Snacktop=(Math.floor(Math.random()*30))*20;
+//        alert();
+        snack.style.top=Snacktop+"px";
+        snack.style.left=Snackleft+"px";
+    }
+//    键盘事件 移动蛇
+    function Movesnack(snack) {
+        document.onkeydown = function(event){
+            switch(event.keyCode){
+                case 37:
+                    snack.style.left=snack.offsetLeft-20+"px";
+                    break;
+                case 38:
+                    snack.style.top=snack.offsetTop-20+"px";
+                    break;
+                case 39:
+                    snack.style.left=snack.offsetLeft+20+"px";
+                    break;
+                case 40:
+                    snack.style.top=snack.offsetTop+20+"px";
+                    break;
+                default:
+                    break;
+            }
+            Judgeborder(Snack);
+            Judgeeat();
+            if(Judgeeat){
+//
+                for(var i = snackdiv.length-1;i>=1;i--){
+                    snackdiv[i].style.width="20px";
+                    snackdiv[i].style.height="20px";
+                    snackdiv[i].style.background="lightseagreen";
+                    Box.appendChild(snackdiv[i]);
+                    snackdiv[i].style.left = parseInt(getStyle(snackdiv[i-1],"left")) +"px";
+                    snackdiv[i].style.top = parseInt(getStyle(snackdiv[i-1],"top")) +"px";
+                }
+            }
+        }
+    }
+//    判断是否碰壁
+    function Judgeborder(snack) {
+        if(snack.offsetLeft<0){
+            snack.style.left="580px";
+        }
+        if(snack.offsetLeft>580){
+            snack.style.left=0;
+        }
+        if(snack.offsetTop>580){
+            snack.style.top=0;
+        }
+        if(snack.offsetTop<0){
+            snack.style.top="580px";
+        }
+    }
+//    生成食物
+    function Setfood() {
+        var Food=document.createElement("div");
+        var FoodLeft=(Math.floor(Math.random()*30))*20;
+        var FoodTop=(Math.floor(Math.random()*30))*20;
+        Box.appendChild(Food);
+        Food.style.left=FoodLeft+"px";
+        Food.style.top=FoodTop+"px";
+        Food.style.position="absolute";
+        Food.style.background="red";
+        Food.style.width="20px";
+        Food.style.height="20px";
+        Food.id="food";
+    }
+//    判断是否吃到食物
+    function Judgeeat() {
+        var snackTop=document.getElementById("snack");
+        var food=document.getElementById("food");
+        var snackl=snackTop.offsetLeft;
+        var snackt=snackTop.offsetTop;
+        var foodl=food.offsetLeft;
+        var foodt=food.offsetTop;
+        if(snackl==foodl&&snackt==foodt){
+//            alert(1);
+            snackdiv.push(food);
+            Box.removeChild(food);
+            Setfood();
+        }
+    }
+    function getStyle(dom,styleName){
+        if(dom.currentStyle){
+            return dom.currentStyle[styleName];
+        }else{
+            return window.getComputedStyle(dom,false)[styleName];
+        }
+    }
+
+</script>
+</body>
+</html>

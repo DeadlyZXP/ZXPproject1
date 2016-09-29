@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        *{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}
+        #container{
+            width: 398px;
+            margin: 100px auto;}
+        #container a{
+            display:block ;
+            width: 98px;
+            height: 42px;
+            line-height: 42px;
+            text-align: center;
+            float: left;
+            border-top: solid 1px #FF4400;
+            border-bottom: solid 1px #FF4400;
+            border-left: solid 1px #FF4400;
+            color: #333333;
+            text-decoration: none;
+        }
+        #container a:hover{
+            color: #FF4400;
+        }
+        .content{
+            width: 355px;
+            height: 140px;
+            text-align: center;
+            border-right: solid 1px #FF4400;
+            border-bottom: solid 1px #FF4400;
+            border-left: solid 1px #FF4400;
+            padding: 30px 0 0 40px;
+            position: absolute;
+            top:150px;
+            left:450px;
+        }
+        .clear{clear: left;}
+        #container a.on{ background: #FF4400; color: #fff;}
+    </style>
+</head>
+<body>
+<div id="container">
+    <a href="#" class="on">充话费</a>
+    <a href="#">充流量</a>
+    <a href="#">充固话</a>
+    <a href="#" style="border-right: solid 1px #FF4400;">充宽带</a>
+
+    <div class="clear"></div>
+
+    <div class="content" style="display: block;">
+        <img src="images/1.png" />
+    </div>
+
+    <div class="content">
+        <img src="images/2.png" />
+    </div>
+
+    <div class="content">
+        <img src="images/3.png" />
+    </div>
+    <div class="content">
+        <img src="images/4.png" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    var  aList=document.getElementsByTagName("a");
+    var  divList=document.getElementsByClassName("content");
+    var zIndex=10;
+    divList[0].style.zIndex=9;
+   for(var i=0;i<aList.length;i++){
+        aList[i].abcd=i;
+        aList[i].onclick=function(){
+            divList[this.abcd].style.zIndex=zIndex++;
+        }
+    }
+   /* var pageIndex=0;
+    aList[0].onclick=function(){
+        if(pageIndex>0){
+            divList[pageIndex-1].style.zIndex=zIndex++;
+            pageIndex--;
+        }
+    }
+    aList[3].onclick=function(){
+        if(pageIndex<3){
+            divList[pageIndex+1].style.zIndex=zIndex++;
+            pageIndex++;
+        }
+    }*/
+
+    /*var pageIndex=0;
+    aList[0].onclick=function(){
+        if(pageIndex>0){
+            divList[pageIndex-1].style.zIndex=zIndex++;
+            pageIndex--;
+        }else{
+            pageIndex=3;
+            divList[pageIndex].style.zIndex=zIndex++;
+        }
+    }
+    aList[3].onclick=function(){
+        if(pageIndex<3){
+            divList[pageIndex+1].style.zIndex=zIndex++;
+            pageIndex++;
+        }else{
+            pageIndex=0;
+            divList[pageIndex].style.zIndex=zIndex++;
+        }
+    }*/
+</script>
+</body>
+</html>

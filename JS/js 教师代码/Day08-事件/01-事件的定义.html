@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的定义</title>
+</head>
+<body>
+<div id="div1" style="width:100px;height:100px;background:red"></div>
+<input id="txt1" type="text" value="123"/>
+<script>
+    var oDiv1=document.getElementById("div1");
+    oDiv1.onclick=function(){
+        alert(this.id);
+    }
+    //oDiv1.onclick();
+
+   /* var oDiv2=new Object();
+    oDiv.onclick=function(){
+        alert(3);
+    }
+    oDiv2.onclick();*/
+
+   /* document.onkeyup=function(){
+        alert(1);
+    }*/
+
+   /* var oTxt=document.getElementById("txt1");
+    oTxt.onfocus=function(){
+        alert(this.value);
+    }
+    oTxt.onblur=function(){
+        alert(this.value);
+    }*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单实时编辑</title>
+    <style>
+        td{
+            width:240px;
+            height: 30px;
+        }
+    </style>
+    <script src="js/EventUtil.js"></script>
+</head>
+<body>
+<table id="tb1" border="1">
+    <tr>
+        <td>实时编辑</td>
+        <td>创建input</td>
+        <td>事件冒泡</td>
+    </tr>
+    <tr>
+        <td>实时编辑</td>
+        <td>创建input</td>
+        <td>事件冒泡</td>
+    </tr>
+    <tr>
+        <td>实时编辑</td>
+        <td>创建input</td>
+        <td>事件冒泡</td>
+    </tr>
+</table>
+
+
+<script>
+    var oTable=document.getElementById("tb1");
+    var tdList=oTable.getElementsByTagName("td");
+    oTable.onclick=function(event){
+        event=EventUtil.getEvent(event);
+        //创建一个input ；
+        //把td的内容赋值给input
+        //删除td的内容，
+        //把input放到td中。
+        var oTxt=document.createElement("input");
+        oTxt.type="text";
+        oTxt.value=EventUtil.getTarget(event).innerHTML;  //td  的内容    table
+        EventUtil.getTarget(event).innerHTML="";  //this td
+        EventUtil.getTarget(event).appendChild(oTxt);
+        oTxt.focus();
+        oTxt.onclick=function(event){
+            var event=EventUtil.getEvent(event);
+            EventUtil.stopPropagation(event);
+        }
+        oTxt.onblur=function(){
+            //把txt的值存储下来。
+            //删除txt
+            //把txt的值赋值给td
+            var txtValue=this.value;  // oTxt
+            this.parentNode.innerHTML=txtValue;
+        }
+    }
+
+</script>
+</body>
+</html>

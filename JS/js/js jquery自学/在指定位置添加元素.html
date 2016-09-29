@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<style type="text/css">
+			div{
+				width: 800px;
+				padding: 12px 6px;
+				border: 1px solid #ABCDEF;
+			}
+			fieldset{
+				margin-bottom: 16px;
+				margin-top: 16px;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery/jquery-3.1.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="">
+			<fieldset>
+				<legend>创建一个新的元素</legend>
+				上传文件:<input type="file" name="" id="" value="" />
+			</fieldset>
+			<a href="#">添加新的file文件</a>
+			<fieldset>
+				<legend>在所选元素末尾处插入HTML元素</legend>
+				<p>段落1：</p>
+				<p>这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.</p>
+			</fieldset>
+			<a href="#">末尾处插入HTML</a>
+			<fieldset>
+				<legend>在所选元素开始处插入HTML元素</legend>
+				<p>段落1：</p>
+				<p>这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.</p>
+			</fieldset>
+			<a href="#">开始处插入HTML元素</a>
+			<fieldset>
+				<legend>在所选元素之后处插入HTML元素</legend>
+				<p>段落1：</p>
+				<p>这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.</p>
+			</fieldset>
+			<a href="#">所选元素之后处插入HTML元素</a>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				var pCount1=1;
+				var pCount2=1;
+				var pCount3=1
+				$("div a:first").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					var oInput=document.createElement("input");
+					oInput.type="file";
+					$("fieldset:first").append(oInput);
+				});
+				$("div a:eq(1)").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					pCount1++;
+					var oP=document.createElement("p");
+					oP.innerHTML="段落"+pCount1;
+					$("fieldset:eq(1)").append(oP);
+					var oP=document.createElement("p");
+					oP.innerHTML="这是段落"+pCount1+"，这是段落"+pCount1+"，这是段落"+pCount1;
+					$("fieldset:eq(1)").append(oP);
+				});
+				
+				$("div a:eq(2)").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					pCount2++;
+					var oP1=document.createElement("p");
+					oP1.innerHTML="段落"+pCount2;
+					var oP2=document.createElement("p");
+					oP2.innerHTML="这是段落"+pCount2+"，这是段落"+pCount2+"，这是段落"+pCount2;
+					$("fieldset:eq(2) legend").after(oP2).after(oP1);	
+				});
+				
+				$("div a:eq(3)").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					pCount3++;
+					var oP1=document.createElement("p");
+					oP1.innerHTML="段落"+pCount3;
+					var oP2=document.createElement("p");
+					oP2.innerHTML="这是段落"+pCount3+"，这是段落"+pCount3+"，这是段落"+pCount3;
+					$("fieldset:eq(2) legend").after(oP2).after(oP1);	
+				});
+			});
+		</script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+</head>
+<body>
+<div id="div1" style="width:200px;height: 200px;background:red ;position: absolute;top: 0;left: 0;">
+    <div id="div2" style="width:100px;height: 100px;background: blue;position: absolute;top: 0;left: 0;">
+        <div id="div3" style="width:50px;height: 50px;background: yellow;position: absolute;top: 0;left: 0;"></div>
+    </div>
+</div>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");
+
+    //event 是事件对象；
+    // 当发生事件的时候，作为实参传递给事件处理函数。  //标准的。
+    //非标准。老版本ie；把事件对象赋值给window.event
+
+    oDiv1.onclick=function(e){
+        e=e||window.event;
+        var target=e.target||e.srcElement;
+        alert(this.id+target.id+e.currentTarget.id);
+    }
+    oDiv2.onclick=function(event){
+        event=event||window.event;
+        var target=event.target||event.srcElement;
+        alert(this.id+target.id+event.currentTarget.id);
+
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble=true;
+        }
+        //return false;
+    }
+    oDiv3.onclick=function(event){
+        event=event||window.event;
+        var target=event.target||event.srcElement;
+        alert(this.id+target.id+event.currentTarget.id);
+        //event.stopPropagation();
+    }
+
+    //源对象  目标对象
+
+</script>
+</body>
+</html>

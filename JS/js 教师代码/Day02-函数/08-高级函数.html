@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高级函数</title>
+</head>
+<body>
+<script>
+
+    function add(a,b){
+        return a+b;
+    }
+    function sub(a,b){
+        return a-b;
+    }
+
+    var  i=1;
+    var p1=10;
+    var p2=20;
+
+    if(i>0){
+        var result=add(p1,p2);
+        alert(result);
+    }else{
+        var result=sub(p1,p2);
+        alert(result);
+    }
+
+    //3个参数；
+    //第一个参数：是一个运算函数名
+    //第二个、第三个；是运算函数的参数；
+    function math(fn,a,b){
+       /* var fn=add;
+        var a=p1;
+        var b=p2;*/
+
+        fn(a,b);//add(p1,p2)
+    }
+    math(add,p1,p2);
+    math(sub,p1,p2);
+
+    var r1=add(10,20);//30
+    var add1=add;
+    add1();
+
+
+
+</script>
+</body>
+</html>

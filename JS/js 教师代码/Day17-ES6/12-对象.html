@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+<script>
+   /* var ageInt=10;
+    var ob={
+        name:"zs",
+        age:ageInt
+    }*/
+
+
+   /*var age=10;
+    var ob2={"age":age};//{"age"}
+    dw(ob2.age);//10
+    var ob1={age};//{age:age}
+    dw(ob1.age);//10*/
+
+    /*var age=10;
+    var ob3={
+        age,
+        showAge:function(){
+            alert(this.age);
+        },
+        showAgeX(){
+          alert(this.age);
+        },
+        showAgeXX:()=>{
+          alert(this.age);
+        }
+    }
+
+    age=20;
+    ob3.showAge();//10
+    ob3.showAgeX();
+    ob3.showAgeXX();*/
+
+
+
+   var param="age";
+
+
+   var ob4={
+       "age":20
+   }
+
+   var ob5={
+       [param]:20,
+       ["age"+"x"]:30,
+       [fn()]:40
+   }
+   alert(ob5.age);
+   alert(ob5.agex);
+   alert(ob5.agexx);
+
+   function fn(){
+       return "agexx";
+   }
+
+
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>")
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例</title>
+</head>
+<body>
+<script>
+
+    //闭包？ instance  被保护，而且是唯一的一份；单例
+    var mySingleton=(function(){
+        //私有变量
+        var instance;
+        function init(){
+            function privateMethod(){
+                console.log("i am private method");
+            }
+            var privateVariable="i also private variable";
+            var privateRandomNumber=Math.random();
+            return {
+                publicMethod:function(){
+                    console.log("i am public method !");
+                },
+                publicProperty:"i am public property",
+                getRandomNumber:function(){
+                    return privateRandomNumber;
+                }
+            };
+        };
+        return {
+            getInstance:function(){
+                if(!instance){
+                     instance=init();
+                }
+                return instance;
+            }
+        };
+    })();
+
+
+
+    //singleA  与  singleB 是同一个对象；
+    var singleA=mySingleton.getInstance();
+    var singleB=mySingleton.getInstance();
+    console.log(singleA.getRandomNumber()===singleB.getRandomNumber());
+
+</script>
+</body>
+</html>

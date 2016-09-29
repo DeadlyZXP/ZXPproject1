@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var val="smtg";
+    console.log("Value is"+(val==="smtg")?"something":"nothing");
+
+
+    var name = 'World!';
+//    alert(name);
+    (function (name) {
+        if (typeof name === 'undefined') {
+//            var name = 'Jack';
+            name = 'Jack';
+            console.log('Goodbye ' + name);
+        } else {
+            console.log('Hello ' + name);
+        }
+    })(name);
+
+    var name = 'World!';
+    //    alert(name);
+    (function () {
+        if (typeof name === 'undefined') {
+            var name = 'Jack';//声明提升 相当于 var name; if (typeof name === 'undefined') { name='Jack'....
+            console.log('Goodbye ' + name);
+        } else {
+            console.log('Hello ' + name);
+        }
+    })();
+
+</script>
+</body>
+</html>

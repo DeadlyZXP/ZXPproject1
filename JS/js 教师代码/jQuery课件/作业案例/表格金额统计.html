@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业2_表格金额统计</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            width: 120px;
+            text-align: center;
+        }
+    </style>
+    <script src="js/jquery-2.2.0.min.js"></script>
+    <script>
+        $(function () {
+            // 首先要为所有的a添加事件监听器
+            $("table").on("click", "a", function (e) {
+                e.preventDefault();
+
+                $(this).parents("tr").remove(); // 删除
+
+                // 显示新的数量统计
+                $("tfoot th:nth-child(3)").text(sum());
+            });
+
+
+            // 为addBtn添加单击事件响应
+            $("#addBtn").on("click", function () {
+                // 获取输入框的内容
+                alert($("#pname").val());
+
+//                $("table").append('<tr><td>商品1</td><td>88.80</td><td>8</td> <td><a href="#">删除</a></td></tr>');
+                $("table").append("<tr>"
+                        + "<td>商品1</td>"
+                        + "<td>88.80</td>"
+                        + "<td>8</td>"
+                        + '<td><a href="#">删除</a></td>'
+                        + "</tr>");
+
+                // 显示新的数量统计
+                $("tfoot th:nth-child(3)").text(sum());
+            });
+
+            // 显示数量统计
+            $("tfoot th:nth-child(3)").text(sum());
+        });
+
+        function sum() {
+            var total = 0;
+            $("table tbody").find("tr").each(function () {
+                //找到这一行的第三个单元格
+//                var strNum = $(this).find("td:nth-child(3)").text();
+                var strNum = $(this).find("td").eq(2).text();
+                total += parseInt(strNum);
+            });
+
+            return total;
+        }
+    </script>
+</head>
+<body>
+<button id="addBtn">增加一个新的商品</button>
+<br/><br/>
+商品名称：<input type="text" name="pname" id="pname" /><br/>
+商品价格：<input type="text" name="price" id="price" /><br/>
+商品数量：<input type="text" name="pnum" id="pnum" /><br/><br/>
+<table>
+    <thead>
+    <tr>
+        <th>商品名称</th>
+        <th>商品价格</th>
+        <th>商品数量</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>商品1</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品2</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品3</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品4</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    <tr>
+        <td>商品5</td>
+        <td>88.80</td>
+        <td>8</td>
+        <td><a href="#">删除</a></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>总计：</th>
+        <th></th>
+        <th>总数量</th>
+        <th></th>
+    </tr>
+    </tfoot>
+</table>
+</body>
+</html>

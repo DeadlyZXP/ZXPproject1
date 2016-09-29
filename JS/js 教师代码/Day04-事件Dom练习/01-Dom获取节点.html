@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取节点</title>
+</head>
+<body>
+<div id="div1" style="width: 100px;background: red" class="d2">H w</div>
+<div id="div2" class="d2">H w</div>
+<div id="div3">H w</div>
+<script>
+    var oDiv=document.getElementById("div1");
+   /* var oDivs=document.getElementsByTagName("div");
+    alert(oDivs.length);//3
+    var oDivs2=document.getElementsByClassName("d2");
+    alert(oDivs2.length);//2
+    alert(oDiv.id);
+    alert(oDiv.style.width);
+    oDiv.style.width="200px";
+    oDiv.attributes[0];
+    oDiv.className;*/
+    oDiv.innerHTML="<h1>123</h1>";
+</script>
+</body>
+</html>

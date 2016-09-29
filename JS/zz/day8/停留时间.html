@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			div{
+				width: 300px;
+				height: 250px;
+				border: 2px solid #777;
+				background: #C5C5C5;
+				color: #FF0000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<p id="systemtime"></p>
+			<p id="stoptime"></p>
+			请输入一个字符:<input type="text" id="char" />
+			<input type="button" id="start" value="执行" />
+			<p id="msg">您输入的字符串是："",它的ASCII码为:</p>
+		</div>
+		<script type="text/javascript">
+			var systemtime=document.getElementById("systemtime");
+			var stoptime=document.getElementById("stoptime");
+			var char1=document.getElementById("char");
+			var start=document.getElementById("start");
+			var msg=document.getElementById("msg");
+			var time=new Date();
+			systemtime.innerHTML="系统的当前时间:"+time.getFullYear()+"-"+time.getMonth()+"-"+time.getDay()+" "+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds()
+			var hour=0;
+			var minute=0;
+			var second=0;
+			setInterval(function(){
+				second++;
+				if(second==60){
+					second=0;
+					minute++;
+				}
+				if(minute==60){
+					minute=0;
+					hour++;
+				}
+				stoptime.innerHTML="当前网页已停留时间:"+hour+"小时"+minute+"分"+second+"秒"
+			},1000);
+			
+			start.onclick=function(){
+				var vchar=(char1.value).charCodeAt();
+				msg.innerHTML="您输入的字符是:"+"\""+char1.value+"\""+"它的ASCII码为:"+vchar;
+			}
+			
+		</script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

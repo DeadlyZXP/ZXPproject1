@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object fn</title>
+</head>
+<body>
+<script>
+    //判断两个对象是否相等
+    alert(Object.is({},{}));//false
+    var age=10;
+    var name="zs"
+    var ob={
+        age,
+        name
+    }
+
+    alert(Object.is(ob,{age,name}));//false
+
+    var ob1=ob;
+    alert(Object.is(ob,ob1));//true;
+
+    alert(Object.is(NaN,NaN));//true;
+
+    var ob1={
+        age:10
+    }
+    var ob2={
+        name:"zs"
+    }
+    var ob3={
+        id:101,
+        age:20
+    }
+
+    //合并对象；如果对象属性有重复的，后面的属性值覆盖前面的属性值；
+    var obx=Object.assign(ob1,ob2,ob3);
+    console.log(obx);
+
+
+    [1,2,3].map(function(value,key){
+        console.log(typeof key);//numb
+        console.log(key+":"+value);//0,
+    });
+
+
+</script>
+</body>
+</html>

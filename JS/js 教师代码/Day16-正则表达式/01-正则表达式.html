@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var reg=new RegExp("abc$","i");
+    var isReg=reg.test("abc");//true;
+
+    var isReg2=reg.test("aabcd");//false;
+
+
+    var reg2=/zo*/;
+
+    dw(reg2.test("abcz"));
+    dw(reg2.test("abczo"));
+
+    var reg3=/(zoo)+/;
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

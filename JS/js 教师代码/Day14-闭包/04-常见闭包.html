@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    var oList=document.getElementsByTagName("div");
+    var oBt=document.getElementById("bt1");
+    oBt.onclick=function(){
+        var a=100;
+        for(var i=0;i<oList.length;i++){
+            oList[i].onclick=function(){
+                alert(i);
+            }
+        }
+    }
+
+    //var timer;
+    function fn(){
+        var a=10;
+        //clearInterval(timer);
+        setInterval(function(){
+            alert(a++);
+        },1000)
+    }
+    fn();
+
+
+
+</script>
+</body>
+</html>

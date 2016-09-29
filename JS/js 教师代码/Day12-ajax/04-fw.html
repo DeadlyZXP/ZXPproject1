@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //图片列的宽度
+        var imgWidth=300;
+        //可视区域宽度
+        var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+        //计算出可以摆放的列数。
+        var columnCount=Math.floor(clientWidth/imgWidth);
+
+        var pageIndex=1;
+
+        //初始化一个数组，记录列的高度。
+        var arrColumnHeight=[];
+        for(var i=0;i<columnCount;i++){
+            arrColumnHeight[i]=0;
+        }
+        ajaxImg(pageIndex);
+
+        function loadImg(data){
+            var arrImgInfo=eval("("+data+")");
+            for(var i=0;i<arrImgInfo.length;i++){
+                //把图片显示到页面中。
+                var oImg=document.createElement("img");
+                oImg.src="img/"+arrImgInfo[i].url;
+                oImg.style.width=imgWidth+"px";
+                oImg.style.height=arrImgInfo[i].height+"px";
+
+                var columnIndex=getMinIndex();//列号  从0开始；
+                oImg.style.position="absolute";
+                oImg.style.top=arrColumnHeight[columnIndex]+"px";
+                oImg.style.left=imgWidth*columnIndex+"px";
+                document.body.appendChild(oImg);
+                arrColumnHeight[columnIndex]+=arrImgInfo[i].height;
+            }
+        }
+
+        function getMinIndex(){
+            var result=0;
+            for(var i=0;i<arrColumnHeight.length;i++){
+                if(arrColumnHeight[i]<arrColumnHeight[result]){
+                    result=i;
+                }
+            }
+            return result;
+        }
+        function getMaxIndex(){
+            var result=0;
+            for(var i=0;i<arrColumnHeight.length;i++){
+                if(arrColumnHeight[i]>arrColumnHeight[result]){
+                    result=i;
+                }
+            }
+            return result;
+        }
+
+        window.resize=function(){
+
+        }
+        document.onscroll=function(){
+            //
+            var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var maxIndex=getMaxIndex();
+            var maxColumnHeight=arrColumnHeight[maxIndex];
+
+            if(clientHeight+scrollTop>=maxColumnHeight-10){
+                pageIndex++;
+                ajaxImg(pageIndex);
+            }
+        }
+
+        function ajaxImg(index){
+            //ajax 获取数据源。
+            var xhr;
+            if(window.XMLHttpRequest){
+                xhr=new XMLHttpRequest();
+            }else{
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4){
+                    if(xhr.status==200){
+                        loadImg(xhr.responseText);
+                    }else{
+                        console.log(xhr.status);
+                    }
+                }
+            }
+            xhr.open("get","data/imgdata"+index+".json",true);
+            xhr.send();
+        }
+
+    </script>
+</body>
+</html>

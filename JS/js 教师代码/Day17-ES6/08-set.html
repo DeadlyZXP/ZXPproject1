@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set</title>
+</head>
+<body>
+<!--<script>
+    var set1=new Set([1,2,3,4,5,1,2,3,4,5]);
+    alert(set1.size);
+    //alert(set1[0]);
+    set1.add(6);
+    var set2=set1.add(6);
+    var isDelete=set1.delete(6);
+    alert(set1.size);//5
+    var isHas=set1.has(5);//true;
+    set1.clear();
+    alert(set1.size);
+    alert(set2.size);
+
+    let set3=new Set([1,2,3,4,5,1,2,3,4,5]);
+
+    //把set变为了数组；
+    //arr[0]
+    var arr=Array.from(set3);
+
+    let arr1=[1,2,3,4,5,1,2,3,4,5];
+    let set11=new Set(arr1);
+    arr1=Array.from(set11);
+    alert(arr1.length);
+
+
+
+</script>-->
+
+<!--<script>
+
+    //任何对象都是不相等；
+    let arr=[{id:1},{id:2},{id:3},{id:4},{id:1},{id:2},{id:3},{id:4}];
+    let set=new Set(arr);
+    alert(set.size);
+
+</script>-->
+
+<script>
+    //遍历
+    let set=new Set(["a","b","c"]);
+    var keys=set.keys();
+    for(let key of keys){
+        dw(key);
+    }
+    for(let value of set){
+        dw(value);
+    }
+    for(let values of set.values()){
+        dw(values);
+    }
+    for(let en of set.entries()){
+        dw(en);
+    }
+
+    set.forEach(function(key,value){
+        dw(key);
+        dw(value);
+    });
+
+
+    set.forEach((key,value)=>{
+        dw(key);
+        dw(value);
+    });  //lamb
+
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>")
+    }
+
+</script>
+</body>
+</html>

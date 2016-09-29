@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom</title>
+</head>
+<body>
+<div id="div1" style="width: 100px;background: red" class="d2">H w</div>
+<div id="div2" class="d2">H w</div>
+<div id="div3">H w</div>
+<input type="text" id="txt1" value="100"/>
+<input type="button" id="bt1" value="改变"/>
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oBt=document.getElementById("bt1");
+    var oTxt=document.getElementById("txt1");
+    oBt.onclick=function(){
+        var txtVal=oTxt.value;
+        oDiv1.style.width=txtVal+"px";
+        oDiv1.style.height=txtVal+"px";
+    }
+</script>
+</body>
+</html>

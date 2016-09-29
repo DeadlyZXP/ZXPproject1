@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div">
+    <form onclick="alert('form')">
+        <button id="button">提交</button>
+    </form>
+</div>
+<script>
+    doc=document;
+    doc.body.addEventListener("click",function () {
+        alert("body");
+    },true);
+    doc.getElementById("div").addEventListener("click",function () {
+        alert("div");
+    },false);
+    doc.getElementById("button").addEventListener("click",function () {
+        alert("button");
+    },true);
+    var a=1;
+    function foo() {
+        var a=2;
+        var b=3;
+        alert(b);
+        c=4;
+    }
+    alert(a);
+    foo();
+    alert(c);
+
+</script>
+</body>
+</html>

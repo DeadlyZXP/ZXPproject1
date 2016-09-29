@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享到</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width: 150px;
+            height: 200px;
+            background: #CC8329;
+            position: absolute;
+            top: 50px;
+            left: -150px;
+            border-radius: 10px;
+        }
+        #div2{
+            width: 30px;
+            height: 60px;
+            background: #4CBDF1;
+            position: absolute;
+            top: 70px;
+            left: 150px;
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+        <p >分享到QQ</p>
+        <p>分享到微信</p>
+        <p>分享到微博</p>
+    <div id="div2">
+        <p>分享</p>
+    </div>
+</div>
+<script>
+    var oDiv2=document.getElementById("div2");
+    var oDiv1=document.getElementById("div1");
+    var isShow=false;
+    var timer;
+    oDiv2.addEventListener("click",function(){
+        isShow=!isShow;
+        //clearInterval(timer);
+        timer=setInterval(function(){
+            var speed;
+            var target;
+            if(isShow){
+                if(oDiv1.offsetLeft>=0){
+                    clearInterval(timer);
+                }else{
+                    oDiv1.style.left=oDiv1.offsetLeft+10+"px";
+                }
+            }else{
+                if(oDiv1.offsetLeft<=-150){
+                    clearInterval(timer);
+                }else{
+                    oDiv1.style.left=oDiv1.offsetLeft-10+"px";
+                }
+            }
+        },30);
+    });
+</script>
+</body>
+</html>

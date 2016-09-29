@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var age=10;
+			var obj={age};
+			alert(obj.age);
+			
+			var obj1={
+				age,
+				showAge:function(){
+					alert(this.age);
+				},
+				showAge1:()=>{
+					alert(this.age);//this指向window
+				}
+			}
+			obj1.showAge();
+			age=20;
+			obj1.showAge1();
+			alert(Object.is(NaN,NaN));
+			[1,2,3].map(function(value,key){
+//				console.log(key);
+//				console.log(value);
+				console.log(typeof key);//number  原来为string
+				console.log(key+":"+value);
+			})
+		</script>
+	</body>
+</html>

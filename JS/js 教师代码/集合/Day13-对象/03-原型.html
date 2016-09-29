@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+        this.showName=function(){
+            alert(this.name);
+        }
+    }
+    Person.prototype.showAge=function(){
+        alert(this.age);
+    }
+    Person.prototype.id=1234;
+
+    var person1=new Person("张三",10);
+    alert(person1.name);
+    person1.showName();
+    person1.showAge();
+    alert(person1.id);
+
+    var person2=new Person("李四",22);
+    person2.showAge();
+
+
+
+
+</script>
+</body>
+</html>

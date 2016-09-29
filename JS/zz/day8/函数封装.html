@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var str="This a list of items:cherries,limes,oranges,apples,apples,apples,apples,apples,apples,apples,apples.this list end.";
+		var str3=replease(str,"apples","bananas",2);
+		console.log(str3);
+			function replease(arr,oldstr,newstr,num){
+				//alert(typeof(num));
+				var str1=arr.split(oldstr);
+				var str2="";
+				for (var i=0;i<str1.length;i++) {
+					if(i==str1.length-1){
+						str2+=str1[i];
+					}else{
+						if(i==num-1){
+							str2+=str1[i]+newstr;
+						}else{
+							str2+=str1[i]+oldstr;
+						}
+					}
+				}
+				return str2;
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

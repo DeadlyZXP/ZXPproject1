@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+<body>
+    <input type="text" id="Cityname"/>
+    <input type="button" id="btn1" value="获取此城市天气信息"/>
+    <p id="showWeather"></p>
+    <script>
+        var Txt=document.getElementById("Cityname");
+        var Btn=document.getElementById("btn1");
+        var Show=document.getElementById("showWeather");
+        Btn.onclick=function () {
+            var xhr;
+            var Txtcity=Txt.value;
+
+                xhr=new XMLHttpRequest();
+
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4){
+                    if(xhr.status==200){
+                        var Weather=xhr.responseText;
+                        var steWeather=JSON.parse(Weather);
+                        Show.innerHTML=steWeather.retData.city+steWeather.retData.date+steWeather.retData.weather+steWeather.retData.altitude;
+                    }else{
+
+                    }
+                }
+            }
+            xhr.open("get","http://apis.baidu.com/apistore/weatherservice/weather?citypinyin="+Txtcity,true);
+            xhr.setRequestHeader("apikey","45d8173dfc35ce17924e1141a441258e");
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直接插入排序</title>
+    <style>
+        div{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>直接插入排序</h1>
+<div>
+    <h2>基本思想:</h2>
+    <p>将一个记录插入到已排序好的有序表中，从而得到一个新，记录数增1的有序表。
+        即：先将序列的第1个记录看成是一个有序的子序列，然后从第2个记录逐个进行插入，直至整个序列有序为止。
+    </p>
+</div>
+<div>
+    <h2>演示图</h2>
+<img src="../img/01-插入排序演示图.png"/>
+</div>
+<div>
+    <input id="txt1" value="10" type="text"/>
+    <input id="bt1" value="随机生成数据" type="button"/>
+    <input id="bt2" value="排序" type="button"/>
+</div>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    //定义数组
+    var arr=[];
+    //配置数组元素个数
+    var arrLength=10;
+
+    var oBt1=document.getElementById("bt1");
+    oBt1.onclick= function () {
+        var sTxtValue=parseInt(document.getElementById("txt1").value);
+        if(!isNaN(sTxtValue)){
+            arrLength=sTxtValue;
+        }
+        //用随机、四舍五入生成数组元素
+        for(var i=0;i<arrLength;i++){
+            var item=Math.round(Math.random()*10*arrLength);
+            arr[i]=item;
+        }
+        document.getElementById("div1").innerHTML="随机生成的原始数组为:"+arr.toString();
+    }
+
+    var oBt2=document.getElementById("bt2");
+    oBt2.onclick= function () {
+        for(var i=1;i<arr.length;i++){
+            insertEx(arr,i);
+        }
+        document.getElementById("div2").innerHTML="原始数组排序后为:"+arr.toString();
+    }
+
+    //把数组arr 中的下边为index 的元素，插入到前面有序列中；
+    function insert(arr,index){
+        //从前开始比较大小，确定index移动到的合适位置。
+        for(var i=0;i<index;i++){
+            if(arr[i]>arr[index]){
+                var temp=arr[index];
+                while(index>i){
+                    arr[index]=arr[index-1];
+                    index--;
+                }
+                arr[index]=temp;
+                break;
+            }
+        }
+    }
+    //优化下，从后往前查找位置，并一起修正顺序
+    function insertEx(arr,index){
+        var temp=arr[index];
+        while(index>0&&temp<arr[index-1]){
+            arr[index]=arr[index-1];
+            index--;
+        }
+        arr[index]=temp;
+    }
+
+</script>
+</body>
+</html>

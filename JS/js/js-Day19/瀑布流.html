@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        *{padding: 0;margin: 0;}
+    </style>
+</head>
+<body>
+    <script>
+        var arrHeight=[];
+        var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+        var imgWidth="236";
+        var count=Math.floor(clientWidth/imgWidth);
+        var Tb=(clientWidth-count*imgWidth)/2;
+        for(var i=0;i<count;i++){
+            arrHeight[i]=0;
+        }
+        var pageIndex=1;
+        ajaxImg(pageIndex);
+        //添加图片
+        function loadImg(data) {
+            var datastr=eval("("+data+")");
+            for(var i=0;i<datastr.length;i++){
+                var Oimg=document.createElement("img");
+                Oimg.src="img/img/"+datastr[i].url;
+                Oimg.style.width=imgWidth+"px";
+                Oimg.style.height=datastr[i].height+"px";
+                var Imgindex=getMin();
+                Oimg.style.position="absolute";
+                Oimg.style.top=arrHeight[Imgindex]+"px";
+                Oimg.style.left=imgWidth*Imgindex+Tb+"px";
+                document.body.appendChild(Oimg);
+                arrHeight[Imgindex]+=datastr[i].height;
+            }
+        }
+        //找最小高度；
+        function getMin() {
+            var cout=0;
+            for(var i=0;i<arrHeight.length;i++){
+                if(arrHeight[i]<arrHeight[cout]){
+                    cout=i;
+                }
+            }
+            return cout;
+        }
+        //浏览器窗变小，列数改变
+        window.onresize=function () {
+            var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+            var countNew=Math.max(Math.floor(clientWidth/imgWidth),3);//设置最小列数为3列
+            if(countNew!=count){
+                count=countNew;
+                var Tb=(clientWidth-count*imgWidth)/2;
+//                var newarrHeight=[];
+//                arrHeight.length=0;//清空数组
+                arrHeight=[];
+                for(var i=0;i<count;i++){
+                    arrHeight[i]=0;
+                }
+                var OImg=document.getElementsByTagName("img");
+                for(var i=0;i<OImg.length;i++){
+                    var Imgindex=getMin();
+                    OImg[i].style.top=arrHeight[Imgindex]+"px";
+                    OImg[i].style.left=imgWidth*Imgindex+Tb+"px";
+                    arrHeight[Imgindex]+=OImg[i].offsetHeight;
+                }
+            }
+        }
+        //滚动页面时，动态加载数据
+        document.onscroll=function () {
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var clientHeight=document.documentElement.clientHeight||document.body.clientHeight;
+            var Maxcout=getMax();
+            var arrMaxheight=arrHeight[Maxcout];
+            if(scrollTop+clientHeight>=arrMaxheight-20){
+                pageIndex++;
+                ajaxImg(pageIndex);
+            }
+        }
+        //找最大高度
+        function getMax() {
+            var cout=0;
+            for(var i=0;i<arrHeight.length;i++){
+                if(arrHeight[i]>arrHeight[cout]){
+                    cout=i;
+                }
+            }
+            return cout;
+        }
+//        获取数据
+        function ajaxImg(index) {
+            var xhr;
+            if(window.XMLHttpRequest){
+                xhr=new XMLHttpRequest();
+            }else{
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4){
+                    if(xhr.status==200){
+                        loadImg(xhr.responseText);
+                    }else{
+
+                    }
+                }
+            }
+            xhr.open("get","data/imgdata"+index+".json",true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

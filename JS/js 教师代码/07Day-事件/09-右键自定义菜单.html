@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>右键自定义菜单</title>
+    <style>
+        div{
+            width: 100px;
+            height: 300px;
+            background: blue;
+            display: none;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <a id="a1" href="05-事件流.html">菜单1</a>
+    <a id="a12" href="05-事件流.html">菜单2</a>
+</div>
+<script>
+    document.oncontextmenu= function (event) {
+        event=event||window.event;
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue=false;
+        }
+        var oDiv=document.getElementById("div1");
+        oDiv.style.display="block";
+        oDiv.style.top=event.clientY+"px";
+        oDiv.style.left=event.clientX+"px";
+        return false;
+    }
+    document.onmousedown=function(){
+        var oDiv=document.getElementById("div1");
+        oDiv.style.display="none";
+    }
+    var oDiv=document.getElementById("div1");
+    oDiv.onmousedown=function(event){
+        event=event||window.event;
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble=true;
+        }
+    }
+</script>
+</body>
+</html>

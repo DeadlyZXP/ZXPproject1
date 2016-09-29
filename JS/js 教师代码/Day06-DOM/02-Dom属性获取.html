@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom属性获取</title>
+</head>
+<body>
+
+<div id="div1" name="dn1" style="width:100px;background: red">
+    <p>p11</p>
+    <p>p12</p>
+    <p>p13</p>
+</div>
+<div id="div2" name="dn2" style="width:100px;background: red">
+    <p>p21</p>
+    <p>p22</p>
+    <p>p23</p>
+</div>
+<div id="div3" name="dn3" data-gao="123" data-wang="456" style="width:100px;background: red"></div>
+<script>
+    var oDiv1=document.getElementById("div3");
+    dw(oDiv1.id);
+    dw(oDiv1.getAttribute("id"));
+    dw(oDiv1.getAttribute("data-gao"));
+    dw(oDiv1.dataset["gao"]);
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

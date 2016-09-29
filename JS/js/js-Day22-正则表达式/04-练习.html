@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+<body>
+输入用户名<input type="text" id="nametxt"/><span id="p1"><span/><br><br>
+输入密码<input type="text" id="passwordtxt"/><br><br>
+确认密码<input type="text" id="passwordtxt1"/><br><br>
+<input type="button" id="btn1" value="注册"/>
+<input type="button" id="btn2" value="登录"/>
+<script>
+    var Textname=document.getElementById("nametxt");
+    var Textpassword=document.getElementById("passwordtxt");
+    var Textpassword1=document.getElementById("passwordtxt1");
+    var Btn1=document.getElementById("btn1");
+    var Btn2=document.getElementById("btn2");
+    var P1=document.getElementById("p1");
+    var fn1;
+    var fn2;
+    var fn3;
+    Btn1.onclick=function () {
+        var Name = Textname.value;
+        var Pass1 = Textpassword.value;
+        var Pass2 = Textpassword1.value;
+            var Src = document.createElement("script");
+            Src.src = "http://10.9.163.115:8081/user/registerGet?name=" + Name + "&password=" + Pass1 + "&callback=fn2";
+            document.body.appendChild(Src);
+            fn2 = function (result) {
+                if (result == 1) {
+                    alert("成功");
+                } else {
+                    alert("失败");
+                }
+            }
+    }
+    Textname.onblur = function () {
+        var Name = Textname.value;
+        var Src = document.createElement("script");
+        Src.src = "http://10.9.163.115:8081/user/CheckUserNameGet?username=" + Name + "&callback=fn1";
+        document.body.appendChild(Src);
+        fn1 = function (result) {
+            if (result == 1) {
+                alert("用户名存在");
+            } else {
+                P1.innerHTML = "可用";
+            }
+        }
+    }
+    Btn2.onclick=function () {
+        var Name = Textname.value;
+        var Pass1 = Textpassword.value;
+        var Src = document.createElement("script");
+        Src.src = "http://10.9.163.115:8081/user/loginget?username=" + Name + "&password=" + Pass1 + "&callback=fn3";
+        document.body.appendChild(Src);
+        fn3=function (result) {
+            if(result==1){
+                alert("登陆成功");
+            }
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>默认行为</title>
+</head>
+<body>
+<a id="a1" href="">阻止默认行为</a>
+<script>
+    var oA=document.getElementById("a1");
+    oA.onclick=function(event){
+        event=event||window.event;
+        this.innerHTML="123";
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue=false;
+        }
+        return false;
+    }
+    var oDiv=document.createElement("div");
+    oDiv.style.width="150px";
+    oDiv.style.height="350px";
+    oDiv.style.background="red";
+    oDiv.style.position="absolute";
+    oDiv.style.top="0px";
+    oDiv.style.left="0px";
+    oDiv.style.display="none";
+    document.body.appendChild(oDiv);
+    document.oncontextmenu=function(event){
+        event=event||window.event;
+        oDiv.style.display="block";
+        oDiv.style.top=event.clientY+"px";
+        oDiv.style.left=event.clientX+"px";
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue=false;
+        }
+        return false;
+    }
+    document.onclick=function(){
+        oDiv.style.display="none";
+    }
+    oDiv.onclick=function(e){
+        e=e||window.event;
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble=true;
+        }
+    }
+</script>
+</body>
+</html>

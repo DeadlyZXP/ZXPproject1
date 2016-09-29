@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create cookie</title>
+    <script src="js/cookie.js"></script>
+</head>
+<body>
+<div>用户名：<span id="spanUserName">123</span></div>
+<div>用户名123：<span id="sp123">000</span></div>
+<input id="txtname" type="text"/>
+<input id="txtname2" type="text"/>
+<input id="bt1" type="button" value="登录"/>
+<script>
+    var oBt=document.getElementById("bt1");
+
+    oBt.onclick= function () {
+        var loginNameValue=document.getElementById("txtname").value;
+        var nameValue=document.getElementById("txtname2").value;
+        setCookie("loginName",loginNameValue,30);
+        setCookie("name",nameValue,30);
+        //存储了一个cookie  cookie名字叫loginName;
+        document.getElementById("spanUserName").innerHTML=loginNameValue;
+        document.getElementById("sp123").innerHTML=nameValue;
+    }
+
+
+    document.getElementById("spanUserName").innerHTML=getCookie("loginName");
+    document.getElementById("sp123").innerHTML=getCookie("name");
+
+</script>
+</body>
+</html>

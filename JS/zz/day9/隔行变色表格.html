@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="number" id="cols" placeholder="请输入列数"/>
+		<input type="number" id="rows" placeholder="请输入行数"/>
+		<input type="button" id="btn" value="点击创建按钮" />
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");		
+			var clearbtn=document.getElementById("clraebtn");
+		    //方法一
+			/*btn.onclick = function() {
+				var table = document.createElement("table");
+				var tbody = document.createElement("tbody");
+				var cols = Number(document.getElementById("cols").value);
+				var rows = Number(document.getElementById("rows").value);
+				var arr=[];
+				document.body.appendChild(table);
+				table.appendChild(tbody);
+				for(var i = 0; i < cols; i++) {
+					if(arr.length<=2){
+						arr.push(getcolor());
+					}
+					var tr = document.createElement("tr");
+					if(i%2==0){
+						tr.style.backgroundColor=arr[0];
+					}else{
+						tr.style.backgroundColor=arr[1];
+					}
+					tbody.appendChild(tr);
+					for(var j = 0; j < rows; j++) {
+						var td = document.createElement("td");
+						td.style.border = "1px";
+						//td.style.color="rgb("+color3+","+color1+","+color2+")";
+						td.style.width="120px";
+						td.style.height="30px";
+						tr.appendChild(td);
+					}
+				}
+			}
+			function getcolor(){
+				var color1=parseInt(Math.random()*256);
+				var color2=parseInt(Math.random()*256);
+				var color3=parseInt(Math.random()*256);
+				return "rgb("+color1+","+color2+","+color3+")";
+				
+			}*/
+			//方法二
+			btn.onclick = function() {
+				var table = document.createElement("table");
+				var tbody = document.createElement("tbody");
+				var cols = Number(document.getElementById("cols").value);
+				var rows = Number(document.getElementById("rows").value);
+				var arr=["#C5C5C5","coral"];
+				document.body.appendChild(table);
+				table.appendChild(tbody);
+				for(var i = 0; i < cols; i++) {
+					var tr = document.createElement("tr");
+					if(i%2==0){
+						tr.style.backgroundColor=arr[0];
+					}else{
+						tr.style.backgroundColor=arr[1];
+					}
+					tbody.appendChild(tr);
+					for(var j = 0; j < rows; j++) {
+						var td = document.createElement("td");
+						td.style.border = "1px";
+						//td.style.color="rgb("+color3+","+color1+","+color2+")";
+						td.style.width="120px";
+						td.style.height="30px";
+						tr.appendChild(td);
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

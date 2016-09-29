@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			div{
+				width: 500px;
+				margin: 0 auto;
+				border: 1px solid #ABCDEF;
+				padding: 20px;
+				border-radius: 8px;
+			}
+			input{
+				margin-top: 10px;
+				margin-right: 16px;
+			}
+			a{
+				margin-right: 20px;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../jquery/jquery-3.1.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			<h2>添加新的候选人</h2>
+			<hr />
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td><input type="text" placeholder="your name"/></td>
+					<td><input type="text" placeholder="Email"/></td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="your name"/></td>
+					<td><input type="text" placeholder="Email"/></td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="your name"/></td>
+					<td><input type="text" placeholder="Email"/></td>
+				</tr>
+			</table>
+			<a href="#" id="add">添加一行</a><a href="#" id="del">删除一行</a>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$("#add").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					var tr=document.createElement("tr");
+					var td1=document.createElement("td");
+					var name=document.createElement("input");
+					name.placeholder="your name";
+					td1.appendChild(name);
+					var td2=document.createElement("td");
+					var email=document.createElement("input");
+					email.placeholder="Email";
+					td2.appendChild(email);
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					$("table tr:last-child").after(tr);
+				});
+				$("#del").on("click",function(e){
+					var e=e||window.event;
+					e.preventDefault();
+					if ($("table tr").length<=1) {
+						alert("不能再删除了")
+					}else{
+						$("table").find("tr:last-child").remove();
+					}
+					
+				});
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

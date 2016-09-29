@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+this通常放在：
+1方法内部，这个时候，this方法所属的对象
+2构造函数内，this指向是新创建的实例
+3 call，apply(this,[]) 函数内部的this 指向的是call apply 的第一个参数
+
+<script>
+    function fn(a, b) {
+        this.name=a;
+        this.age=b;
+        return a+b;
+    }
+    var o={
+        id:123
+    }
+    fn.call(o,1,2);
+    alert(o.name);//输出1
+</script>
+</body>
+</html>

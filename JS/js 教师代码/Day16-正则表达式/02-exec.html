@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var reg2=/zo+/g;
+    var rExec1=reg2.exec("zozoozooozoooo");
+    var rExec2=reg2.exec("zozoozooozoooo");
+    var rExec3=reg2.exec("zozoozooozoooo");
+    var rExec4=reg2.exec("zozoozooozoooo");
+    var rExec5=reg2.exec("zozoozooozoooo");
+    var rExec6=reg2.exec("zozoozooozoooo")
+    dw(rExec1);
+    dw(rExec2);
+    dw(rExec3);
+    dw(rExec4);
+    dw(rExec5);
+    dw(rExec6);
+
+
+    var reg3=/[^ab]/g;
+    var r1=reg3.exec("abc");//
+    var r2=reg3.exec("abc");//
+    dw(r1);
+    dw(r2);
+
+
+    var reg4=/^1[0-9]{10}$/;
+    var tel="13198762345";
+
+    dw(reg4.test(tel));
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

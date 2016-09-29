@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="button" value="获取数据" id="btn1"/>
+    <script>
+        var Btn=document.getElementById("btn1");
+        Btn.onclick=function () {
+            var Scr=document.createElement("script");
+            Scr.src="http://10.9.163.115/products/getproductsbypage?pagesize=25&pageindex=1&callback=fn4";
+            document.body.appendChild(Scr);
+        }
+        function fn4(data) {
+            for(var i=0;i<data.length;i++){
+//                alert(data[i].);
+                var Oimg=document.createElement("img");
+                Oimg.src="http://10.9.163.115/img/"+data[i].Url;
+                document.body.appendChild(Oimg);
+            }
+        }
+    </script>
+</body>
+</html>

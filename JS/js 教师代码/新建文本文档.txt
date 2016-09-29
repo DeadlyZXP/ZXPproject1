@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--<script>
+			window.onload=function(){
+				for(var i=2000;i<=2010;i++){
+				if(i%4==0){
+					if(i%100==0){
+						if(i%400==0){
+							document.write(i+"年是闰年"+"<br>");
+						}
+					}else{
+						document.write(i+"年是闰年"+"<br>")
+					}
+				}
+			}
+			}
+		</script>-->
+	</head>
+	<body>
+		<script>
+			/*for(var i=2000;i<=2200;i++){
+				if(i%4==0){
+					if(i%100==0){
+						if(i%400==0){
+							document.write(i+"年是闰年"+"<br>");
+						}
+					}else{
+						document.write(i+"年是闰年"+"<br>")
+					}
+				}
+			}*/
+			var j=0;
+			do{
+				document.write(j+" ");
+				j++;
+			}while(j<100);
+			document.write("<br />");
+			
+			var i=0;
+			do{
+				i++;
+				if (i%7==0) {
+					document.write(i+" ");
+				}
+			}while(i<=100);
+			document.write("<br />");
+			
+			i=0;
+			do{
+				i++;
+				if(i%2==1){
+					document.write(i+" ");
+				}
+			}while(i<100);
+			document.write("<br />");
+			
+			i=0;
+			var sum=0;
+			do{
+				i++;
+				if(i%2==0){
+					sum+=i;
+				}
+			}while(i<100);
+			document.write("100以内偶数的和是："+sum+"<br />");
+			
+			
+			i=0;
+			do{
+				i++;
+				if(i==10){
+					break;	
+				}
+				document.write(i+" ");
+			}while(i<20);
+			document.write("<br />");
+			
+			i=0;
+			do{
+				i++;
+				if(i==10){
+					continue;
+				}
+				document.write(i+" ");
+			}while(i<20);
+			document.write("<br />");
+			
+			/*------第一个循环图像--------*/
+			for (var i = 5; i >0; i--) {
+			     for(var j=0;j<=5;j++){
+			     	if(j<i){
+			     		document.write("&ensp;");
+			     	}else{
+			     		document.write("*");
+			     	}
+			     }document.write("<br />");
+			}
+			document.write("<br />");
+			document.write("<br />");
+			/*------第二个循环图像--------*/
+			for(var i=1;i<=4;i++){
+				for(var j=1;j<3+i;j++){
+					if(j<4-i){
+					 document.write("&ensp;");
+					}else{
+					 document.write("*");	
+					}
+				}document.write("<br />");
+			}
+			document.write("<br />");
+			document.write("<br />");
+			/*------第三个循环图像--------*/
+			for (var i=1;i<=4;i++){
+				for(var j=1;j<i;j++){
+					document.write("&ensp;");
+				}
+				for (var j=1;j<=2*(4-i)+1;j++){
+					document.write("*");
+				}
+				document.write("<br />");
+			}
+			/*-------第四个图像--------*/
+			var n=7;
+			var m;
+			if(n%2==0){
+				m=parseInt(n/2);
+			}else{
+				m=parseInt(n/2)+1;
+			}
+			/*alert(m);*/
+			for(var i=1;i<=n;i++){
+				if(i<=m){
+					for(var j=1;j<=m-i;j++){
+						document.write("&ensp;");
+					}
+					for(var j=1;j<=2*i-1;j++){
+						document.write("*");
+					}document.write("<br />");
+				}else{
+					for(var j=1;j<=i-m;j++){
+						document.write("&ensp;");
+					}
+					for(var j=1;j<=2*(n-i)+1;j++){
+						document.write("*");
+					}document.write("<br />");
+				}
+			}
+			/*-------第无个图像--------*/
+			var n=4;
+			for(var i=1;i<=n;i++){
+				for(var j=1;j<=10;j++){
+					document.write("*");
+				}document.write("<br />");
+			}
+			/*-------第六个图像--------*/
+			var n=4;
+			for(var i=1;i<=n;i++){
+				for(var j=1;j<=i;j++){
+					document.write("*");
+				}document.write("<br />");
+			}
+			document.write("<br />");
+			document.write("<br />");
+			/*-------第七个图像--------*/
+			var n=4;
+			for(var i=1;i<=n;i++){
+				for(var j=1;j<=n-i;j++){
+					document.write("*");
+				}document.write("<br />");
+			}
+			/*--------退休的工资---------*/
+			var n=55;
+			var gz=2000;
+			for(var i=25;i<=n;i++){
+				gz=gz+gz*0.05;
+			}
+			document.write("退休时的工资是："+gz);
+			document.write("<br />");
+			document.write("<br />");
+			/*--------100的阶乘---------*/
+			var n=100;
+			var sum=1;
+			for(var i=1;i<=n;i++){
+				sum*=i;
+			}
+			document.write("100的阶乘是："+sum);
+			document.write("<br />");
+			document.write("<br />");
+			
+			/*--------100以内奇数的和---------*/
+			var n=100;
+			var sum=0;
+			for(var i=1;i<=100;i++){
+				if(i%2==1){
+					sum+=i;
+				}
+			}
+			document.write("100以内奇数的和"+sum);
+			document.write("<br />");
+			document.write("<br />");
+			/*--------99乘法表---------*/
+			for(var i=1;i<=9;i++){
+				for(var j=1;j<=i;j++){
+					document.write(j+"*"+i+"="+i*j+" ");
+				}document.write("<br />");
+			}
+			document.write("<br />");
+			document.write("<br />");
+			/*--------奇怪的四位数字---------*/
+			for(var i=1000;i<10000;i++){
+				if(i%2==1){
+				var n4=parseInt(i/1000);
+				var n3=parseInt(i/100)-n4*10;
+				var n2=parseInt(i/10)-n4*100-n3*10;
+				var n1=parseInt(i%10);
+					if((n1+n3)==(n2+n4)){
+						document.write("这个是奇怪的数字："+i+"<br/>");
+					}
+				}
+			}
+			/*-------水仙花数字-------*/
+			for(var i=100;i<1000;i++){
+				var n1=parseInt(i/100);
+				var n2=parseInt(i/10)-n1*10;
+				var n3=i%10;
+				/*document.write(n1+" "+n2+" "+n3+"<br />");*/
+				var sum1=n1*n1*n1;
+				var sum2=n2*n2*n2;
+				var sum3=n3*n3*n3;
+				var sum=sum1+sum2+sum3;
+				if(sum==i){
+					document.write("水仙花数是："+i+"<br/>");
+				}
+			}
+			/*---------买鸡问题----------*/
+			var sum=0;
+			var n=0;
+			for(var i=1;i<=14;i++){
+				for(var j=1;j<=25;j++){
+					if((7*i+4*j)==100){
+					sum++;
+					n=100-i-j;
+					document.write("卖公鸡母鸡和小鸡的数量分别是："+i+" "+j+" "+n+"<br />");
+					}
+				}
+			}
+			document.write("一共有"+sum+"中方案");
+			document.write("<br />");
+			document.write("<br />");
+			
+			
+			/*----------1-1/2+1/3-1/4的和--pow(x,y)----------*/
+			var sum=0;
+			var n=-1;
+			for (var i=1;i<=100;i++) {
+				sum=sum+Math.pow(n,i+1)/i;
+			}
+			document.write("1-1/2+1/3-1/4+....的和是..."+sum+"<br/>");
+			document.write("<br />");
+			document.write("<br />");
+			
+			/*------20-80之间你能被三整除的整数----------*/
+			var n=0;
+			for(var i=20;i<=80;i++){
+				if(i%3==0){
+					document.write(i+" ");
+					n++;
+					if(n==5){
+						document.write("<br />");
+						n=0;
+					}
+				}
+			}
+		
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .divclass{
+            width: 250px;
+            height: 150px;
+            position: absolute;
+            background: url(img/2.jpg);
+            border: 1px solid;
+        }
+        .container{
+            width: 760px;
+            height: 460px;
+            margin: 5px auto;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div id="divcontain" class="container">
+    <div id="div1" class="divclass"></div>
+    <div id="div2" class="divclass"></div>
+    <div id="div3" class="divclass"></div>
+    <div id="div4" class="divclass"></div>
+    <div id="div5" class="divclass"></div>
+    <div id="div6" class="divclass"></div>
+    <div id="div7" class="divclass"></div>
+    <div id="div8" class="divclass"></div>
+    <div id="div9" class="divclass"></div>
+</div>
+<div>
+    <span id="sp1">移动次数：0</span>
+    <input type="button" value="开始" id="bt1"/>
+</div>
+<script>
+    window.onload= function () {
+        var moveCount=0;
+        var eIndex=8;
+        var isBegin=false;
+        var emptyPosition={
+            top:300,
+            left:500
+        }
+        var divPosition=[];// string object
+        var imgDiv=document.getElementById("divcontain").children;//9个div
+        var oSP1=document.getElementById("sp1");
+        for(var i=0;i<imgDiv.length;i++){
+            //js 设置他们的位置；
+            // 前3个div 是第一行；  top =0； i=0,1,2
+            //中间3个 div 是第二行  ；top =150  i=3,4,5 ;
+            //后面3个div  是第三行  ； top =300  i= 6, 7, 8,
+            var top=Math.floor(i/3)*150;
+            var left=Math.floor(i%3)*250;
+            var itemPosition={
+                index:i,
+                top:top,
+                left:left
+            }
+            if(i<8){
+                divPosition.push(itemPosition);
+            }
+            imgDiv[i].style.top=top+"px";
+            //left
+            imgDiv[i].style.left=left+"px";
+            imgDiv[i].style.backgroundPosition=-left+"px -"+top+"px";
+            imgDiv[i].index=i;
+            imgDiv[i].onclick= function () {
+                if(!isBegin) return;
+                // 实参 ： this： imgDiv[i] 这里面的dom 元素；
+                if(EnMoveEc(this)){
+                    //判断的 当前点击的元素 （图片的div）能否移动？
+                    // 如果能移动！
+                    //把当前的图片移动到空白的位置！
+                    /*var temp={
+                        top:emptyPosition.top,
+                        left:emptyPosition.left
+                    }
+                    emptyPosition.top=this.offsetTop;
+                    emptyPosition.left=this.offsetLeft;
+                    this.style.top=temp.top+"px";
+                    this.style.left=temp.left+"px";
+*/
+                    //错误的。
+                    // 让this 在位置 ，变为emptyPositon的位置；
+                    //emptyPosition记录this的旧位置/
+                    //空白 与当前图片交换位置；
+                    var temp={
+                        top:emptyPosition.top,//值类型；
+                        left:emptyPosition.left
+                    }
+                    emptyPosition.top=this.offsetTop;
+                    emptyPosition.left=this.offsetLeft;
+                    this.style.top=temp.top+"px";
+                    this.style.left=temp.left+"px";
+                    if(IsComplete()){
+                        imgDiv[8].style.display="block";
+                        alert("完成！");
+                        isBegin=false;
+                    }
+                    moveCount++;
+                    oSP1.innerHTML="移动次数："+moveCount;
+                }
+               /*if(EnMove(eIndex,this.index)){
+                   //修改当前div的 top left--》空的位置；  空的位置：index
+                   var ePositon=getPositon(eIndex);
+                   this.style.top=ePositon.top+"px";
+                   this.style.left=ePositon.left+"px";
+                   var temp=eIndex;
+                   eIndex=this.index;
+                   this.index=temp;
+                    //alert(1);
+                }else{
+                    //alert(0);
+                }*/
+            }
+        }
+        var oBt=document.getElementById("bt1");
+        oBt.onclick= function () {
+            isBegin=true;
+            emptyPosition={
+                top:300,
+                left:500
+            }
+            moveCount=0;
+            // 要把div的位置随机打乱。  random
+            //
+            divPosition.sort(function(){
+                return Math.random()-0.5;
+            });
+            //divPosition [] 如果用两两交换的方式，把他还原顺序，交换的次数 如果是偶数的话，有解；奇数 无解；
+            while(!EnAble(divPosition)){ //如果有解  Enable() 返回的 true;   //如果无解；enable（） false;
+
+                divPosition.sort(function(){
+                    return Math.random()-0.5;
+                });
+            }
+
+            for(var i=0;i<8;i++){
+                imgDiv[i].style.top=divPosition[i].top+"px";
+                //left
+                imgDiv[i].style.left=divPosition[i].left+"px";
+                imgDiv[i].index=divPosition[i].index;
+            }
+            imgDiv[8].style.display="none";
+        }
+        // 作为为emptyIndex 和currentIndex 是否挨着；
+        function EnMove(emptyIndex,currentIndex){
+            // xy  hang lie ;
+            if(emptyIndex-currentIndex==3){
+                return true;
+            }
+            if(emptyIndex-currentIndex==-3){
+                return true;
+            }
+            if(emptyIndex-currentIndex==1&&Math.floor(emptyIndex/3)==Math.floor(currentIndex/3)){
+                return true;
+            }
+            if(emptyIndex-currentIndex==-1&&Math.floor(emptyIndex/3)==Math.floor(currentIndex/3))            {
+                return true;
+            }
+            return false;
+        }
+
+        //根据index，获取位置
+        function getPositon(index){
+            var top=Math.floor(index/3)*150;
+            var left=Math.floor(index%3)*250;
+            return {
+                "top":top,
+                "left":left
+            }
+        }
+
+        //传那个dom元素进来；就能判断哪个元素是否能移动
+        function EnMoveEc(dom){
+            // 判断点的图片dom ；是否可以移动；
+            // 点击的图片dom top值跟空的位置的top 相等；说明在同一行；
+            // left 插值是 250；（图片的宽度；） 相邻 的列；
+            // 点击的图片 在空白位置的 左或者右 ； 可以移动；
+            if(dom.offsetTop==emptyPosition.top&&dom.offsetLeft-emptyPosition.left==250){
+                // 点击的图片在空白位置的右边；
+                return true;
+            }
+            if(dom.offsetTop==emptyPosition.top&&dom.offsetLeft-emptyPosition.left==-250){
+                // 点击的图片在空白位置的左边；
+                return true;
+            }
+            if(dom.offsetLeft==emptyPosition.left&&dom.offsetTop-emptyPosition.top==150){
+                //left 相等，在同一列；
+                //点击的图片在空白位置的下面；
+                return true;
+            }
+            if(dom.offsetLeft==emptyPosition.left&&dom.offsetTop-emptyPosition.top==-150){
+                //left相等在同一列
+                //top 比着空白位置 小150；
+                // dom在空白位置的上面；
+                return true;
+            }
+            return false;
+        }
+
+        //是否可解
+        function EnAble(position){
+            var po=[];
+            for(var i=0;i<position.length;i++){
+                po.push(position[i].index);
+            }
+            //冒泡排序：
+            var count=0
+            for(var k=0;k<po.length;k++){
+                for(var j=po.length-1;j>k;j--){
+                    if(po[j]<po[j-1]){
+                        var temp=po[j];
+                        po[j]=po[j-1];
+                        po[j-1]=temp;
+                        count++;
+                    }
+                }
+            }
+            return count%2==0;  // 0==0  true; 1==0  false;
+        }
+
+        function IsComplete(){
+            for(var i=0;i<imgDiv.length-1;i++){
+                var position=getPositon(i);//第i个div  应该在位置；  例如0  ，top left  0，0
+                if(imgDiv[i].offsetTop!=position.top||imgDiv[i].offsetLeft!=position.left){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    // 随机完位置 之后，【0,1,2,3,4,5,6,7】--->【6，3，5，2，1，0，4，7】
+    // 两两交换，最终把顺排好；交换次数如果是偶数  是有解的；
+    // 交换次数 是奇数的话， 是无解 ；
+</script>
+</body>
+</html>

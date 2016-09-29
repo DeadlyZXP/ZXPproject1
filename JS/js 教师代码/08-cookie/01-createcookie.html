@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create cookie</title>
+</head>
+<body>
+    <script>
+        //创建cookie ---
+        document.cookie="123";
+        document.cookie="name=456";
+        //格式  都有哪些主要属性？
+        //键=值;expires=失效时间;
+        document.cookie="username=zs";
+        //跟以前矛盾的地方！！！
+        //创建
+        //var
+        document.cookie="username=zss";
+        document.cookie="username=zsss";
+        //如果=号前面的  相同，或者已经存在 ；这样的话，相当于是修改！
+
+        //获取？查！
+        var cookies=document.cookie;
+        alert(cookies);
+        //name=value; name=value; name=value
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="number" id="cols" placeholder="请输入列数"/><br />
+		<input type="number" id="rows" placeholder="请输入行数"/><br />
+		<input type="button" id="btn" value="点击创建按钮" /><br />
+		<input type="text" id="text" placeholder="请输入要查找的内容"/><br />
+		<input type="text" id="replease" placeholder="请输入要替换的内容"/>
+		<input type="button" id="checkbtn" value="点击查找" />
+		<script type="text/javascript">
+			var btn = document.getElementById("btn");		
+			var checkbtn=document.getElementById("checkbtn");
+	 		var txt=document.getElementById("text");
+	 		var replease=document.getElementById("replease");
+	 		var table = document.createElement("table");
+			checkbtn.onclick=function(){
+			    var vtxt=txt.value;
+			    var vreplease=replease.value;
+			    var cols=table.firstElementChild.children;
+			    var rows=cols[0].children.length;
+			    for (var i=0;i<cols.length;i++) {
+			    	for(var j=0;j<rows;j++){
+			    		if(cols[i].children[j].innerHTML.indexOf(vtxt) != -1){
+			    			cols[i].children[j].style.backgroundColor="white";
+			                cols[i].children[j].innerHTML=vreplease;
+			    		}
+			    	}
+			    }
+			}
+			
+			btn.onclick = function() {
+				var tbody = document.createElement("tbody");
+				var cols = Number(document.getElementById("cols").value);
+				var rows = Number(document.getElementById("rows").value);
+				document.body.appendChild(table);
+				table.appendChild(tbody);
+				for(var i = 0; i < cols; i++) {
+					var tr = document.createElement("tr");
+					tbody.appendChild(tr);
+					for(var j = 0; j < rows; j++) {
+						var color1=parseInt(Math.random()*256);
+						var color2=parseInt(Math.random()*256);
+						var color3=parseInt(Math.random()*256);
+						var td = document.createElement("td");
+					td.style.backgroundColor="rgb("+color1+","+color2+","+color3+")";
+					    td.innerHTML="第"+i+"行"+j+"列";
+						td.style.border = "1px";
+						td.style.color="rgb("+color3+","+color1+","+color2+")";
+						td.style.width="120px";
+						td.style.height="30px";
+						tr.appendChild(td);
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

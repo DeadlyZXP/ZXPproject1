@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str="This a list of items:cherries,limes,oranges,apples,apples.this list end.";
+			/*var str1=str.split(":")[1];
+			var str2=str1.split(".")[0];
+			var sArr=str2.split(",");
+			for (var i=0;i<sArr.length;i++) {
+				console.log(sArr[i].trim());
+			}*/
+			
+			//方法二
+			var str11=str.slice(str.indexOf(":")+1);
+			var str12=str11.slice(0,str11.indexOf("."));
+			var str13=str12.split(",");
+			for (var i=0;i<str13.length;i++) {
+				console.log(str13[i].trim());
+			}
+			console.log(str13);
+			//方法三
+			var str21=str.substring(str.indexOf(":")+1,str.indexOf("."));
+			var str22=str21.split(",");
+			console.log(str22);
+			</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

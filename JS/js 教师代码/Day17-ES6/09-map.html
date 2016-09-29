@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map</title>
+</head>
+<body>
+<script>
+    var map=new Map();
+    var map1=map.set("id",101);
+    dw(map.get("id"));
+
+    var ob1={"name":"zs","id":101};
+    var ob2= {"name":"list","id":102};
+
+    map.set(ob1,20);
+    map.set(ob2,30);
+    dw(map.size);//3
+    dw(map.get(ob1));//20
+    dw(map.get(ob2));//30
+    dw(map.get({"name":"zs","id":101}));//undefined
+    dw(map.get({"name":"list","id":102}));//undefined
+
+    dw(map.has(ob1));//true;
+    dw(map.has({"name":"zs","id":101}));//false
+
+    dw(map.delete(ob2));//true
+    dw(map.delete({"name":"zs","id":101}));//
+
+
+    document.write("<hr/>");
+    var map1=new Map();
+    map1.set(1,2).set(3,4).set(5,6).set(7,8);//链式操作。
+    dw(map1.size);//4
+    document.write("<hr/>");
+    for(let key of map1.keys()){
+        dw(key);// 1 ,3 ,5 ,7
+    }
+    document.write("<hr/>");
+    for(let value of map1.values()){
+        dw(value);//2,4,6,8
+    }
+    document.write("<hr/>");
+    for(let en of map1.entries()){
+        dw(en[0]);//1,3,5,7
+        dw(en[1]);//2,4,6,8
+    }
+    document.write("<hr/>");
+    for(let mapItem of map1){
+        dw(mapItem);
+    }
+    document.write("<hr/>");
+
+    function dw(param){
+        document.write(param);
+        document.write("<br/>");
+    }
+
+</script>
+</body>
+</html>

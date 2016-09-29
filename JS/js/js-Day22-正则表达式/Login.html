@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				margin: 0 auto;
+				width: 573px;
+				height: 489px;
+				position: relative;
+				/*background: url(image/20150125211329.png) no-repeat;*/
+			}
+			
+			#name {
+				/*opacity: 0;*/
+				border: 0;
+				top: 220px;
+				left: 102px;
+				width: 338px;
+				height: 40px;
+				position: absolute;
+			}
+			
+			#pwd {
+				/*opacity: 0;*/
+				border: 0;
+				top: 282px;
+				left: 102px;
+				width: 338px;
+				height: 40px;
+				position: absolute;
+			}
+			
+			#login {
+				cursor: pointer;
+				display: block;
+				width: 342px;
+				height: 49px;
+				top: 346px;
+				left: 102px;
+				opacity: 0;
+				position: absolute;
+			}
+			
+			#register {
+				width: 120px;
+				height: 30px;
+				background: wheat;
+				position: absolute;
+				top: 410px;
+				left: 220px;
+			}
+			#allUser{
+				position: absolute;
+				left: 102px;
+				top: 490px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="text" id="name" autofocus="autofocus" placeholder="用户名" />
+			<span id="nameTs"></span>
+			<br />
+			<input type="password" id="pwd" placeholder="密码" />
+			<span id="pwdTs"></span>
+			<br />
+			<input type="button" id="login" value="登录" />
+			<a href="register.html"><input type="button" id="register" value="注册用户" /></a>
+			<p id="allUser"></p>
+		</div>
+		<script type="text/javascript">
+			var oName = document.getElementById("name");
+			var pwdTs = document.getElementById("pwdTs");
+			var nameTs = document.getElementById("nameTs");
+			var pwd = document.getElementById("pwd");
+			var login = document.getElementById("login");
+			var allUser = document.getElementById("allUser");
+			//var flag = false;
+			var vName;
+			var vPwd;
+			var fn;
+			var fn1;
+			var xhr;
+			//接口
+			//http://10.9.163.115:8081/user/loginget?name=gao&password=gao&callback=fn
+
+			/*oName.onblur = function() {
+				var jsr = document.createElement("script");
+
+				jsr.src = "http://10.9.163.115:8081/user/CheckUserNameGet?username=" + vName + "&callback=fn";
+				document.body.appendChild(jsr);
+				fn = function(result) {
+					if(result == -1) {
+						nameTs.innerHTML = "此用户名不存在!";
+						flag = true;
+					} else {
+						nameTs.innerHTML = "";
+					}
+				}
+				document.body.removeChild(jsr);
+			}*/
+
+			login.onclick = function() {
+
+				vPwd = pwd.value;
+				vName = oName.value;
+				if(vPwd !== "" && vName != "") {
+					var jsr = document.createElement("script");
+					jsr.src = "http://10.9.163.115:8081/user/loginget?name=" + vName + "&password=" + vPwd + "&callback=fn";
+					document.body.appendChild(jsr);
+					//document.body.appendChild(jsr);
+					fn = function(result) {
+						if(result == 1) {
+							var jsr2 = document.createElement("script");
+							jsr2.src = "http://10.9.163.115:8081/user/getAllUsers?callback=fn1";
+							document.body.appendChild(jsr2);
+							fn1 = function(result) {
+								console.log(result);
+								//var userInfor=eval("("+result+")");
+								for(var i = 0; i < result.length; i++) {
+									allUser.innerHTML = allUser.innerHTML + result[i].Name + " ";
+								}
+							}
+
+						} else {
+							oName.value = "";
+							oName.autofocus = "ture";
+							pwd.value = "";
+							pwdTs.innerHTML = "密码错误！";
+						}
+					}
+					jsr.onload=function(){
+						this.parentNode.removeChild(this);
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

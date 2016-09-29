@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create cookie</title>
+</head>
+<body>
+<div id="div1"></div>
+<input type="text" id="txt1" />
+<input type="button" id="bt1" value="登录"/>
+
+<script>
+    //存储
+    document.cookie="name1=lisi";
+    // name=value;expires=GTM
+    var date=new Date();
+    date.setDate(date.getDate()+30);
+    document.cookie="name2=zhangsan2;expires="+date;
+    document.cookie="name1=lisi123";
+    //获取；  把当前域名下的所有cookie，用；空格 拼接。并且拼接的内容是 键值对。
+    document.write(document.cookie);
+
+    var oTxt=document.getElementById("txt1");
+    var oB1=document.getElementById("bt1");
+    oB1.onclick=function(){
+        var userName=oTxt.value;
+        document.cookie="username="+userName;
+    }
+
+    var strCookie=document.cookie;//;username=wangwu; name1=lisi; name2=zhangsan2
+    var arrCookie=strCookie.split("; ");//["username=wangwu","name1=lisi","name2=zhangsan2"]
+    for(var i=0;i<arrCookie.length;i++){
+        var arrItem=arrCookie[i].split("=");//["username","wangwu"]
+        if(arrItem[0]=="username"){
+            //wangwu
+            document.getElementById("div1").innerHTML=arrItem[1];
+        }
+    }
+
+
+</script>
+</body>
+</html>

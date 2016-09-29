@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;	
+			}
+			.div1{
+				width: 100px;
+				height: 100px;
+				background: lightcoral;
+			}
+		</style>
+		<!--<script src="jquery-2.1.0.js"></script>-->
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<p class="p2">点击我就消失</p>
+		<p class="p1">双击我才消失</p>
+		<div class="div1">鼠标移进来</div>
+		<input type="text" id="txt1"/>
+		<!--<input type="button" id="btn" value="显示/隐藏" />-->
+		<button>显示/隐藏</button>
+		<script>
+		//
+		var bTn=document.getElementById("btn");
+			$(document).ready(function(){
+				$(".p2").click(function(){
+					$(this).hide(1000);
+				})
+			})
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("p").toggle(1000);
+				})
+			})
+			$(document).ready(function(){
+				$(".p1").dblclick(function(){
+					$(this).hide();
+				})
+			})
+			$(document).ready(function(){
+				$(".div1").mouseenter(function(){
+					alert("上将豪 幽鬼王");
+				})
+			})
+			$(document).ready(function(){
+				$(".div1").mouseleave(function(){
+					alert("东尼大MU");
+				})
+			})
+			$(document).ready(function(){
+				$("input").focus(function(){
+    				$(this).css("background-color","#cccccc");
+ 				});
+  				$("input").blur(function(){
+    				$(this).css("background-color","#ffffff");
+  				});
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			const co={
+				name:"zhangsan",
+				in:1,
+				coo:{
+					name:"lisi",
+					in:2,
+					index:10
+				}
+			}
+			co.index=100;
+			alert(co.index);
+			Object.freeze(co);
+			co.index1=100;
+			alert(co.index1);
+			co.coo.index1=100;
+			alert(co.coo.index1);
+			Object.freeze(co.coo);
+			co.coo.index2=1000;
+			alert(co.coo.index2);
+
+			//深度冻结
+			function freeObject(obj) {
+				Object.freeze(obj);
+				for(var attr in obj){//attr 为属性名
+					if(typeof obj[attr]=="object"){
+						freeObject(obj[attr]);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

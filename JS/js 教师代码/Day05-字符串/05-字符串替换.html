@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串提取</title>
+    <script src="stringEx.js"></script>
+</head>
+<body>
+<script>
+    var sYou="This a list of items : cherries,   limes,   oranges,    apples ,apples,apples .    this  list end.";
+   /* var firstIndex=sYou.indexOf("apples");//
+    var subStrPre=sYou.substring(0,firstIndex+6);//This a list of items : cherries,   limes,   oranges,    apples
+    var subStrNext=sYou.substring(firstIndex+6);// ,apples,apples .    this  list end.
+    var subStrNext=subStrNext.replace("apples","Bananas");
+    var sYouNew=subStrPre.concat(subStrNext);*/
+    document.write(sYou+"<br/>");
+
+
+    var arrSubStr=sYou.split("apples");//[];
+    var sYouNew="";
+    for(var i=0;i<arrSubStr.length;i++){
+        if(i==arrSubStr.length-1){
+            sYouNew+=arrSubStr[i];
+        }else if(i==1){
+            sYouNew+=arrSubStr[i]+"Bananas";
+        }
+        else {
+            sYouNew += arrSubStr[i] + "apples";
+        }
+    }
+    document.write(sYouNew+"<br/>");
+
+</script>
+</body>
+</html>

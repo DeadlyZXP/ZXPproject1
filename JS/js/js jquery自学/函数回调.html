@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">这是一个div</div>
+		<script>
+//			function $(fn){
+//				if(typeof(fn)=="function"){
+//					fn();
+//				}
+//			}
+//			$(function(){
+//				alert("坟头种树");
+//			})
+			function $(fn){
+				//方法1
+				document.onreadystatechange=function(){
+					//判断页面是否加载完成
+					if(document.readyState=="complete"){
+						if(typeof(fn)=="function"){
+							fn();
+						}
+					}
+				}
+				//方法2
+				if(typeof(fn)=="function"){
+					document.addEventListener("DOMContentLoaded",fn);
+				}
+			}
+			$(function(){
+				alert(document.getElementById("box").innerHTML);
+			})
+		</script>
+	</body>
+</html>

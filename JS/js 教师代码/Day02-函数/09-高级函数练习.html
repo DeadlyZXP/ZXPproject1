@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fna(a,b){
+        return a+b;
+    }
+    function fnb(a,b){
+        function fnd(a,b,c){
+            return a-b-c;
+        }
+        return fnd(1,2,3);
+    }
+    function fnc(a,b){
+        function fnE(c){
+            a++;
+            b++;
+            return a+b+c;
+        }
+        return fnE;
+    }
+    alert(fnb(10,20));//
+    alert(fnc(10,20)(30));//
+    var  fnc1=fnc(1,2);
+    fnc1(3);//
+    fnc1(4);
+    fnc1(5);
+
+    function fnF(fn,a,b,c){
+       /* var fn=fnc;
+        var a=1;var b=2; var c=3;*/
+        return fn(a,b,c); //fnc(1,2,3);
+    }
+    alert(fnF(fnc,1,2,3));//alert  fnF();   fnc,1,2,3  fnE
+
+    var r1=fnc(10,20);//fnE
+    var result=fnF(r1,1,2,3);  //fnE(1,2,3); //33
+    alert(result);//33
+    // 只是出现函数名；当成一个变量；
+    //如果函数名后面有（）；就先执行，获取返回值；
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript">
+			var div=document.getElementById("div1");
+			var createp=document.createElement("p");
+			createp.innerHTML="我是新创建的p节点";
+			createp.style.display="block";
+			createp.style.width="150px";
+			createp.style.height="20px";
+			createp.style.color="#00FFFF";
+			createp.style.background="#ccc";
+			div.appendChild(createp);
+			var textnode=document.createTextNode("abcdef");
+			div.appendChild(textnode);
+			var textnode1=document.createTextNode("egfdskhf");
+			div.insertBefore(textnode1,textnode);
+			div.removeChild(textnode1);
+			
+		</script>
+	</body>
+</html>

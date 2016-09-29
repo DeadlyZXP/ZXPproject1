@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单实时编辑</title>
+    <style>
+        td{
+            width:240px;
+            height: 30px;
+        }
+    </style>
+    <script src="js/EventUtil.js"></script>
+</head>
+<body>
+<ul id="ul1">
+    <li id="li1">123</li>
+    <li id="li2">456</li>
+    <li id="li3">789</li>
+</ul>
+
+<script>
+    var li1=document.getElementById("li1");
+    var li2=document.getElementById("li2");
+    var li3=document.getElementById("li3");
+    li1.onclick=function(){
+        alert(123456789);
+    }
+    li2.onclick=function(){
+        alert("abccdef");
+    }
+    li3.onllick=function(){
+        console.log(12121212);
+    }
+
+    var ul=document.getElementById("ul1");
+    ul.onclick=function(event){
+        event=EventUtil.getEvent(event);
+        switch(EventUtil.getTarget(event).id){
+            case "li1":
+                alert(123456789);
+                break;
+            case "li2":
+                alert("abccdef");
+                break;
+            case "li3":
+                console.log(12121212);
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</body>
+</html>

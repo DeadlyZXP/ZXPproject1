@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垃圾回收</title>
+</head>
+<body>
+<script>
+    function fn(){
+        var a=10;
+        var b=20;
+        var fnR=function(){
+            a++;
+        }
+        return fnR;
+    }
+    var f=fn();
+    f();//11
+    f();//12
+
+    var f2=fn();
+    f2();
+    f2();
+
+    f();
+</script>
+</body>
+</html>

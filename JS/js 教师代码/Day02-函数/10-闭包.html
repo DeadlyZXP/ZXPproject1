@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    function fnc(a,b){
+        function fnE(c){
+            a++;
+            b++;
+            return a+b+c;
+        }
+        return fnE;
+    }
+    var  fnc1=fnc(1,2);
+    alert(fnc1(3));//2,3
+    alert(fnc1(4));//3,4
+    alert(fnc1(5));//4,5
+
+    var fnc2=fnc(1,2);
+    alert(fnc2(6));//2,3
+
+
+</script>
+</body>
+</html>

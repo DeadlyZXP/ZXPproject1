@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排序</title>
+</head>
+<body>
+<script>
+    var arr1=[1,9,43,6];
+
+    document.write(arr1);
+    arr1.sort(s);
+    function s(a,b) {
+        return a-b;
+    }
+    document.write("<br/>")
+    document.write(arr1);
+
+    var person1={
+        name:"zs",
+        age:100
+    }
+    var person2={
+        name:"lisi",
+        age:99
+    }
+    var arr2=[person1,person2];
+    arr2.sort(function(a,b){
+        return a.age- b.age;
+    });
+
+    var arr3=[[1,2,3,9,90,8],[4,5,6,7],[7,8,9,10,11]];
+    arr3.sort(function(a,b){
+        var aMax=Math.max.apply(this,a);
+        var bMax=Math.max.apply(this,b);
+        return aMax- bMax;
+    });
+    // 按照 arr3中的数组元素的，小数组中的所有项的和 做比较
+    //按照 小数组中的最大值 作比较；
+    //按照 小数组中的最小值 作比较；
+    arr3.sort(function(a,b){
+        var aSum=0;
+        for(var i=0;i< a.length;i++){
+            aSum+=a[i];
+        }
+        var bSum=0;
+        for(var j=0;j< b.length;j++){
+            bSum+=b[j];
+        }
+        //var aMax=Math.max.apply(this,a);
+        //var bMax=Math.max.apply(this,b);
+        return aSum-bSum;
+    });
+
+</script>
+</body>
+</html>

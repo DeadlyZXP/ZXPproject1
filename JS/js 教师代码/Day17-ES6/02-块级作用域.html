@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+   function f(){
+       alert(1)
+   }
+   (function(){
+        if(false){
+           function f(){
+                alert(2);
+            }
+        }
+       f();
+    })();
+
+    //
+    //ES5
+    //ES6
+</script>
+</body>
+</html>

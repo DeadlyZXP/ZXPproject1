@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组结构赋值</title>
+</head>
+<body>
+<script>
+
+    //let [a,b]=[2,1];
+    //let arr=["3","4"];//
+    let arr="34";
+    alert(arr[0]);
+    alert(arr.length);
+    let [a,b]=arr;
+    dw(a);
+    dw(b);
+    //dw(c);
+
+    var obj={d:11111,e:222222};
+    let {d:d,e:e}=obj;
+
+    let {length:c}=arr;
+    c=arr.length;
+
+    var obj2000={
+        name:"zs",
+        id:"0101001",
+        age:20,
+        a:1,
+        sex:1,
+        height:120
+    }
+
+    let {name,id,car=0}=obj2000;
+
+    function dw(param){
+      document.write(param);
+      document.write("<br/>")
+    }
+
+</script>
+</body>
+</html>

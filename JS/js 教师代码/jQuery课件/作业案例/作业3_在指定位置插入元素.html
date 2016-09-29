@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>作业3_在指定位置插入元素</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial;
+        }
+
+        .content-holder {
+            border: solid 1px #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 778px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        h5 {
+            border-bottom: solid 2px #ccc;
+            margin-bottom: 10px;
+            padding: 10px 0;
+        }
+
+        .column {
+            float: left;
+            padding: 0 10px 10px 10px;
+        }
+
+        .large-4 {
+            width: 33.333%
+        }
+
+        .text-right {
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content-holder">
+    <form method="post">
+        <fieldset id="payment-slip">
+            <legend>创建一个新元素</legend>
+            <div class="row">
+                <div class="large-4 column">上传文件1:</div>
+                <div class="large-4 column">
+                    <input type="file" name="Slip1">
+                </div>
+                <div class="large-4 column">
+                    <input type="submit" value="Upload">
+                </div>
+            </div>
+        </fieldset>
+        <div class="text-right">
+            <a href="javascript:void(0);" class="js-add-new-slip">+ 增加新的slip</a>
+        </div>
+        <hr>
+
+        <fieldset>
+            <legend>在所选元素末尾处插入HTML元素</legend>
+            <div class="paragraph-container">
+                <p class="paragraph-1">
+                    段落1: <br><br>
+                    这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.
+                </p>
+            </div>
+        </fieldset>
+        <div class="text-right"><a href="javascript:void(0);" class="js-new-paragraph">+ 增加新的段落</a></div>
+        <hr>
+
+        <fieldset>
+            <legend>在所选元素开始处插入HTML元素</legend>
+            <div class="paragraph-container2">
+                <p class="Nparagraph1">
+                    段落1: <br><br>
+                    这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.
+                </p>
+            </div>
+        </fieldset>
+        <div class="text-right">
+            <a href="javascript:void(0);" class="js-new-paragraph2">+ 在选定的元素之前插入</a>
+        </div>
+        <hr>
+
+        <fieldset>
+            <legend>在选定的元素之后插入HTML元素</legend>
+            <div class="paragraph-container2">
+                <p class="After-paragraph1">
+                    段落1: <br><br>
+                    这里是段落1，这里是段落1，这里是段落1，这里是段落1，这里是段落1.
+                </p>
+            </div>
+        </fieldset>
+        <div class="text-right">
+            <a href="javascript:void(0);" class="js-after-paragraph">+ 在选定的元素之后插入</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

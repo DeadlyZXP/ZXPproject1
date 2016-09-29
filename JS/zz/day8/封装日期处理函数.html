@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--是否是闰年-->
+		<input type="number"  id="txt"/><br />
+		<input type="button" id="btn" value="点击获取是否是闰年" />
+		<p id="msg"></p>
+		<br />
+		<!--日期格式化-->
+		年:<input type="number"  id="year"/>
+		月:<input type="number"  id="month" max="12" min="0"/>
+		日:<input type="number"  id="day" max="31" min="0"/>
+		时:<input type="number"  id="hour" max="23" min="0"/>
+		分:<input type="number"  id="minute" min="0" max="59"/>
+		秒:<input type="number"  id="second" max="59" min="0"/>
+		连接符号:<input type="text" id="mark"/>
+		<input type="button" id="formatebtn" value="格式化日期" />
+		<br />
+		<!--将字符串转为日期-->
+		日期字符串:<input type="text"  id="strDate"/>
+		分割日期的符号:<input type="text" id="mark1"/>
+		<input type="button" id="dateBtn" value="点击将字符串转为日期" />
+		<p id="msg1"></p>
+		<!--获得N天以后或者N天以前的日期-->
+		<input type="number" id="nDay"/>
+		<p id="nDate"></p>
+		<input type="button" id="nBtn" value="获得N天以后或者N天以前的日期"/>
+		<script type="text/javascript">
+			// 获得N天以后或者N天以前的日期
+			var nDay=document.getElementById("nDay");
+			var nBtn=document.getElementById("nBtn");
+			var nDate=document.getElementById("nDate");
+			nBtn.onclick=function(){
+				vnDay=nDay.value;
+				var time=new Date();
+				time.setDate(time.getDate()+vnDay);
+				nDate.innerHTML=time;
+			}
+			
+			
+			
+			//将字符串转为日期
+			
+			var strDate=document.getElementById("strDate");
+			var mark1=document.getElementById("mark1");
+			var msg1=document.getElementById("msg1");
+			document.getElementById("dateBtn").onclick=function(){
+				var vstrDate=strDate.value;
+				var vmark1=mark1.value;
+				var arr=vstrDate.split(vmark1);
+				var time=new Date();
+				time.setFullYear(arr[0]);
+				time.setMonth(arr[1]);
+				time.setDate(arr[2]);
+				time.setHours(arr[3]);
+				time.setMinutes(arr[4]);
+				time.setSeconds(arr[5]);
+				//var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");  
+				msg1.innerHTML=time;
+			}
+			
+			
+			
+			
+			
+		    //日期格式化
+		    var year=document.getElementById("year");
+		    var month=document.getElementById("month");
+		    var day=document.getElementById("day");
+		    var hour=document.getElementById("hour");
+		    var minute=document.getElementById("minute");
+		    var second=document.getElementById("second");
+		    var mark=document.getElementById("mark");
+		    var formatebtn=document.getElementById("formatebtn");
+		    formatebtn.onclick=function formatedate(){
+		    	var vyear=year.value;
+		    	var vmonth=month.value;
+		    	var vday=day.value;
+		    	var vhour=hour.value;
+		    	var vminute=minute.value;
+		    	var vsecond=second.value;
+		    	var vmark=mark.value;
+		    	var time=new Date();
+		    	/*time.setFullYear(vyear);
+		    	time.setMonth(vmonth);
+		    	time.setDate(vday);
+		    	time.setHours(vhour);
+		    	time.setMinutes(vminute);
+		    	time.setSeconds(vsecond);*/
+		    	msg.innerHTML= vyear+vmark+vmonth+vmark+vday+vmark+vhour+vmark+vminute+vmark+vsecond;
+		    }
+		    
+		
+			//传入一个年份
+			var txt=document.getElementById("txt");
+			var btn=document.getElementById("btn");
+			var msg=document.getElementById("msg");
+			
+			btn.onclick=function isLeapYear(){
+				var vtxt=Number(txt.value);
+				if((vtxt%4==0&&vtxt%100!=0)||vtxt%100==0&&vtxt%400==0){
+					msg.innerHTML =vtxt+"是闰年";
+				}else{
+					msg.innerHTML= vtxt+"不是闰年";
+				}
+			}
+		
+			
+			
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

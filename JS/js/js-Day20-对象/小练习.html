@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(){
+        get = function(){
+            console.log(1);
+        };
+        return this;//window.get
+    }
+    foo.get = function(){
+        console.log(2);
+    };
+    foo.prototype.get = function(){
+        console.log(3);
+    };
+    var get = function(){
+        console.log(4);
+    };
+    function get(){
+        console.log(5);
+    }
+    foo.get();
+    get();
+    foo().get();//执行this.get
+    get();
+    new foo.get();//先执行foo.get()
+    new foo().get();//先执行new foo()  在 实例.get()
+    new new foo().get();
+</script>
+</body>
+</html>

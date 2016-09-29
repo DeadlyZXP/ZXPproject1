@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+</head>
+<body>
+<div id="div1" style="width:200px;height: 200px;background:red ;"></div>
+<div id="div2" style="width:200px;height: 200px;background: blue"></div>
+<div id="div3" style="width:200px;height: 200px;background: yellow"></div>
+<script>
+   /* document.onmousedown=function(event){
+        //创建一个div
+        var oDiv=document.createElement("div");
+        oDiv.style.width="50px";
+        oDiv.style.height="50px";
+        oDiv.style.background="red";
+        oDiv.style.position="absolute";
+        oDiv.style.top=event.clientY+"px";
+        oDiv.style.left=event.clientX+"px";
+        document.body.appendChild(oDiv);
+        alert(event.target.nodeName);
+        alert(event.currentTarget.nodeName);
+    }*/
+    var oDivList=document.getElementsByTagName("div");
+    for(var i=0;i<oDivList.length;i++){
+        oDivList[i].index=i;
+        oDivList[i].onclick=function(event){
+            alert(this.index);
+            alert(event.target.id);
+        }
+    }
+</script>
+</body>
+</html>

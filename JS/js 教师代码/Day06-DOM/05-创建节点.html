@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建节点</title>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2">
+    <p>1</p>
+    <p id="p2">2</p>
+
+
+    <p id="p1">3</p>
+</div>
+
+<script>
+    var oDiv=document.createElement("div");
+    oDiv.innerHTML="<p>123</p>";
+    var oBody=document.getElementsByTagName("body")[0];
+    oBody.appendChild(oDiv);
+
+    var oTxt=document.createTextNode("456");//参数是文本节点的值。
+    var oDiv1=document.getElementById("div1");
+    oDiv1.appendChild(oTxt);
+
+    var oTxt2=document.createTextNode("<p>456</p>");//参数是文本节点的值。
+    document.body.appendChild(oTxt2);
+
+    var oDiv2=document.getElementById("div2");
+    var oP1=document.getElementById("p1");
+    var oDivNew=document.createElement("div");
+    oDivNew.innerHTML="<p>789</p>";
+    oDiv2.insertBefore(oDivNew,oP1);
+
+    var oP2=document.getElementById("p2");
+    oDiv2.removeChild(oP2);
+
+    oDiv2.innerHTML="";
+
+    var oDiv2Clone=oDiv2.cloneNode(true);
+    oDiv1.appendChild(oDiv2Clone);
+
+    var oDiv=document.createElement("div");
+    oBody.appendChild(oDiv);
+    oBody.innerHTML="";
+
+
+
+
+</script>
+</body>
+</html>

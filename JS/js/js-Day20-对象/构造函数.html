@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    function setPerson(name,age) {
+        this.name=name;
+        this.age=age;
+        this.showname=function () {
+            alert(this.name);
+        }
+    }
+    var person1=new setPerson("张三",22);
+    person1.showname();
+    alert(person1 instanceof Object);//实例
+    alert(person1 instanceof setPerson);
+    //此时this指向window；
+//    var person2=setPerson("张三",22);
+//    showname();
+    //new操作符的作用：
+      //创建一个对象
+      //this指向该新对象
+      //执行构造函数的代码
+      // 返回新对象
+
+</script>
+</body>
+</html>

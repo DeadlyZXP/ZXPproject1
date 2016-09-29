@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+</head>
+<body>
+<div id="div1" style="width:200px;height: 200px;background:red ;position: absolute;top: 0;left: 0;">
+    <div id="div2" style="width:100px;height: 100px;background: blue;position: absolute;top: 0;left: 0;">
+        <div id="div3" style="width:50px;height: 50px;background: yellow;position: absolute;top: 0;left: 0;"></div>
+    </div>
+</div>
+
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");/*
+    oDiv1.onclick=function(){
+        alert(this.id);
+    }*/
+
+    //冒泡阶段
+    oDiv1.addEventListener("click",function(){
+        alert(this.id);
+    },false);
+    oDiv2.addEventListener("click",function(){
+        alert(this.id);
+    },false);
+    oDiv3.addEventListener("click",function(){
+        alert(this.id);
+    },false);
+
+    oDiv1.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+    oDiv2.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+    oDiv3.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+
+</script>
+</body>
+</html>

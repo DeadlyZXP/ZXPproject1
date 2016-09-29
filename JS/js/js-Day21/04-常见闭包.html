@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见闭包</title>
+</head>
+<body>
+<script>
+    var oList=document.getElementsByTagName("div");
+    var oBt=document.getElementById("BT");
+    oBt.onclick=function () {
+        for(var i=0;i<oList.length;i++){
+            oList[i].onclick=function () {
+                alert(i);//闭包  i等于oList.length
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证输入正整数</title>
+</head>
+<body>
+<input type="text" id="txt"/>
+<input type="button" id="btn" value="验证是否为正整数"/>
+<script>
+    var Txt=document.getElementById("txt");
+    var Btn=document.getElementById("btn");
+    Btn.onclick=function () {
+        var txt=Txt.value;
+        var Reg=new RegExp("[0-9]");
+        alert(Reg.test(txt));
+    }
+</script>
+</body>
+</html>

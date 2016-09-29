@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: lightcoral;
+			}
+		</style>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<button>开始</button>
+		<div></div>
+		<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					var div=$("div");
+					div.animate({height:"300px",opacity:"0.4"},"slow");
+					div.animate({width:"300px",opacity:"0.8"},"slow");
+					div.animate({height:"100px",opacity:"0.4"},"slow");
+					div.animate({width:"100px",opacity:"0.8"},"slow");
+				}) 
+			})
+			alert(13|3);
+			alert(13&3);
+			alert(13^3);
+		</script>
+	</body>
+</html>

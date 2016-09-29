@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认行为</title>
+</head>
+<body>
+<a id="a1" href="05-事件流.html">事件流</a>
+<a id="a12" href="05-事件流.html">事件流</a>
+<script>
+    var oA=document.getElementById("a1");
+    oA.onclick=function(event){
+        event=event||window.event;
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue=false;
+        }
+        //return false;
+    }
+
+</script>
+</body>
+</html>

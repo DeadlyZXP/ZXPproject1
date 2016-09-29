@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.0.js"></script>
+		<style>
+			.large-4{
+				width: 30%;
+				float: left;
+			}
+			.text-right{
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset id="paymaent-slip">
+			<div class="row">
+				<legend>创建新的元素</legend>
+				<div class="large-4 column">上传slipl</div>
+				<div class="large-4 column">
+					<input type="file" name="Slip1"/>
+				</div>
+				<div class="large-4 column">
+					<input type="submit" value="Upload"/>
+				</div>
+			</div>
+		</fieldset>
+		<div class="text-right"><a href="javascript:void(0);"class="js-add-new-slip">+增加新的slip</a></div>
+	</body>
+	<script>
+	var sum=0;
+		$(".js-add-new-slip").on("click",function(){
+			sum+=1;
+			if(sum<=2){
+				var newRow='<div class="row">'+'<div class="large-4 column">上传Slipl'+'</div>'+'<div class="large-4 column">'+'<input type="file" name="Slipl"/>'+'</div>'+'<div class="large-4 column">'+'<input type="submit" value="Upload"/></div></div>';
+				$("paymaent-slip").append(newRow);	
+			}
+		})
+	</script>
+</html>

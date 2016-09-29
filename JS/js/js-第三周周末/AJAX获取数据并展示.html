@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX获取数据展示</title>
+    <style>
+        *{padding:0;margin:0;}
+        ul,li{list-style: none;}
+        ul{
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid #eee;
+        }
+        ul li{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+
+    </ul>
+    <input type="button" id="btn" value="上一组"/>
+    <input type="button" id="btn1" value="下一组"/>
+<script>
+    var Ul=document.getElementById("ul1");
+    function set() {
+        var xhr;
+        var Lilist=document.getElementsByTagName("li");
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","data/date.json",true);
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState==4){
+                if(xhr.status=2){
+                    var STr=xhr.responseText;
+//                        alert(STr)
+//                        var JSTr=JSON.parse(STr);//package.json中存的是string类型
+                    var JSTr=eval("("+STr+")");
+//                        alert(JSTr);
+                    for(var i=0;i<JSTr.length;i++){
+                        var Li=document.createElement("li");
+                        var Img=document.createElement("img");
+                        var Pli=document.createElement("p");
+                        var Ili=document.createElement("i");
+                        Li.style.width="236px";
+                        Li.style.height="256px";
+                        Li.style.float="Left";
+                        Li.style.marginLeft="20px"
+                        Li.style.marginTop="20px";
+                        Ul.appendChild(Li);
+                        Li.appendChild(Img);
+                        Img.src="img/img/"+JSTr[i].imgsrc;
+                        Li.appendChild(Ili);
+                        Ili.style.display="block";
+                        Ili.style.width="236px";
+                        Ili.style.textAlign="center";
+                        Ili.style.color="black";
+                        Ili.innerHTML=JSTr[i].name;
+                        Ili.style.fontSize="24px";
+                        Li.appendChild(Pli);
+                        Pli.style.display="block";
+                        Pli.style.width="236px";
+                        Pli.style.textAlign="center";
+                        Pli.style.color="red";
+                        Pli.style.fontSize="20px";
+                        Pli.innerHTML=JSTr[i].money;
+                        Pli.style.marginTop="10px";
+                    }
+                }else{
+
+                }
+            }
+        }
+        xhr.send();
+    }
+       set();
+
+    var Btn=document.getElementById("btn");
+    Btn.onclick=function () {
+        var xhr;
+        var Lilist=document.getElementsByTagName("li");
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","data/date.json",true);
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState==4){
+                if(xhr.status=2){
+                    var STr=xhr.responseText;
+//                        alert(STr)
+//                        var JSTr=JSON.parse(STr);//package.json中存的是string类型
+                    var JSTr=eval("("+STr+")");
+//                        alert(JSTr);
+                    for(var i=0;i<JSTr.length;i++){
+                        var Li=document.getElementsByTagName("li");
+                        var Img=document.getElementsByTagName("img");
+                        var Pli=document.getElementsByTagName("p");
+                        var Ili=document.getElementsByTagName("i");
+                        Img[i].src="img/img/"+JSTr[i].imgsrc;
+                        Ili[i].innerHTML=JSTr[i].name;
+                        Pli[i].innerHTML=JSTr[i].money;
+                    }
+                }else{
+
+                }
+            }
+        }
+        xhr.send();
+    }
+    var Btn1=document.getElementById("btn1");
+    Btn1.onclick=function () {
+        var xhr;
+        var Lilist=document.getElementsByTagName("li");
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","data/date1.json",true);
+        xhr.onreadystatechange=function () {
+            if(xhr.readyState==4){
+                if(xhr.status=2){
+                    var STr=xhr.responseText;
+//                    alert(STr)
+//                        var JSTr=JSON.parse(STr);//package.json中存的是string类型
+                    var JSTr=eval("("+STr+")");
+//                        alert(JSTr);
+                    for(var i=0;i<JSTr.length;i++){
+                        var Li=document.getElementsByTagName("li");
+                        var Img=document.getElementsByTagName("img");
+                        var Pli=document.getElementsByTagName("p");
+                        var Ili=document.getElementsByTagName("i");
+                        Img[i].src="img/img/"+JSTr[i].imgsrc;
+                        Ili[i].innerHTML=JSTr[i].name;
+                        Pli[i].innerHTML=JSTr[i].money;
+                    }
+                }else{
+
+                }
+            }
+        }
+        xhr.send();
+    }
+</script>
+</body>
+</html>

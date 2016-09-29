@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象常量</title>
+</head>
+<body>
+    <script>
+        const cn=10;
+
+        const co={
+            name:"const object",
+            in:10,
+            coo:{
+                name:"coo object",
+                in:101,
+                index:1001
+            }
+        }
+
+        co.index=100;
+        alert(co.index);//100
+        Object.freeze(co);
+        co.index2=200;
+        alert(co.index2);//und
+        co.index=300;
+        alert(co.index);
+        co.coo.index2=20001;
+        alert(co.coo.index2);//und  20001
+
+
+        //深度冻结对象
+        function freeObject(obj){
+            Object.freeze(obj);
+            for(var attr in obj){
+                //attr 属性名
+                if(typeof obj[attr]=="object"){
+                    freeObject(obj[attr]);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

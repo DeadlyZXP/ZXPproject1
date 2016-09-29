@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变速运动的简单封装</title>
+    <style>
+        div{
+            width:50px;
+            height:50px;
+            position: absolute;
+            background: yellow;
+            top:500px;
+            left:100px;
+            text-align: center;
+        }
+    </style>
+    <script src="js/moveUtil.js"></script>
+</head>
+<body>
+<input type="text" id="txt1"/>
+<input type="button" id="bt1" value="开始运动"/>
+<div id="div1">A</div>
+<div id="div2" style="left: 150px;background: red;">B</div>
+
+<script>
+    var oDiv1=document.getElementById("div1");
+    var oTxt=document.getElementById("txt1");
+    var oBt=document.getElementById("bt1");
+    var oDiv2=document.getElementById("div2");
+
+    //var aH=300;
+    oDiv1.onmouseover=function(){
+        move(oDiv1,550,function(){
+            alert("oDiv1-550");
+        });
+    }
+    oDiv1.onmouseout=function(){
+        move(oDiv1,50,function(){
+            alert("oDiv1-50");
+        });
+    }
+    oDiv2.onmouseover=function(){
+        move(oDiv2,300,function(){
+            alert("oDiv2-300");
+        });
+    }
+    oDiv2.onmouseout=function(){
+        move(oDiv2,50,function(){
+            alert("oDiv2-50");
+        });
+    }
+    document.onkeydown=function(e){
+        e=e||window.event;
+        switch (e.keyCode){
+            case 65://a
+                move(oDiv1,450,function(){
+                    move(oDiv1,50,function(){
+                        move(oDiv1,300,function(){
+                            move(oDiv1,50)
+                        })
+                    });
+                });
+                break;
+            case 66:
+                move(oDiv2,300,function(){
+                    move(oDiv2,50);
+                });
+                break;
+            case 67:
+                move(oDiv2,target);
+            default:
+                break;
+        }
+    }
+
+
+    var target={
+        height:200,
+        width:300
+    }
+    //move(oDiv1,target);//高度变为200；宽度变为300；
+    function move(element,target,fn){
+        clearInterval(element.timer);
+        element.timer=setInterval(function(){
+            var isComplete=true;
+            for(var attr in target){
+                var cur=Math.round(parseFloat(getStyle(element,attr)));
+                if(!cur){
+                    cur=0;
+                }
+                var speed=(target[attr]-cur)/10;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                //speed>0?speed=Math.ceil(speed):speed=Math.floor(speed);
+                if(cur==target[attr]){
+                    //sclearInterval(timer);
+                }else{
+                    isComplete=false;
+                    element.style[attr]=cur+speed+"px";
+                }
+            }
+            if(isComplete){
+                clearInterval(element.timer);
+                if(fn){
+                    fn();
+                }
+            }
+
+
+        },30);
+    }
+
+
+</script>
+
+</body>
+</html>

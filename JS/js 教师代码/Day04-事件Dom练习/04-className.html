@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>classname</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width:100px;
+            height:30px;
+            background: red;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oDiv1=document.getElementById("div1");  // oDiv1 获取不到；
+            oDiv1.style.background="red";   //
+        }
+    </script>
+</head>
+<body>.
+<div id="div1">第一页</div>
+<div id="div2">第二页</div>
+<div id="div3">第三页</div>
+<div id="div4">第四页</div>
+<img id="img1" src="images/1.png"/>
+<script>
+    var oDiv2=document.getElementById("div2");  // oDiv1 获取不到；
+    oDiv2.style.background="blue";   //
+
+    var oDivList=document.getElementsByTagName("div");// 集合；
+    oDivList[0].onclick=function (){
+        alert(this.id);
+    }
+    var fn=function(){
+
+    }
+    fn();
+    //for 循环的时候；
+    for(var i=0;i<oDivList.length;i++){
+        oDivList[i].index=i;
+        oDivList[i].onclick=function(){
+            var oImg=document.getElementById("img1");
+            oImg.src="images/"+(this.index+1)+".png";
+        }
+    }
+
+
+</script>
+</body>
+</html>

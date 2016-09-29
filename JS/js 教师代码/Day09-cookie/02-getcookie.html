@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getcookie</title>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var strCookie=document.cookie;//;username=wangwu; name1=lisi; name2=zhangsan2
+    var arrCookie=strCookie.split("; ");//["username=wangwu","name1=lisi","name2=zhangsan2"]
+    for(var i=0;i<arrCookie.length;i++){
+        var arrItem=arrCookie[i].split("=");//["username","wangwu"]
+        if(arrItem[0]=="username"){
+            //wangwu
+            document.getElementById("div1").innerHTML=arrItem[1];
+        }
+    }
+</script>
+</body>
+</html>

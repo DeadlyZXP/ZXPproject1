@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .row {
+                width: 500px;
+                margin: 0 auto;
+                clear: both;
+            }
+            .column {
+                width: 100%;
+                float: left;
+                padding: 0 10px 10px 10px;
+            }
+            .large-4 {
+                width: 200px
+            }
+            .content-holder {
+                padding: 10px;
+                border: solid 1px #ccc;
+                border-radius: 5px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .content-holder input {
+                border: solid 1px #ccc;
+                border-radius: 3px;
+                /*CSS3新增的相对单位，IE9开始支持。设置rem的元素
+                字号是相对于`<html>根元素`的字号而定，而不是父元
+                素的字号而定。*/
+                font: normal 14px/1.5rem "Trebuchet Ms", Arial;
+                width: 100%;
+                padding: 2px 8px;
+            }
+            .lblca{
+                overflow: hidden;
+            }
+        </style>
+        <script src="js/jquery-2.2.0.min.js"></script>
+        <script>
+            $(function(){
+                // 添加
+                $(".add-row").on("click",function(){
+                    $(".box-container").append($("#callable-row").html());
+                });
+
+                // 删除
+                $(".remove-row").on("click",function(){
+                    var lastRow = $("#callable-row").siblings(".row:last-child");
+                    if(lastRow.length != 0){
+                        lastRow.remove();
+                    }else{
+                        alert("没有什么可删除的了");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="content-holder">
+            <div class="box-container">
+                <div class="column"><h4>添加新的候选人</h4><hr/></div>
+
+                <!--第一个输入框组合-->
+                <div id="callable-row">
+                    <div class="row">
+                        <div class="large-4 column">
+                            <input name="username" type="text" placeholder="your name">
+                        </div>
+                        <div class="large-4 column">
+                            <input name="email" type="email" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 column">
+                        <input name="username" type="text" placeholder="your name">
+                    </div>
+                    <div class="large-4 column">
+                        <input name="email" type="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 column">
+                        <input name="username" type="text" placeholder="your name">
+                    </div>
+                    <div class="large-4 column">
+                        <input name="email" type="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 column">
+                        <input name="username" type="text" placeholder="your name">
+                    </div>
+                    <div class="large-4 column">
+                        <input name="email" type="email" placeholder="Email">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row lblca">
+                <div class="large-4 column ">
+                    <a href="#" class="add-row">+ 添加新行</a>
+                </div>
+                <div class="large-4 column">
+                    <a href="#" class="remove-row">- 删除一行</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+    this 通常在哪里出现？
+    1. 方法内部。这个时候，this方法所属的对象。
+    2. 构造函数内，this指向的是新创建的实例
+    3. call,apply(this,[]）  函数内部的this 指向的是 call apply的第一个参数；
+    4. 全局window
+
+    <script>
+        function fn(a,b){
+            this.name=a;
+            this.age=b;
+            return a+b;
+        }
+        var o={
+            id:123
+        }
+        fn.call(o,1,2);
+        alert(o.name);//1
+    </script>
+</body>
+</html>

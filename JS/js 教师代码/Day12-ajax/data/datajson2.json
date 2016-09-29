@@ -1,0 +1,17 @@
+[
+  {
+    "name":"zhangsan",
+    "age":18,
+    "imgsrc":"1.jpg"
+  },
+  {
+    "name":"lisi",
+    "age":8,
+    "imgsrc":"2.jpg"
+  },
+  {
+    "name":"wangwu",
+    "age":180,
+    "imgsrc":"3.jpg"
+  }
+]

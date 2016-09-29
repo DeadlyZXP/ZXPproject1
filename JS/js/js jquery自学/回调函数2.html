@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">这是一个div</div>
+		<script>
+			function $(arg){
+				if(arguments.length==0||arg instanceof HTMLDocument){
+					document.ready=function(fn){
+						if(typeof(fn)=="function"){
+							this.addEventListener("DOMContentLoaded",fn);
+						}
+					}
+					return document;
+				}else if(typeof arg=="function"){
+					document.addEventListener("DOMContentLoaded",arg);
+				}else{
+					return query(arg);
+				}
+				function query(word){
+					var First=word.charAt(0);
+					switch(First){
+						case "#":
+							return document.getElementById(word.substring(1));
+						case ".":
+							return document.getElementsByClassName(word.substring(1));
+						default:
+							return document.getElementsByTagName(word);
+					}
+				}
+			}
+			$(function(){
+				alert($("#box").innerHTML);
+			});
+			$().ready(function(){
+				alert($("#box").innerHTML);
+			});
+			$(document).ready(function(){
+				alert($("#box").innerHTML);
+			})
+		</script>
+	</body>
+</html>

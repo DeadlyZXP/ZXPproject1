@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部变量</title>
+</head>
+<body>
+<script>
+    function fn(){
+        var a=b=10;
+    }
+    fn();
+    alert(a);//a 不行
+    alert(b);//b 可以；
+</script>
+</body>
+</html>

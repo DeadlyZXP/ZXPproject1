@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞机大战2.0版</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        #start{
+            width:320px;
+            height: 568px;
+            position: relative;
+            margin: 0 auto;
+            background: url(image/开始背景.png);
+        }
+        #btn{
+            position: absolute;
+            left: 140px;
+            top:400px;
+        }
+        #mainbg{
+            width:320px;
+            height: 568px;
+            position: relative;
+            margin: 0 auto;
+            display: none;
+            background: url(image/background_1.png);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="start">
+        <input type="button" id="btn" value="开始游戏"/>
+    </div>
+    <div id="mainbg"></div>
+<script>
+    var Btn=document.getElementById("btn");
+    var Start=document.getElementById("start");
+    var main=document.getElementById("mainbg");
+    var Myplane;
+    var Bullet=[];//存放子弹的数组
+    var EnemY=[];
+    var timer;
+    var backgroundPositionY=0;
+    Btn.onclick=function () {
+        Start.style.display="none";
+        main.style.display="block";
+        Myplane=getMyplane();
+        moveMyplane();
+        clearInterval(timer);
+        timer=setInterval(function () {
+            backgroundPositionY+=1;
+            main.style.backgroundPositionY=backgroundPositionY+"px";//移动背景
+            speed.count++;
+            speed.enemy++;
+            if(speed.count==5){
+                GetBullet();
+                speed.count=0;
+            }
+           MoveButtlet();
+            if(speed.enemy%20==0){
+                GetEnemy(opity.enemy1_W,opity.enemy1_H,"image/enemy1_fly_1.png");
+            }
+            if(speed.enemy%80==0){
+                GetEnemy(opity.enemy3_W,opity.enemy3_H,"image/enemy3_fly_1.png");
+            }
+            if(speed.enemy%200==0){
+                GetEnemy(opity.enemy2_W,opity.enemy2_H,"image/enemy3_fly_1.png");
+                speed.enemy=0;
+            }
+            MoveEnemy();
+        },30)
+    }
+    var opity={
+        MyplaneW:66,
+        MyplaneH:80,
+        MainH:568,
+        MainW:320,
+        BulletW:6,
+        BulletH:14,
+        enemy1_W:34,
+        enemy1_H:24,
+        enemy2_W:110,
+        enemy2_H:164,
+        enemy3_W:46,
+        enemy3_H:60
+    }
+    var speed={
+        buttletspeed:20,
+        enemyspeed:5,
+        count:0,
+        enemy:0,
+    }
+    //创建我的飞机
+    function getMyplane() {
+        Myplane=document.createElement("img");
+        Myplane.style.width=opity.MyplaneW+"px";
+        Myplane.style.height=opity.MyplaneH+"px";
+        Myplane.src="image/我的飞机.gif";
+        Myplane.style.position="absolute";
+        Myplane.style.top=opity.MainH-opity.MyplaneH+"px";
+        Myplane.style.left=(opity.MainW-opity.MyplaneW)/2+"px";
+        main.appendChild(Myplane);
+        return Myplane
+    }
+    //移动我的飞机
+    function moveMyplane() {
+        main.onmousemove=function (e) {
+            e=e||window.event;
+            var Top=e.clientY-opity.MyplaneH/2;
+            var Left=e.clientX-main.offsetLeft-opity.MyplaneW/2;
+            if(Top<0){
+                Top=0;
+            }
+            if(Top>opity.MainH-opity.MyplaneH){
+                Top=opity.MainH-opity.MyplaneH;
+            }
+            if(Left<-opity.MyplaneW/2){
+                Left=-33;
+            }
+            Left=Math.min(Left,opity.MainW-opity.MyplaneW/2);
+            Myplane.style.left=Left+"px";
+            Myplane.style.top=Top+"px";
+        }
+    }
+//    创建子弹
+    function GetBullet() {
+        var bullet=document.createElement("img");
+        bullet.src="image/bullet1.png";
+        bullet.style.width=opity.BulletW+"px";
+        bullet.style.height=opity.BulletH+"px";
+        bullet.style.position="absolute";
+        bullet.style.top=Myplane.offsetTop-opity.BulletW-5+"px";
+        bullet.style.left=Myplane.offsetLeft+opity.MyplaneW/2-opity.BulletW/2+"px";
+        Bullet.push(bullet);
+        main.appendChild(bullet);
+    }
+    //移动子弹
+    function MoveButtlet() {
+        for(var i=0;i<Bullet.length;i++){
+            Bullet[i].style.top=Bullet[i].offsetTop-speed.buttletspeed+"px";
+            if(Bullet[i].offsetTop<-opity.BulletH){
+                main.removeChild(Bullet[i]);
+                Bullet.splice(i,1);
+                i--;
+            }
+        }
+    }
+    //创造敌方飞机
+    function GetEnemy(width,height,src) {
+        var Enemy=document.createElement("img");
+        Enemy.style.width=width+"px";
+        Enemy.style.height=height+"px";
+        Enemy.src=src;
+        Enemy.style.position="absolute";
+        Enemy.style.left=Math.floor(Math.random()*(opity.MainW-width))+"px";
+        main.appendChild(Enemy);
+        EnemY.push(Enemy);
+
+    }
+    //移动敌方飞机
+    function MoveEnemy() {
+        for(var i=0;i<EnemY.length;i++){
+            EnemY[i].style.top=EnemY[i].offsetTop+speed.enemyspeed+"px";
+            if(EnemY[i].offsetTop>main.offsetHeight){
+                main.removeChild(EnemY[i]);
+                EnemY.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

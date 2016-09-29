@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <div>
+        <input id="bt1" value="冒泡排序" type="button"/>
+        <input id="bt2" value="经典冒泡排序" type="button"/>
+    </div>
+    <div id="div2"></div>
+    <script>
+        //定义数组
+        var arr=[];
+        //配置数组元素个数
+        var arrLength=10;
+        //用随机、四舍五入生成数组元素
+        for(var i=0;i<arrLength;i++){
+            var item=Math.round(Math.random()*100);
+            arr[i]=item;
+        }
+        document.getElementById("div1").innerHTML="原始数组为:"+arr.toString();
+
+
+        var oBt=document.getElementById("bt1");
+        oBt.onclick= function () {
+            for(var i=0;i<arr.length;i++){
+                for(var j=0;j<arr.length-1;j++){
+                    if(arr[j]>arr[j+1]){
+                        var temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+            }
+            document.getElementById("div2").innerHTML="原始数组排序后为:"+arr.toString();
+        }
+
+        var oBt2=document.getElementById("bt2");
+        oBt2.onclick= function () {
+            for(var i=0;i<arr.length;i++){
+                for(var j=0;j<arr.length-1-i;j++){
+                    if(arr[j]>arr[j+1]){
+                        var temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+            }
+            document.getElementById("div2").innerHTML="原始数组排序后为:"+arr.toString();
+        }
+    </script>
+</body>
+</html>

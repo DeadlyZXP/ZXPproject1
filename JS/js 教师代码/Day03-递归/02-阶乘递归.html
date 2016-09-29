@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阶乘递归</title>
+</head>
+<body>
+<script>
+    //传n 进去； 返回的n的阶乘；
+    function fn(n){
+        //
+        if(n==1){
+            return 1;
+        }else if(n<=0){
+            alert("不合法");
+        }
+        else{
+            return fn(n-1)*n;
+        }
+    }
+
+    function fn2(n){
+        if(n<=1){
+            return 1;
+        }else{
+            return  fn2(n-1)+1/n;
+        }
+    }
+
+</script>
+
+fn(20,16);   x;  (4)%x==0 16%x==0
+fn(4,16);
+fn(4,12);
+fn(4,8);
+fn(4,4); if(m==n) return m
+</body>
+</html>

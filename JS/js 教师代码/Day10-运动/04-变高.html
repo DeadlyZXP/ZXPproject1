@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            background: #000;
+        }
+        #divA{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            background: #000;
+        }
+        #divB{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 150px;
+            background: red;
+        }
+        #divC{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 300px;
+            left: 200px;
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+<div id="divA">A</div>
+<div id="divB">B</div>
+<div id="divC">C</div>
+<script>
+    var oDivA=document.getElementById("divA");
+    var oDivB=document.getElementById("divB");
+    var oDivC=document.getElementById("divC");
+    document.onkeydown=function(event){
+        event=event||window.event;
+        switch(event.keyCode){
+            case 65://a
+                    //当oDivA 运动到都目标值200后，在执行fnA的函数。
+                    //  fnA也是一个运动。他的目标值，50px
+                    //匿名完成函数。
+                move(oDivA,200,function(){
+                    move(oDivA,50);
+                });
+                break;
+            case 66://b
+                    //指定完成 函数名称的。
+                move(oDivB,250,fnB);
+                break;
+            case 67://c
+                move(oDivC,300,function(){
+                    move(oDivC,50,function(){
+                        move(oDivC,200,function(){
+                            move(oDivC,50,function(){
+                                move(oDivC,100, function () {
+                                    move(oDivC,50,function(){
+                                        alert("终于完了");
+                                    })
+                                })
+                            })
+                        })
+                    })
+                });
+                break;
+            default :
+                break;
+        }
+    }
+    //开启定时器之前，要先清除定时器。对于同一个dom元素。
+    //建议定时器的id，存放在dom的动态属性中。
+    //定时器内部执行的函数。总体结构保持 if else 。
+    //if else 代表两条路。一条是到达目标，清理定时器；一条是为到达目标，继续运动。
+    //减速运动，速度=剩余路程/步数； 每次都要计算速度。
+    //速度注意：最小移动1像素。。
+    // 当速度大于零时，向上取整 保持最少为1.当速度小于零时，向下取整，保持最小为 -1
+
+    function move(dom,target,fn){
+        clearInterval(dom.timer);
+        dom.timer=setInterval(function(){
+            var speed=(target-dom.offsetHeight)/10;
+            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+            if(dom.offsetHeight==target){
+                clearInterval(dom.timer);
+                if(fn){
+                    fn();
+                }
+            }else{
+                dom.style.height=dom.offsetHeight+speed+"px";
+                dom.style.top=dom.offsetTop-speed+"px";
+            }
+        },30);
+    }
+
+    function fnB(){
+       move(oDivB,50);
+    }
+    function fnC(){
+        alert("C完成");
+    }
+</script>
+</body>
+</html>

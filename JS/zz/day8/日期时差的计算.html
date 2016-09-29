@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<input type="text" id="predate"/><span>输入格式:4日10点2分20秒-->4-10-2-20</span><br />
+		<input type="text" id="underdate"/>
+		<p id="msg"></p>
+		<input type="button" id="btn" value="点击获取时间差" />
+		<script type="text/javascript">
+			var predate=document.getElementById("predate");
+			var underdate=document.getElementById("underdate");
+			var btn=document.getElementById("btn");
+			var msg=document.getElementById("msg");
+			btn.onclick=function(){
+				var vpredate=predate.value;
+				var vunderdate=underdate.value;
+				var arr1=vpredate.split("-");
+				var arr2=vunderdate.split("-");
+				var presecond=arr1[0]*60*60*24+arr1[1]*60*60+arr1[2]*60+arr1[3];
+				var undsecond=arr2[0]*60*60*24+arr2[1]*60*60+arr2[2]*60+arr2[3];
+				console.log(arr1);
+				console.log(arr2);
+				var sub=undsecond-presecond;
+				var day=parseInt(sub/86400);
+				var hour=parseInt((sub-day*86400)/3600);
+				var minute=parseInt((sub-day*86400-hour*3600)/60);
+				var second=sub%60;
+				msg.innerHTML="时间差为:"+day+"天"+hour+"小时"+minute+"分"+second+"秒";
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂</title>
+</head>
+<body>
+<script>
+    function Car(optiions){
+        this.doors=optiions.doors||4;
+        this.state=optiions.state||"brand new";
+        this.color=optiions.color||"silver";
+    }
+
+    function Truck(options){
+        this.state=options.state||"used";
+        this.wheelSize=options.wheelSize||"large";
+        this.color=options.color||"blue";
+    }
+
+    //简单工厂
+    function carCreateFactory(options){
+        var car=new Object();
+        car.color=options.color;
+        car.wheelSize=options.wheelSize;
+        return car;
+    }
+
+    var car1=carCreateFactory({
+        color:"red",
+        wheelSize:"100"
+    });
+
+
+
+    //跟构造、原型一起搭配的工厂
+    function VehicleFactory(){
+
+    }
+    VehicleFactory.prototype.vehicleClass=Car;
+    VehicleFactory.prototype.createVehicle=function(options){
+        if(options.vehicleType=="car"){
+            this.vehicleClass=Car;//Car?  function  构造函数
+        }else{
+            this.vehicleClass=Truck;
+        }
+        var car =new this.vehicleClass(options);
+        return car;//new Truck(options);
+    }
+
+    var carFactory=new VehicleFactory();
+    var car=carFactory.createVehicle({
+        vehicleType:"car",
+        doors:6
+    });
+    alert(car.doors);
+    alert(car.state);
+    alert(car.color);
+
+    var truck=carFactory.createVehicle({
+        vehicleType:"truct",
+        state:"123",
+        wheelSize:"1231",
+        color:"red"
+    })
+
+    var car=carFactory.createVehicle({
+        vehicleType:"car",
+        color:"yellow",
+        doors:6
+    });
+    var truck=carFactory.createVehicle({
+        vehicleType:"truck",
+        state:"like new",
+        color:"red",
+        wheelSize:"small"
+    });
+
+
+
+
+
+
+    //抽象工厂模式
+
+    var AbstractVehicleFactory=(function(){
+        var types={};
+        return {
+            getVehicle:function(type,customizetions){
+                var Vehicle=types[type];
+                return (Vehicle)? new Vehicle(customizetions):null;
+            },
+            registerVehicle:function(type,Vehicle){
+                types[type]=Vehicle;
+            }
+        }
+    })();
+
+    AbstractVehicleFactory.registerVehicle("car",Car);
+    var car=AbstractVehicleFactory.getVehicle("car",{
+        color:"green",
+        state:"like new"
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无重载</title>
+</head>
+<body>
+<script>
+    function fn(a,b){
+        return a+b;
+    }
+
+    function fn(a,b,c){
+        return a+b+c;
+    }
+    var sum1=fn(10,20);//30;
+    var sum2=fn(10,20,30,04,0,5,67,10);//60
+    var sum2=fn(10,30,90,8,7,6,5);//60
+
+
+    function sum(){
+       var result=0;
+       for(var i=0;i<arguments.length;i++){
+           result+=arguments[i];
+       }
+       return result;
+    }
+    sum(10,323,349);
+
+
+
+</script>
+</body>
+</html>

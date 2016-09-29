@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+            position:absolute;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    //1. mousedown
+    // 首先 down 页面加载完成后，就绑定。
+    // 绑在谁身上，div 拖动的目标
+    // 事件触发的时候：1. 绑定mousemove事件。
+    //
+    //2.mousemove
+    // 跟随（控制 div 的top left  根据鼠标 坐标 clientX Y ）
+    //3.mouseup  页面加载完成后，或者down 都行。
+    //  解绑 mousemove
+    var oDiv1=document.getElementById("div1");
+    oDiv1.onmousedown=function(evt){
+        //evt 是down 事件对象
+        //从该事件对象中 获取 鼠标点击时，在div中的相对坐标
+        evt=evt||window.event;
+        var offsetx=evt.offsetX;
+        var offsety=evt.offsetY;
+        document.onmousemove=function(event){
+            //跟随
+            event=event||window.event;
+            //设置 div的top left 时候，除了用利用move事件对象的clientX clientX 来定位div
+            //还是注意，利用点击事件对象中的相对div坐标 offsetx offsety 。来控制 鼠标在div中的相对位置。
+            oDiv1.style.top=event.clientY-offsety+"px";
+            oDiv1.style.left=event.clientX-offsetx+"px";
+        }
+    }
+
+    //吸附效果
+    //如果我发现 div 离边界很近 20px； 我让他贴紧边界。
+    document.onmouseup=function(){
+        //左边的吸附
+        if(oDiv1.offsetLeft<100){
+            oDiv1.style.left=0;
+        }
+        var clientWidth=document.documentElement.clientWidth||document.body.clientWidth;
+        if(oDiv1.offsetLeft>clientWidth-oDiv1.offsetWidth-100){
+            oDiv1.style.left=clientWidth-oDiv1.offsetWidth +"px";
+        }
+        document.onmousemove=null;
+        var date=new Date();
+        date.setDate(date.getDate()+30);
+        document.cookie="divX="+oDiv1.offsetLeft+";expires="+date;
+        document.cookie="divY="+oDiv1.offsetTop+";expires="+date;
+    }
+
+    var strCookie=document.cookie;
+    var arrCookie=strCookie.split("; ");
+    for(var i=0;i<arrCookie.length;i++){
+        var item=arrCookie[i].split("=");
+        if(item[0]=="divX"){
+            oDiv1.style.left=item[1] +"px";
+        }
+        if(item[0]=="divY"){
+            oDiv1.style.top=item[1]+"px";
+        }
+    }
+    oDiv1.style.display="block";
+
+    //offsetX  offsetY
+    //event.offsetX 事件对象获取。 鼠标的坐标---参照物（源对象）。不因因为冒泡改变参照物。
+
+    //offsetWidth  offsetHeight
+    //div  dom.offsetWidth 通过dom元素   表示dom的宽度。
+    //dom.offsetHeight   表示 dom的高度
+
+    //offsetLeft  offsetTop
+    // dom.offsetLeft   dom 可能是个绝对定位。获取的left ；参照物。看绝对定位参照谁。
+    //dom.offsetTop   top
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器事件</title>
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+<script>
+    //随浏览器大小改变 在页面内显示浏览器的宽度
+    $(window).resize(function () {
+        $("body").prepend("<div>"+$(window).width()+"</div>");//prepend 在元素的开头插入
+    })
+</script>
+</body>
+</html>

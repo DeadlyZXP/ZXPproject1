@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 500px;
+				height: 500px;
+				background: #C5C5C5;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		<input type="button" id="delbtn" value="删除div" />
+		<input type="button" id="btn" value="点击添加div" />
+		<input type="text"  id="delnum"/>
+		<input type="button" id="subbtn" value="提交删除的数字" />
+		<input type="button" id="check" value="查看" />
+		<input type="button" id="checkall" value="遍历" />
+		<script type="text/javascript">
+			var div1=document.getElementById("div1");
+			var btn=document.getElementById("btn");
+			var delbtn=document.getElementById("delbtn");
+			var subbtn=document.getElementById("subbtn");
+			var check=document.getElementById("check");
+			var checkall=document.getElementById("checkall");
+			var i=0;
+			btn.onclick=function(){
+					var div=document.createElement("div");
+					div1.appendChild(div);
+					div.style.width="200px";
+					div.style.height="200px";
+					div.innerHTML=i;
+					div.style.background="cyan";
+					i++;
+			}
+			delbtn.onclick=function(){
+				div1.removeChild(div1.firstElementChild);
+			}
+			subbtn.onclick=function(){
+				var delnum=document.getElementById("delnum").value;
+				div1.removeChild(div1.children[delnum]);
+			}
+			check.onclick=function(){
+				alert(div1.lastElementChild.nodeType);
+			}
+			checkall.onclick=function(){
+				var doms=div1.children;
+				var sum=0;
+				for (var i=0;i<doms.length;i++) {
+					sum=Number(doms[i].innerHTML)+sum;
+				}
+				alert(sum);
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

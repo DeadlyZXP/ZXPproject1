@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+</head>
+<body>
+<script>
+    function foo(){
+        get = function(){
+            console.log(1);
+        };
+        return this;
+    }
+
+    foo.get = function(){
+        console.log(2);
+    };
+    foo.prototype.get = function(){
+        console.log(3);
+    };
+    get();// 5
+    var get = function(){
+        console.log(4);
+    };
+    function get(){
+        console.log(5);
+    }
+    foo.get();//2
+    get();//   4  声明提升
+    foo().get();//  1  this.get()  window.get() get()  1
+    get();// 1
+    new foo.get();//  2
+    new foo().get();//  3  new foo()  实例.get();
+
+
+
+
+    new new foo().get();// 3  new foo()
+    new Date().getTime();
+
+
+
+</script>
+</body>
+</html>

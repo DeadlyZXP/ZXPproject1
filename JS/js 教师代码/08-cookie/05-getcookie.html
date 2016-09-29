@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getCookie</title>
+    <script src="js/cookie.js"></script>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    var userName=getCookie("loginName");
+    var oDiv=document.getElementById("div1");
+    oDiv.innerHTML=userName;
+
+    var username2=getCookie("name");
+    var oDiv2=document.getElementById("div2");
+    oDiv2.innerHTML=username2;
+
+    document.cookie="name1=value1";
+    document.cookie="name2=value2";
+    document.cookie="name3=value3";
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background:#abcdef;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+   /* var [a,[b]]=[1,[2,3]]
+    alert(a);
+    alert(b);
+
+    let c=1;
+    let d=2;
+    [c,d]=[d,c+d];
+    alert(c);
+    alert(d);
+
+    let [e=1,f=2]=[3,4];
+    alert(e);
+    e=null;
+    alert(e);*/
+    function aa(){
+        let [a,,b]=arguments;
+        return Math.max(a,b);
+    }
+    alert(aa(10,20,30));
+
+</script>
+</body>
+</html>

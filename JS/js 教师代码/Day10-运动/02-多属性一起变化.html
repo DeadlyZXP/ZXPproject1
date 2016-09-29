@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div运动起来</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background: #000;
+            position: absolute;
+            top:100px;
+            left:10px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="div1"></div>
+<div style="width:1px;height:500px;position: absolute;left: 900px;background: red;"></div>
+<div style="width:900px;height:1px;position: absolute;left: 10px;top:400px;background: red;"></div>
+<input type="button" id="bt1" value="向右向下" />
+<script>
+    var oDiv=document.getElementById("div1");
+    var oBt1=document.getElementById("bt1");
+    var timer;
+    oBt1.onclick=function(){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var isComplete=true;
+            var count=0;
+            if(oDiv.offsetLeft>=900){
+                count++;
+            }else{
+                isComplete=false;
+                oDiv.style.left=oDiv.offsetLeft+10+"px";
+            }
+            if(oDiv.offsetTop>=400){
+               count++;
+            }else{
+                isComplete=false;
+                oDiv.style.top=oDiv.offsetTop+10+"px";
+            }
+           /* if(oDiv.offsetTop>=400&&oDiv.offsetLeft>=900){
+                isComplete=true;
+            }*/
+          if(isComplete||count==2){
+                clearInterval(timer);
+            }
+        },30);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 810px;
+            height: 320px;
+            position: relative;
+            margin:  5px auto;
+        }
+        #div2{
+            width: 810px;
+            height: 320px;
+            position: absolute;
+        }
+        .imgul{
+            width: 4050px;
+            list-style-type: none;
+            position: absolute;
+        }
+        li{
+            float: left;
+        }
+        .navul{
+            width: 100px;
+            height: 20px;
+            position: absolute;
+            top: 270px;
+            left: 600px;
+            list-style: none;
+        }
+        .navul li{
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            margin-left: 5px;
+        }
+        .lion{
+            background: darkolivegreen;
+        }
+        .liun{
+            background: blanchedalmond;
+        }
+
+    </style>
+    <script src="js/startMove.js"></script>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <ul id="imgul" class="imgul">
+                <li class="imgli"> <img src="img/001.jpg"></li>
+                <li class="imgli"> <img src="img/002.jpg"></li>
+                <li class="imgli"> <img src="img/003.jpg"></li>
+                <li class="imgli"> <img src="img/004.jpg"></li>
+                <li class="imgli"> <img src="img/001.jpg"></li>
+            </ul>
+        </div>
+        <ul id="navulid" class="navul">
+            <li class="lion">1</li>
+            <li class="liun">2</li>
+            <li class="liun">3</li>
+            <li class="liun">4</li>
+        </ul>
+    </div>
+<script>
+    var imgWidth=810;
+    //第一步：点击页签；显示相应的图片
+    var oNavLis=document.getElementById("navulid").children;
+    var oImgUl=document.getElementById("imgul");
+    for(var i=0;i<oNavLis.length;i++){
+        oNavLis[i].onclick=function(){
+            //获取页码。
+            clearInterval(timer);
+            //当现实为第五场图片时，移动图片前，先把第一张图片瞬间放在窗口。
+            if(pageIndex==5){
+                oImgUl.style.left=0;
+            }
+
+            var pageIndexNav= parseInt(this.innerHTML);//string to int
+            //pageIndex=pageIndexNav;
+            //显示相应的图片；
+            //把相应的图片移动到窗口位置。
+            //如果要把第二张图 移动到窗口位置，需要设置left ==-810 （负的 一张图片的宽度）
+            //left 是给谁设置的？
+
+            //left 与 pageIndex的关系。
+            //第一张 left 0  第二张 -810  第三章  -1620  第四章 -2430
+            // left=-(pageIndex-1)*imgWidth
+            //oImgUl.style.left=-(pageIndex-1)*imgWidth+"px";
+
+            //json格式中，属性名称就是dom元素要运动的属性名称。
+            //属性值：就是dom元素运动的属性的目标值。
+            var targetJson={
+                "left":-(pageIndexNav-1)*imgWidth
+            }
+            //第一个参数：需要运动的对象（dom元素）
+            //第二个参数：json格式的 运动属性和 目标。
+
+            //startMove 开启一个定时器，开始运动。
+            startMove(oImgUl,targetJson, function () {
+                playImg();
+            });
+            //playImg();
+            //alert("a");
+            //运动结束了吗？运功并没有结束。
+
+            //清理之前的页码的背景为初始状态。
+            //把当前页码变为选中状态。
+            for(var j=0;j<oNavLis.length;j++){
+                oNavLis[j].className="liun";
+            }
+            this.className="lion";
+
+            //把点击页签，而引起的当前图片的页码变化，同步到全局变量pageIndex。
+            //自动轮播从pageIndex中获取当前页码的时候，能够跟点击事件切换一致。
+            pageIndex=pageIndexNav;
+            //图片静止 的时间==3秒-图片运动的时间。
+            //图片静止时间   3秒。
+        }
+    }
+
+
+    //记录自动播放的定时器id
+    var timer;
+
+    //默认显示的是第一张图片
+    var pageIndex=1;
+    //自动播放
+    //利用定时器，每个2,3秒显示下一张图片。
+    function playImg(){
+        //启动一个定时器。
+        clearInterval(timer);
+        timer=setInterval(function(){
+            //每个三秒，需要显示下一张图片。
+            //下一张图片是哪张？
+            //知道当前页码 是pageIndex ，下一张就是pageIndex+1；
+            // 知道了下一张是pageIndex+1.  移动到窗口，需要知道left ===》
+            //left= -(pageIndex+1-1)*imgWidth
+            // pageIndex 当前的第几张图片，
+            //pageIndex=1,需要显示的是第二张，  left=（pageIndex+1-1）*（-810）==》left=pageIndex*(-810)
+            //知道left
+
+
+            //当播放到最后一张时，从头开始再次播放。
+            //left=0;
+            //怎么算是最后一张了？
+            if(pageIndex==5){
+                //当前显示的是第五场图片(001.jpg)（也就是彤第一张一样的图片001.jpg。）
+                //下一张图片要显示的是 第二张（002.jpg）。
+                //第五张在窗口。
+                oImgUl.style.left=0;
+                //谁在窗口。第一张。
+                //下一步要显示的是第二张图片。
+                //left的目标值是  -1*imgWidth
+                var targetJson={
+                    "left":-1*imgWidth
+                }
+                startMove(oImgUl,targetJson);
+                //pageIndex =2  运动完之后，当前窗口的是第二张图片。
+                pageIndex=2;
+            }else{
+                var targetJson={
+                    "left":-1*pageIndex*imgWidth
+                }
+                startMove(oImgUl,targetJson);
+                pageIndex++;
+            }
+            setLiClass(pageIndex);
+        },3000);
+    }
+    //调用
+    playImg();
+    //1 。点击页签切换时，跟自动播放的页码不一致。
+    //2 。停留时间错误
+    //3 。
+
+    //设置页码的样式
+    //参数pageIndex，是显示的页码。
+    function setLiClass(pageIndex){
+        var arrLis=document.getElementById("navulid").children;
+        for(var i=0;i<arrLis.length;i++){
+            arrLis[i].className="liun";
+        }
+        if(pageIndex==5){
+            arrLis[0].className="lion";
+        }else {
+            arrLis[pageIndex - 1].className = "lion";
+        }
+    }
+
+</script>
+</body>
+</html>

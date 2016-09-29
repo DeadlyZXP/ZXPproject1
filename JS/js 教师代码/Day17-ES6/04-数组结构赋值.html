@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组结构赋值</title>
+</head>
+<body>
+<!--<script>
+   /* var [a,[b,c],[[d]]]=[1,[2],[[4]]] ;
+    dw(a);
+    dw(b);
+    dw(c);
+    dw(d);*/
+    function dw(param){
+        document.write(param);
+        document.write("<br/>")
+    }
+
+
+
+    let a=1;
+    let b=2;
+    [a,b]=[b,a+b];
+    [a,b]=[2,3];
+    dw(a);//2
+    dw(b);//3   a+b=3
+
+
+    var c=10;
+    var d=20;
+
+    [c,d]=[d,c];
+
+
+
+</script>-->
+
+<script>
+    let [a,b,c=0]=[1,2,undefined];   //
+    dw(a);
+    dw(b);
+    dw(c);
+
+    function dw(param){
+      document.write(param);
+      document.write("<br/>")
+    }
+</script>
+</body>
+</html>

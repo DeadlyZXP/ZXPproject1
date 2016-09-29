@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>同步</title>
+</head>
+<body>
+<input type="text" value="123">
+<div id="div1">
+    123
+</div>
+<div id="div2">
+    123
+</div>
+<input type="button" value="同步换数据" id="bt1"/>
+<input type="button" value="异步换数据" id="bt2"/>
+<script>
+    var  oBt=document.getElementById("bt1");
+    oBt.onclick=function(){
+        var xhr;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","data/user1.txt",false);
+        xhr.send();
+        var oDiv=document.getElementById("div1");
+        if(xhr.status==200){
+            oDiv.innerHTML=xhr.responseText;
+        }else{
+            oDiv.innerHTML="未获取";
+        }
+    }
+    var  oBt2=document.getElementById("bt2");
+    oBt2.onclick=function(){
+        var xhr;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","http://localhost:63342/BkGP1601/Day12-ajax/data/user1.txt",true);
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                oDiv=document.getElementById("div2");
+                if(xhr.status==200){
+                    oDiv.innerHTML=xhr.responseText;//string
+                }else {
+                    oDiv.innerHTML="未获取";
+                }
+            }
+        }
+        xhr.send();
+    }
+</script>
+</body>
+</html>

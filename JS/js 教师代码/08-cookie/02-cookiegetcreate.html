@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>create cookie</title>
+</head>
+<body>
+<div>用户名：<span id="spanUserName">123</span></div>
+<div>用户名123：<span id="sp123">000</span></div>
+<input id="txtname" type="text"/>
+<input id="bt1" type="button" value="登录"/>
+<script>
+
+
+
+    //创建cookie ---
+    //格式  都有哪些主要属性？
+    //键=值;expires=失效时间;
+    var oBt=document.getElementById("bt1");
+    oBt.onclick= function () {
+        //1.获取input 的用户名 value；
+        //2.存入cookie; 保存在本地。下次打开这个网页的时候，我们可以通过js代码，获取本地的cookie；
+        //3.获取cookie之后，渲染到页面。
+
+        var loginNameValue=document.getElementById("txtname").value;
+        //定义一个name；  loginName
+        document.cookie="loginName="+loginNameValue;
+        //存储了一个cookie  cookie名字叫loginName;
+        document.getElementById("spanUserName").innerHTML=loginNameValue;
+    }
+
+    //页面加载的时候，需要去cookie中看有没有 登陆过的用户；
+    //就是看cookie中有没有 一个cookie 叫loginName; 如果有，把这个cookie的value  渲染到span；
+    var strCookies=document.cookie;//string "loginName=gaoge; name=456";  // name=value; name=value
+    var arrCookies=strCookies.split("; ");  //["loginName=gaoge"，"name=456"]  数组元素仍然是string ；name=value
+    for(var i=0;i<arrCookies.length;i++){
+        var arrItem=arrCookies[i].split("=");//["loginName","gaoge"]      ;;["name","456"];
+        if(arrItem[0]=="loginName"){  //loginName  name
+            //找到了cookie；
+            //arrItem[1];  //  gaoge
+            document.getElementById("spanUserName").innerHTML=arrItem[1];
+        }
+    }
+
+    document.cookie="name=123";
+
+    for(var i=0;i<arrCookies.length;i++){
+        var arrItem=arrCookies[i].split("=");//["loginName","gaoge"]      ;;["name","456"];
+        if(arrItem[0]=="name"){  //loginName  name
+            //找到了cookie；
+            //arrItem[1];  //  gaoge
+            document.getElementById("sp123").innerHTML=arrItem[1];
+        }
+    }
+
+
+
+
+    //新建 修改  查询；
+    //新建  或 查询 都很麻烦；
+    //删除；
+
+</script>
+</body>
+</html>

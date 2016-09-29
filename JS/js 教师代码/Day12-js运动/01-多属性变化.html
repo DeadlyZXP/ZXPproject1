@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width:100px;
+            height:100px;
+            position: absolute;
+            top: 0;
+            left:0;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    //获取样式的兼容方法。
+    function getStyle(obj, attr) {
+        if (obj.currentStyle) {   //ie
+            //obj 就是要获取样式的对象。
+            //arrt 就是样式属性的名称。 string
+            //oDiv.currentStyle["width"];
+            return obj.currentStyle[attr];
+        } else {
+            //obj 要获取样式的对象。
+            //attr 样式属性的名称
+            //window.getComputedStyle(oDiv,false)["width"]
+            return window.getComputedStyle(obj, false)[attr];  //非ie
+        }
+    }
+    var timer;
+    var tWidth=400;
+    var tHeight=400;
+    function moveDiv(){
+        var oDiv=document.getElementById("div1");
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var oDivW=Math.round(parseFloat(getStyle(oDiv,"width")));
+            var oDivH=Math.round(parseFloat(getStyle(oDiv,"height")));
+            var speedW=(tWidth-oDivW)/10;
+            speedW=speedW>0?Math.ceil(speedW):Math.floor(speedW);
+
+            var speedH=(tHeight-oDivH)/10;
+            speedH=speedH>0?Math.ceil(speedH):Math.floor(speedH);
+            if(oDivH==tHeight&&oDivW==tWidth){
+                    clearInterval(timer);
+            }
+            else{
+                oDiv.style.width=oDivW+speedW+"px";
+                oDiv.style.height=oDivH+speedH+"px";
+            }
+        },30);
+    }
+
+    var oDiv=document.getElementById("div1");
+    oDiv.onclick=function(){
+        //moveDiv();
+        //moveUtil(oDiv,["top",400,"width",400]);
+        /*var json={
+            "width":300,
+            "height":300
+        }
+        for(var attr in json){
+            alert(attr);
+        }*/
+        var jsonA={
+            "width":300,
+            "height":300,
+            "top":200,
+            "left":100,
+            "opacity":50
+        }
+        moveUtilJsonBool(oDiv,jsonA);
+    }
+
+
+    //传入一个json格式的
+    //变宽度。
+    //{"width":400};
+    //["width",400]
+    //["height":400]
+    //单一属性。
+    function moveUtil(dom,arr,fn){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var oDivW=Math.round(parseFloat(getStyle(dom,arr[0])));
+            var speedW=(arr[1]-oDivW)/10;
+            speedW=speedW>0?Math.ceil(speedW):Math.floor(speedW);
+            if(oDivW==arr[1]){
+                clearInterval(timer);
+                if(fn){
+                    fn();
+                }
+            }
+            else{
+                dom.style[arr[0]]=oDivW+speedW+"px";
+            }
+        },30);
+    }
+
+   //{"width":400,"height":400."top":200,"left":400}
+    function moveUtilJsonBool(dom,json,fn){
+        clearInterval(dom.timer);
+        dom.timer=setInterval(function(){
+            var isClear=true;
+            for(var attr in json){
+                //attr ="width"; string
+                var currentValue=Math.round(parseFloat(getStyle(dom,attr)));
+                var speed=(json[attr]-currentValue)/10;  //json.attr
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                if(currentValue==json[attr]){
+                }
+                else{
+                    isClear=false;
+                    dom.style[attr]=currentValue+speed+"px";
+                }
+            }
+            if(isClear){
+                clearInterval(dom.timer);
+                if(fn){
+                    fn();
+                }
+            }
+        },30);
+    }
+
+    function moveUtilJsonCount(dom,json,fn){
+        clearInterval(dom.timer);
+        dom.timer=setInterval(function(){
+            var count1=0;//标示 达到目标的计数
+            var count2=0;//所有属性的计数
+            for(var attr in json){
+                //attr ="width"; string
+                var currentValue=Math.round(parseFloat(getStyle(dom,attr)));
+                var speed=(json[attr]-currentValue)/10;  //json.attr
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                if(currentValue==json[attr]){
+                    count1++;
+                }
+                else{
+                    dom.style[attr]=currentValue+speed+"px";
+                }
+                count2++;
+            }
+            if(count2==count1){
+                clearInterval(dom.timer);
+                if(fn){
+                    fn();
+                }
+            }
+        },30);
+    }
+
+</script>
+</body>
+</html>

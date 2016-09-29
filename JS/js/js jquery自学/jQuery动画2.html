@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: #ABCDEF;
+				position: absolute;
+			}
+		</style>
+		<script src="jquery-3.1.0.js"></script>
+	</head>
+	<body>
+		<button>效果改变</button>
+		<div></div>
+		<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("div").animate({
+						left:'250px',
+      					height:'+=150px',
+     					width:'+=150px'
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

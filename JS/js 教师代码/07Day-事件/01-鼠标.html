@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height: 1000px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+    <script>
+        var oDiv=document.getElementById("div1");
+        oDiv.onmousedown=function(){
+            //鼠标按下，
+            console.log("mousedown");
+        };
+        oDiv.onmouseup=function(){
+            //鼠标抬起
+            console.log("mouseup");
+        }
+        oDiv.onclick=function(event) {
+            //鼠标单击
+            var offsetx=event.offsetX;
+            var offsety=event.offsetY;
+
+            document.title=offsetx+"click"+offsety;
+        };
+        oDiv.ondblclick=function(){
+            //鼠标双击
+            console.log("db");
+        };
+
+        oDiv.onmouseover=function(){
+            
+            console.log("mouseover");
+        };
+
+        oDiv.onmouseout=function(){
+            console.log("mouseout");
+        };
+        
+        oDiv.onmousemove= function (event) {
+            console.log(event);
+            console.log("move");
+        };
+
+        //oDiv.onmousedown(e);// 浏览器当事件（mousedown）触发的时候，调用事件处理函数（onmousedown）；
+        //为了让你更清楚事件的一些信息，会把事件相关信息，组成一个对象（事件对象），作为一个实参传递给事件处理程序；
+        //
+
+        //事件对象？
+
+        function fn(param){
+            alert(param);
+        }
+        fn(3);
+        
+        document.onmousedown= function (event) {
+            var x=event.clientX;
+            var y=event.clientY;
+
+            var pagex=event.pageX;
+            var pagey=event.pageY;
+            document.title="x:"+x+";Y:"+y+";:"+pagex+";:"+pagey;
+        }
+
+    </script>
+</body>
+</html>

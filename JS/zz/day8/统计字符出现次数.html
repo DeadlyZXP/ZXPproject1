@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var time=0;
+			var str="This a list of items:cherries,apples,limes,oranges,apples,apples,apples.this list end.";
+			var str21=str.substring(str.indexOf(":")+1,str.indexOf("."));
+			var str22=str21.split(",");
+			var i=0;
+			while(i>=0){ 
+				i=str21.indexOf("apples",i);
+				if(i>=0){
+					i+="apples".length;
+					time++;
+				}
+			}
+			alert(time);
+		</script>
+	</body>
+</html>

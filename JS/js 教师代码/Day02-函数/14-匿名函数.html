@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>匿名函数</title>
+</head>
+<body>
+    <script>
+        var p1=1;
+        var p2=2;
+        function add(a,b){
+            return a+b;
+        }
+        function sub(a,b){
+            return a-b;
+        }
+        //3个参数；
+        //第一个参数：是一个运算函数名
+        //第二个、第三个；是运算函数的参数；
+        function math(fn,a,b){
+            fn(a,b);//add(p1,p2)
+        }
+        math(add,p1,p2);
+        math(sub,p1,p2);
+
+        function mul(a,b){
+            return a*b;
+        }
+
+        var result=math(mul,p1,p2);//2;
+        var result3=math(mul,1,2);
+
+        var result2=math(function(a,b){
+            return a/b;
+        },1,2);
+
+        var fn=function(a,b){
+            return a%b;
+        }
+
+    </script>
+
+</body>
+</html>

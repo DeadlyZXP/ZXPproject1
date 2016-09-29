@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单工厂</title>
+</head>
+<body>
+<script>
+    var p1={
+        name:"zs1",
+        age:10,
+        sex:1
+    }
+    var p2={
+        name:"zs2",
+        age:100
+    }
+    var p3={
+        name:"zs3",
+        age:1000
+    }
+
+    //简单工厂
+    var factory=function(name,age){
+        return {
+            "name":name,
+            "age":age,
+            "classId":1601,
+            "sex":0
+        }
+    }
+    //不用每个对象重复创建。
+    //创建出来的对象，都有相同的类似结构。值可以不同。
+
+    var p11=factory("zs",10);
+    var p12=factory("zs1",12);
+    var p13=factory("zs22",23);
+
+    //
+    var carfactory=function(wheel,speed){
+        return {
+            "wheel":wheel,
+            "speed":speed
+        }
+    }
+    var c1=carfactory(4,400);
+    var c2=carfactory(6,100);
+    var c3=carfactory(2,40);
+
+    //构造函数
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.QQList=[];
+    Person.prototype.classId=1601;
+    Person.prototype.showName=function(){
+        console.log(this.name);
+    }
+
+    var p31=new Person("s",10);
+    var p32=new Person("a",22);
+    var p33=new Person("b",33);
+    p33.QQList.push("123");
+    p32.QQList.push("456");
+    //原型的属性修改：
+    // 只有一份，导致其中一个实例修改了原型，其他实例也会受影响
+    console.log(p31.QQList);//123,456
+
+    //原型的覆盖；
+    Person.prototype={
+        phoneList:[]
+    }
+    var p34=new Person("d",30);
+    p34.phoneList.push(13011111111);
+    alert(p33.QQList);//
+    alert(p33.phoneList);
+
+    alert(p34.QQList);
+    alert(p34.phoneList);
+
+
+</script>
+</body>
+</html>

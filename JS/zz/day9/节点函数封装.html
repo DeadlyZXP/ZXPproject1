@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function MyFirstChild(parentLable){
+				return parentLable.firstElementChild||parentLable.firstChild;
+			}
+			function MyLastChild(parentLable){
+				return parentLable.lastElementChild||parentLable.lastChild;
+			}
+			function MyPreviousSibling(parentLable){
+				if(parentLable.previousSibling.nodeType==3){
+					return parentLable.previousSibling.previousSibling;
+				}else{
+					return parentLable.previousSibling;
+				}
+			}
+			function MyNextSibling(parentLable){
+				if(parentLable.nextSibling.nodeType==3){
+					return parentLable.nextElementSibling;
+				}else{
+					return parentLable.nextSibling;
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

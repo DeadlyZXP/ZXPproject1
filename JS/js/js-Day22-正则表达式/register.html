@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" id="name" autofocus="autofocus"/>
+		<span id="nameTs"></span>
+		<br />
+		
+		 密   码 ：<input type="password" id="pwd" disabled="disabled"/>
+		<br />
+		
+		确认密码：<input type="password" id="conPwd" disabled="disabled"/>
+		<span id="pwdTs"></span>
+		<br />
+		<input type="button" id="register" value="注册用户" disabled="disabled"/>
+		<input type="button" id="reset" value="重置" />
+		<a href="Login.html">跳转到登录界面</a>
+		<script type="text/javascript">
+			var oName=document.getElementById("name");
+			var nameTs=document.getElementById("nameTs");
+			var pwd=document.getElementById("pwd");
+			var conPwd=document.getElementById("conPwd");
+			var pwdTs=document.getElementById("pwdTs");
+			var register=document.getElementById("register");
+			var oReset=document.getElementById("reset")
+			var fn;
+			var xhr;
+			
+			oName.onblur=function(){
+				var jsr=document.createElement("script");
+				var vname=oName.value;	
+				if (vname!="") {
+					jsr.src="http://10.9.163.115:8081/user/CheckUserNameGet?username="+vname+"&callback=fn";
+					document.body.appendChild(jsr);
+					
+				 fn=function(result){
+					if (result==1) {
+						nameTs.innerHTML="此用户已存在,请重新输入!";
+						name.innerText="";
+						name.autofocus="autofocus";
+					}else{
+						nameTs.innerHTML="此用户可以使用";
+						pwd.disabled=false;
+						conPwd.disabled=false;
+					}
+				}
+				document.body.removeChild(jsr);
+				}				
+			}
+			
+			
+			conPwd.onchange=function(){	
+				var vpwd=pwd.value;	
+				var vconPwd=conPwd.value;
+				if (vconPwd==vpwd) {
+					pwdTs.innerHTML="两次密码一致";
+					register.disabled=false;
+					
+				}else{
+					pwdTs.innerHTML="两次密码不一致";
+				}
+			
+			}	
+			
+			register.onclick=function(){
+				//http://10.9.163.115:8081/user/registerGet?name=gao&password=gao&callback=fn;
+				var jsr=document.createElement("script");
+				var vname=oName.value;
+				var vpwd=pwd.value;
+				jsr.src="http://10.9.163.115:8081/user/registerGet?name="+vname+"&password="+vpwd+"&callback=fn";
+				document.body.appendChild(jsr);
+				 fn=function(result){
+					if (result==1) {
+						nameTs.innerHTML="注册成功!";
+					}else{
+						nameTs.innerHTML="注册失败";
+						
+					}
+				}
+				document.body.removeChild(jsr);
+				}				
+			
+			
+			oReset.onclick=function(){
+				oName.value="";
+				pwd.value="";
+				conPwd.value="";
+				register.disabled=true;
+				pwd.disabled=true;
+				conPwd.disabled=true;
+			}
+			
+		</script>
+	</body>
+</html>

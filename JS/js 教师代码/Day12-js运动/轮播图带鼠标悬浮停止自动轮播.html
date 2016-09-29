@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图-鼠标滑入图片，停止轮播，鼠标划出后，启动轮播</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width:810px;
+            height: 320px;
+            background: red;
+            margin: 5px auto;
+            position: relative;
+        }
+        #div2{
+            width: 1000px;
+            height: 320px;
+            position:absolute;
+            top: 0;
+            left: 0;
+        }
+        li{
+            float: left;
+        }
+        .imgul{
+            width:4100px;
+            list-style: none;
+        }
+        .navul{
+            width: 100px;
+            height: 20px;
+            position: absolute;
+            top: 270px;
+            left: 600px;
+            list-style: none;
+        }
+        .navul li{
+            width: 20px;
+            height: 20px;
+            background: red;
+            margin-left: 2px;
+        }
+
+        .navul li .lion{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <ul id="imgul" class="imgul">
+            <li class="imgli"> <img src="img/001.jpg"></li>
+            <li class="imgli"> <img src="img/002.jpg"></li>
+            <li class="imgli"> <img src="img/003.jpg"></li>
+            <li class="imgli"> <img src="img/004.jpg"></li>
+            <li class="imgli"> <img src="img/001.jpg"></li>
+        </ul>
+    </div>
+
+    <ul id="ul1" class="navul">
+        <li style="background:blue;">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script src="js/startMove.js"></script>
+<script type="text/javascript">
+    //存放图片的容器。也就是运动的操作对象
+    var  oDiv2=document.getElementById("div2");
+    //var index=1;
+    var timer=null;//自动轮播的定时器id
+    var pageIndex=1;//当前页码
+    var imgWidth=810;//图片的宽度
+    var  lis=document.getElementById("ul1").children;//获取所有的页码li
+    for(var i=0;i<lis.length;i++){
+        //给所有表示页码的li 绑定点击事件
+        lis[i].onclick=function(){
+            var index=parseInt(this.innerHTML);//获取点击的页码，并转成数值
+            var targetLeft=-1*(index-1)*imgWidth;//计算left的目标值。
+            for(var j=0;j<lis.length;j++){
+                lis[j].style.background="red";
+                //变更图片后，页码的li 样式需要变更选中状态
+            }
+            this.style.background="blue";  //点击的对象变为 blue。
+            //清理自动轮播的定时器，
+            clearInterval(timer);
+            //点击运动到相应页码
+            //运动结束后，需要重新启动 轮播的定时器 moveBan
+            startMove(oDiv2,{left:targetLeft},function(){
+                moveBan();
+            });
+            //点击后，更新页码的记录pageIndex= 为当前点击页码index。
+            pageIndex=index;
+        }
+    }
+    //封装的轮播函数
+    function moveBan(){
+        clearInterval(timer);//清理定时器
+        timer =setInterval(function(){//创建定时器。开始轮播图片
+            pageIndex++;//先加加后 ，pageIndex表示将要显示的图片页码。
+            if(pageIndex==6)
+            {//当将要显示的图片页码为6时，
+            // 其实我们实际要显示的是第二页图片也就是pageindex=2
+                //同时我们需要把left重新设置为0；从头开始播放。
+                oDiv2.style.left="0px";
+                pageIndex=2;
+            }
+            //计算需要移动到的left 目标值。
+            var targetLeft=-1*(pageIndex-1)*imgWidth;
+            //开始条用startmove函数，来完成移动。
+            startMove(oDiv2,{left:targetLeft});
+
+            //变更页码li的样式
+            for(var j=0;j<lis.length;j++){
+                lis[j].style.background="red";
+            }
+            if(pageIndex==5){
+            //当pageindex==5时，页码需要显示1，lis的下标为0
+                lis[0].style.background="blue";
+            }
+            else{
+                lis[pageIndex-1].style.background="blue";
+            }
+        },3000);
+    }
+
+    //默认页面加载后，启动自动轮播。
+    moveBan();
+
+    //对图片绑定 mouseover mouseout事件，
+    //当鼠标移入时，清理自动播放的定时器
+    //当鼠标移出时，启动自动包房的定时器
+    var  imgLis=document.getElementById("imgul").children;
+    for(var i=0;i<imgLis.length;i++){
+        imgLis[i].onmouseover=function(){
+            clearInterval(timer);
+        }
+        imgLis[i].onmouseout=function(){
+            moveBan();
+        }
+    }
+
+</script>
+</body>
+</html>

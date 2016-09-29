@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升</title>
+</head>
+<body>
+<script>
+    var a=1
+    function fn1(){
+        var a=2;
+        alert(a);
+    }
+    function fn2(){
+        alert(a);
+    }
+    function fn3(){
+        //var a;
+        alert(a);
+        var a=2;//变量也有提升；
+    }
+    fn1();//2
+    fn2();//1
+    fn3();//unde
+</script>
+</body>
+</html>

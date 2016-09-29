@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件流</title>
+    <style>
+        div{
+           position: absolute;
+            top:0;
+            left: 0;
+        }
+        #div1{
+            width: 250px;
+            height: 250px;
+            background: red;
+        }
+        #div2{
+            width: 150px;
+            height: 150px;
+            background: blue;
+        }
+        #div3{
+            width: 50px;
+            height: 50px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" >
+    <div id="div2" >
+        <div id="div3" ></div>
+    </div>
+</div>
+
+<script>
+    /*var oDiv3=document.getElementById("div3");
+    oDiv3.onclick=function(){
+        alert(this.id);
+    }
+    var oDiv2=document.getElementById("div2");
+    oDiv2.onclick=function(){
+        alert(this.id);
+    }
+
+   var oDiv1=document.getElementById("div1");
+    /!* oDiv1.onclick=function(){
+        alert(this.id);
+    }*!/
+    oDiv1.addEventListener("click",function(){
+        alert(this.id);
+    },false);*/
+    //false 是冒泡阶段；；；true 是捕获阶段
+
+    //冒泡： 从确定目标向不确定目标；---    从小向大（父节点）  ---
+
+    var oDiv3=document.getElementById("div3");
+    var oDiv2=document.getElementById("div2");
+    var oDiv1=document.getElementById("div1");
+    oDiv1.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+    oDiv2.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+    oDiv3.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+
+    oDiv1.addEventListener("click",function(event){
+        alert(this.id);
+    },false);
+    oDiv2.addEventListener("click",function(event){
+        alert(this.id);
+    },false);
+    oDiv3.addEventListener("click",function(event){
+        alert(this.id);
+    },false);
+</script>
+</body>
+</html>

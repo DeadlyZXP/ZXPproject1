@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直接插入排序</title>
+    <style>
+        div{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>希尔插入排序</h1>
+<div>
+    <h2>基本思想:</h2>
+    <p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行依次直接插入排序。</p>
+</div>
+<div>
+    <p>1.选择一个增量序列t1，t2，…，tk，其中ti>tj，tk=1；</p>
+    <p>2.按增量序列个数k，对序列进行k 趟排序；</p>
+    <p>3.每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。
+    </p>
+</div>
+<div>
+    <h2>演示图</h2>
+<img src="../img/01-插入排序演示图.png"/>
+</div>
+<div>
+    <input id="txt1" value="10" type="text"/>
+    <input id="bt1" value="随机生成数据" type="button"/>
+    <input id="bt2" value="排序" type="button"/>
+</div>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    //定义数组
+    var arr=[];
+    //配置数组元素个数
+    var arrLength=10;
+
+    var oBt1=document.getElementById("bt1");
+    oBt1.onclick= function () {
+        var sTxtValue=parseInt(document.getElementById("txt1").value);
+        if(!isNaN(sTxtValue)){
+            arrLength=sTxtValue;
+        }
+        arr=[];
+        //用随机、四舍五入生成数组元素
+        for(var i=0;i<arrLength;i++){
+            var item=Math.round(Math.random()*10*arrLength);
+            arr[i]=item;
+        }
+        document.getElementById("div1").innerHTML="随机生成的原始数组为:"+arr.toString();
+    }
+
+    var oBt2=document.getElementById("bt2");
+    oBt2.onclick= function () {
+        var step=Math.floor(arr.length/2);
+        while(step>=1){
+            for(var i=1;i<arr.length;i++){
+                insertEx(arr,i,step);
+            }
+            step=Math.floor(step/2);
+        }
+        document.getElementById("div2").innerHTML="原始数组排序后为:"+arr.toString();
+    }
+
+    //把数组arr 中的下边为index 的元素，插入到前面有序列中；
+    function insert(arr,index){
+        //从前开始比较大小，确定index移动到的合适位置。
+        for(var i=0;i<index;i++){
+            if(arr[i]>arr[index]){
+                var temp=arr[index];
+                while(index>i){
+                    arr[index]=arr[index-1];
+                    index--;
+                }
+                arr[index]=temp;
+                break;
+            }
+        }
+    }
+    //优化下，从后往前查找位置，并一起修正顺序
+    function insertEx(arr,index,step){
+        var temp=arr[index];
+        while(index-step>=0&&temp<arr[index-step]){
+            arr[index]=arr[index-step];
+            index=index-step;
+        }
+        arr[index]=temp;
+        console.log(arr);
+    }
+</script>
+</body>
+</html>

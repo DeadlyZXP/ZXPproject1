@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听的兼容</title>
+    <style>
+        div{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #div1{
+            width: 250px;
+            height: 250px;
+            background: red;
+        }
+        #div2{
+            width: 150px;
+            height: 150px;
+            background: blue;
+        }
+        #div3{
+            width: 50px;
+            height: 50px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" >
+    <div id="div2" >
+        <div id="div3" ></div>
+    </div>
+</div>
+<script>
+    var oDiv=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var oDiv3=document.getElementById("div3");
+    //gei oDiv. 添加click 事件；
+    addFn(oDiv,"click",fn1);
+    addFn(oDiv2,"click",fn2);
+    addFn(oDiv3,"click",fn3);
+    function fn1(){
+        alert(1);
+    }
+    function fn2(){
+        alert(2);
+    }
+    function fn3(){
+        alert(3);
+    }
+
+    //复用；
+    function  addFn(dom,type,fn){
+        if(dom.addEventListener){
+            dom.addEventListener(type, fn,false);
+        }else{
+            dom.attachEvent("on"+type,fn);
+        }
+    }
+    function removeEL(dom,type,fn){
+        if(dom.removeEventListener){
+            dom.removeEventListener(type, fn,false);
+        }else{
+            dom.detachEvent("on"+type,fn);
+        }
+    }
+</script>
+</body>
+</html>

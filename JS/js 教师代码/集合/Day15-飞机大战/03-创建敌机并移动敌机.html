@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #startdiv{
+            width: 320px;
+            height: 568px;
+            background: url(image/开始背景.png) no-repeat;
+        }
+        #content{
+            width: 320px;
+            height: 568px;
+            position: absolute;
+            top: 0px;
+            left: 500px;
+        }
+        #btstart{
+            width: 150px;
+            height: 30px;
+            background: burlywood;
+            border-radius: 30px;
+            position: absolute;
+            top:450px;
+            left:80px;
+        }
+        #maindiv{
+            width: 320px;
+            height:568px;
+            background: url(image/background_1.png);
+            position:absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<div id="content">
+    <div id="startdiv">
+        <input id="btstart" type="button" value="开始游戏"/>
+    </div>
+    <div id="maindiv"></div>
+</div>
+
+<script>
+    var oBtStart=document.getElementById("btstart");
+    var oDivStart=document.getElementById("startdiv");
+    var oDivMain=document.getElementById("maindiv");
+    //记录我的飞机
+    var myPlan;
+    //存放所有的子弹
+    var arrBullet=[];
+
+    //存放敌机的数组
+    var arrEnemy=[];
+    //定时器id
+    var timer;
+    var backgroundPositionY=0;
+    //配置文件，记录各种素材大小
+    var config={
+        backgroudHeigth:568,
+        backgroudWidth:320,
+        myPlanHeight:82,
+        myPlanWidth:66,
+        contentLeft:500,
+        bulletW:6,
+        bulletH:14,
+        enemy1_W:34,
+        enemy1_H:24,
+        enemy2_W:110,
+        enemy2_H:164,
+        enemy3_W:46,
+        enemy3_H:60
+    }
+
+    //速度对象
+    var speedConfig={
+        bullet:20,
+        enemy:5
+    }
+    //计数器对象
+    var counter={
+        bullet:0,
+        enemy:0
+    }
+    oBtStart.onclick=function(){
+        oDivStart.style.display="none";
+        oDivMain.style.display="block";
+        //加载我的飞机
+        myPlan=loadMyPlan();
+
+        //在主界面上添加一个mousemove事件
+        oDivMain.onmousemove=function(e){
+            e=e||window.event;
+            var mTop= e.clientY-config.myPlanHeight/2;
+            var mLeft= e.clientX-config.contentLeft-config.myPlanWidth/2;
+
+            if(mTop<0){
+                mTop=0;
+            }
+            if(mTop>config.backgroudHeigth-config.myPlanHeight){
+                mTop=config.backgroudHeigth-config.myPlanHeight;
+            }
+
+            if(mLeft<-config.myPlanWidth/2){
+                mLeft=-config.myPlanWidth/2;
+            }
+            mLeft=Math.min(mLeft,config.backgroudWidth-config.myPlanWidth/2);
+            myPlan.style.top=mTop+"px";
+            myPlan.style.left=mLeft+"px";
+        }
+
+        clearInterval(timer);
+        timer=setInterval(function(){
+            backgroundPositionY+=1;
+            oDivMain.style.backgroundPositionY=backgroundPositionY+"px";
+            counter.bullet++;
+            counter.enemy++;
+            if(counter.bullet==5){
+                createBullet();
+                counter.bullet=0;
+            }
+            moveBullet();
+            //频率
+            if(counter.enemy%80==0){
+                createEnemy("image/enemy3_fly_1.png",config.enemy3_W,config.enemy3_H);
+            }
+            if(counter.enemy%20==0){
+                createEnemy("image/enemy1_fly_1.png",config.enemy1_W,config.enemy1_H);
+            }
+            if(counter.enemy%200==0){
+                createEnemy("image/enemy2_fly_1.png",config.enemy2_W,config.enemy2_H);
+                counter.enemy=0;
+            }
+            moveEnemy();
+        },30);
+    }
+
+    //加在我的飞机
+    function loadMyPlan(){
+        var myPlan=document.createElement("img");
+        myPlan.style.width=config.myPlanWidth+"px";
+        myPlan.style.height=config.myPlanHeight+"px";
+        myPlan.style.position="absolute";
+        myPlan.style.top=config.backgroudHeigth-config.myPlanHeight+"px";
+        myPlan.style.left=(config.backgroudWidth-config.myPlanWidth)/2+"px";
+        myPlan.src="image/我的飞机.gif";
+        myPlan.style.zIndex=10;
+        oDivMain.appendChild(myPlan);
+        return myPlan;
+    }
+
+    //创建子弹方法
+    function createBullet(){
+        //创建子弹
+        var bullet=document.createElement("img");
+        bullet.src="image/bullet1.png";
+        bullet.style.width=config.bulletW+"px";
+        bullet.style.height=config.bulletH+"px";
+        bullet.style.position="absolute";
+        bullet.style.top=myPlan.offsetTop-config.bulletH-5+"px";
+        bullet.style.left=myPlan.offsetLeft+config.myPlanWidth/2-config.bulletW/2+"px";
+        arrBullet.push(bullet);  //把子弹存放如数组中，以方便后续操作
+        oDivMain.appendChild(bullet);
+    }
+
+
+    //移动子弹；
+    function moveBullet(){
+        for(var i=0;i<arrBullet.length;i++){
+            arrBullet[i].style.top=arrBullet[i].offsetTop-speedConfig.bullet+"px";
+            if(arrBullet[i].offsetTop<-config.bulletH){
+                oDivMain.removeChild(arrBullet[i]);
+                arrBullet.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    //创建敌机
+    function createEnemy(imgsrc,enemyW,enemyH){
+        var enemy=document.createElement("img");
+        enemy.src=imgsrc;
+        enemy.style.width=enemyW+"px";
+        enemy.style.height=enemyH+"px";
+        enemy.style.position="absolute";
+        enemy.style.top=-enemyH+"px";
+        enemy.style.left=getRandomLeft(config.backgroudWidth-enemyW)+"px";
+        arrEnemy.push(enemy);  //存入数组，方便后续移动敌机
+        oDivMain.appendChild(enemy);
+    }
+
+    //移动敌机，并且当敌机移动出界面时，删除
+    function moveEnemy(){
+        for(var i=0;i<arrEnemy.length;i++){
+            arrEnemy[i].style.top=arrEnemy[i].offsetTop+speedConfig.enemy+"px";
+            if(arrEnemy[i].offsetTop>config.backgroudHeigth){
+                oDivMain.removeChild(arrEnemy[i]); //对于已经溢出界面的敌机，从页面删除， 从数组中移除，并注意spice的游标回执
+                arrEnemy.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    //获取一个随机的left值，参数为随机数值的最大值；
+    function getRandomLeft(max){
+        //0，
+        return Math.floor(Math.random()*max);
+    }
+
+</script>
+
+
+
+<!--<script>-->
+    <!--//开始按钮-->
+    <!--var oBtStart=document.getElementById("btstart");-->
+    <!--//游戏界面-->
+    <!--var oMainDiv=document.getElementById("maindiv");-->
+    <!--//游戏总定时器-->
+    <!--var timer;-->
+    <!--//游戏界面的背景定位坐标。-->
+    <!--var MainDivBKPositionY=0;-->
+
+    <!--//记录我的飞机-->
+    <!--var myPlan;-->
+
+    <!--//开始按钮的点击事件-->
+    <!--oBtStart.onclick=function (){-->
+        <!--//进入主界面。  隐藏开始界面，显示主界面。-->
+        <!--var oStartDiv=document.getElementById("startdiv");-->
+        <!--oStartDiv.style.display="none";-->
+        <!--oMainDiv.style.display="block";-->
+
+        <!--//创建我的飞机-->
+        <!--myPlan=createMyPlan();-->
+        <!--moveMyPlan();-->
+        <!--startGame();-->
+    <!--}-->
+
+    <!--//创建我的飞机-->
+    <!--function createMyPlan(){-->
+        <!--var oMyPlan=document.createElement("div");-->
+        <!--oMyPlan.style.width="66px";-->
+        <!--oMyPlan.style.height="80px";-->
+        <!--oMyPlan.style.position="absolute";-->
+        <!--oMyPlan.style.background="url(image/我的飞机.gif) no-repeat";-->
+        <!--oMyPlan.style.top="480px";-->
+        <!--oMyPlan.style.left="127px";-->
+        <!--oMainDiv.appendChild(oMyPlan);-->
+        <!--return oMyPlan;-->
+    <!--}-->
+
+    <!--//开始游戏-->
+    <!--function startGame(){-->
+        <!--clearInterval(timer);-->
+        <!--timer=setInterval(function(){-->
+            <!--//1.背景动起来-->
+            <!--oMainDiv.style.backgroundPositionY=MainDivBKPositionY+"px";-->
+            <!--MainDivBKPositionY+=0.5;-->
+            <!--//2.我的飞机动起来。-->
+
+        <!--},30);-->
+    <!--}-->
+
+    <!--//移动我的飞机-->
+    <!--function moveMyPlan(){-->
+        <!--document.onmousemove=function(event){-->
+            <!--//-->
+            <!--event=event||window.event;-->
+
+            <!--var mLeft=event.clientX-500-33;-->
+            <!--var mTop=event.clientY-41;-->
+            <!--//边界-->
+            <!--if(mTop<=0){-->
+                <!--mTop=0;-->
+            <!--}-->
+            <!--if(mTop>=568-82){-->
+                <!--mTop=486;-->
+            <!--}-->
+            <!--if(mLeft<=-33){-->
+                <!--mLeft=-33;-->
+            <!--}-->
+            <!--if(mLeft>=320-33){-->
+                <!--mLeft=287;-->
+            <!--}-->
+
+            <!--myPlan.style.top=mTop+"px";-->
+            <!--myPlan.style.left=mLeft+"px";-->
+        <!--}-->
+    <!--}-->
+
+<!--</script>-->
+</body>
+</html>
